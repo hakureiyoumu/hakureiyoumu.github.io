@@ -1,0 +1,1 @@
+# hakureiyoumu.github.io
