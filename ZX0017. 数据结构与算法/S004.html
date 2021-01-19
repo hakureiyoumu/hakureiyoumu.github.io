@@ -1,0 +1,873 @@
+<!DOCTYPE html><html><head>
+      <title>S004</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\hakureiyoumu\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.12\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+* xonokai theme for JavaScript, CSS and HTML
+* based on: https://github.com/MoOx/sass-prism-theme-base by Maxime Thirouin ~ MoOx --> http://moox.fr/ , which is Loosely based on Monokai textmate theme by http://www.monokai.nl/
+* license: MIT; http://moox.mit-license.org/
+*/
+code[class*="language-"],
+pre[class*="language-"] {
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: normal;
+  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-size: 14px;
+  color: #76d9e6;
+  text-shadow: none;
+}
+pre[class*="language-"],
+:not(pre)>code[class*="language-"] {
+  background: #2a2a2a;
+}
+pre[class*="language-"] {
+  padding: 15px;
+  border-radius: 4px;
+  border: 1px solid #e1e1e8;
+  overflow: auto;
+}
+
+pre[class*="language-"] {
+  position: relative;
+}
+pre[class*="language-"] code {
+  white-space: pre;
+  display: block;
+}
+
+:not(pre)>code[class*="language-"] {
+  padding: 0.15em 0.2em 0.05em;
+  border-radius: .3em;
+  border: 0.13em solid #7a6652;
+  box-shadow: 1px 1px 0.3em -0.1em #000 inset;
+}
+.token.namespace {
+  opacity: .7;
+}
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6f705e;
+}
+.token.operator,
+.token.boolean,
+.token.number {
+  color: #a77afe;
+}
+.token.attr-name,
+.token.string {
+  color: #e6d06c;
+}
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #e6d06c;
+}
+.token.selector,
+.token.inserted {
+  color: #a6e22d;
+}
+.token.atrule,
+.token.attr-value,
+.token.keyword,
+.token.important,
+.token.deleted {
+  color: #ef3b7d;
+}
+.token.regex,
+.token.statement {
+  color: #76d9e6;
+}
+.token.placeholder,
+.token.variable {
+  color: #fff;
+}
+.token.important,
+.token.statement,
+.token.bold {
+  font-weight: bold;
+}
+.token.punctuation {
+  color: #bebec5;
+}
+.token.entity {
+  cursor: help;
+}
+.token.italic {
+  font-style: italic;
+}
+
+code.language-markup {
+  color: #f9f9f9;
+}
+code.language-markup .token.tag {
+  color: #ef3b7d;
+}
+code.language-markup .token.attr-name {
+  color: #a6e22d;
+}
+code.language-markup .token.attr-value {
+  color: #e6d06c;
+}
+code.language-markup .token.style,
+code.language-markup .token.script {
+  color: #76d9e6;
+}
+code.language-markup .token.script .token.keyword {
+  color: #76d9e6;
+}
+
+/* Line highlight plugin */
+pre[class*="language-"][data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin-top: 1em;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+pre[data-line] .line-highlight:before,
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0.2em 0.5em;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+  font: bold 65%/1 sans-serif;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}@font-face{font-family:'Roboto Mono';font-style:normal;font-weight:400;src:local('Roboto Mono'),local('RobotoMono-Regular'),url(https://fonts.gstatic.com/s/robotomono/v7/L0x5DF4xlVMF-BfR8bXMIjhLq3o.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:local('Source Sans Pro Light'),local('SourceSansPro-Light'),url(https://fonts.gstatic.com/s/sourcesanspro/v13/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdr.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:local('Source Sans Pro Regular'),local('SourceSansPro-Regular'),url(https://fonts.gstatic.com/s/sourcesanspro/v13/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7g.ttf) format('truetype')}@font-face{font-family:'Source Sans Pro';font-style:normal;font-weight:600;src:local('Source Sans Pro SemiBold'),local('SourceSansPro-SemiBold'),url(https://fonts.gstatic.com/s/sourcesanspro/v13/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdr.ttf) format('truetype')}*{-webkit-font-smoothing:antialiased;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-text-size-adjust:none;-webkit-touch-callout:none;box-sizing:border-box}body:not(.ready){overflow:hidden}body:not(.ready) .app-nav,body:not(.ready)>nav,body:not(.ready) [data-cloak]{display:none}div#app{font-size:30px;font-weight:lighter;margin:40vh auto;text-align:center}div#app:empty:before{content:"Loading..."}.emoji{height:19.2px;height:1.2rem;vertical-align:middle}.progress{background-color:#42b983;background-color:var(--theme-color, #42b983);height:2px;left:0;position:fixed;right:0;top:0;transition:width .2s,opacity .4s;width:0;z-index:5}.search .search-keyword,.search a:hover{color:#42b983;color:var(--theme-color, #42b983)}.search .search-keyword{font-style:normal;font-weight:700}body,html{height:100%}body{-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;color:#34495e;font-family:Source Sans Pro,Helvetica Neue,Arial,sans-serif;font-size:15px;letter-spacing:0;margin:0;overflow-x:hidden}img{max-width:100%}a[disabled]{cursor:not-allowed;opacity:.6}kbd{color:#34495e;border:1px solid #ccc;border-radius:3px;display:inline-block;font-size:12px !important;line-height:12px;margin-bottom:3px;padding:3px 5px;vertical-align:middle}.task-list-item{list-style-type:none}li input[type=checkbox]{margin:0 .2em .25em -1.6em;vertical-align:middle}.app-nav{left:0;margin:25px 60px 0 0;position:absolute;right:0;text-align:right;z-index:2}.app-nav p{margin:0}.app-nav>a{margin:0 16px;margin:0 1rem;padding:5px 0}.app-nav li,.app-nav ul{display:inline-block;list-style:none;margin:0}.app-nav a{color:inherit;font-size:16px;text-decoration:none;transition:color .3s}.app-nav a.active,.app-nav a:hover{color:#42b983;color:var(--theme-color, #42b983)}.app-nav a.active{border-bottom:2px solid #42b983;border-bottom:2px solid var(--theme-color, #42b983)}.app-nav li{display:inline-block;margin:0 16px;margin:0 1rem;padding:5px 0;position:relative}.app-nav li ul{background-color:#fff;border:1px solid #ddd;border-bottom-color:#ccc;border-radius:4px;box-sizing:border-box;display:none;max-height:calc(100vh - 61px);overflow-y:scroll;padding:10px 0;position:absolute;right:-15px;text-align:left;top:100%;white-space:nowrap}.app-nav li ul li{display:block;font-size:14px;line-height:16px;line-height:1rem;margin:0;margin:8px 14px;white-space:nowrap}.app-nav li ul a{display:block;font-size:inherit;margin:0;padding:0}.app-nav li ul a.active{border-bottom:0}.app-nav li:hover ul{display:block}.app-nav.no-badge{margin-right:25px}.github-corner{border-bottom:0;position:fixed;right:0;text-decoration:none;top:0;z-index:1}.github-corner svg{color:#fff;fill:#42b983;fill:var(--theme-color, #42b983);height:80px;width:80px}.github-corner:hover .octo-arm{-webkit-animation:a .56s ease-in-out;animation:a .56s ease-in-out}main{display:block;position:relative;width:100vw;height:100%;z-index:0}.anchor{display:inline-block;text-decoration:none;transition:all .3s}.anchor span{color:#34495e}.anchor:hover{text-decoration:underline}.sidebar{border-right:1px solid rgba(0,0,0,0.07);overflow-y:auto;padding:40px 0 0;top:0;bottom:0;left:0;position:absolute;transition:-webkit-transform .25s ease-out;transition:transform .25s ease-out;transition:transform .25s ease-out,-webkit-transform .25s ease-out;width:300px;z-index:3}.sidebar>h1{margin:0 auto 16px;margin:0 auto 1rem;font-size:24px;font-size:1.5rem;font-weight:300;text-align:center}.sidebar>h1 a{color:inherit;text-decoration:none}.sidebar>h1 .app-nav{display:block;position:static}.sidebar .sidebar-nav{line-height:2em;padding-bottom:40px}.sidebar ul{margin:0;padding:0}.sidebar li>p{font-weight:700;margin:0}.sidebar ul,.sidebar ul li{list-style:none}.sidebar ul li a{border-bottom:none;display:block}.sidebar ul li ul{padding-left:20px}.sidebar::-webkit-scrollbar{width:4px}.sidebar::-webkit-scrollbar-thumb{background:transparent;border-radius:4px}.sidebar:hover::-webkit-scrollbar-thumb{background:hsla(0,0%,53%,0.4)}.sidebar:hover::-webkit-scrollbar-track{background:hsla(0,0%,53%,0.1)}.sidebar-toggle{background-color:transparent;background-color:hsla(0,0%,100%,0.8);border:0;outline:none;padding:10px;bottom:0;left:0;position:absolute;text-align:center;transition:opacity .3s;width:30px;width:284px;z-index:4}.sidebar-toggle .sidebar-toggle-button:hover{opacity:.4}.sidebar-toggle span{background-color:#42b983;background-color:var(--theme-color, #42b983);display:block;margin-bottom:4px;width:16px;height:2px}body.sticky .sidebar,body.sticky .sidebar-toggle{position:fixed}.content{padding-top:60px;top:0;right:0;bottom:0;left:300px;position:absolute;transition:left .25s ease}.markdown-preview>*{box-sizing:border-box;font-size:inherit}.markdown-preview>:first-child{margin-top:0 !important}.markdown-preview hr{border:none;border-bottom:1px solid #eee;margin:2em 0}.markdown-preview table{border-collapse:collapse;border-spacing:0;display:block;margin-bottom:16px;margin-bottom:1rem;overflow:auto;width:100%}.markdown-preview th{font-weight:700}.markdown-preview td,.markdown-preview th{border:1px solid #ddd;padding:6px 13px}.markdown-preview tr{border-top:1px solid #ccc}.markdown-preview p.tip,.markdown-preview tr:nth-child(2n){background-color:#f8f8f8}.markdown-preview p.tip{border-bottom-right-radius:2px;border-left:4px solid #f66;border-top-right-radius:2px;margin:2em 0;padding:12px 24px 12px 30px;position:relative}.markdown-preview p.tip code{background-color:#efefef}.markdown-preview p.tip em{color:#34495e}.markdown-preview p.tip:before{background-color:#f66;border-radius:100%;color:#fff;content:"!";font-family:Dosis,Source Sans Pro,Helvetica Neue,Arial,sans-serif;font-size:14px;font-weight:700;left:-12px;line-height:20px;position:absolute;width:20px;height:20px;text-align:center;top:14px}.markdown-preview p.warn{background:rgba(66,185,131,0.1);border-radius:2px;padding:16px;padding:1rem}body.close .sidebar{-webkit-transform:translateX(-300px);transform:translateX(-300px)}body.close .sidebar-toggle{width:auto}body.close .content{left:0}@media print{.app-nav,.github-corner,.sidebar,.sidebar-toggle{display:none}}@media screen and (max-width:768px){.github-corner,.sidebar,.sidebar-toggle{position:fixed}.app-nav{margin-top:16px}.app-nav li ul{top:30px}main{height:auto;overflow-x:hidden}.sidebar{left:-300px;transition:-webkit-transform .25s ease-out;transition:transform .25s ease-out;transition:transform .25s ease-out,-webkit-transform .25s ease-out}.content{left:0;max-width:100vw;position:static;padding-top:20px;transition:-webkit-transform .25s ease;transition:transform .25s ease;transition:transform .25s ease,-webkit-transform .25s ease}.app-nav,.github-corner{transition:-webkit-transform .25s ease-out;transition:transform .25s ease-out;transition:transform .25s ease-out,-webkit-transform .25s ease-out}.sidebar-toggle{background-color:transparent;width:auto;padding:30px 30px 10px 10px}body.close .sidebar{-webkit-transform:translateX(300px);transform:translateX(300px)}body.close .sidebar-toggle{background-color:hsla(0,0%,100%,0.8);transition:background-color 1s;width:284px;padding:10px}body.close .content{-webkit-transform:translateX(300px);transform:translateX(300px)}body.close .app-nav,body.close .github-corner{display:none}.github-corner .octo-arm{-webkit-animation:a .56s ease-in-out;animation:a .56s ease-in-out}.github-corner:hover .octo-arm{-webkit-animation:none;animation:none}}@-webkit-keyframes a{0%,to{-webkit-transform:rotate(0);transform:rotate(0)}20%,60%{-webkit-transform:rotate(-25deg);transform:rotate(-25deg)}40%,80%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}}@keyframes a{0%,to{-webkit-transform:rotate(0);transform:rotate(0)}20%,60%{-webkit-transform:rotate(-25deg);transform:rotate(-25deg)}40%,80%{-webkit-transform:rotate(10deg);transform:rotate(10deg)}}section.cover{-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-position:50%;background-repeat:no-repeat;background-size:cover;height:100vh;display:none}section.cover .cover-main{-webkit-box-flex:1;-ms-flex:1;flex:1;margin:-20px 16px 0;text-align:center;z-index:1}section.cover a{color:inherit}section.cover a,section.cover a:hover{text-decoration:none}section.cover p{line-height:24px;line-height:1.5rem;margin:1em 0}section.cover h1{color:inherit;font-size:40px;font-size:2.5rem;font-weight:300;margin:10px 0 40px;margin:.625rem 0 2.5rem;position:relative;text-align:center}section.cover h1 a{display:block}section.cover h1 small{bottom:-7px;bottom:-0.4375rem;font-size:16px;font-size:1rem;position:absolute}section.cover blockquote{font-size:24px;font-size:1.5rem;text-align:center}section.cover ul{line-height:1.8;list-style-type:none;margin:1em auto;max-width:500px;padding:0}section.cover .cover-main>p:last-child a{border-color:#42b983;border:1px solid var(--theme-color, #42b983);border-radius:2rem;box-sizing:border-box;color:#42b983;color:var(--theme-color, #42b983);display:inline-block;font-size:16.8px;font-size:1.05rem;letter-spacing:1.6px;letter-spacing:.1rem;margin-right:16px;margin-right:1rem;padding:.75em 32px;padding:.75em 2rem;text-decoration:none;transition:all .15s ease}section.cover .cover-main>p:last-child a:last-child{background-color:#42b983;background-color:var(--theme-color, #42b983);color:#fff;margin-right:0}section.cover .cover-main>p:last-child a:last-child:hover{color:inherit;opacity:.8}section.cover .cover-main>p:last-child a:hover{color:inherit}section.cover blockquote>p>a{border-bottom:2px solid #42b983;border-bottom:2px solid var(--theme-color, #42b983);transition:color .3s}section.cover blockquote>p>a:hover{color:#42b983;color:var(--theme-color, #42b983)}section.cover.show{display:-webkit-box;display:-ms-flexbox;display:flex}section.cover.has-mask .mask{background-color:#fff;opacity:.8;position:absolute;width:100%;height:100%}.sidebar,body{background-color:#fff}.sidebar{color:#364149}.sidebar li{margin:6px 0 6px 15px}.sidebar ul li a{color:#505d6b;font-size:14px;font-weight:400;overflow:hidden;text-decoration:none;text-overflow:ellipsis;white-space:nowrap}.sidebar ul li a:hover{text-decoration:underline}.sidebar ul li ul{padding:0}.sidebar ul li.active>a{border-right:2px solid;color:#42b983;color:var(--theme-color, #42b983);font-weight:600}.app-sub-sidebar li:before{content:"-";padding-right:4px;float:left}.markdown-preview h1,.markdown-preview h2,.markdown-preview h3,.markdown-preview h4,.markdown-preview strong{color:#2c3e50;font-weight:600}.markdown-preview a{color:#42b983;color:var(--theme-color, #42b983);font-weight:600}.md-sidebar-toc a{color:#42b983;font-weight:600}.markdown-preview h1{font-size:32px;font-size:2rem;margin:0 0 16px;margin:0 0 1rem}.markdown-preview h2{font-size:28px;font-size:1.75rem;margin:45px 0 12.8px;margin:45px 0 .8rem}.markdown-preview h3{font-size:24px;font-size:1.5rem;margin:40px 0 9.6px;margin:40px 0 .6rem}.markdown-preview h4{font-size:20px;font-size:1.25rem}.markdown-preview h5,.markdown-preview h6{font-size:16px;font-size:1rem}.markdown-preview h6{color:#777}.markdown-preview figure,.markdown-preview p{margin:1.2em 0}.markdown-preview ol,.markdown-preview p,.markdown-preview ul{line-height:25.6px;line-height:1.6rem;word-spacing:.8px;word-spacing:.05rem}.markdown-preview ol,.markdown-preview ul{padding-left:24px;padding-left:1.5rem}.markdown-preview blockquote{border-left:4px solid #42b983;border-left:4px solid var(--theme-color, #42b983);color:#858585;background-color:#f0f0f0;margin:2em 0;padding-left:20px}.markdown-preview blockquote p{font-weight:600;margin-left:0}.markdown-preview iframe{margin:1em 0}.markdown-preview em{color:#7f8c8d}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+.markdown-preview.markdown-preview {
+  font-family: "Microsoft YaHei UI Light", sans-serif;
+}
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="%E6%95%A3%E5%88%97%E8%A1%A8">&#x25A0; &#x6563;&#x5217;&#x8868;</h1>
+
+<p><strong>&#x66F4;&#x65B0;&#x65E5;&#x671F;&#xFF1A;2020/06/20</strong></p>
+<hr>
+<ul>
+<li><a href="#%E2%96%A0-%E6%95%A3%E5%88%97%E8%A1%A8">&#x25A0; &#x6563;&#x5217;&#x8868;</a>
+<ul>
+<li><a href="#1-%E6%A6%82%E8%BF%B0">1. &#x6982;&#x8FF0;</a></li>
+<li><a href="#2-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">2. &#x57FA;&#x672C;&#x6982;&#x5FF5;</a></li>
+<li><a href="#3-%E5%9C%B0%E5%9D%80%E5%86%B2%E7%AA%81">3. &#x5730;&#x5740;&#x51B2;&#x7A81;</a></li>
+<li><a href="#4-%E8%BD%BD%E8%8D%B7%E5%9B%A0%E5%AD%90">4. &#x8F7D;&#x8377;&#x56E0;&#x5B50;</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="mume-header" id="1-%E6%A6%82%E8%BF%B0">1. &#x6982;&#x8FF0;</h2>
+
+<p>&#x6563;&#x5217;&#x8868;&#x53C8;&#x53EB;&#x505A;&#x54C8;&#x5E0C;&#x8868;&#xFF0C;&#x662F;&#x4E00;&#x79CD;&#x4FDD;&#x5B58;key-&gt;value&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x7EBF;&#x6027;&#x7ED3;&#x6784;&#x3002;<br>
+&#x7531;&#x4E8E;&#x5176;&#x80FD;&#x591F;&#x901A;&#x8FC7;key&#x6765;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#x5B9A;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x4EE5;&#x5E38;&#x6570;&#x65F6;&#x95F4;&#x6765;&#x968F;&#x673A;&#x5B58;&#x53D6;&#x8868;&#x4E2D;&#x6240;&#x6709;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6563;&#x5217;&#x8868;&#x901A;&#x5E38;&#x4F5C;&#x4E3A;&#x5404;&#x79CD;&#x5173;&#x8054;&#x6570;&#x7EC4;&#x7684;&#x5E95;&#x5C42;&#x7ED3;&#x6784;&#x3002;&#x6BD4;&#x5982;Java&#x4E2D;&#x7684;HashTable&#x548C;HashMap&#x3002;</p>
+<p>&#x4ECE;&#x4F7F;&#x7528;&#x4E0A;&#x6765;&#x8BF4;&#x4E0E;&#x6570;&#x7EC4;&#x5F88;&#x50CF;&#xFF0C;&#x6563;&#x5217;&#x8868;&#x672C;&#x8EAB;&#x80CC;&#x540E;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E2A;&#x6570;&#x7EC4;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x4E0B;&#x6807;&#x5B9A;&#x5740;&#xFF0C;&#x800C;&#x662F;&#x5C06;key&#x505A;&#x4E00;&#x6B21;&#x6620;&#x5C04;&#x7136;&#x540E;&#x5F97;&#x5230;&#x6570;&#x7EC4;&#x7684;&#x4E0B;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x627E;&#x5230;&#x8981;&#x8BBF;&#x95EE;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<h2 class="mume-header" id="2-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">2. &#x57FA;&#x672C;&#x6982;&#x5FF5;</h2>
+
+<p>&#x6563;&#x5217;&#x8868;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x3002;&#x5728;&#x8BBF;&#x95EE;&#x6570;&#x7EC4;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;index&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x7ED9;&#x51FA;&#x5730;&#x5740;&#x3002;<br>
+&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x6563;&#x5217;&#x8868;&#x6765;&#x8BF4;&#xFF0C;&#x7ED9;&#x6211;&#x4EEC;&#x7684;&#x4E0D;&#x662F;index&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x548C;&#x503C;&#x7684;key&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;<code>&#x6563;&#x5217;&#x51FD;&#x6570;</code>&#x6765;&#x5F97;&#x5230;&#x5730;&#x5740;(&#x5373;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;)&#x3002;</p>
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="424pt" height="256pt" viewBox="0.00 0.00 424.00 256.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-252 420,-252 420,4 -4,4"/>
+<!-- node_n -->
+<g id="node1" class="node">
+<title>node_n</title>
+<polygon fill="none" stroke="#000000" points="8,-220 8,-244 68,-244 68,-220 8,-220"/>
+<text text-anchor="start" x="17.3927" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_00</text>
+<polygon fill="none" stroke="#000000" points="8,-196 8,-220 68,-220 68,-196 8,-196"/>
+<text text-anchor="start" x="17.3927" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_01</text>
+<polygon fill="none" stroke="#000000" points="8,-172 8,-196 68,-196 68,-172 8,-172"/>
+<text text-anchor="start" x="17.3927" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_02</text>
+<polygon fill="none" stroke="#000000" points="8,-148 8,-172 68,-172 68,-148 8,-148"/>
+<text text-anchor="start" x="17.3927" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_03</text>
+<polygon fill="none" stroke="#000000" points="8,-124 8,-148 68,-148 68,-124 8,-124"/>
+<text text-anchor="start" x="17.3927" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_04</text>
+<polygon fill="none" stroke="#000000" points="8,-100 8,-124 68,-124 68,-100 8,-100"/>
+<text text-anchor="start" x="17.3927" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_05</text>
+<polygon fill="none" stroke="#000000" points="8,-76 8,-100 68,-100 68,-76 8,-76"/>
+<text text-anchor="start" x="17.3927" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_06</text>
+<polygon fill="none" stroke="#000000" points="8,-52 8,-76 68,-76 68,-52 8,-52"/>
+<text text-anchor="start" x="17.3927" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_07</text>
+<polygon fill="none" stroke="#000000" points="8,-28 8,-52 68,-52 68,-28 8,-28"/>
+<text text-anchor="start" x="17.3927" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_08</text>
+<polygon fill="none" stroke="#000000" points="8,-4 8,-28 68,-28 68,-4 8,-4"/>
+<text text-anchor="start" x="25.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- mytab -->
+<g id="node2" class="node">
+<title>mytab</title>
+<polygon fill="none" stroke="#000000" points="228,-220 228,-244 288,-244 288,-220 228,-220"/>
+<text text-anchor="start" x="244" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">0000</text>
+<polygon fill="none" stroke="#000000" points="288,-220 288,-244 408,-244 408,-220 288,-220"/>
+<text text-anchor="start" x="325.8401" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_06</text>
+<polygon fill="none" stroke="#000000" points="228,-196 228,-220 288,-220 288,-196 228,-196"/>
+<text text-anchor="start" x="244" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">0001</text>
+<polygon fill="none" stroke="#000000" points="288,-196 288,-220 408,-220 408,-196 288,-196"/>
+<text text-anchor="start" x="325.8401" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_04</text>
+<polygon fill="none" stroke="#000000" points="228,-172 228,-196 288,-196 288,-172 228,-172"/>
+<text text-anchor="start" x="244" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">0002</text>
+<polygon fill="none" stroke="#000000" points="288,-172 288,-196 408,-196 408,-172 288,-172"/>
+<polygon fill="none" stroke="#000000" points="228,-148 228,-172 288,-172 288,-148 228,-148"/>
+<text text-anchor="start" x="244" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">0003</text>
+<polygon fill="none" stroke="#000000" points="288,-148 288,-172 408,-172 408,-148 288,-148"/>
+<text text-anchor="start" x="325.8401" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_00</text>
+<polygon fill="none" stroke="#000000" points="228,-124 228,-148 288,-148 288,-124 228,-124"/>
+<text text-anchor="start" x="244" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">0004</text>
+<polygon fill="none" stroke="#000000" points="288,-124 288,-148 408,-148 408,-124 288,-124"/>
+<text text-anchor="start" x="325.8401" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_08</text>
+<polygon fill="none" stroke="#000000" points="228,-100 228,-124 288,-124 288,-100 228,-100"/>
+<text text-anchor="start" x="244" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">0005</text>
+<polygon fill="none" stroke="#000000" points="288,-100 288,-124 408,-124 408,-100 288,-100"/>
+<polygon fill="none" stroke="#000000" points="228,-76 228,-100 288,-100 288,-76 228,-76"/>
+<text text-anchor="start" x="244" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">0006</text>
+<polygon fill="none" stroke="#000000" points="288,-76 288,-100 408,-100 408,-76 288,-76"/>
+<text text-anchor="start" x="325.8401" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_02</text>
+<polygon fill="none" stroke="#000000" points="228,-52 228,-76 288,-76 288,-52 228,-52"/>
+<text text-anchor="start" x="244" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">0007</text>
+<polygon fill="none" stroke="#000000" points="288,-52 288,-76 408,-76 408,-52 288,-52"/>
+<polygon fill="none" stroke="#000000" points="228,-28 228,-52 288,-52 288,-28 228,-28"/>
+<text text-anchor="start" x="244" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">0008</text>
+<polygon fill="none" stroke="#000000" points="288,-28 288,-52 408,-52 408,-28 288,-28"/>
+<text text-anchor="start" x="325.8401" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_01</text>
+<polygon fill="none" stroke="#000000" points="228,-4 228,-28 288,-28 288,-4 228,-4"/>
+<text text-anchor="start" x="245.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+<polygon fill="none" stroke="#000000" points="288,-4 288,-28 408,-28 408,-4 288,-4"/>
+<text text-anchor="start" x="335.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge2" class="edge">
+<title>node_n:k0-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-232C142.4764,-232 149.5083,-166.3235 217.9253,-160.4228"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 218.1975,-164.9155 223.0044,-160.2097 218.0088,-160.4194 218.0088,-160.4194 218.0088,-160.4194 223.0044,-160.2097 217.8201,-155.9234 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge3" class="edge">
+<title>node_n:k1-&gt;mytab:x8</title>
+<path fill="none" stroke="#000000" d="M68,-208C167.5868,-208 127.8742,-51.2881 217.9385,-40.5754"/>
+<polygon fill="#000000" stroke="#000000" points="228,-40 218.2733,-45.0637 223.0082,-40.2855 218.0163,-40.571 218.0163,-40.571 218.0163,-40.571 223.0082,-40.2855 217.7593,-36.0784 228,-40 228,-40"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge4" class="edge">
+<title>node_n:k6-&gt;mytab:x0</title>
+<path fill="none" stroke="#000000" d="M68,-88C160.12,-88 134.4809,-221.5108 217.861,-231.4198"/>
+<polygon fill="#000000" stroke="#000000" points="228,-232 217.7592,-235.9213 223.0082,-231.7143 218.0163,-231.4286 218.0163,-231.4286 218.0163,-231.4286 223.0082,-231.7143 218.2735,-226.936 228,-232 228,-232"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge5" class="edge">
+<title>node_n:k2-&gt;mytab:x6</title>
+<path fill="none" stroke="#000000" d="M68,-184C147.3657,-184 145.4104,-96.0728 217.7876,-88.5165"/>
+<polygon fill="#000000" stroke="#000000" points="228,-88 218.2401,-92.9995 223.0064,-88.2526 218.0128,-88.5052 218.0128,-88.5052 218.0128,-88.5052 223.0064,-88.2526 217.7854,-84.011 228,-88 228,-88"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge6" class="edge">
+<title>node_n:k4-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-136C142.4764,-136 149.5083,-201.6765 217.9253,-207.5772"/>
+<polygon fill="#000000" stroke="#000000" points="228,-208 217.8201,-212.0766 223.0044,-207.7903 218.0088,-207.5806 218.0088,-207.5806 218.0088,-207.5806 223.0044,-207.7903 218.1975,-203.0845 228,-208 228,-208"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge7" class="edge">
+<title>node_n:k8-&gt;mytab:x4</title>
+<path fill="none" stroke="#000000" d="M68,-40C147.3657,-40 145.4104,-127.9272 217.7876,-135.4835"/>
+<polygon fill="#000000" stroke="#000000" points="228,-136 217.7854,-139.989 223.0064,-135.7474 218.0128,-135.4948 218.0128,-135.4948 218.0128,-135.4948 223.0064,-135.7474 218.2401,-131.0005 228,-136 228,-136"/>
+</g>
+</g>
+</svg>
+</p><p>&#x6563;&#x5217;&#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#x6709;&#x5F88;&#x591A;&#x3002;&#x4EE5;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x79CD;&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="547pt" height="44pt" viewBox="0.00 0.00 547.00 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-40 543.0016,-40 543.0016,4 -4,4"/>
+<!-- key -->
+<g id="node1" class="node">
+<title>key</title>
+<polygon fill="none" stroke="#000000" points="79.6197,-36 .1265,-36 .1265,0 79.6197,0 79.6197,-36"/>
+<text text-anchor="middle" x="39.8731" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">[object]key</text>
+</g>
+<!-- hashKey -->
+<g id="node2" class="node">
+<title>hashKey</title>
+<polygon fill="none" stroke="#000000" points="240.5192,-36 115.8218,-36 115.8218,0 240.5192,0 240.5192,-36"/>
+<text text-anchor="middle" x="178.1705" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">[int]hashCode(key)</text>
+</g>
+<!-- key&#45;&gt;hashKey -->
+<g id="edge1" class="edge">
+<title>key-&gt;hashKey</title>
+<path fill="none" stroke="#000000" d="M79.8744,-18C87.9017,-18 96.5705,-18 105.3185,-18"/>
+<polygon fill="#000000" stroke="#000000" points="105.5907,-21.5001 115.5906,-18 105.5906,-14.5001 105.5907,-21.5001"/>
+</g>
+<!-- addr -->
+<g id="node3" class="node">
+<title>addr</title>
+<polygon fill="none" stroke="#000000" points="427.455,-36 276.6414,-36 276.6414,0 427.455,0 427.455,-36"/>
+<text text-anchor="middle" x="352.0482" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">hashCode % &#x6570;&#x7EC4;&#x957F;&#x5EA6;</text>
+</g>
+<!-- hashKey&#45;&gt;addr -->
+<g id="edge2" class="edge">
+<title>hashKey-&gt;addr</title>
+<path fill="none" stroke="#000000" d="M240.9443,-18C249.2645,-18 257.9053,-18 266.5276,-18"/>
+<polygon fill="#000000" stroke="#000000" points="266.6205,-21.5001 276.6205,-18 266.6204,-14.5001 266.6205,-21.5001"/>
+</g>
+<!-- index -->
+<g id="node4" class="node">
+<title>index</title>
+<polygon fill="none" stroke="#000000" points="538.7532,-36 463.75,-36 463.75,0 538.7532,0 538.7532,-36"/>
+<text text-anchor="middle" x="501.2516" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">&#x6570;&#x7EC4;&#x7D22;&#x5F15;</text>
+</g>
+<!-- addr&#45;&gt;index -->
+<g id="edge3" class="edge">
+<title>addr-&gt;index</title>
+<path fill="none" stroke="#000000" d="M427.5241,-18C436.3671,-18 445.1937,-18 453.5068,-18"/>
+<polygon fill="#000000" stroke="#000000" points="453.7247,-21.5001 463.7247,-18 453.7247,-14.5001 453.7247,-21.5001"/>
+</g>
+</g>
+</svg>
+</p><p>&#x7B80;&#x5355;&#x7684;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#xFF1A;</p>
+<ul>
+<li>&#x8BA1;&#x7B97;key&#x7684;hashCode&#x503C;</li>
+<li>&#x4F7F;&#x7528;hashCode&#x9664;&#x4EE5;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x53D6;&#x4F59;&#x6570;</li>
+<li>&#x4F59;&#x6570;&#x5C31;&#x662F;&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5730;&#x5740;</li>
+</ul>
+<p>&#x4F59;&#x6570;&#x7684;&#x8303;&#x56F4;&#x4E00;&#x5B9A;&#x662F;&#x843D;&#x5728;[0 &#x5230; &#x6570;&#x7EC4;&#x957F; - 1]&#x8303;&#x56F4;&#x5185;&#x7684;&#x3002;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x5730;&#x5740;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8BBE;&#x8BA1;&#x81EA;&#x5DF1;&#x7684;&#x6563;&#x5217;&#x51FD;&#x6570;&#x6765;&#x505A;&#x8FD9;&#x4E2A;Key&#x5230;&#x5730;&#x5740;&#x7684;&#x6620;&#x5C04;&#x3002;</p>
+<h2 class="mume-header" id="3-%E5%9C%B0%E5%9D%80%E5%86%B2%E7%AA%81">3. &#x5730;&#x5740;&#x51B2;&#x7A81;</h2>
+
+<p>&#x89C2;&#x5BDF;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x7684;&#x7B97;&#x6CD5;&#x4E0D;&#x96BE;&#x53D1;&#x73B0;&#x3002;&#x5C06;HashCode&#x9664;&#x4EE5;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x53D6;&#x4F59;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x540C;&#x7684;HashCode&#x53EF;&#x80FD;&#x4F1A;&#x7B97;&#x51FA;&#x6765;&#x540C;&#x4E00;&#x4E2A;&#x4F59;&#x6570;&#xFF0C;&#x8FD9;&#x5C31;&#x4EA7;&#x751F;&#x7684;&#x5730;&#x5740;&#x51B2;&#x7A81;&#x3002;<br>
+&#x6362;&#x6210;&#x5176;&#x5B83;&#x7684;&#x6563;&#x5217;&#x51FD;&#x6570;&#x540C;&#x6837;&#x4F1A;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x95EE;&#x9898;&#x3002;&#x56E0;&#x4E3A;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x59CB;&#x7EC8;&#x6709;&#x6709;&#x9650;&#x7684;&#xFF0C;&#x800C;key&#x7684;&#x6570;&#x91CF;&#x662F;&#x672A;&#x77E5;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x51B2;&#x7A81;&#x662F;&#x4E00;&#x5B9A;&#x4F1A;&#x4EA7;&#x751F;&#x7684;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x60C5;&#x51B5;&#xFF1A;</p>
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="484pt" height="256pt" viewBox="0.00 0.00 484.00 256.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-252 480,-252 480,4 -4,4"/>
+<!-- node_n -->
+<g id="node1" class="node">
+<title>node_n</title>
+<polygon fill="none" stroke="#000000" points="8,-220 8,-244 68,-244 68,-220 8,-220"/>
+<text text-anchor="start" x="17.3927" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_00</text>
+<polygon fill="none" stroke="#000000" points="8,-196 8,-220 68,-220 68,-196 8,-196"/>
+<text text-anchor="start" x="17.3927" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_01</text>
+<polygon fill="none" stroke="#000000" points="8,-172 8,-196 68,-196 68,-172 8,-172"/>
+<text text-anchor="start" x="17.3927" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_02</text>
+<polygon fill="none" stroke="#000000" points="8,-148 8,-172 68,-172 68,-148 8,-148"/>
+<text text-anchor="start" x="17.3927" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_03</text>
+<polygon fill="none" stroke="#000000" points="8,-124 8,-148 68,-148 68,-124 8,-124"/>
+<text text-anchor="start" x="17.3927" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_04</text>
+<polygon fill="none" stroke="#000000" points="8,-100 8,-124 68,-124 68,-100 8,-100"/>
+<text text-anchor="start" x="17.3927" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_05</text>
+<polygon fill="none" stroke="#000000" points="8,-76 8,-100 68,-100 68,-76 8,-76"/>
+<text text-anchor="start" x="17.3927" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_06</text>
+<polygon fill="none" stroke="#000000" points="8,-52 8,-76 68,-76 68,-52 8,-52"/>
+<text text-anchor="start" x="17.3927" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_07</text>
+<polygon fill="none" stroke="#000000" points="8,-28 8,-52 68,-52 68,-28 8,-28"/>
+<text text-anchor="start" x="17.3927" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_08</text>
+<polygon fill="none" stroke="#000000" points="8,-4 8,-28 68,-28 68,-4 8,-4"/>
+<text text-anchor="start" x="25.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- mytab -->
+<g id="node2" class="node">
+<title>mytab</title>
+<polygon fill="none" stroke="#000000" points="228,-220 228,-244 288,-244 288,-220 228,-220"/>
+<text text-anchor="start" x="244" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">0000</text>
+<polygon fill="none" stroke="#000000" points="288,-220 288,-244 468,-244 468,-220 288,-220"/>
+<polygon fill="none" stroke="#000000" points="228,-196 228,-220 288,-220 288,-196 228,-196"/>
+<text text-anchor="start" x="244" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">0001</text>
+<polygon fill="none" stroke="#000000" points="288,-196 288,-220 468,-220 468,-196 288,-196"/>
+<text text-anchor="start" x="330.1802" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_04, data_08</text>
+<polygon fill="none" stroke="#000000" points="228,-172 228,-196 288,-196 288,-172 228,-172"/>
+<text text-anchor="start" x="244" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">0002</text>
+<polygon fill="none" stroke="#000000" points="288,-172 288,-196 468,-196 468,-172 288,-172"/>
+<polygon fill="none" stroke="#000000" points="228,-148 228,-172 288,-172 288,-148 228,-148"/>
+<text text-anchor="start" x="244" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">0003</text>
+<polygon fill="none" stroke="#000000" points="288,-148 288,-172 468,-172 468,-148 288,-148"/>
+<text text-anchor="start" x="304.5203" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_00, data_01, data_06</text>
+<polygon fill="none" stroke="#000000" points="228,-124 228,-148 288,-148 288,-124 228,-124"/>
+<text text-anchor="start" x="244" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">0004</text>
+<polygon fill="none" stroke="#000000" points="288,-124 288,-148 468,-148 468,-124 288,-124"/>
+<polygon fill="none" stroke="#000000" points="228,-100 228,-124 288,-124 288,-100 228,-100"/>
+<text text-anchor="start" x="244" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">0005</text>
+<polygon fill="none" stroke="#000000" points="288,-100 288,-124 468,-124 468,-100 288,-100"/>
+<polygon fill="none" stroke="#000000" points="228,-76 228,-100 288,-100 288,-76 228,-76"/>
+<text text-anchor="start" x="244" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">0006</text>
+<polygon fill="none" stroke="#000000" points="288,-76 288,-100 468,-100 468,-76 288,-76"/>
+<text text-anchor="start" x="355.8401" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_02</text>
+<polygon fill="none" stroke="#000000" points="228,-52 228,-76 288,-76 288,-52 228,-52"/>
+<text text-anchor="start" x="244" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">0007</text>
+<polygon fill="none" stroke="#000000" points="288,-52 288,-76 468,-76 468,-52 288,-52"/>
+<polygon fill="none" stroke="#000000" points="228,-28 228,-52 288,-52 288,-28 228,-28"/>
+<text text-anchor="start" x="244" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">0008</text>
+<polygon fill="none" stroke="#000000" points="288,-28 288,-52 468,-52 468,-28 288,-28"/>
+<polygon fill="none" stroke="#000000" points="228,-4 228,-28 288,-28 288,-4 228,-4"/>
+<text text-anchor="start" x="245.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+<polygon fill="none" stroke="#000000" points="288,-4 288,-28 468,-28 468,-4 288,-4"/>
+<text text-anchor="start" x="365.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge2" class="edge">
+<title>node_n:k0-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-232C142.4764,-232 149.5083,-166.3235 217.9253,-160.4228"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 218.1975,-164.9155 223.0044,-160.2097 218.0088,-160.4194 218.0088,-160.4194 218.0088,-160.4194 223.0044,-160.2097 217.8201,-155.9234 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge3" class="edge">
+<title>node_n:k1-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-208C138.7621,-208 152.5404,-164.3945 217.9603,-160.3065"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 218.142,-164.8032 223.0023,-160.1526 218.0047,-160.3053 218.0047,-160.3053 218.0047,-160.3053 223.0023,-160.1526 217.8673,-155.8074 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge4" class="edge">
+<title>node_n:k6-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-88C142.4764,-88 149.5083,-153.6765 217.9253,-159.5772"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 217.8201,-164.0766 223.0044,-159.7903 218.0088,-159.5806 218.0088,-159.5806 218.0088,-159.5806 223.0044,-159.7903 218.1975,-155.0845 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge5" class="edge">
+<title>node_n:k2-&gt;mytab:x6</title>
+<path fill="none" stroke="#000000" d="M68,-184C147.3657,-184 145.4104,-96.0728 217.7876,-88.5165"/>
+<polygon fill="#000000" stroke="#000000" points="228,-88 218.2401,-92.9995 223.0064,-88.2526 218.0128,-88.5052 218.0128,-88.5052 218.0128,-88.5052 223.0064,-88.2526 217.7854,-84.011 228,-88 228,-88"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge6" class="edge">
+<title>node_n:k4-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-136C142.4764,-136 149.5083,-201.6765 217.9253,-207.5772"/>
+<polygon fill="#000000" stroke="#000000" points="228,-208 217.8201,-212.0766 223.0044,-207.7903 218.0088,-207.5806 218.0088,-207.5806 218.0088,-207.5806 223.0044,-207.7903 218.1975,-203.0845 228,-208 228,-208"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge7" class="edge">
+<title>node_n:k7-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-64C147.3657,-64 145.4104,-151.9272 217.7876,-159.4835"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 217.7854,-163.989 223.0064,-159.7474 218.0128,-159.4948 218.0128,-159.4948 218.0128,-159.4948 223.0064,-159.7474 218.2401,-155.0005 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge8" class="edge">
+<title>node_n:k8-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-40C167.5868,-40 127.8742,-196.7119 217.9385,-207.4246"/>
+<polygon fill="#000000" stroke="#000000" points="228,-208 217.7593,-211.9216 223.0082,-207.7145 218.0163,-207.429 218.0163,-207.429 218.0163,-207.429 223.0082,-207.7145 218.2733,-202.9363 228,-208 228,-208"/>
+</g>
+</g>
+</svg>
+</p><p>&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x7684;&#x6570;&#x7EC4;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53EA;&#x80FD;&#x653E;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x653E;&#x4E0D;&#x4E0B;&#x591A;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x6240;&#x4EE5;&#x5C31;&#x6709;&#x4E86;&#x4E00;&#x4E9B;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x7684;&#x65B9;&#x6848;&#x3002;<br>
+&#x6700;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5F53;&#x7136;&#x662F;&#x6269;&#x5145;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x4EE5;&#x4F7F;&#x6620;&#x5C04;&#x51FA;&#x6765;&#x7684;&#x5730;&#x5740;&#x4E0D;&#x518D;&#x51B2;&#x7A81;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x901A;&#x5E38;&#x6BD4;&#x8F83;&#x8017;&#x65F6;&#xFF0C;&#x4E14;&#x6709;&#x53EF;&#x80FD;&#x6D6A;&#x8D39;&#x5F88;&#x591A;&#x7A7A;&#x95F4;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x4E0D;&#x96BE;&#x770B;&#x51FA;&#x3002;&#x5982;&#x679C;&#x6620;&#x5C04;&#x51FA;&#x7684;&#x5730;&#x5740;&#x5206;&#x5E03;&#x7684;&#x6BD4;&#x8F83;&#x5747;&#x5300;&#xFF0C;&#x5C31;&#x80FD;&#x66F4;&#x6709;&#x6548;&#x7684;&#x5229;&#x7528;&#x6570;&#x7EC4;&#x7A7A;&#x95F4;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x8F83;&#x5C11;&#x7684;&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x6563;&#x5217;&#x51FD;&#x6570;&#xFF0C;&#x5C31;&#x4E00;&#x5B9A;&#x8981;&#x6CE8;&#x610F;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF1A;&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#x7684;&#x65F6;&#x5019;&#x987A;&#x5EF6;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x7684;&#x4F4D;&#x7F6E;&#x4E0A;&#x53BB;&#x3002;</p>
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="404pt" height="256pt" viewBox="0.00 0.00 404.00 256.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-252 400,-252 400,4 -4,4"/>
+<!-- node_n -->
+<g id="node1" class="node">
+<title>node_n</title>
+<polygon fill="none" stroke="#000000" points="8,-220 8,-244 68,-244 68,-220 8,-220"/>
+<text text-anchor="start" x="17.3927" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_00</text>
+<polygon fill="none" stroke="#000000" points="8,-196 8,-220 68,-220 68,-196 8,-196"/>
+<text text-anchor="start" x="17.3927" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_01</text>
+<polygon fill="none" stroke="#000000" points="8,-172 8,-196 68,-196 68,-172 8,-172"/>
+<text text-anchor="start" x="17.3927" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_02</text>
+<polygon fill="none" stroke="#000000" points="8,-148 8,-172 68,-172 68,-148 8,-148"/>
+<text text-anchor="start" x="17.3927" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_03</text>
+<polygon fill="none" stroke="#000000" points="8,-124 8,-148 68,-148 68,-124 8,-124"/>
+<text text-anchor="start" x="17.3927" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_04</text>
+<polygon fill="none" stroke="#000000" points="8,-100 8,-124 68,-124 68,-100 8,-100"/>
+<text text-anchor="start" x="17.3927" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_05</text>
+<polygon fill="none" stroke="#000000" points="8,-76 8,-100 68,-100 68,-76 8,-76"/>
+<text text-anchor="start" x="17.3927" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_06</text>
+<polygon fill="none" stroke="#000000" points="8,-52 8,-76 68,-76 68,-52 8,-52"/>
+<text text-anchor="start" x="17.3927" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_07</text>
+<polygon fill="none" stroke="#000000" points="8,-28 8,-52 68,-52 68,-28 8,-28"/>
+<text text-anchor="start" x="17.3927" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_08</text>
+<polygon fill="none" stroke="#000000" points="8,-4 8,-28 68,-28 68,-4 8,-4"/>
+<text text-anchor="start" x="25.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- mytab -->
+<g id="node2" class="node">
+<title>mytab</title>
+<polygon fill="none" stroke="#000000" points="228,-220 228,-244 288,-244 288,-220 228,-220"/>
+<text text-anchor="start" x="244" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">0000</text>
+<polygon fill="none" stroke="#000000" points="288,-220 288,-244 388,-244 388,-220 288,-220"/>
+<polygon fill="none" stroke="#000000" points="228,-196 228,-220 288,-220 288,-196 228,-196"/>
+<text text-anchor="start" x="244" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">0001</text>
+<polygon fill="none" stroke="#000000" points="288,-196 288,-220 388,-220 388,-196 288,-196"/>
+<text text-anchor="start" x="315.8401" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_04</text>
+<polygon fill="none" stroke="#000000" points="228,-172 228,-196 288,-196 288,-172 228,-172"/>
+<text text-anchor="start" x="244" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">0002</text>
+<polygon fill="none" stroke="#000000" points="288,-172 288,-196 388,-196 388,-172 288,-172"/>
+<text text-anchor="start" x="315.8401" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_08</text>
+<polygon fill="none" stroke="#000000" points="228,-148 228,-172 288,-172 288,-148 228,-148"/>
+<text text-anchor="start" x="244" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">0003</text>
+<polygon fill="none" stroke="#000000" points="288,-148 288,-172 388,-172 388,-148 288,-148"/>
+<text text-anchor="start" x="315.8401" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_00</text>
+<polygon fill="none" stroke="#000000" points="228,-124 228,-148 288,-148 288,-124 228,-124"/>
+<text text-anchor="start" x="244" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">0004</text>
+<polygon fill="none" stroke="#000000" points="288,-124 288,-148 388,-148 388,-124 288,-124"/>
+<text text-anchor="start" x="315.8401" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_01</text>
+<polygon fill="none" stroke="#000000" points="228,-100 228,-124 288,-124 288,-100 228,-100"/>
+<text text-anchor="start" x="244" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">0005</text>
+<polygon fill="none" stroke="#000000" points="288,-100 288,-124 388,-124 388,-100 288,-100"/>
+<text text-anchor="start" x="315.8401" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_06</text>
+<polygon fill="none" stroke="#000000" points="228,-76 228,-100 288,-100 288,-76 228,-76"/>
+<text text-anchor="start" x="244" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">0006</text>
+<polygon fill="none" stroke="#000000" points="288,-76 288,-100 388,-100 388,-76 288,-76"/>
+<text text-anchor="start" x="315.8401" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_02</text>
+<polygon fill="none" stroke="#000000" points="228,-52 228,-76 288,-76 288,-52 228,-52"/>
+<text text-anchor="start" x="244" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">0007</text>
+<polygon fill="none" stroke="#000000" points="288,-52 288,-76 388,-76 388,-52 288,-52"/>
+<text text-anchor="start" x="315.8401" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_07</text>
+<polygon fill="none" stroke="#000000" points="228,-28 228,-52 288,-52 288,-28 228,-28"/>
+<text text-anchor="start" x="244" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">0008</text>
+<polygon fill="none" stroke="#000000" points="288,-28 288,-52 388,-52 388,-28 288,-28"/>
+<polygon fill="none" stroke="#000000" points="228,-4 228,-28 288,-28 288,-4 228,-4"/>
+<text text-anchor="start" x="245.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+<polygon fill="none" stroke="#000000" points="288,-4 288,-28 388,-28 388,-4 288,-4"/>
+<text text-anchor="start" x="325.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge2" class="edge">
+<title>node_n:k0-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-232C142.4764,-232 149.5083,-166.3235 217.9253,-160.4228"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 218.1975,-164.9155 223.0044,-160.2097 218.0088,-160.4194 218.0088,-160.4194 218.0088,-160.4194 223.0044,-160.2097 217.8201,-155.9234 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge3" class="edge">
+<title>node_n:k1-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-208C138.7621,-208 152.5404,-164.3945 217.9603,-160.3065"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 218.142,-164.8032 223.0023,-160.1526 218.0047,-160.3053 218.0047,-160.3053 218.0047,-160.3053 223.0023,-160.1526 217.8673,-155.8074 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge4" class="edge">
+<title>node_n:k6-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-88C142.4764,-88 149.5083,-153.6765 217.9253,-159.5772"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 217.8201,-164.0766 223.0044,-159.7903 218.0088,-159.5806 218.0088,-159.5806 218.0088,-159.5806 223.0044,-159.7903 218.1975,-155.0845 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge5" class="edge">
+<title>node_n:k2-&gt;mytab:x6</title>
+<path fill="none" stroke="#000000" d="M68,-184C147.3657,-184 145.4104,-96.0728 217.7876,-88.5165"/>
+<polygon fill="#000000" stroke="#000000" points="228,-88 218.2401,-92.9995 223.0064,-88.2526 218.0128,-88.5052 218.0128,-88.5052 218.0128,-88.5052 223.0064,-88.2526 217.7854,-84.011 228,-88 228,-88"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge6" class="edge">
+<title>node_n:k4-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-136C142.4764,-136 149.5083,-201.6765 217.9253,-207.5772"/>
+<polygon fill="#000000" stroke="#000000" points="228,-208 217.8201,-212.0766 223.0044,-207.7903 218.0088,-207.5806 218.0088,-207.5806 218.0088,-207.5806 223.0044,-207.7903 218.1975,-203.0845 228,-208 228,-208"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge7" class="edge">
+<title>node_n:k7-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-64C147.3657,-64 145.4104,-151.9272 217.7876,-159.4835"/>
+<polygon fill="#000000" stroke="#000000" points="228,-160 217.7854,-163.989 223.0064,-159.7474 218.0128,-159.4948 218.0128,-159.4948 218.0128,-159.4948 223.0064,-159.7474 218.2401,-155.0005 228,-160 228,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge8" class="edge">
+<title>node_n:k8-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-40C167.5868,-40 127.8742,-196.7119 217.9385,-207.4246"/>
+<polygon fill="#000000" stroke="#000000" points="228,-208 217.7593,-211.9216 223.0082,-207.7145 218.0163,-207.429 218.0163,-207.429 218.0163,-207.429 223.0082,-207.7145 218.2733,-202.9363 228,-208 228,-208"/>
+</g>
+</g>
+</svg>
+</p><p>&#x518D;&#x6BD4;&#x5982;&#xFF1A;&#x4EA7;&#x751F;&#x51B2;&#x7A81;&#x65F6;&#xFF0C;&#x4E0D;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x6570;&#x636E;&#x672C;&#x8EAB;&#xFF0C;&#x800C;&#x662F;&#x5B58;&#x4E00;&#x4E2A;&#x5355;&#x94FE;&#x8868;&#x6765;&#x4FDD;&#x5B58;&#x8FD9;&#x4E9B;&#x6709;&#x51B2;&#x7A81;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p><!--?xml version="1.0" encoding="UTF-8" standalone="no"?-->
+
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: %0 Pages: 1 -->
+<svg width="601pt" height="256pt" viewBox="0.00 0.00 600.96 256.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 252)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-252 596.9594,-252 596.9594,4 -4,4"/>
+<!-- node_n -->
+<g id="node1" class="node">
+<title>node_n</title>
+<polygon fill="none" stroke="#000000" points="8,-220 8,-244 68,-244 68,-220 8,-220"/>
+<text text-anchor="start" x="17.3927" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_00</text>
+<polygon fill="none" stroke="#000000" points="8,-196 8,-220 68,-220 68,-196 8,-196"/>
+<text text-anchor="start" x="17.3927" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_01</text>
+<polygon fill="none" stroke="#000000" points="8,-172 8,-196 68,-196 68,-172 8,-172"/>
+<text text-anchor="start" x="17.3927" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_02</text>
+<polygon fill="none" stroke="#000000" points="8,-148 8,-172 68,-172 68,-148 8,-148"/>
+<text text-anchor="start" x="17.3927" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_03</text>
+<polygon fill="none" stroke="#000000" points="8,-124 8,-148 68,-148 68,-124 8,-124"/>
+<text text-anchor="start" x="17.3927" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_04</text>
+<polygon fill="none" stroke="#000000" points="8,-100 8,-124 68,-124 68,-100 8,-100"/>
+<text text-anchor="start" x="17.3927" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_05</text>
+<polygon fill="none" stroke="#000000" points="8,-76 8,-100 68,-100 68,-76 8,-76"/>
+<text text-anchor="start" x="17.3927" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_06</text>
+<polygon fill="none" stroke="#000000" points="8,-52 8,-76 68,-76 68,-52 8,-52"/>
+<text text-anchor="start" x="17.3927" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_07</text>
+<polygon fill="none" stroke="#000000" points="8,-28 8,-52 68,-52 68,-28 8,-28"/>
+<text text-anchor="start" x="17.3927" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">key_08</text>
+<polygon fill="none" stroke="#000000" points="8,-4 8,-28 68,-28 68,-4 8,-4"/>
+<text text-anchor="start" x="25.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- mytab -->
+<g id="node2" class="node">
+<title>mytab</title>
+<polygon fill="none" stroke="#000000" points="134,-220 134,-244 174,-244 174,-220 134,-220"/>
+<text text-anchor="start" x="140" y="-227.4" font-family="Times,serif" font-size="14.00" fill="#000000">0000</text>
+<polygon fill="none" stroke="#000000" points="174,-220 174,-244 254,-244 254,-220 174,-220"/>
+<polygon fill="none" stroke="#000000" points="134,-196 134,-220 174,-220 174,-196 134,-196"/>
+<text text-anchor="start" x="140" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">0001</text>
+<polygon fill="none" stroke="#000000" points="174,-196 174,-220 254,-220 254,-196 174,-196"/>
+<text text-anchor="start" x="191.8401" y="-203.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_04</text>
+<polygon fill="none" stroke="#000000" points="134,-172 134,-196 174,-196 174,-172 134,-172"/>
+<text text-anchor="start" x="140" y="-179.4" font-family="Times,serif" font-size="14.00" fill="#000000">0002</text>
+<polygon fill="none" stroke="#000000" points="174,-172 174,-196 254,-196 254,-172 174,-172"/>
+<polygon fill="none" stroke="#000000" points="134,-148 134,-172 174,-172 174,-148 134,-148"/>
+<text text-anchor="start" x="140" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">0003</text>
+<polygon fill="none" stroke="#000000" points="174,-148 174,-172 254,-172 254,-148 174,-148"/>
+<text text-anchor="start" x="191.8401" y="-155.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_00</text>
+<polygon fill="none" stroke="#000000" points="134,-124 134,-148 174,-148 174,-124 134,-124"/>
+<text text-anchor="start" x="140" y="-131.4" font-family="Times,serif" font-size="14.00" fill="#000000">0004</text>
+<polygon fill="none" stroke="#000000" points="174,-124 174,-148 254,-148 254,-124 174,-124"/>
+<polygon fill="none" stroke="#000000" points="134,-100 134,-124 174,-124 174,-100 134,-100"/>
+<text text-anchor="start" x="140" y="-107.4" font-family="Times,serif" font-size="14.00" fill="#000000">0005</text>
+<polygon fill="none" stroke="#000000" points="174,-100 174,-124 254,-124 254,-100 174,-100"/>
+<polygon fill="none" stroke="#000000" points="134,-76 134,-100 174,-100 174,-76 134,-76"/>
+<text text-anchor="start" x="140" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">0006</text>
+<polygon fill="none" stroke="#000000" points="174,-76 174,-100 254,-100 254,-76 174,-76"/>
+<text text-anchor="start" x="191.8401" y="-83.4" font-family="Times,serif" font-size="14.00" fill="#000000">data_02</text>
+<polygon fill="none" stroke="#000000" points="134,-52 134,-76 174,-76 174,-52 134,-52"/>
+<text text-anchor="start" x="140" y="-59.4" font-family="Times,serif" font-size="14.00" fill="#000000">0007</text>
+<polygon fill="none" stroke="#000000" points="174,-52 174,-76 254,-76 254,-52 174,-52"/>
+<polygon fill="none" stroke="#000000" points="134,-28 134,-52 174,-52 174,-28 134,-28"/>
+<text text-anchor="start" x="140" y="-35.4" font-family="Times,serif" font-size="14.00" fill="#000000">0008</text>
+<polygon fill="none" stroke="#000000" points="174,-28 174,-52 254,-52 254,-28 174,-28"/>
+<polygon fill="none" stroke="#000000" points="134,-4 134,-28 174,-28 174,-4 134,-4"/>
+<text text-anchor="start" x="141.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+<polygon fill="none" stroke="#000000" points="174,-4 174,-28 254,-28 254,-4 174,-4"/>
+<text text-anchor="start" x="201.75" y="-11.4" font-family="Times,serif" font-size="14.00" fill="#000000">... ...</text>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge3" class="edge">
+<title>node_n:k0-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-232C107.5101,-232 93.8125,-172.3563 123.7618,-161.6391"/>
+<polygon fill="#000000" stroke="#000000" points="134,-160 124.8372,-166.0243 129.0629,-160.7905 124.1257,-161.5809 124.1257,-161.5809 124.1257,-161.5809 129.0629,-160.7905 123.4143,-157.1375 134,-160 134,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge4" class="edge">
+<title>node_n:k1-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-208C100.4452,-208 98.633,-169.5911 123.852,-161.4892"/>
+<polygon fill="#000000" stroke="#000000" points="134,-160 124.7594,-165.9043 129.053,-160.726 124.106,-161.452 124.106,-161.452 124.106,-161.452 129.053,-160.726 123.4526,-156.9997 134,-160 134,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge5" class="edge">
+<title>node_n:k6-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-88C107.5101,-88 93.8125,-147.6437 123.7618,-158.3609"/>
+<polygon fill="#000000" stroke="#000000" points="134,-160 123.4143,-162.8625 129.0629,-159.2095 124.1257,-158.4191 124.1257,-158.4191 124.1257,-158.4191 129.0629,-159.2095 124.8372,-153.9757 134,-160 134,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge6" class="edge">
+<title>node_n:k2-&gt;mytab:x6</title>
+<path fill="none" stroke="#000000" d="M68,-184C115.9345,-184 87.3051,-101.7212 123.8747,-89.5079"/>
+<polygon fill="#000000" stroke="#000000" points="134,-88 124.772,-93.924 129.0545,-88.7366 124.1091,-89.4731 124.1091,-89.4731 124.1091,-89.4731 129.0545,-88.7366 123.4462,-85.0222 134,-88 134,-88"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge7" class="edge">
+<title>node_n:k4-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-136C107.5101,-136 93.8125,-195.6437 123.7618,-206.3609"/>
+<polygon fill="#000000" stroke="#000000" points="134,-208 123.4143,-210.8625 129.0629,-207.2095 124.1257,-206.4191 124.1257,-206.4191 124.1257,-206.4191 129.0629,-207.2095 124.8372,-201.9757 134,-208 134,-208"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge8" class="edge">
+<title>node_n:k7-&gt;mytab:x3</title>
+<path fill="none" stroke="#000000" d="M68,-64C115.9345,-64 87.3051,-146.2788 123.8747,-158.4921"/>
+<polygon fill="#000000" stroke="#000000" points="134,-160 123.4462,-162.9778 129.0545,-159.2634 124.1091,-158.5269 124.1091,-158.5269 124.1091,-158.5269 129.0545,-159.2634 124.772,-154.076 134,-160 134,-160"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<g id="edge9" class="edge">
+<title>node_n:k8-&gt;mytab:x1</title>
+<path fill="none" stroke="#000000" d="M68,-40C144.4615,-40 62.2484,-192.6191 123.8342,-206.9272"/>
+<polygon fill="#000000" stroke="#000000" points="134,-208 123.5829,-211.4256 129.0276,-207.4752 124.0552,-206.9504 124.0552,-206.9504 124.0552,-206.9504 129.0276,-207.4752 124.5275,-202.4753 134,-208 134,-208"/>
+</g>
+<!-- node_n&#45;&gt;mytab -->
+<!-- data_08 -->
+<g id="node3" class="node">
+<title>data_08</title>
+<polygon fill="none" stroke="#000000" points="372.4806,-220.3008 311.8392,-220.3008 311.8392,-195.6992 372.4806,-195.6992 372.4806,-220.3008"/>
+<text text-anchor="middle" x="342.1599" y="-203.8" font-family="Times,serif" font-size="14.00" fill="#000000">data_08</text>
+</g>
+<!-- mytab&#45;&gt;data_08 -->
+<g id="edge11" class="edge">
+<title>mytab:p1-&gt;data_08</title>
+<path fill="none" stroke="#000000" d="M254,-208C269.669,-208 286.9046,-208 301.948,-208"/>
+<polygon fill="#000000" stroke="#000000" points="311.9662,-208 301.9662,-212.5001 306.9662,-208 301.9662,-208.0001 301.9662,-208.0001 301.9662,-208.0001 306.9662,-208 301.9661,-203.5001 311.9662,-208 311.9662,-208"/>
+</g>
+<!-- data_01 -->
+<g id="node4" class="node">
+<title>data_01</title>
+<polygon fill="none" stroke="#000000" points="372.4806,-172.3008 311.8392,-172.3008 311.8392,-147.6992 372.4806,-147.6992 372.4806,-172.3008"/>
+<text text-anchor="middle" x="342.1599" y="-155.8" font-family="Times,serif" font-size="14.00" fill="#000000">data_01</text>
+</g>
+<!-- mytab&#45;&gt;data_01 -->
+<g id="edge12" class="edge">
+<title>mytab:p3-&gt;data_01</title>
+<path fill="none" stroke="#000000" d="M254,-160C269.669,-160 286.9046,-160 301.948,-160"/>
+<polygon fill="#000000" stroke="#000000" points="311.9662,-160 301.9662,-164.5001 306.9662,-160 301.9662,-160.0001 301.9662,-160.0001 301.9662,-160.0001 306.9662,-160 301.9661,-155.5001 311.9662,-160 311.9662,-160"/>
+</g>
+<!-- data_06 -->
+<g id="node5" class="node">
+<title>data_06</title>
+<polygon fill="none" stroke="#000000" points="482.8004,-172.3008 422.159,-172.3008 422.159,-147.6992 482.8004,-147.6992 482.8004,-172.3008"/>
+<text text-anchor="middle" x="452.4797" y="-155.8" font-family="Times,serif" font-size="14.00" fill="#000000">data_06</text>
+</g>
+<!-- data_01&#45;&gt;data_06 -->
+<g id="edge1" class="edge">
+<title>data_01-&gt;data_06</title>
+<path fill="none" stroke="#000000" d="M372.5973,-160C384.7758,-160 398.9815,-160 412.0084,-160"/>
+<polygon fill="#000000" stroke="#000000" points="422.1416,-160 412.1417,-164.5001 417.1416,-160 412.1416,-160.0001 412.1416,-160.0001 412.1416,-160.0001 417.1416,-160 412.1416,-155.5001 422.1416,-160 422.1416,-160"/>
+</g>
+<!-- data_07 -->
+<g id="node6" class="node">
+<title>data_07</title>
+<polygon fill="none" stroke="#000000" points="593.1202,-172.3008 532.4788,-172.3008 532.4788,-147.6992 593.1202,-147.6992 593.1202,-172.3008"/>
+<text text-anchor="middle" x="562.7995" y="-155.8" font-family="Times,serif" font-size="14.00" fill="#000000">data_07</text>
+</g>
+<!-- data_06&#45;&gt;data_07 -->
+<g id="edge2" class="edge">
+<title>data_06-&gt;data_07</title>
+<path fill="none" stroke="#000000" d="M482.9171,-160C495.0956,-160 509.3013,-160 522.3282,-160"/>
+<polygon fill="#000000" stroke="#000000" points="532.4614,-160 522.4615,-164.5001 527.4614,-160 522.4614,-160.0001 522.4614,-160.0001 522.4614,-160.0001 527.4614,-160 522.4614,-155.5001 532.4614,-160 532.4614,-160"/>
+</g>
+</g>
+</svg>
+</p><p>&#x5F53;&#x7136;&#x8FD8;&#x6709;&#x5176;&#x5B83;&#x7684;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x7684;&#x529E;&#x6CD5;&#x3002;<br>
+&#x6BD4;&#x5982;&#x5728;Java&#x7684;HashMap&#x4E2D;&#xFF0C;&#x5C31;&#x4F7F;&#x7528;&#x7EA2;&#x9ED1;&#x6811;&#x6765;&#x5B58;&#x50A8;&#x5730;&#x5740;&#x51B2;&#x7A81;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
+<h2 class="mume-header" id="4-%E8%BD%BD%E8%8D%B7%E5%9B%A0%E5%AD%90">4. &#x8F7D;&#x8377;&#x56E0;&#x5B50;</h2>
+
+<p>&#x4E0A;&#x4E00;&#x7AE0;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6269;&#x5145;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x6765;&#x89E3;&#x51B3;&#x51B2;&#x7A81;&#x3002;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4F1A;&#x91CD;&#x6784;&#x6563;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x590D;&#x5236;&#x5927;&#x91CF;&#x5143;&#x7D20;&#xFF0C;&#x8017;&#x8D39;&#x7684;&#x7A7A;&#x95F4;&#x548C;&#x65F6;&#x95F4;&#x90FD;&#x4F1A;&#x6BD4;&#x8F83;&#x591A;&#x3002;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x80AF;&#x5B9A;&#x4E0D;&#x80FD;&#x7ECF;&#x5E38;&#x505A;&#x3002;</p>
+<p>&#x56E0;&#x6B64;&#x6563;&#x5217;&#x8868;&#x5B9A;&#x4E49;&#x4E86;<code>&#x8F7D;&#x8377;&#x56E0;&#x5B50;</code>&#x8FD9;&#x4E2A;&#x6307;&#x6807;&#x3002;&#x7531;<code>&#x5DF2;&#x7ECF;&#x4F7F;&#x7528;&#x7684;&#x7A7A;&#x95F4;&#x4E2A;&#x6570; / &#x6570;&#x7EC4;&#x603B;&#x5927;&#x5C0F;</code>&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x5C31;&#x662F;&#x8868;&#x793A;&#x4E86;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;&#x6563;&#x5217;&#x8868;&#x6709;&#x591A;&#x6EE1;&#x3002;</p>
+<p>&#x5F53;&#x8F7D;&#x8377;&#x56E0;&#x5B50;&#x8D85;&#x8FC7;&#x4E86;&#x89C4;&#x5B9A;&#x503C;&#x65F6;&#xFF0C;&#x5C31;&#x662F;&#x91CD;&#x6784;&#x6563;&#x5217;&#x8868;&#x7684;&#x65F6;&#x673A;&#x3002;</p>
+<p>&#x8FD9;&#x901A;&#x5E38;&#x8868;&#x793A;&#xFF0C;&#x6563;&#x5217;&#x8868;&#x5DF2;&#x7ECF;&#x5F88;&#x6EE1;&#x4E86;&#xFF0C;&#x7531;&#x4E8E;&#x5143;&#x7D20;&#x8FC7;&#x591A;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x5730;&#x5740;&#x51B2;&#x7A81;&#xFF0C;&#x7EE7;&#x7EED;&#x4F7F;&#x7528;&#x6563;&#x5217;&#x8868;&#x7684;&#x8BDD;&#xFF0C;&#x6027;&#x80FD;&#x4F1A;&#x5927;&#x5E45;&#x4E0B;&#x964D;&#x3002;</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
