@@ -1,0 +1,2908 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.3.3">
+    
+    
+      
+        <title>1.7 打包成可执行程序 - 我的知识库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.545621a7.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#17" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="我的知识库" class="md-header-nav__button md-logo" aria-label="我的知识库">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            我的知识库
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              1.7 打包成可执行程序
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="我的知识库" class="md-nav__button md-logo" aria-label="我的知识库">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    我的知识库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="欢迎来到我的知识库!" class="md-nav__link">
+      欢迎来到我的知识库!
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      ZX0001. Java
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0001. Java" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0001. Java
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S001/" title="1.1 源码学习之String" class="md-nav__link">
+      1.1 源码学习之String
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S002/" title="1.2 处理Excel文档" class="md-nav__link">
+      1.2 处理Excel文档
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S003/" title="1.3 Maven工程中各种文件夹的作用" class="md-nav__link">
+      1.3 Maven工程中各种文件夹的作用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S004/" title="1.4 使用Java Servlet编写API" class="md-nav__link">
+      1.4 使用Java Servlet编写API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S005/" title="1.5 源码学习之ArrayList" class="md-nav__link">
+      1.5 源码学习之ArrayList
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1.7 打包成可执行程序
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="1.7 打包成可执行程序" class="md-nav__link md-nav__link--active">
+      1.7 打包成可执行程序
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    1.7 打包成可执行程序
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 打包成可执行程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-java" class="md-nav__link">
+    2. Java程序面临的问题
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Java程序面临的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-javejre" class="md-nav__link">
+    2.1 问题一：没有安装Jave运行时环境Jre，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-jre" class="md-nav__link">
+    2.2 问题二：安装的Jre版本过低，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jar" class="md-nav__link">
+    2.3 问题三：缺少依赖的第三方Jar包，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-jar" class="md-nav__link">
+    2.4 问题四：只拿到一个Jar包，不知道该如何运行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 问题的解决策
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 解决方案的具体步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 解决方案的具体步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-jar" class="md-nav__link">
+    4.1 将程序打包为包含所有依赖的可执行Jar包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-jre" class="md-nav__link">
+    4.2 制作迷你JRE运行时环境包
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 制作迷你JRE运行时环境包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-java" class="md-nav__link">
+    4.2.1 找出我们的程序使用到的Java功能模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422" class="md-nav__link">
+    4.2.2 打包时只使用上面找到的那些功能模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-jarjre" class="md-nav__link">
+    4.3 将Jar包和迷你JRE打包为操作系统中的可执行程序包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S008/" title="1.8 保证处理顺序的事件处理器" class="md-nav__link">
+      1.8 保证处理顺序的事件处理器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S009/" title="1.9 加载资源文件" class="md-nav__link">
+      1.9 加载资源文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S010/" title="1.10 常用数学函数" class="md-nav__link">
+      1.10 常用数学函数
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S011/" title="1.11 使用值来初始化各种集合类型" class="md-nav__link">
+      1.11 使用值来初始化各种集合类型
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S012/" title="1.12 Json与Java类的互相转换" class="md-nav__link">
+      1.12 Json与Java类的互相转换
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S013/" title="1.13 lambda表达式" class="md-nav__link">
+      1.13 lambda表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S014/" title="1.14 使用lombok消除样板式代码" class="md-nav__link">
+      1.14 使用lombok消除样板式代码
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S016/" title="1.16 使用Guava工具类库" class="md-nav__link">
+      1.16 使用Guava工具类库
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-15" type="checkbox" id="nav-2-15">
+    
+    <label class="md-nav__link" for="nav-2-15">
+      1.15 JDK中的新特性
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="1.15 JDK中的新特性" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-15">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        1.15 JDK中的新特性
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J001/" title="1.15.1 JDK1.8" class="md-nav__link">
+      1.15.1 JDK1.8
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J002/" title="1.15.2 JDK9" class="md-nav__link">
+      1.15.2 JDK9
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J003/" title="1.15.3 JDK10" class="md-nav__link">
+      1.15.3 JDK10
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J004/" title="1.15.4 JDK11" class="md-nav__link">
+      1.15.4 JDK11
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J005/" title="1.15.5 JDK12" class="md-nav__link">
+      1.15.5 JDK12
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J006/" title="1.15.6 JDK13" class="md-nav__link">
+      1.15.6 JDK13
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J007/" title="1.15.7 JDK14" class="md-nav__link">
+      1.15.7 JDK14
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.15%20JDK%E4%B8%AD%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/J008/" title="1.15.8 JDK15" class="md-nav__link">
+      1.15.8 JDK15
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-16" type="checkbox" id="nav-2-16">
+    
+    <label class="md-nav__link" for="nav-2-16">
+      1.6 GUI程序
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="1.6 GUI程序" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-16">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        1.6 GUI程序
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J001/" title="1.6.1 Swing基础" class="md-nav__link">
+      1.6.1 Swing基础
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J002/" title="1.6.2 将字体文件嵌入程序内" class="md-nav__link">
+      1.6.2 将字体文件嵌入程序内
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J003/" title="1.6.3 图形程序Graphics2D" class="md-nav__link">
+      1.6.3 图形程序Graphics2D
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J004/" title="1.6.4 正确的重绘窗口" class="md-nav__link">
+      1.6.4 正确的重绘窗口
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J005/" title="1.6.5 监听鼠标事件" class="md-nav__link">
+      1.6.5 监听鼠标事件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J006/" title="1.6.6 监听窗口大小改变事件" class="md-nav__link">
+      1.6.6 监听窗口大小改变事件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../1.6%20GUI%E7%A8%8B%E5%BA%8F/J007/" title="1.6.7 克隆图像" class="md-nav__link">
+      1.6.7 克隆图像
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ZX0005. 框架
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0005. 框架" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0005. 框架
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0005.%20%E6%A1%86%E6%9E%B6/S001/" title="5.1 学习JSF" class="md-nav__link">
+      5.1 学习JSF
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      ZX0006. 数据库
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0006. 数据库" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0006. 数据库
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0006.%20%E6%95%B0%E6%8D%AE%E5%BA%93/S001/" title="6.1 Nutz框架学习" class="md-nav__link">
+      6.1 Nutz框架学习
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0006.%20%E6%95%B0%E6%8D%AE%E5%BA%93/S002/" title="6.2 PostgreSQL的安装与配置" class="md-nav__link">
+      6.2 PostgreSQL的安装与配置
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      ZX0007. WebServer
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0007. WebServer" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0007. WebServer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0007.%20WebServer/S001/" title="7.1 Tomcat" class="md-nav__link">
+      7.1 Tomcat
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0007.%20WebServer/S002/" title="7.2 NginX基础" class="md-nav__link">
+      7.2 NginX基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      ZX0009. 工具
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0009. 工具" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0009. 工具
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0009.%20%E5%B7%A5%E5%85%B7/S001/" title="9.1 学习使用MarkDown来编写文章" class="md-nav__link">
+      9.1 学习使用MarkDown来编写文章
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0009.%20%E5%B7%A5%E5%85%B7/S002/" title="9.2 Maven" class="md-nav__link">
+      9.2 Maven
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0009.%20%E5%B7%A5%E5%85%B7/S003/" title="9.3 通配符与正则表达式" class="md-nav__link">
+      9.3 通配符与正则表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0009.%20%E5%B7%A5%E5%85%B7/S004/" title="9.4 使用MkDocs生成文档网页" class="md-nav__link">
+      9.4 使用MkDocs生成文档网页
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0009.%20%E5%B7%A5%E5%85%B7/S005/" title="9.5 GitHub的使用" class="md-nav__link">
+      9.5 GitHub的使用
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      ZX0010. 前端
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0010. 前端" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0010. 前端
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0010.%20%E5%89%8D%E7%AB%AF/S001/" title="10.1 使用FlexBox进行页面布局" class="md-nav__link">
+      10.1 使用FlexBox进行页面布局
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      ZX0013. Linux
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0013. Linux" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0013. Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S001/" title="13.1 基本命令参考" class="md-nav__link">
+      13.1 基本命令参考
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S002/" title="13.2 文件目录结构" class="md-nav__link">
+      13.2 文件目录结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S003/" title="13.3 Bash/Shell编程" class="md-nav__link">
+      13.3 Bash/Shell编程
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S004/" title="13.4 自动执行脚本文件" class="md-nav__link">
+      13.4 自动执行脚本文件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S005/" title="13.5 服务管理" class="md-nav__link">
+      13.5 服务管理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S007/" title="13.7 ArchLinux的安装过程梳理" class="md-nav__link">
+      13.7 ArchLinux的安装过程梳理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S008/" title="13.8 系统维护与排除问题" class="md-nav__link">
+      13.8 系统维护与排除问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S009/" title="13. 9 环境变量" class="md-nav__link">
+      13. 9 环境变量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/S010/" title="13.10 常用软件" class="md-nav__link">
+      13.10 常用软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10" type="checkbox" id="nav-8-10">
+    
+    <label class="md-nav__link" for="nav-8-10">
+      13.6 ArchLinux常见问题整理
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="13.6 ArchLinux常见问题整理" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        13.6 ArchLinux常见问题整理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-1" type="checkbox" id="nav-8-10-1">
+    
+    <label class="md-nav__link" for="nav-8-10-1">
+      1. 安装系统
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="1. 安装系统" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        1. 安装系统
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/1.%20%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/L0001/" title="1.1 注意事项" class="md-nav__link">
+      1.1 注意事项
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/1.%20%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/L0002/" title="1.2 连接wifi" class="md-nav__link">
+      1.2 连接wifi
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/1.%20%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F/L0003/" title="1.3 使用live系统修复网络连接" class="md-nav__link">
+      1.3 使用live系统修复网络连接
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-2" type="checkbox" id="nav-8-10-2">
+    
+    <label class="md-nav__link" for="nav-8-10-2">
+      2. 本地化
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="2. 本地化" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        2. 本地化
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/2.%20%E6%9C%AC%E5%9C%B0%E5%8C%96/L0001/" title="2.1 设置键盘布局" class="md-nav__link">
+      2.1 设置键盘布局
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/2.%20%E6%9C%AC%E5%9C%B0%E5%8C%96/L0002/" title="2.2 安装中日文输入法" class="md-nav__link">
+      2.2 安装中日文输入法
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/2.%20%E6%9C%AC%E5%9C%B0%E5%8C%96/L0003/" title="2.3 使用awesome设置输入法服务开机启动" class="md-nav__link">
+      2.3 使用awesome设置输入法服务开机启动
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-3" type="checkbox" id="nav-8-10-3">
+    
+    <label class="md-nav__link" for="nav-8-10-3">
+      3. 桌面环境软件
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="3. 桌面环境软件" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        3. 桌面环境软件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0001/" title="3.1 安装dolphin作为文件管理器" class="md-nav__link">
+      3.1 安装dolphin作为文件管理器
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0002/" title="3.2 使用awesome设置系统快捷键" class="md-nav__link">
+      3.2 使用awesome设置系统快捷键
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0003/" title="3.3 使用awesome在系统托盘处显示当前音量" class="md-nav__link">
+      3.3 使用awesome在系统托盘处显示当前音量
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" title="3.4 添加快捷键来调节音量" class="md-nav__link">
+      3.4 添加快捷键来调节音量
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-4" type="checkbox" id="nav-8-10-4">
+    
+    <label class="md-nav__link" for="nav-8-10-4">
+      4. 软件管理
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="4. 软件管理" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        4. 软件管理
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/4.%20%E8%BD%AF%E4%BB%B6%E7%AE%A1%E7%90%86/L0001/" title="4.1 安装AUR库中的软件" class="md-nav__link">
+      4.1 安装AUR库中的软件
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-10-5" type="checkbox" id="nav-8-10-5">
+    
+    <label class="md-nav__link" for="nav-8-10-5">
+      5. 常见问题
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="5. 常见问题" data-md-level="3">
+      <label class="md-nav__title" for="nav-8-10-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        5. 常见问题
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0001/" title="5.1 dolphin文件管理器无法访问其他系统分区上的文件（如Win10）" class="md-nav__link">
+      5.1 dolphin文件管理器无法访问其他系统分区上的文件（如Win10）
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0002/" title="5.2 Xorg日志：fbdev not found" class="md-nav__link">
+      5.2 Xorg日志：fbdev not found
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0003/" title="5.3 基于QT的程序显示有问题" class="md-nav__link">
+      5.3 基于QT的程序显示有问题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0004/" title="5.4 系统没有声音" class="md-nav__link">
+      5.4 系统没有声音
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0013.%20Linux/13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0005/" title="5.5 新添加的普通用户无法执行sudo" class="md-nav__link">
+      5.5 新添加的普通用户无法执行sudo
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      ZX0014. PowerShell
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0014. PowerShell" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0014. PowerShell
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S001/" title="14.1 命令帮助" class="md-nav__link">
+      14.1 命令帮助
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S002/" title="14.2 类型与管道" class="md-nav__link">
+      14.2 类型与管道
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S003/" title="14.3 检索与过滤结果" class="md-nav__link">
+      14.3 检索与过滤结果
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S004/" title="14.4 将PowerShell作为计算器使用" class="md-nav__link">
+      14.4 将PowerShell作为计算器使用
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S005/" title="14.5 操作符与条件表达式" class="md-nav__link">
+      14.5 操作符与条件表达式
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0014.%20PowerShell/S006/" title="14.6 Win10下的当前目录与PowerShell" class="md-nav__link">
+      14.6 Win10下的当前目录与PowerShell
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
+    
+    <label class="md-nav__link" for="nav-10">
+      ZX0015. 脚本语言
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0015. 脚本语言" data-md-level="1">
+      <label class="md-nav__title" for="nav-10">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0015. 脚本语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0015.%20%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/S001/" title="15.1 LUA脚本语言" class="md-nav__link">
+      15.1 LUA脚本语言
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0015.%20%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/S002/" title="15.2 在Java中使用脚本语言" class="md-nav__link">
+      15.2 在Java中使用脚本语言
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-11" type="checkbox" id="nav-11">
+    
+    <label class="md-nav__link" for="nav-11">
+      ZX0016. Microsoft Office
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0016. Microsoft Office" data-md-level="1">
+      <label class="md-nav__title" for="nav-11">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0016. Microsoft Office
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0016.%20Microsoft%20Office/S001/" title="16.1 VBA基础" class="md-nav__link">
+      16.1 VBA基础
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      ZX0017. 数据结构与算法
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0017. 数据结构与算法" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0017. 数据结构与算法
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S001/" title="17.1 快速排序" class="md-nav__link">
+      17.1 快速排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S002/" title="17.2 堆排序" class="md-nav__link">
+      17.2 堆排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S003/" title="17.3 归并排序" class="md-nav__link">
+      17.3 归并排序
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S004/" title="17.4 散列表" class="md-nav__link">
+      17.4 散列表
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S005/" title="17.5 红黑树（1）- 基本概念" class="md-nav__link">
+      17.5 红黑树（1）- 基本概念
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S006/" title="17.6 红黑树（2）- 基本原理" class="md-nav__link">
+      17.6 红黑树（2）- 基本原理
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S007/" title="17.7 红黑树（3）绘制红黑树" class="md-nav__link">
+      17.7 红黑树（3）绘制红黑树
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0017.%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/S008/" title="17.8 红黑树（4）插入" class="md-nav__link">
+      17.8 红黑树（4）插入
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-13" type="checkbox" id="nav-13">
+    
+    <label class="md-nav__link" for="nav-13">
+      ZX0021. 开源软件开发包
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0021. 开源软件开发包" data-md-level="1">
+      <label class="md-nav__title" for="nav-13">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0021. 开源软件开发包
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0021.%20%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8C%85/S001/" title="21.1 使用Log4j在Java中输出日志" class="md-nav__link">
+      21.1 使用Log4j在Java中输出日志
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0021.%20%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8C%85/S002/" title="21.2 使用mXparser进行代数运算" class="md-nav__link">
+      21.2 使用mXparser进行代数运算
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-14" type="checkbox" id="nav-14">
+    
+    <label class="md-nav__link" for="nav-14">
+      ZX0027. 汇编语言
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0027. 汇编语言" data-md-level="1">
+      <label class="md-nav__title" for="nav-14">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0027. 汇编语言
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0027.%20%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/S001/" title="27.1 总线与内存地址空间" class="md-nav__link">
+      27.1 总线与内存地址空间
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0027.%20%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/S002/" title="27.2 使用Debug学习汇编" class="md-nav__link">
+      27.2 使用Debug学习汇编
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15">
+    
+    <label class="md-nav__link" for="nav-15">
+      ZX0028. 计算机使用
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0028. 计算机使用" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0028. 计算机使用
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S001/" title="28.1 修改Win10的键盘布局为日语键盘" class="md-nav__link">
+      28.1 修改Win10的键盘布局为日语键盘
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S002/" title="28.2 文件夹同步" class="md-nav__link">
+      28.2 文件夹同步
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S003/" title="28.3 使用出入站规则控制网络连接" class="md-nav__link">
+      28.3 使用出入站规则控制网络连接
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S004/" title="28.4 Win10中新的控制台终端" class="md-nav__link">
+      28.4 Win10中新的控制台终端
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S005/" title="28.5 Win10技巧 - 文件预览" class="md-nav__link">
+      28.5 Win10技巧 - 文件预览
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0028.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%BF%E7%94%A8/S006/" title="28.6 Win10技巧 - 文件搜索" class="md-nav__link">
+      28.6 Win10技巧 - 文件搜索
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
+    
+    <label class="md-nav__link" for="nav-16">
+      ZX0030. 游戏
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX0030. 游戏" data-md-level="1">
+      <label class="md-nav__title" for="nav-16">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX0030. 游戏
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S001/" title="30.1 星际2中有趣的台词" class="md-nav__link">
+      30.1 星际2中有趣的台词
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S002/" title="30.2 在银河编辑器中查看合作单位语音" class="md-nav__link">
+      30.2 在银河编辑器中查看合作单位语音
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S003/" title="30.3 游戏循环" class="md-nav__link">
+      30.3 游戏循环
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    1.7 打包成可执行程序
+  </a>
+  
+    <nav class="md-nav" aria-label="1.7 打包成可执行程序">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 概述
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-java" class="md-nav__link">
+    2. Java程序面临的问题
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Java程序面临的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-javejre" class="md-nav__link">
+    2.1 问题一：没有安装Jave运行时环境Jre，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-jre" class="md-nav__link">
+    2.2 问题二：安装的Jre版本过低，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-jar" class="md-nav__link">
+    2.3 问题三：缺少依赖的第三方Jar包，无法运行
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-jar" class="md-nav__link">
+    2.4 问题四：只拿到一个Jar包，不知道该如何运行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 问题的解决策
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 解决方案的具体步骤
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 解决方案的具体步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-jar" class="md-nav__link">
+    4.1 将程序打包为包含所有依赖的可执行Jar包
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-jre" class="md-nav__link">
+    4.2 制作迷你JRE运行时环境包
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 制作迷你JRE运行时环境包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-java" class="md-nav__link">
+    4.2.1 找出我们的程序使用到的Java功能模块
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422" class="md-nav__link">
+    4.2.2 打包时只使用上面找到的那些功能模块
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-jarjre" class="md-nav__link">
+    4.3 将Jar包和迷你JRE打包为操作系统中的可执行程序包
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h2 id="17">1.7 打包成可执行程序</h2>
+<p>更新日期：2021-01-09</p>
+<hr />
+<h3 id="1">1. 概述</h3>
+<p>在这篇文章中我们来讨论一下Java程序的打包问题。
+这里的Java程序指的是本地运行的Java控制台程序或者是GUI程序。Java Web程序的打包与发布与本地程序适合采用的方式很不一样，这里不做讨论。</p>
+<p>当我们的程序写完之后。我们都希望这个程序是有用的，而且是便于使用的。
+一个便于使用的程序我认为要具有下面这些特点：</p>
+<ul>
+<li>易于发布</li>
+<li>易于安装</li>
+<li>易于运行</li>
+<li>友好的使用界面</li>
+</ul>
+<p>关于程序的使用界面，不在这次的讨论范畴中。本篇文章的目标是前三个。</p>
+<h3 id="2-java">2. Java程序面临的问题</h3>
+<p>我们都知道，Jave程序需要JRE环境才能运行。而且有很多的共用类库，也就是第三方jar包供我们使用。而Java的打包方式又是多种多样的。这在一定程度上造成了混乱。</p>
+<p>其他用户在使用Java程序时，往往会遇到如下几个问题：</p>
+<ul>
+<li>没有安装Jave运行时环境Jre，无法运行</li>
+<li>安装的Jre版本过低，无法运行</li>
+<li>缺少依赖的第三方Jar包，无法运行</li>
+<li>只拿到一个Jar包，不知道该如何运行</li>
+</ul>
+<p>本篇文章的具体目标就是为了解决如上几个问题。但首先我先说明一下为何会有这几个问题。</p>
+<h4 id="21-javejre">2.1 问题一：没有安装Jave运行时环境Jre，无法运行</h4>
+<p>本来按照设想，Java在普及度提高以后会成为各大操作系统上一定会被安装的组件。然而事实情况却是: Java只在大型Web服务器上普及。</p>
+<p>因为大型Web项目，使用Java来开发的公司是很多的。所以服务器上通常都装有Java环境。
+而本地程序则没有多少人用Java开发。所以一般用户的电脑上都是没有安装Java运行时环境的。</p>
+<p>这个和Windows的VC++ 运行时环境是类似的。微软当然是可以让Windows操作系统自带VC++运行时环境。同理苹果公司也可以让Mac OS X自带自己的一些运行时环境。但Java就没有办法了，必须由用户手动安装。</p>
+<h4 id="22-jre">2.2 问题二：安装的Jre版本过低，无法运行</h4>
+<p>即使用户安装了Jre，也可能由于版本问题的原因而无法运行。</p>
+<p>现在Java的版本迭代是很快的，半年一个全新的正式版本。在大多数Java程序还在使用Java8甚至是Java1.7时。Java15已经正式发布，Java16也快要发布了。（2021年1月时点）</p>
+<p>有一部分Java程序员喜欢尝试新版本中的新特性，比如我。所以我开发的Java程序通常需要最新的正式版Java环境。这样的话，很多人的机器上还安装的Java8，就无法运行。</p>
+<p>并且，由于Java的后几个版本的改动都有点大。所以，我们安装了一个较低版本的Jre之后，每次发布新版本时并不会自动升级到新版Jre。</p>
+<h4 id="23-jar">2.3 问题三：缺少依赖的第三方Jar包，无法运行</h4>
+<p>本来Java的各个程序可以共用一些第三方Jar包，这样这些Jar包只需要在机器上保存一份就可以。然后程序就不需要再带着这个Jar包。这样能减小程序Jar包的体积。</p>
+<p>然而事实情况是，我们通常情况下没有能力创造这样一种环境。或者说太麻烦，实现起来很复杂。</p>
+<p>这里举个例子来说明。</p>
+<div class="admonition example">
+<p class="admonition-title">Tomcat</p>
+<p>虽然我说不讨论Web程序，但用来举例恰好是合适的。</p>
+<p>假设我们公司开发的Web应用都将部署到Tomcat上，那么服务器上自然要安装Tomcat。
+而Tomcat会自带一些我们开发Java Web程序时经常用到的一些Jar包。这样我们的Web程序在打包的时候就不需要带着这些包了。</p>
+</div>
+<h4 id="24-jar">2.4 问题四：只拿到一个Jar包，不知道该如何运行</h4>
+<p>我们通过IDE编写好程序后给我们生成的就是一个Jar包，而程序员都知道使用<code>java -jar</code>命令来运行Jar包。</p>
+<p>但是普通人并不知道。或者说即使是知道，要这样来运行程序很麻烦，很别扭。
+更何况，没有安装正确版本的Jre时，也不能这样来运行jar包。同时用户也很难按我们想的那样去指定jvm参数。</p>
+<h3 id="3">3. 问题的解决策</h3>
+<p>其实，关于如何发布程序（不限于Java）。是有现成的方案的。</p>
+<p>比如：在线安装包。</p>
+<div class="admonition example">
+<p class="admonition-title">在线安装包</p>
+<p>这也是现在很多软件安装包喜欢采用的方式。所有运行所需要的文件都可以按需下载到用户的机器上，当然文件的版本也能保证是正确的。安装完成之后即可正常运行。Jre也可以这样来安装。</p>
+<p>用起来很舒服，但是做起来就有点复杂了。而且还需要一台服务器去存放安装所需的文件。
+如果我们只是写一些小工具之类的程序，就生成一个几十KB的Jar包，也没必要花费功夫去搞这些玩意儿。</p>
+</div>
+<p>又比如：战网模式。</p>
+<div class="admonition example">
+<p class="admonition-title">战网模式</p>
+<p>战网，也即是暴雪战网。当然战网并不使用Java语言，但我们假设它使用Java语言，正好可以拿来举例。</p>
+<p>我们安装了战网后，可以在战网的界面上选择安装各种游戏。战网就可以起到一个中间运行时平台的作用。</p>
+<p>安装战网的时候，我们可以直接把各个游戏用到的Jre给安装上。同样各个游戏共用的第三方Jar包也可以直接部署上。即使有不同的游戏用了不同的Jre版本，我们也可以把这几个版本的Jre都给安装上。</p>
+<p>更新战网的时候，这些Jre和第三方Jar包也会按我们所需进行更新。</p>
+<p>这和上面举例说到的Tomcat是类似的。
+但是，同样的。实现起来太麻烦。</p>
+</div>
+<p>我们这里想说的是简单的，容易实现的方案。也就是把运行所需要的所有文件直接打包，发布给用户。
+这就意味着。</p>
+<ul>
+<li>内嵌Jre运行时环境。用户的机器上不用安装Java环境也能运行。</li>
+<li>包含所有依赖的第三方Jar包。用户的机器上不需要额外下载任何其他东西。</li>
+</ul>
+<p>由于我们内嵌了Jre，版本当然不会有问题。这样问题一和二就解决了。
+我们也包含了所有依赖的第三方Jar包。所以问题三也解决了。</p>
+<p>而对于问题四，针对各个PC操作系统。我们将把Jar包包装成该系统中的可执行程序。让他和系统上的其他程序看起来一样。
+比如：Windows系统上，把Jar包给包装成exe可执行程序。用户拿到后都知道双击exe就能运行，或者是点击菜单中的程序图标来运行。
+这样就不用安装Jre环境敲命令了，同时jvm调优参数我们也能包装进去，也保证了程序的性能。</p>
+<p>下面就详细的介绍一下这个方案的实现细节。主要分为如下几个步骤。</p>
+<ul>
+<li>将程序打包为包含所有依赖的可执行Jar包</li>
+<li>制作迷你JRE运行时环境包</li>
+<li>将Jar包和迷你JRE打包为操作系统中的可执行程序包</li>
+</ul>
+<h3 id="4">4. 解决方案的具体步骤</h3>
+<h4 id="41-jar">4.1 将程序打包为包含所有依赖的可执行Jar包</h4>
+<p>使用Maven来打包是比较方便的。而Java IDE通常会集成Maven让我们可以用图形界面去执行Maven命令，可以说是很贴心了。</p>
+<p>好在这件事做起来很简单，只需在pom.xml文件中进行如下配置。</p>
+<div class="admonition example">
+<p class="admonition-title">pom.xml</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.3.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;archive&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;/archive&gt;</span>
+            <span class="nt">&lt;descriptorRefs&gt;</span>
+            <span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+            <span class="nt">&lt;/descriptorRefs&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+            <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="c">&lt;!-- this is used for inheritance merges --&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="c">&lt;!-- bind to the packaging phase --&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    XXXX 其他配置
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>也就是使用了Maven的<code>maven-assembly-plugin</code>插件来完成这个任务，这个插件的具体用法可以参考Maven的官方文档:</p>
+<p><a href="http://maven.apache.org/plugins/maven-assembly-plugin/usage.html">maven-assembly-plugin</a></p>
+<p>上面的代码也是我直接从官方文档中拷贝出来的。
+简单的说明一下。</p>
+<div class="admonition note">
+<p class="admonition-title">配置说明</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
+这一行用来指定主类，也即是main函数所在的类，相信大家都知道应该怎么配置。
+
+<span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+表明打Jar包时将包含所有依赖的Jar包。这行不用改。
+
+<span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="c">&lt;!-- this is used for inheritance merges --&gt;</span>
+为了区分<span class="nt">&lt;execution&gt;</span>xxxx<span class="nt">&lt;/execution&gt;</span>块的一个标识性ID。通常不用修改。
+
+<span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="c">&lt;!-- bind to the packaging phase --&gt;</span>
+绑定到package生命周期。这样的话，我们执行Maven的package命令来打包时，就会执行这个插件。
+通常不用修改。
+
+<span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+给插件执行的任务起一个名字。通常不用修改。
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>说了半天，其实一般情况下，我们把上面的代码拷到自己的pom.xml后，只需要改一下<code>主类</code>的配置就行了。</p>
+<div class="admonition warning">
+<p class="admonition-title">特别提醒</p>
+<p>如果你正在使用<code>IntelliJ IDEA</code>作为Java IDE，则IDEA自动生成的<code>pom.xml</code>文件中会包含如下代码块：
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;bulid&gt;</span>
+    <span class="nt">&lt;pluginManagement&gt;</span><span class="c">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span>
+        <span class="nt">&lt;plugins&gt;</span>
+            <span class="c">&lt;!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle --&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.1.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+            xxx xxx 其他插件
+            <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-site-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.7.1<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/pluginManagement&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+</td></tr></table>
+注意我们拷贝的<code>&lt;plugin&gt;</code>不是放在这个<code>&lt;pluginManagement&gt;</code>里面的。是放在如下的位置：
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        xxxx 其他配置
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    XXXX 其他配置
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div>
+</td></tr></table>
+放错的话不会生效。</p>
+</div>
+<p>配置完成后，我们执行<code>mvn package</code>命令就可以生成Jar包了。在IDEA中，使用Maven工具面板上的package命令可以轻松的完成这个任务。</p>
+<p><img alt="package命令" src="../S007.files/package.png" /></p>
+<p>执行完成后，会生成两个Jar包。</p>
+<p><img alt="package命令结果" src="../S007.files/package2.png" /></p>
+<p>带<code>jar-with-dependencies</code>的那个就是包含了所有依赖Jar包的，另外一个则是普通的。可以看到它的体积比普通的那个要大。</p>
+<p>然后我们要验证一下这个Jar包确实是能正常执行的。把它随便拷到一个什么地方，然后使用<code>java -jar</code>命令来执行。</p>
+<p>这是我的程序的运行效果。
+<img alt="运行效果" src="../S007.files/run.png" /></p>
+<p>这样的话，我们的第一步就成功了。</p>
+<h4 id="42-jre">4.2 制作迷你JRE运行时环境包</h4>
+<p>这里我将使用JDK中附带的一些工具来完成这个任务，但是这些工具需要Java14或者以上的版本。如果你是使用较低版本的Java，请寻找其他方法。</p>
+<p>我们都知道JDK的体积是很大的，通常有几百MB，而我们的程序一般不会使用到Java的所有功能模块。也就意味着如果把整个JDK打进去，则会有大量的文件是没有被使用到的，白白浪费空间。
+这一步就是要把这些没用的东西都去除掉。生成一个迷你的Jre。</p>
+<p>这个操作我分为两步：</p>
+<ul>
+<li>找出我们的程序使用到的Java功能模块</li>
+<li>打包时只使用上面找到的那些功能模块</li>
+</ul>
+<h5 id="421-java">4.2.1 找出我们的程序使用到的Java功能模块</h5>
+<p>这里可以使用JDK的<code>jdeps</code>工具来完成这个任务。它的详细用法我们可以去看JDK官方文档：</p>
+<p><a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/jdeps.html">jdeps官方文档</a></p>
+<p>这里我们只说如何来完成我们这项任务。执行如下命令即可：</p>
+<div class="admonition example">
+<p class="admonition-title">jdeps</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">jdeps</span> <span class="p">-</span><span class="n">-list-deps</span> <span class="p">-</span><span class="n">-ignore-missing-deps</span> <span class="n">你的Jar包</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>下面是我的MyDoc程序的运行结果：
+<img alt="jdeps运行结果" src="../S007.files/jdeps.png" /></p>
+<p>由于我们的程序非常简单，所有只用到了这三个组件。如果是复杂一点的程序，可能这个列表会很长。</p>
+<p>这时，我们就记下这个运行结果，以备后用。</p>
+<h5 id="422">4.2.2 打包时只使用上面找到的那些功能模块</h5>
+<p>使用JDK的<code>jlink</code>这个工具来生成Jre运行时环境包。它的详细用法还是去看JDK官方文档：</p>
+<p><a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/jlink.html">jlink官方文档</a></p>
+<p>这里我们还是只关注如何来完成我们的这些任务。执行如下命令即可：</p>
+<div class="admonition example">
+<p class="admonition-title">jlink</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">生成的文件存放的目录</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">模块列表</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">压缩级别</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>各个选项的参数该怎么设置呢？</p>
+<table>
+<thead>
+<tr>
+<th align="left"><div style="width:7em">选项</div></th>
+<th align="left">参数的值</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">output</td>
+<td align="left">生成的文件存放的目录</td>
+<td align="left">也就是生成的Jre运行时环境包存放的目录。注意指定的文件夹必须不存在，生成时会自动创建文件夹，如果已存在则命令会报错。</td>
+</tr>
+<tr>
+<td align="left">add-modules</td>
+<td align="left">模块列表</td>
+<td align="left">把哪些JDK模块包含进去。这里就设我们上一步<code>jdeps</code>命令找出来的模块列表。例如我的MyDoc程序的例子就是：--add-modules java.base,java.desktop,java.logging</td>
+</tr>
+<tr>
+<td align="left">compress=</td>
+<td align="left">压缩级别(0,1,2)</td>
+<td align="left">不用说了，当然级别越高，压缩后的体积越小了。直接设定为2。</td>
+</tr>
+<tr>
+<td align="left">no-header-files</td>
+<td align="left">无</td>
+<td align="left">不包括无用的header文件。</td>
+</tr>
+<tr>
+<td align="left">no-man-pages</td>
+<td align="left">无</td>
+<td align="left">不包括无用的man pages文件。</td>
+</tr>
+<tr>
+<td align="left">strip-debug</td>
+<td align="left">无</td>
+<td align="left">剥离无用的调试信息。</td>
+</tr>
+</tbody>
+</table>
+<p>下面是我的MyDoc程序的运行结果：</p>
+<div class="admonition example">
+<p class="admonition-title">jlink</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">java</span><span class="p">.</span><span class="n">base</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">desktop</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">logging</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">2</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><img alt="jlink运行结果" src="../S007.files/jlink.png" /></p>
+<p>生成的文件：
+<img alt="jdeps运行结果" src="../S007.files/jlink2.png" /></p>
+<p>观察这个生成的文件夹，发现它的大小是38.9MB，感觉还是有点大的。</p>
+<p>现在我们要验证生成的迷你Jre是否好用。</p>
+<p>首先我们把环境变量里的<code>JAVA_HOME</code>去掉，使系统变成没有安装Java环境的状态。此时运行<code>java</code>命令会直接报错。</p>
+<p><img alt="移除Java环境" src="../S007.files/jre.png" /></p>
+<p>然后使用我们刚才生成的迷你Jre，先列出它包含的模块。</p>
+<div class="admonition example">
+<p class="admonition-title">列出JRE模块</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="p">-</span><span class="n">-list-modules</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><img alt="列出JRE模块" src="../S007.files/list_modules.png" /></p>
+<p>发现除了我们指定的那几个模块之外，还多了几个，不过这也无伤大雅。这就是我们的迷你JRE里面包含的所有模块了。</p>
+<p>最后用这个迷你Jre来运行我们的Jar包试试看。</p>
+<div class="admonition example">
+<p class="admonition-title">列出JRE模块</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="n">-jar</span> <span class="n">jar包路径</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p><img alt="运行结果" src="../S007.files/run2.png" /></p>
+<p>可以看到，成功的运行了我们的这个演示程序。
+这样，我们的迷你JRE运行环境包就完成了。</p>
+<h4 id="43-jarjre">4.3 将Jar包和迷你JRE打包为操作系统中的可执行程序包</h4>
+<p>Jar包和迷你JRE我们制作完成了，现在我们的程序算是已经可以运行了。接下来该把它打包成可执行程序包了。</p>
+<p>这一步可以选择的工具是很多的。比如Windows平台上的<code>launch4j</code>、<code>exe4j</code>等。这里我们就使用JDK的<code>jpackage</code>工具来完成这项任务，这个工具比较新。还是老规矩，它的详细用法去看JDK官方文档：</p>
+<p><a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/jpackage.html">jpackage官方文档</a></p>
+<p>我们只关注如何来完成我们的这些任务。不过这次要先说明一下我们准备生成怎样的可执行程序包。</p>
+<p>现在有3大主流桌面操作系统：Windows、Mac OS X、Linux。
+Java程序可以在这三大系统中运行。而这三大系统分别使用不同的可执行程序，那我们自然要分别生成不同的可执行程序包。</p>
+<ul>
+<li>针对Windows<ul>
+<li>1.生成绿色免安装的可执行程序文件。包含一个文件夹和里面的多个文件。可直接执行根目录的<code>.exe</code>来运行程序。而且可以使用其他工具来进一步制作成安装包。</li>
+<li>2.生成<code>.exe</code>或者<code>.msi</code>格式的单个程序安装包文件。执行这个安装包后将开始一个安装过程，安装完毕后与系统上其他程序一样。可加入开始菜单，可受系统的软件管理功能控制。</li>
+</ul>
+</li>
+<li>针对Mac OS X<ul>
+<li>生成<code>.pkg</code>或者<code>.dmg</code>格式的单个程序安装包文件。与安装其他Mac程序的过程完全相同。</li>
+</ul>
+</li>
+<li>针对Linux<ul>
+<li>生成<code>.deb</code>或者<code>.rpm</code>格式的单个程序安装包文件。可使用Linux上的包管理器安装。</li>
+</ul>
+</li>
+</ul>
+<p>在<code>jpackage</code>工具中，可以通过设置选项<code>--type</code>的参数来指定生成那种结果文件。
+这个参数的设置方法如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">No.</th>
+<th align="left">平台</th>
+<th align="left">目标格式</th>
+<th align="left">type参数应设置的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">1</td>
+<td align="left">Windows</td>
+<td align="left">绿色免安装包</td>
+<td align="left">app-image</td>
+</tr>
+<tr>
+<td align="left">2</td>
+<td align="left">Windows</td>
+<td align="left">.exe</td>
+<td align="left">exe</td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Windows</td>
+<td align="left">.msi</td>
+<td align="left">msi</td>
+</tr>
+<tr>
+<td align="left">4</td>
+<td align="left">Mac OS X</td>
+<td align="left">.pkg</td>
+<td align="left">pkg</td>
+</tr>
+<tr>
+<td align="left">5</td>
+<td align="left">Mac OS X</td>
+<td align="left">.dmg</td>
+<td align="left">dmg</td>
+</tr>
+<tr>
+<td align="left">6</td>
+<td align="left">Linux</td>
+<td align="left">.deb</td>
+<td align="left">deb</td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Linux</td>
+<td align="left">.rpm</td>
+<td align="left">rpm</td>
+</tr>
+</tbody>
+</table>
+<p>要完成我们的任务，<code>jpackage</code>工具的完整的命令用法如下：</p>
+<div class="admonition example">
+<p class="admonition-title">jpackage</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">上表中列出的值</span> <span class="p">-</span><span class="n">-name</span> <span class="n">目标文件或文件夹名</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">图标文件</span> <span class="p">-</span><span class="n">-input</span> <span class="n">jar包所在目录</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">jar包路径</span><span class="err">（</span><span class="n">相对于</span><span class="p">-</span><span class="n">-input</span><span class="err">）</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">JRE路径</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>唯一需要说明的是这个<code>--input</code>，这个目录下所有的文件都会被打包进去，不只是那个可执行jar包。</p>
+<p>下面，还是演示Java程序<code>MyDoc</code>，以生成Windows系统上的<code>.msi</code>格式的安装包为例来运行一下这个命令。（其他格式的话，用法都是相同的，只需修改选项<code>--type</code>的值）</p>
+<p>不过，在执行命令前，先做一些准备工作。</p>
+<ul>
+<li>准备一个<code>.ico</code>格式的图标文件。</li>
+<li>新建一个文件夹，把我们的可执行Jar包放进去。</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">目录结构</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">工作目录</span>
+<span class="err">│</span>  <span class="n">test</span><span class="p">.</span><span class="n">ico</span>
+<span class="err">│</span>
+<span class="err">├─</span><span class="n">MyJars</span>
+<span class="err">│</span>      <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span>
+<span class="err">│</span>
+<span class="err">└─</span><span class="n">runtime</span>
+    <span class="err">│</span>  <span class="n">release</span>
+    <span class="err">│</span>
+    <span class="err">├─</span><span class="n">bin</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">2</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-datetime-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="n">其他文件</span><span class="p">...</span> <span class="p">...</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>然后我们要执行的命令是：</p>
+<div class="admonition example">
+<p class="admonition-title">生成.msi</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">msi</span> <span class="p">-</span><span class="n">-name</span> <span class="n">MyDoc</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">test</span><span class="p">.</span><span class="n">ico</span> <span class="p">-</span><span class="n">-input</span> <span class="n">MyJars</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-win-dir-chooser</span> <span class="p">-</span><span class="n">-win-menu</span> <span class="p">-</span><span class="n">-win-shortcut</span>
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>这里我在后面加了三个额外的选项，可以使我们的安装包在安装的时候可以指定安装的位置。并将添加到开始菜单，然后会创建一个桌面快捷方式。
+要记住，<code>jpackage</code>还有更多的功能。而且针对不同的操作系统还有不同的选项，这里我演示的只是Windows系统中的可用选项。</p>
+<p>10秒左右过后，生成完毕。
+<img alt="生成完毕" src="../S007.files/msi.png" /></p>
+<p>看看我们的目录下，确实是生成了一个<code>.msi</code>安装包文件。
+<img alt="生成结果" src="../S007.files/msi2.png" /></p>
+<p>运行这个安装包，我们就可以把程序安装在我们的Windows系统中了。
+※此时我们再次把环境变量里的<code>JAVA_HOME</code>去掉，使系统变成没有安装Java环境的状态。在这个状态下运行安装包，并执行安装后的程序，确认是否能正常运行。</p>
+<p>双击安装程序，我们将会看到熟悉的Windows经典安装界面。
+<img alt="安装过程" src="../S007.files/install.png" /></p>
+<p>等安装完成后。可以到我们选的安装位置里去看一下里面都有什么。
+<img alt="安装完成后的文件" src="../S007.files/exe.png" /></p>
+<p>各个文件夹存放的内容如下：
+文件或文件夹 | 内容 |
+:--|:--|
+app|存放可执行Jar包相关的文件。
+runtime|存放迷你JRE环境的文件。
+MyDoc.exe|可执行程序。
+MyDoc.ico|图标文件。</p>
+<p>如果上面选择打包成<code>绿色免安装包</code>，则生成的文件目录结构就是跟这个一模一样的。</p>
+<p>现在从开始菜单中点击执行我们的程序，以验证我们打的安装包确实没有问题。
+运行效果如下：
+<img alt="运行效果" src="../S007.files/exe2.png" /></p>
+<p>到这里，我们的打包任务就完成了。
+同时，这里也可以查看一下系统的软件管理器，看是否我们的程序是被系统所管理的。
+<img alt="软件管理" src="../S007.files/exe3.png" /></p>
+<p>没有问题，我们的安装包做的很漂亮。到这里整个任务总算是可以结束了。</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../S005/" title="1.5 源码学习之ArrayList" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                1.5 源码学习之ArrayList
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../S008/" title="1.8 保证处理顺序的事件处理器" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                1.8 保证处理顺序的事件处理器
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.de50e36d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.38f5c9b5.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9b3611bd.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
