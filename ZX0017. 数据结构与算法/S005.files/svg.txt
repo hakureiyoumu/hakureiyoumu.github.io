@@ -1,0 +1,63 @@
+// 红黑树示例
+
+digraph G { 
+
+    node [shape=circle, width=0.5, fixedsize=true]
+    nodesep=0.3
+    edge[arrowhead=vee]
+
+    // 如果是红黑树，则设置所有节点为红色
+    node [style=filled, fillcolor="#AA0000", fontcolor=white]
+
+    // 定义图的节点，"n"开头的为占位节点
+    // lv1
+    54
+    // lv2
+    33 n54 556
+    // lv3
+    3 n33 45
+    67 n556 2423
+    // lv4
+    1 n3 4
+    55 n67 99
+    2345 n2423 6666
+    // lv5
+    98 n99 100
+
+    // 设置父子关系
+    // lv1 -> lv2
+    54 -> 33, 556
+    // lv2 -> lv3
+    33 -> 3, 45
+    556 -> 67, 2423
+    // lv3 -> lv4
+    3 -> 1, 4
+    67 -> 55, 99
+    2423 -> 2345, 6666
+    // lv4 -> lv5
+    99 -> 98, 100
+
+    // 连接父节点与占位节点，并将连接线设置为隐藏
+    54 -> n54 [style=invis]
+    33 -> n33 [style=invis]
+    556 -> n556 [style=invis]
+    3 -> n3 [style=invis]
+    67 -> n67 [style=invis]
+    2423 -> n2423 [style=invis]
+    99 -> n99 [style=invis]
+
+    // 占位节点设置为隐藏
+    n54, n33, n556, n3, n67, n2423, n99 [width=0, height=0, style=invis]
+
+    // 将父节点与占位节点设置为同一个组，使其在竖直方向上对齐
+    54, n54 [group=n54]
+    33, n33 [group=n33]
+    556, n556 [group=n556]
+    3, n3 [group=n3]
+    67, n67 [group=n67]
+    2423, n2423 [group=n2423]
+    99, n99 [group=n99]
+
+    // 如果是红黑树，则设置黑色节点的颜色
+    54, 33, 556, 3, 45, 2423, 55, 99 [style=filled, fillcolor=black, fontcolor=white]
+} 

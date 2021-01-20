@@ -2390,16 +2390,16 @@
 %}
 </code></pre></div>
 </td></tr></table></p>
-<p>效果：</p>
+<p>按理来说会有如下效果：</p>
+<p><img alt="效果" src="../S004.files/graphviz.svg" /></p>
 </div>
-<p>{% dot attack_plan.svg
-    digraph G {
-        rankdir=LR
-        Earth [peripheries=2]
-        Mars
-        Earth -&gt; Mars
-    }
-%}</p>
+<p>但是实际上，这个插件的更新和维护比较混乱，有好多个版本，所以不建议直接使用。这里我们可以曲线救国。比如，将我们的绘图代码复制到在线的Graphviz工具上，生成一张 <strong><code>.svg</code></strong> 图片出来。然后我们的文档里面引用这个图片，虽然麻烦一点，但是万无一失。</p>
+<div class="admonition example">
+<p class="admonition-title">推荐的在线工具</p>
+<p>网址：<a href="https://dreampuf.github.io/GraphvizOnline/#digraph%20G%20%7B%0A%20%20%20%20rankdir%3DLR%0A%20%20%20%20Earth%20%5Bperipheries%3D2%5D%0A%20%20%20%20Mars%0A%20%20%20%20Earth%20-%3E%20Mars%0A%7D">Graphviz在线工具</a></p>
+<p>界面大概长这样：</p>
+<p><img alt="界面" src="../S004.files/%E7%95%8C%E9%9D%A2.png" /></p>
+</div>
 <h3 id="6-material">6. Material的专有语法</h3>
 <p>感觉比较好用的是各种提醒框。语法都是类似的。其实下面的<code>example</code>就已经在使用这种提醒框了。</p>
 <p>以note为例：</p>
