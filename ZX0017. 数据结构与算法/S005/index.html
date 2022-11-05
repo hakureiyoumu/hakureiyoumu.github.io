@@ -27,8 +27,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC001:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Noto Serif SC001",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -1576,32 +1576,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S004-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.4 散列表" class="md-nav__link">
-      17.4 散列表
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../S004/" title="17.4 散列表" class="md-nav__link">
       17.4 散列表
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../S005-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.5 红黑树（1）- 基本概念" class="md-nav__link">
-      17.5 红黑树（1）- 基本概念
     </a>
   </li>
 
@@ -1687,18 +1663,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../S006-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.6 红黑树（2）- 基本原理" class="md-nav__link">
-      17.6 红黑树（2）- 基本原理
-    </a>
   </li>
 
         
@@ -2031,6 +1995,48 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      ZX9999. 测试
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX9999. 测试" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX9999. 测试
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX9999.%20%E6%B5%8B%E8%AF%95/test/" title="显示一个图" class="md-nav__link">
+      显示一个图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -2127,15 +2133,15 @@
 <li>(5) 从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
 </ul>
 <p>符合这样条件的红黑树大概长什么样子呢？先来张图感受一下。</p>
-<p><img alt="红黑树示例" src="../S005.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E7%A4%BA%E4%BE%8B.svg" /></p>
+<p><img alt="红黑树示例" src="S005.files/红黑树示例.svg" /></p>
 <h3 id="3">3. 为什么需要红黑树</h3>
 <p>红黑树起源于排序二叉树。也就是<code>左子节点 &lt;= 父节点 &lt;= 右子节点</code>的那种二叉树。</p>
 <p>排序二叉树的特点就是查找元素比较快，比较较少的次数就可以查找到目标元素。有点像排序数组的二分查找。</p>
 <p>但是排序二叉树有其弱点。比如我连续插入20个随机数来创建一棵树。</p>
-<p><img alt="排序二叉树" src="../S005.files/%E6%8E%92%E5%BA%8F%E4%BA%8C%E5%8F%89%E6%A0%91.PNG" /></p>
+<p><img alt="排序二叉树" src="S005.files/排序二叉树.PNG" /></p>
 <p>有没有发现这棵二叉树有点丑，它的元素分布极不均匀。查找有的元素需要比较很多的次数，查找效率极不均匀。最坏的情况下甚至需要比较所有的元素才能找到目标元素。</p>
 <p>再看看同样的这20个数字创建出来的红黑树。</p>
-<p><img alt="排序二叉树" src="../S005.files/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG" /></p>
+<p><img alt="排序二叉树" src="S005.files/红黑树.PNG" /></p>
 <p>可以看到，这棵树非常的均匀。查找任何元素都不会需要很多的比较次数，最坏的情况也没有很坏。</p>
 <h3 id="4">4. 需要学习的主题</h3>
 <p>目前为止只是大概了解了一下红黑树的概念。红黑树的算法实现比较复杂，我将分为三个章节来学习。</p>
@@ -2162,7 +2168,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../S005-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.5 红黑树（1）- 基本概念" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../S004/" title="17.4 散列表" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -2171,13 +2177,13 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                17.5 红黑树（1）- 基本概念
+                17.4 散列表
               </div>
             </div>
           </a>
         
         
-          <a href="../S006-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.6 红黑树（2）- 基本原理" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S006/" title="17.6 红黑树（2）- 基本原理" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">

@@ -27,8 +27,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC001:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Noto Serif SC001",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -1576,18 +1576,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../S004-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.4 散列表" class="md-nav__link">
-      17.4 散列表
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../S004/" title="17.4 散列表" class="md-nav__link">
       17.4 散列表
     </a>
@@ -1600,32 +1588,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../S005-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.5 红黑树（1）- 基本概念" class="md-nav__link">
-      17.5 红黑树（1）- 基本概念
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../S005/" title="17.5 红黑树（1）- 基本概念" class="md-nav__link">
       17.5 红黑树（1）- 基本概念
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../S006-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.6 红黑树（2）- 基本原理" class="md-nav__link">
-      17.6 红黑树（2）- 基本原理
     </a>
   </li>
 
@@ -2031,6 +1995,48 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      ZX9999. 测试
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ZX9999. 测试" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        ZX9999. 测试
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../ZX9999.%20%E6%B5%8B%E8%AF%95/test/" title="显示一个图" class="md-nav__link">
+      显示一个图
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -2121,14 +2127,14 @@
 <h3 id="2">2. 红黑树与二叉树</h3>
 <p>红黑树是一种特殊的排序二叉树。也就是说它满足所有排序二叉树的性质，所有二叉树的操作它都可以做。</p>
 <p>而实际上，红黑树的各种操作正是建立在二叉树操作的基础之上。比如插入元素、删除元素这些操作。就是先按照普通排序二叉树的方法进行操作。然后再通过各种调整手段使其满足红黑树不同于普通二叉树的特殊性质。在用具体代码实现红黑树的操作时，基本都是这么个步骤。</p>
-<p><img alt="红黑树的操作" src="../S006.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C1.svg" /></p>
+<p><img alt="红黑树的操作" src="S006.files/红黑树的操作1.svg" /></p>
 <p>我们在各种教程上看到的步骤都是在讲调整二叉树。因此在学习红黑树之前，我们应该复习一遍二叉树。</p>
 <h3 id="3">3. 红与黑到底代表了什么</h3>
 <p>刚开始接触红黑树时，容易被这个颜色搞糊涂。这个颜色标记自然是有其作用的。注意我说了 <strong>标记</strong> 这个词，给节点涂上颜色自然是在作一种记号，也就是说黑色节点和红色节点是有所不同。</p>
 <p>我先说我个人看法的结论: <strong><em>同一个节点的红色子节点所在的路径比黑色子节点所在的路径深度要多1</em></strong></p>
 <p>更通俗一点的说法，如果节点具有重量的话，就是红色节点的那一层比较重，子结点较多。</p>
 <p>还是看先前那棵二叉树:</p>
-<p><img alt="红黑树的操作" src="../S006.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C2.svg" /></p>
+<p><img alt="红黑树的操作" src="S006.files/红黑树的操作2.svg" /></p>
 <p>注意比较节点 <strong>67</strong> 和同一层的其他节点，比如节点 <strong>2423</strong>，你会发现 <strong>67</strong> 那一层多了一层子节点。这是由红黑树的性质决定的，因为每条路径上的黑色节点必须是一样的，每多一个红色节点，这条路径自然就深了一层。</p>
 <p>可以说，红黑树调整的所有操作都是基于这一点。</p>
 <h3 id="4-5">4. 所谓的5条规则</h3>
@@ -2144,7 +2150,7 @@
 <p>这里面真正重要并且起关键作用的是4和5。规则123更多的是一中约定俗成的东西，主要为了描述规则4和5时能更方便，更容易描述清楚。也就是在给它们铺路。</p>
 <p>而规则4和5一起保证了红黑树的一个最重要的特性：<strong>任何路径都不能多于任何其他路径的两倍长</strong></p>
 <p>所谓两倍长，是一种极端情况，有多极端呢？看看下面这图。</p>
-<p><img alt="红黑树的操作" src="../S006.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E6%93%8D%E4%BD%9C3.svg" /></p>
+<p><img alt="红黑树的操作" src="S006.files/红黑树的操作3.svg" /></p>
 <p>图中的最短路径为连续3个黑色节点。最长路径为红黑间隔的 3 + 3 共6个节点。</p>
 <p>其实可以看到，即便是这种非常极端的情况，整体来说还是比较平衡的。</p>
                 
@@ -2165,7 +2171,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../S006-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" title="17.6 红黑树（2）- 基本原理" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../S005/" title="17.5 红黑树（1）- 基本概念" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -2174,7 +2180,7 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                17.6 红黑树（2）- 基本原理
+                17.5 红黑树（1）- 基本概念
               </div>
             </div>
           </a>
