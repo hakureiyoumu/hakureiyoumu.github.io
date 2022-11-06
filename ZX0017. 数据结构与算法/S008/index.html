@@ -15,7 +15,7 @@
     
     
       
-        <title>17.8 红黑树（4）插入 - 我的知识库</title>
+        <title>17.8 红黑树（4）插入I - 我的知识库</title>
       
     
     
@@ -27,8 +27,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC001:300,400,400i,700%7C&display=fallback">
-        <style>body,input{font-family:"Noto Serif SC001",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Noto Serif SC",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -49,7 +49,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#178-4" class="md-skip">
+        <a href="#178-4i" class="md-skip">
           跳转至
         </a>
       
@@ -77,7 +77,7 @@
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
-              17.8 红黑树（4）插入
+              17.8 红黑树（4）插入I
             
           </span>
         </div>
@@ -902,8 +902,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../ZX0013.%20Linux/S010/" title="13.10 常用软件" class="md-nav__link">
-      13.10 常用软件
+    <a href="../../ZX0013.%20Linux/S010/" title="13.10 桌面环境常用软件（ArchLinux）" class="md-nav__link">
+      13.10 桌面环境常用软件（ArchLinux）
     </a>
   </li>
 
@@ -1631,14 +1631,14 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        17.8 红黑树（4）插入
+        17.8 红黑树（4）插入I
         <span class="md-nav__icon md-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
         </span>
       </label>
     
-    <a href="./" title="17.8 红黑树（4）插入" class="md-nav__link md-nav__link--active">
-      17.8 红黑树（4）插入
+    <a href="./" title="17.8 红黑树（4）插入I" class="md-nav__link md-nav__link--active">
+      17.8 红黑树（4）插入I
     </a>
     
       
@@ -1655,11 +1655,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#178-4" class="md-nav__link">
-    17.8 红黑树（4）插入
+  <a href="#178-4i" class="md-nav__link">
+    17.8 红黑树（4）插入I
   </a>
   
-    <nav class="md-nav" aria-label="17.8 红黑树（4）插入">
+    <nav class="md-nav" aria-label="17.8 红黑树（4）插入I">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1671,10 +1671,10 @@
         
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2. 基本思路
+    2. 红黑树的插入过程
   </a>
   
-    <nav class="md-nav" aria-label="2. 基本思路">
+    <nav class="md-nav" aria-label="2. 红黑树的插入过程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1684,15 +1684,35 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 具体的插入过程
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 具体的插入过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 假定插入的节点为红色
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    2.2.2 分情形考虑
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    2. 插入过程
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -1705,14 +1725,7 @@
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
-    4. 总结
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    5. 代码示例
+    4. 代码示例
   </a>
   
 </li>
@@ -1726,6 +1739,30 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S009/" title="17.9 红黑树（4）插入II" class="md-nav__link">
+      17.9 红黑树（4）插入II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S010/" title="17.10 红黑树（4）插入III" class="md-nav__link">
+      17.10 红黑树（4）插入III
+    </a>
   </li>
 
         
@@ -2088,11 +2125,11 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#178-4" class="md-nav__link">
-    17.8 红黑树（4）插入
+  <a href="#178-4i" class="md-nav__link">
+    17.8 红黑树（4）插入I
   </a>
   
-    <nav class="md-nav" aria-label="17.8 红黑树（4）插入">
+    <nav class="md-nav" aria-label="17.8 红黑树（4）插入I">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2104,10 +2141,10 @@
         
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2. 基本思路
+    2. 红黑树的插入过程
   </a>
   
-    <nav class="md-nav" aria-label="2. 基本思路">
+    <nav class="md-nav" aria-label="2. 红黑树的插入过程">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2117,15 +2154,35 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 具体的插入过程
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 具体的插入过程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    2.2.1 假定插入的节点为红色
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    2.2.2 分情形考虑
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
-    2. 插入过程
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -2138,14 +2195,7 @@
         
           <li class="md-nav__item">
   <a href="#4" class="md-nav__link">
-    4. 总结
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    5. 代码示例
+    4. 代码示例
   </a>
   
 </li>
@@ -2171,52 +2221,95 @@
                   
                 
                 
-                <h2 id="178-4">17.8 红黑树（4）插入</h2>
-<p>更新日期：2020/09/21</p>
+                <h2 id="178-4i">17.8 红黑树（4）插入I</h2>
+<p>更新日期：2022/11/6</p>
 <hr />
 <h3 id="1">1. 概述</h3>
 <p>红黑树的插入和删除操作是比较繁杂的，是红黑树的难点所在。这篇文章主要是描述一下解决这类问题的基本思路，试图把这团浆糊解释明白。</p>
-<h3 id="2">2. 基本思路</h3>
+<p>在学习之初，我也看过很多篇结束红黑树的文章，但是看完之后还是一头雾水。我仔细想了想，这些文章其实相当于是把已经知道的结论拿出来讲了一遍，也就是在已经有结论的前提下去说明结论，而没有解释如何得到这些结论。
+所以看完之后，我好像知道了该如何去写代码了，但是要问为什么这么写，还是不知道。</p>
+<p>试着考虑一下下面这些问题。</p>
+<p><u><strong>插入问题为什么可以使用递归来解决？</strong></u></p>
+<p>答案是，我们先分析了较为简单的情形，然后分析较复杂的情形。在对复杂情形进行分析时，我们发现复杂的情形可以先变形、调整为简单情形，然后再按照简单情形的的办法去做。</p>
+<p>我想这个过程不是一蹴而就的，不是说我们一上来就知道要用递归，而是在分析的过程中我们发现了可以使用递归。</p>
+<p><u><strong>为什么插入可以分成这么几种情形(七种）来处理？</strong></u></p>
+<p>这个结论的得来同样不是一蹴而就的。如果你自己去做情形分析的话，会发现可以分出很多很多种不同的情形，远超七种。而这里面有些情形的处理办法是相同的，亦或是差异很小。</p>
+<p>我们把这些处理办法类似的情形进行合并，最后发现是可以分为这七种情形。这样我们才得出了这个结论。</p>
+<h3 id="2">2. 红黑树的插入过程</h3>
 <h4 id="21">2.1 着手点</h4>
-<p>由于我们不知道如何处理这个问题，所以可以随意找一颗普通点的红黑树，来实际的做一些插入操作来看一看结果如何。</p>
+<p>由于我们一上来不知道如何处理这个问题，所以可以随意找一颗普通点的红黑树来观察一下。</p>
 <p>还是之前那棵普通的红黑树。</p>
 <p><img alt="红黑树样本" src="../S007.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E6%A0%B7%E6%9C%AC2.png" /></p>
 <p>第一个问题就是往哪个地方插入，这个问题前面已经讨论过了。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>对于一个指定值的新节点，按照普通二叉树的规则就可以找到一个确定的位置。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>对于一个指定值的新节点，按照普通排序二叉树的规则就可以找到一个确定的位置。
 </code></pre></div></td></tr></table></div>
 <p>很明显得先有空位才行吧，有空位的地方就是那些没有子节点的（叶子节点）和只有一个子节点的。上图中的树里这样的位置有很多，这里自然而然的就可以分为几种不同的情形来看。</p>
-<p>我们前面说过，红黑树的插入就是先插入节点，然后再调整红黑树使其重新平衡。现在就可以来实践一下。</p>
-<p>比如情形1:插入到图中最左边的黑色节点39</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>由于这个节点已经有一个右
-</code></pre></div></td></tr></table></div>
-<p>这里我先说明一下程序中解决这种<code>情形比较多的问题</code>的时候的通常的思路。</p>
-<p>根据不同情形的解决难度，可以将问题划分为：</p>
+<p>这样，我们总算是迈出了第一步。</p>
+<h4 id="22">2.2 具体的插入过程</h4>
+<p>按照上面的思路。我们假定已经按照排序二叉树的规则把新的节点插入到指定位置上去了，现在来分析一下接下来应该如何调整来使整棵树保持平衡。</p>
+<p>所谓保持平衡就是使其满足红黑树定义的5个条件，并且我们的调整措施应该要尽量简单，比如：
+- 只调整颜色就能保持平衡的话就不要移动节点。也就是优先使用调整颜色这一手段
+- 能用尽量少的步骤达到平衡时，就不要采用步骤较多的那个。尽管步骤多的那个的结果看上去更加平衡</p>
+<h5 id="221">2.2.1 假定插入的节点为红色</h5>
+<p>根据规则<code>【(1) 节点是红色或黑色。】</code>，节点必须要有一个颜色，所以我们先来看看如果给新节点设定颜色。</p>
+<p><u><strong>如果设定为黑色</strong></u></p>
+<p>根据规则<code>【(5) 从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。】</code>，我们知道，凭空插入一个黑色节点必定会导致插入的那个分支多一层黑色节点，从而必定破坏这一规则。</p>
+<p><u><strong>如果设定为红色</strong></u></p>
+<p>根据规则<code>【(4) 每个红色节点必须有两个黑色的子节点。（从每个叶子到根的所有路径上不能有两个连续的红色节点。）】</code>，插入一个红色节点有可能会导致出现两个连续的红色节点，故而可能会打破这一规则。</p>
+<p><u><strong>结论</strong></u></p>
+<p>由于设为黑色一定会打破规则，设定红色只是有可能打破规则。所以结论是设定为红色更好。</p>
+<h5 id="222">2.2.2 分情形考虑</h5>
+<p>这里我们假设出插入新节点后可能出现的各种情形，然后各个击破。对于简单的情形，我们可能看一眼就知道该如何应对，但是对于复杂的情形，有可能需要再分成更多更细的情形来考虑。</p>
+<p>另外，为了方便描述期间，我们把新节点也称为<code>当前节点</code>。</p>
+<p><u><strong>情形1：新节点没有父节点</strong></u></p>
+<p>也就是插入到一棵空树中，那么应对方法很简单，只需把新节点颜色改为黑色使其满足规则<code>【(2) 根是黑色。】</code>即可。</p>
+<p><img alt="情形1" src="../S008.files/%E6%83%85%E5%BD%A21.drawio.png" /></p>
+<p><u><strong>情形2：新节点的父节点为黑色</strong></u></p>
+<p>由于父节点为黑色，所以就一定不会出现连续的两个红色节点。这种情况下已经平衡了，不需要做任何调整。</p>
+<p>其实，根据新节点的位置，以及是否有兄弟节点，情形2又可以详细地分成几种不同的情形，只不过其结果都是不用做任何调整。</p>
+<p><img alt="情形2" src="../S008.files/%E6%83%85%E5%BD%A22.drawio.png" /></p>
+<p><u><strong>情形3：新节点的父节点为红色</strong></u></p>
+<p>首先，既然父节点为红色并且有空位置可以插入新的节点，就说明父节点本来是没有任何子节点的。如果有的话，必须是两个黑色子节点，那么就没有空位置了。所以首先可以简单的分外如下情形。</p>
+<p><img alt="情形3" src="../S008.files/%E6%83%85%E5%BD%A23.drawio.png" /></p>
+<p>很明确，此时出现了连续两个红色节点，需要进行调整。</p>
+<p>那么，调整颜色行不行呢？</p>
+<p>两个父子节点，必须要一黑一红才可以。但是如果把其中一个节点变为黑色，则会使这一分支多出一层黑色节点，必然是不能平衡的。</p>
+<p>所以此时，我们不得不考虑移动节点了。但是就这么两个简单的节点实在是没有移动空间，所以我们进一步考虑父节点更上层的节点，也就是爷爷节点和叔叔节点分支。
+<br/>※何以知道一定有爷爷节点？因为父节点为红色，而根节点必须为黑色，所以父节点不是根节点，他一定也有父节点，也就是爷爷节点</p>
+<p>根据父节点所处的左右位置，已经是否有叔叔节点，我们将情形3更加细分。</p>
+<p><img alt="情形3-细分1" src="../S008.files/%E6%83%85%E5%BD%A23-%E7%BB%86%E5%88%861.drawio.png" /></p>
+<p>经过简单的观察，我们不难发现其中没有叔叔节点的四种情形是非常容易调整的，从整体形态上就可以看出来。</p>
+<p><img alt="情形3-细分1-调整1" src="../S008.files/%E6%83%85%E5%BD%A23-%E7%BB%86%E5%88%861-%E8%B0%83%E6%95%B41.drawio.png" /></p>
+<p>调整的方法也是非常简单，三个数根据大小关系，不大不小的居于父节点，小的那个为左子节点，大的那个为右子节点。</p>
+<p><img alt="情形3-细分1-调整2" src="../S008.files/%E6%83%85%E5%BD%A23-%E7%BB%86%E5%88%861-%E8%B0%83%E6%95%B42.drawio.png" /></p>
+<p>然后我们再来看剩余4种有叔叔节点的看起来有点困难的情形。简单观察他们的形态，发现他们都已经基本平衡，并且可以通过调整颜色直接使其满足规则。</p>
+<p><img alt="情形3-细分1-调整3" src="../S008.files/%E6%83%85%E5%BD%A23-%E7%BB%86%E5%88%861-%E8%B0%83%E6%95%B43.drawio.png" /></p>
+<p>反色之后我们发现黑色的层数与之前保持一致了，都是一层，但是爷爷节点变成了红色。那么爷爷节点就有可能和他的父节点产生两个连续红色节点。也就是我们需要继续调整。</p>
+<p>要继续调整，我们以爷爷节点为当前节点再对情形进行细分。</p>
+<p>首先，我们可以发现有两种情形很简单。</p>
 <ul>
-<li>简单情形</li>
-<li>较简单的情形</li>
-<li>较复杂的情形</li>
-<li>复杂情形</li>
+<li>简单情形1：当前节点(之前的爷爷节点)为根节点，则与情形1是相似的，调整方法也一样</li>
+<li>简单情形2：当前节点(之前的爷爷节点)的父节点为黑色节点，则与情形2是相似的，调整方法也一样</li>
 </ul>
-<p>简单情形就是说我们只需一个简单的操作就能把这个问题解决，基本不需要动脑子。
-复杂情形就是说我们得经过N多个步骤才能解决这个问题，需要耗费大量脑细胞。
-较简单和较复杂就是中间的情形。</p>
-<p>解决这种问题的关键就是：</p>
-<div class="admonition note 解决思路">
-<p class="admonition-title">Note</p>
-<p>对于复杂的情形，可以执行一个简单的步骤，让它变成较复杂的情形。同理对较复杂的情形，可以执行一个简单的步骤，让它变成较复杂的情形。</p>
-</div>
-<p>也就是说，我们每次只做简单的一小步，把变简单的问题交给下面的人来处理。用图形来描述就是：</p>
-<p>// TODO</p>
-<p>这样的话，对于一个具体的问题，就有两件事情要做。</p>
+<p>剩下的就是所谓的复杂情形了。</p>
+<p><img alt="复杂情形" src="../S008.files/%E5%A4%8D%E6%9D%82%E6%83%85%E5%BD%A2.drawio.png" /></p>
+<p>这里的【复杂情形1：叔叔节点为黑色】，只是其中的一种情况，也就是当前节点是左子节点，父节点也是左子节点。我们分析了调整过程后，发现它和上面的情形3-1-1特别像，都是把不大不小的那个节点拎起来，再下放爷爷节点。只不过情形3-1-1的相关节点都没啥子节点，而这里的复杂情形1带有很多的子节点，所以我们在情形3-1-1的基础之上，再附加上对子节点的调整就可以了。</p>
+<p>而这里的【复杂情形2：叔叔节点为红色】，我们发现它和上面的情形3-1-2、3-1-4、3-2-2、3-2-4如出一辙，都可以通过反色爷爷、父亲、叔叔来进行解决。</p>
+<p>复杂情形1的所有情形我在下一节中列出来了。</p>
 <ul>
-<li>划分情形</li>
-<li>思考每种情形怎么做简单的调整</li>
+<li>17.9 红黑树（4）插入II</li>
 </ul>
-<h3 id="2_1">2. 插入过程</h3>
-<p>按照上面的思路。我们来看一看插入过程。</p>
+<p>而到了这里，我们也发现我们又开始进行变形，或者是去调整一个新的红色节点了。我们又回到了原点，解决的办法都和上面已经讨论过的一样。这种情况下，我们都知道了，可以使用递归来解决。</p>
+<p>接下来，我将对上面的情形进行归纳整理，以便更加理清思路。</p>
 <h3 id="3">3. 插入过程整理</h3>
-<h3 id="4">4. 总结</h3>
-<h3 id="5">5. 代码示例</h3>
+<p>初步的整理结果如下。</p>
+<p><img alt="情形整理" src="../S008.files/%E6%83%85%E5%BD%A2%E6%95%B4%E7%90%86%E4%B8%80%E8%A7%88.png" /></p>
+<p>然后我们将上表中应对方法相似的情形进行合并，得到了如下结果。</p>
+<p><img alt="情形整理-合并后" src="../S008.files/%E6%83%85%E5%BD%A2%E6%95%B4%E7%90%86%E4%B8%80%E8%A7%88-%E5%90%88%E5%B9%B6%E5%90%8E.png" /></p>
+<p>其中，应对方法里面标红色的部分，是复杂情形比简单情形要多做的步骤。稍微想一下我们就会发现，简单情形即使也做了这些步骤也是没有任何影响的。毕竟，把自己的空子节点给别人当子节点，也是相当于什么都没做的。</p>
+<p>至此，我们终于得出了结论：插入过程可以分为七种情形来考虑。</p>
+<h3 id="4">4. 代码示例</h3>
+<p>本章已经过长了，所以代码就放到后面的章节吧。</p>
                 
               
               
@@ -2250,13 +2343,13 @@
           </a>
         
         
-          <a href="../../ZX0021.%20%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8C%85/S001/" title="21.1 使用Log4j在Java中输出日志" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S009/" title="17.9 红黑树（4）插入II" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                21.1 使用Log4j在Java中输出日志
+                17.9 红黑树（4）插入II
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

@@ -27,8 +27,8 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC001:300,400,400i,700%7C&display=fallback">
-        <style>body,input{font-family:"Noto Serif SC001",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,400,400i,700%7C&display=fallback">
+        <style>body,input{font-family:"Noto Serif SC",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"",SFMono-Regular,Consolas,Menlo,monospace}</style>
       
     
     
@@ -902,8 +902,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../ZX0013.%20Linux/S010/" title="13.10 常用软件" class="md-nav__link">
-      13.10 常用软件
+    <a href="../../ZX0013.%20Linux/S010/" title="13.10 桌面环境常用软件（ArchLinux）" class="md-nav__link">
+      13.10 桌面环境常用软件（ArchLinux）
     </a>
   </li>
 
@@ -1709,8 +1709,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../S008/" title="17.8 红黑树（4）插入" class="md-nav__link">
-      17.8 红黑树（4）插入
+    <a href="../S008/" title="17.8 红黑树（4）插入I" class="md-nav__link">
+      17.8 红黑树（4）插入I
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S009/" title="17.9 红黑树（4）插入II" class="md-nav__link">
+      17.9 红黑树（4）插入II
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../S010/" title="17.10 红黑树（4）插入III" class="md-nav__link">
+      17.10 红黑树（4）插入III
     </a>
   </li>
 
@@ -2144,7 +2168,7 @@
                 
                 
                 <h2 id="177-3">17.7 红黑树（3）绘制红黑树</h2>
-<p>更新日期：2020/09/19</p>
+<p>更新日期：2022/11/6</p>
 <hr />
 <h3 id="1">1. 概述</h3>
 <p>红黑树的结构和算法十分复杂。光靠纸上谈兵或者是脑子里过招是很难把所有过程都理清楚的。</p>
@@ -2171,7 +2195,7 @@
 <p>我这里采用的是：宽度 = 2 ^  (子分支深度 + 2)。[子分支深度=0时，宽度为0]</p>
 <p>具体多少合适，可以自己慢慢调。</p>
 <h3 id="3">3. 代码示例</h3>
-<p>代码里为二叉树的实现与绘制，为了简单期间，节点的值为整数。红黑树可以自己改节点的字符串表示方法。</p>
+<p>代码里为二叉树的实现与绘制，为了简单期间，节点的值为整数。</p>
 <p>使用方法为：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2192,6 +2216,49 @@
 <span class="p">}</span><span class="w"></span>
 <span class="c1">// 绘制二叉树</span><span class="w"></span>
 <span class="n">bt</span><span class="p">.</span><span class="na">print</span><span class="p">();</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+<p>如果要修改为红黑树，可以自己改节点类，加上颜色属性并修正字符串表示方法。(修改下面代码中TODO的地方即可)</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 节点定义</span><span class="w"></span>
+<span class="kd">protected</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Node</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 节点的值</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 父节点</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">parent</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 左右子树</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">Node</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">right</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// TODO：在这里加颜色属性</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Node</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 绘制节点</span><span class="w"></span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">toString</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// TODO 修改这里，根据颜色的不同，在数字前加上■或者□</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">value</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition example">
 <p class="admonition-title">BinaryTree.java</p>
@@ -2921,13 +2988,13 @@
           </a>
         
         
-          <a href="../S008/" title="17.8 红黑树（4）插入" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../S008/" title="17.8 红黑树（4）插入I" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                17.8 红黑树（4）插入
+                17.8 红黑树（4）插入I
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
