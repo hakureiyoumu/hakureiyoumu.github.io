@@ -2265,8 +2265,8 @@
 <li>当删除的节点只有一个子节点时也非常容易处理</li>
 </ul>
 <p>因此，我们首先根据要删除的节点的子节点的数量分出情形，然后再根据节点的颜色进一步分出情形。这样我们情形分类的雏形就完成了。</p>
-<div class="admonition example 在excel中列出初步情形">
-<p class="admonition-title">Example</p>
+<div class="admonition example">
+<p class="admonition-title">在Excel中列出初步情形</p>
 <p><img alt="Alt text" src="../S011.files/%E5%88%9D%E6%AD%A5%E6%83%85%E5%BD%A2.png" /></p>
 </div>
 <p>然后我们就可以进入下一步，针对每种情形进行演算了。</p>
@@ -2276,8 +2276,10 @@
 <p>虽然我们说是用纸笔或者绘图工具进行演算，但是用绘图工具明显更好一点。对于简单的情形还可以，但是复杂的情形用纸笔就非常的慢，能把人累死。</p>
 <p>这里推荐<code>draw.io</code>这款强大的绘图工具，谁用谁知道。
 <img alt="Alt text" src="../S011.files/drawio.png" /></p>
-<p>!!! 关于【当前节点】
-    为了便于描述起见，我将【要删除的节点】称之为【当前节点】。</p>
+<div class="admonition note">
+<p class="admonition-title">关于【当前节点】</p>
+<p>为了便于描述起见，我将【要删除的节点】称之为【当前节点】。</p>
+</div>
 <p><u><strong>演算①：当前节点没有子节点，当前节点为红色节点</strong></u>
 此时，父节点必为黑色，如果有兄弟节点，则兄弟节点也为红色。
 <img alt="Alt text" src="../S011.files/%E6%BC%94%E7%AE%97%E2%91%A0.drawio.png" /></p>
@@ -2299,8 +2301,8 @@
 <p>我们发现，交换之后，就进入了上面的演算①②③的情形。</p>
 <p><u><strong>重新整理情形</strong></u></p>
 <p>下面我们该回到第一步的情形分析，对我们演算的结果进行梳理了。</p>
-<div class="admonition example 再次梳理情形">
-<p class="admonition-title">Example</p>
+<div class="admonition example">
+<p class="admonition-title">再次梳理情形</p>
 <p><img alt="Alt text" src="../S011.files/%E6%83%85%E5%BD%A2%E6%A2%B3%E7%90%86.png" /></p>
 </div>
 <p>此时，我们就解决了一部分问题，没有解决的<code>？？？</code>这三种情形需要进行下一轮的演算。</p>
