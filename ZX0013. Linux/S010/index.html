@@ -11,7 +11,7 @@
       
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-5.3.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-5.3.3">
     
     
       
@@ -2330,26 +2330,32 @@
                 
                 
                 <h2 id="1310-archlinux">13.10 桌面环境常用软件（ArchLinux）</h2>
-<p>更新日期：2022/11/6</p>
+<p>更新日期：2022/11/20</p>
 <hr />
 <h3 id="1">1. 概述</h3>
-<p>配置好桌面环境后，我们还需要安装一些软件来帮助我们进行日常的工作。</p>
+<p>配置好桌面环境后，我们还需要安装一些软件来帮助我们进行日常的工作。
+由于KDE中附带的图形界面工具是最多最全的，因此这里以使用KDE桌面环境为前提。</p>
 <h3 id="2">2. 系统工具</h3>
 <p>这些都是装机必备的软件。</p>
 <h4 id="21">2.1 网络连接工具</h4>
 <p>我们安装好了KDE桌面环境后，会带一个图形界面的WiFi连接工具，就不用我们敲命令行了。</p>
+<p><img alt="WiFi" src="../S010.files/WiFi%E8%BF%9E%E6%8E%A5.png" /></p>
 <h4 id="22">2.2 蓝牙管理工具</h4>
-<p>目前没有稳定的解决方案，建议是不要使用蓝牙设备，使用有线鼠标和蓝牙耳机比较好。</p>
+<p>同样，安装好KDE桌面环境后，也是会带一个图形界面的蓝牙连接工具。<br/>
+除了开机启动的时候的自动连接有点小问题之外都很完美。但是需要我们自己安装bluez并设定bluetooth服务。</p>
+<p><img alt="" src="2022-11-20-18-51-44.png" /></p>
 <h4 id="23">2.3 浏览器</h4>
-<p>推荐使用FireFox（Edge和Chrome也已经支持Linux）</p>
+<p>推荐使用FireFox。（Edge和Chrome也已经支持Linux）</p>
 <h4 id="24">2.4 资源管理器</h4>
-<p>使用dolphin几乎是唯一的选择，其他的感觉嗯，实在是太丑了。不过有一部分是不可用的。
-<img alt="海豚" src="../S010.files/dolphin-terminal.png" /></p>
+<p>使用dolphin几乎是唯一的选择，其他的感觉嗯，实在是太丑了。</p>
+<p><img alt="海豚" src="../S010.files/dolphin-terminal.png" /></p>
 <h3 id="3">3. 文本编辑器</h3>
-<p>首先是leafpad，这是一个访Windows记事本的非常轻量级的文本编辑器，功能几乎一模一样。
-<img alt="leafpad" src="../S010.files/leafpad.bmp" /></p>
-<p>然后就是Visual Studio Code，宇宙级文本编辑器，有了这个几乎所有的文本编辑任务都没有问题了。在Linux上这个软件也表现的很完美。
-<img alt="Visual Studio Code" src="../S010.files/visual_studio_code.png" /></p>
+<p>首先是leafpad，这是一个仿Windows记事本的非常轻量级的文本编辑器，功能几乎一模一样，启动速度极快，占用资源极少。而且界面经过升级之后也能融入系统主题，不丑了。</p>
+<p><img alt="" src="%21%5Bleafpad%5D%28S010.files/leafpad.bmp%29.png" /></p>
+<p>再复杂一点的是KDE自带的Kate，功能更多，启动速度要稍慢一点，支持语法高亮显示。</p>
+<p><img alt="" src="2022-11-20-19-04-24.png" /></p>
+<p>最后就是Visual Studio Code，宇宙级文本编辑器，有了这个几乎所有的文本编辑任务都没有问题了。而且它的启动速度也不会很慢，在低配的计算机上也能表现的很出色。</p>
+<p><img alt="Visual Studio Code" src="../S010.files/visual_studio_code.png" /></p>
 <p>由于我们需要经常使用控制台，所以Vim也是必不可少的。
 然后控制台中还需要一个差分比较工具，可以选择使用diffuse。</p>
 <h3 id="4">4. 绘图、画画、图片处理工具</h3>
@@ -2361,13 +2367,13 @@
 <h3 id="5">5. 音乐与多媒体</h3>
 <p>使用浏览器就可以了。本地播放器现在几乎没什么使用场景了。</p>
 <h3 id="6">6.  办公软件</h3>
-<p>自从微软完善了Web版Office，我觉得浏览器可以胜任这个任务了。</p>
+<p>自从微软完善了Web版Office，浏览器可以胜任一部分任务了。但是对于稍微复杂一点的作业，在网页上操作还是非常的难受，因此桌面端软件仍然非常的必要。</p>
 <h4 id="61">6.1 邮件</h4>
-<p>如果不想使用浏览器的话，ThunderBird雷鸟是唯一的选择，其实这个软件还是不错的，而且它现在是跨平台的，也支持Windows、MacOS了。界面上也有了非常大的改观。
-<img alt="雷鸟" src="../S010.files/thunderbird.png" /></p>
+<p>如果不想使用浏览器的话，ThunderBird雷鸟是最好的选择，而且它现在是跨平台的，也支持Windows、MacOS了。界面上也有了非常大的改观。</p>
+<p><img alt="雷鸟" src="../S010.files/thunderbird.png" /></p>
 <h4 id="62-office">6.2 office</h4>
-<p>虽然可以使用LibreOffice，但是它的使用体验比微软的Office实在差的太远了。特别是对于喜欢使用Office 365服务的用户来说，使用网页版微软Office的体验可能更好。
-但是LibreOffice也有自己的优势，微软的软件比较臃肿，各种软件容易绑定在一起。而LibreOffice比较小巧，并且是完全免费的。</p>
+<p>可以使用LibreOffice和WPS，但是它们都没有微软的Office那么强大。<br/>
+我比较喜欢LibreOffice，微软的软件比较臃肿，各种软件容易绑定在一起。而LibreOffice比较小巧，并且是完全免费的。</p>
 <p><img alt="LibreOffice" src="../S010.files/libreoffice.png" /></p>
 <h3 id="7-rss">7. RSS订阅</h3>
 <p>还是浏览器搞定，比如FireFox中的插件。</p>
