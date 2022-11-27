@@ -22,6 +22,10 @@
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.08040f6c.min.css">
         
+          
+          
+          <meta name="theme-color" content="#009485">
+        
       
       
 
@@ -52,7 +56,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
   
     
     
@@ -1074,14 +1078,14 @@
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1. 概述
+    1. 环境变量相关的命令
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2. 环境变量相关的命令
+    2. 临时设定环境变量与永久设定环境变量
   </a>
   
 </li>
@@ -1089,13 +1093,6 @@
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     3. 在命令行和各种配置文件中使用环境变量
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. 常用的环境变量
   </a>
   
 </li>
@@ -2290,20 +2287,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S001-%E5%8D%9A%E9%BA%97%E5%A6%96%E5%A4%A2%E3%81%AEMacBook%20Pro/" class="md-nav__link">
-        30.1 星际2中有趣的台词
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S001/" class="md-nav__link">
         30.1 星际2中有趣的台词
       </a>
@@ -2334,54 +2317,6 @@
     <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S003/" class="md-nav__link">
         30.3 游戏循环
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_17" type="checkbox" id="__nav_17" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_17">
-          ZX9999. 测试页面
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="ZX9999. 测试页面" data-md-level="1">
-        <label class="md-nav__title" for="__nav_17">
-          <span class="md-nav__icon md-icon"></span>
-          ZX9999. 测试页面
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../ZX9999.%20%E6%B5%8B%E8%AF%95%E9%A1%B5%E9%9D%A2/test/" class="md-nav__link">
-        显示一个draw.io绘制的图
       </a>
     </li>
   
@@ -2428,14 +2363,14 @@
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
-    1. 概述
+    1. 环境变量相关的命令
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
-    2. 环境变量相关的命令
+    2. 临时设定环境变量与永久设定环境变量
   </a>
   
 </li>
@@ -2443,13 +2378,6 @@
           <li class="md-nav__item">
   <a href="#3" class="md-nav__link">
     3. 在命令行和各种配置文件中使用环境变量
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. 常用的环境变量
   </a>
   
 </li>
@@ -2477,25 +2405,50 @@
   <h1>13. 9 环境变量</h1>
 
 <h2 id="13-9">13. 9 环境变量</h2>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>这篇文档还没有开始编写...</p>
-</div>
-<h3 id="1">1. 概述</h3>
-<h3 id="2">2. 环境变量相关的命令</h3>
-<ul>
-<li>打印所有</li>
-<li>添加与删除环境变量</li>
-<li>临时设置环境变量(visudo等)</li>
-</ul>
+<p>更新日期：2022/11/27</p>
+<hr />
+<h3 id="1">1. 环境变量相关的命令</h3>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>功能</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>打印环境变量</td>
+<td>env  ✴打印所有环境变量<br/> printenv ✴打印所有环境变量<br/> printenv 变量名1 变量名2 ✴打印指定的一个或者多个环境变量</td>
+</tr>
+<tr>
+<td>2</td>
+<td>添加或者修改环境变量</td>
+<td>export 变量名=值</td>
+</tr>
+<tr>
+<td>3</td>
+<td>删除环境变量</td>
+<td>unset 变量名</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2">2. 临时设定环境变量与永久设定环境变量</h3>
+<p>直接在Console中执行export命令来设定环境变量，则只会在当前会话中生效。
+要想永久生效，一个办法是把export语句写到<code>.bash_profile</code>或者<code>.bashrc</code>这类文件中。这样每次进行登录或者打开新的shell会话时都会自动执行export语句来设定环境变量，也就相当于永久生效了。</p>
 <h3 id="3">3. 在命令行和各种配置文件中使用环境变量</h3>
-<h3 id="4">4. 常用的环境变量</h3>
-<ul>
-<li>java</li>
-<li>字符集</li>
-<li>默认文本编辑器</li>
-<li>qt</li>
-</ul>
+<p>都是同样的写法，就是<code>$变量名</code>。</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 输出环境变量PATH</span>
+<span class="nb">echo</span> <span class="s2">&quot;The path is </span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+
+<span class="c1"># 将pip添加到PATH中</span>
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
 
 
 
@@ -2569,7 +2522,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.prune", "search.highlight", "header.autohide"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.d6c3db9e.min.js"></script>
