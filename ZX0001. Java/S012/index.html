@@ -36,8 +36,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto SC";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -359,7 +359,7 @@
   
     <li class="md-nav__item">
       <a href="../S002/" class="md-nav__link">
-        B. 处理Excel文档
+        B. 读取Excel文档
       </a>
     </li>
   
@@ -460,7 +460,7 @@
         
           <li class="md-nav__item">
   <a href="#2-jsonpojo" class="md-nav__link">
-    2. 从Json文本生成POJO类
+    2. 利用工具从Json反向生成POJO类
   </a>
   
 </li>
@@ -2841,7 +2841,7 @@
         
           <li class="md-nav__item">
   <a href="#2-jsonpojo" class="md-nav__link">
-    2. 从Json文本生成POJO类
+    2. 利用工具从Json反向生成POJO类
   </a>
   
 </li>
@@ -2886,12 +2886,15 @@
 <p>更新日期：2021-01-11</p>
 <hr />
 <h3 id="1">1. 概述</h3>
-<p>在程序中使用Json文件来存储数据是一种越来越流行的方法。使用Google提供的<code>Gson</code>库可能方便的解决我们的问题。</p>
-<h3 id="2-jsonpojo">2. 从Json文本生成POJO类</h3>
-<p>觉得手写POJO类很烦是吗？其实我们可以先写Json，然后用Json文本来自动生成POJO类。有很多现成的工具可以供我们使用。</p>
+<p>在程序中使用Json文件来存储数据是一种越来越流行的方法。使用Google提供的<code>Gson</code>库可以帮助我们解决处理Json时遇到的各种问题。</p>
+<h3 id="2-jsonpojo">2. 利用工具从Json反向生成POJO类</h3>
+<p>觉得手写POJO类很烦是吗？是的，我也这么认为，很多人都这么认为的，于是便有了这些解放我们双手的工具。而且这样的工具有很多。</p>
 <p>比如，这个网页版的POJO生成工具：</p>
-<p><a href="http://www.jsonschema2pojo.org/">jsonschema2pojo</a>
-<img alt="POJO生成工具" src="../S012.files/tool1.png" /></p>
+<p>网址：<a href="http://www.jsonschema2pojo.org/">jsonschema2pojo</a></p>
+<div class="admonition example">
+<p class="admonition-title">jsonschema2pojo</p>
+<p><img alt="POJO生成工具" src="../S012.files/tool1.png" /></p>
+</div>
 <p>也可以在我们的IDE里面安装插件。比如在<code>Intellij IDEA</code>中可以安装下面这个插件:</p>
 <p><img alt="POJO生成工具" src="../S012.files/tool2.png" /></p>
 <p>下面以IDEA的插件为例，来演示一下这个过程。</p>
@@ -2932,13 +2935,12 @@
 </code></pre></div></td></tr></table></div>
 </div>
 <p>然后我们随便创建一个类，就叫<code>MyDataClass</code>好了。在类内部空白处点右键选择<code>生成</code>，就可以看见如下选项。</p>
-<p><img alt="POJO生成工具" src="../S012.files/tool3.png" /></p>
+<p><img src="../S012.files/tool3.png" style="max-width:20em" /></p>
 <p>然后我们把准备的Json文件的内容贴进入，还可以在设置里面更改很多选项。这里可以指定生成<code>Gson</code>样式的POJO类。</p>
 <p><img alt="POJO生成工具" src="../S012.files/tool4.png" /></p>
 <p>一顿OK之后，POJO类就生成出来了。长下面这个样子。(由于选择了使用lombok，所以看上去很简洁。)</p>
 <div class="admonition example">
 <p class="admonition-title">POJO生成结果</p>
-</div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3002,14 +3004,14 @@
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyDataClass</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
 <span class="w">    </span><span class="cm">/**</span>
-<span class="cm">     * numbers : [1,2,3]</span>
-<span class="cm">     * isAFile : true</span>
-<span class="cm">     * color : gold</span>
-<span class="cm">     * heList : null</span>
-<span class="cm">     * number : 123</span>
-<span class="cm">     * action : {&quot;a&quot;:123,&quot;c&quot;:&quot;d&quot;}</span>
-<span class="cm">     * message : Hello World</span>
-<span class="cm">     */</span><span class="w"></span>
+<span class="cm">    * numbers : [1,2,3]</span>
+<span class="cm">    * isAFile : true</span>
+<span class="cm">    * color : gold</span>
+<span class="cm">    * heList : null</span>
+<span class="cm">    * number : 123</span>
+<span class="cm">    * action : {&quot;a&quot;:123,&quot;c&quot;:&quot;d&quot;}</span>
+<span class="cm">    * message : Hello World</span>
+<span class="cm">    */</span><span class="w"></span>
 
 <span class="w">    </span><span class="nd">@SerializedName</span><span class="p">(</span><span class="s">&quot;isAFile&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">isAFile</span><span class="p">;</span><span class="w"></span>
@@ -3030,9 +3032,9 @@
 <span class="w">    </span><span class="nd">@Data</span><span class="w"></span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ActionDTO</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="cm">/**</span>
-<span class="cm">         * a : 123</span>
-<span class="cm">         * c : d</span>
-<span class="cm">         */</span><span class="w"></span>
+<span class="cm">        * a : 123</span>
+<span class="cm">        * c : d</span>
+<span class="cm">        */</span><span class="w"></span>
 
 <span class="w">        </span><span class="nd">@SerializedName</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="kd">private</span><span class="w"> </span><span class="n">Integer</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"></span>
@@ -3041,11 +3043,11 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
 <h3 id="3-gsonjsondataclass">3. 使用Gson进行Json与DataClass之间的相互转换</h3>
 <p>Gson设计的非常简单易用。只需很少量的代码就可以完成我们的任务。</p>
 <div class="admonition example">
 <p class="admonition-title">使用Gson</p>
-</div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3068,10 +3070,10 @@
 <span class="c1">// 初始化newDataClass</span><span class="w"></span>
 <span class="n">String</span><span class="w"> </span><span class="n">jsonRst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gson</span><span class="p">.</span><span class="na">toJson</span><span class="p">(</span><span class="n">newDataClass</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
 <h3 id="4">4. 完整的演示代码</h3>
 <div class="admonition example">
 <p class="admonition-title">演示代码</p>
-</div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3202,6 +3204,7 @@
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
+</div>
 
 
 

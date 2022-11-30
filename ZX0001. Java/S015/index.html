@@ -36,8 +36,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto SC";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Serif SC";--md-code-font:"Roboto Mono"}</style>
       
     
     
@@ -416,7 +416,7 @@
   
     <li class="md-nav__item">
       <a href="../S002/" class="md-nav__link">
-        B. 处理Excel文档
+        B. 读取Excel文档
       </a>
     </li>
   
@@ -2853,201 +2853,169 @@
   <h1>A. Java新特性一览</h1>
 
 <h2 id="a-java">A. Java新特性一览</h2>
-<p>更新日期：2022-10-29</p>
+<p>更新日期：2022-11-30</p>
 <hr />
 <h3 id="1">1. 概述</h3>
-<p>自从Java9之后，Java每半年更新一个版本，版本变得非常的多。去了解每一个版本的变更点是不划算的，所以只选择长期版本来进行了解是个不错的主意。
-网上有很多人来总结这些东西，所以我们可以方便的获得这些信息，而不用重复劳动了。</p>
+<p>自Java9之后，Java每半年更新一个版本，版本数升的很快。要去了解每一个版本的变更点是很麻烦的，所以只对长期版本（LTS版本）来进行了解是个不错的选择。</p>
 <h3 id="2">2. 特性一览</h3>
 <table>
 <thead>
 <tr>
-<th align="left">No.</th>
-<th align="left">版本变更</th>
+<th align="left">版本</th>
 <th align="left">新特性</th>
 <th align="left">备考</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1</td>
 <td align="left">Java8</td>
 <td align="left">Lambda表达式</td>
-<td align="left"></td>
+<td align="left">Java开始支持函数式编程</td>
 </tr>
 <tr>
-<td align="left">2</td>
 <td align="left"></td>
 <td align="left">函数式接口<br>只有一个函数的接口</td>
-<td align="left">比如Runnable接口就是一个很好的例子</td>
+<td align="left">例：Runnable接口</td>
 </tr>
 <tr>
-<td align="left">3</td>
 <td align="left"></td>
-<td align="left">方法引用<br>例：Car::new</td>
-<td align="left">用法一直是一个谜，需要学习一下，感觉会很有用</td>
+<td align="left">方法引用</td>
+<td align="left">用法是一个谜，不是很直观，感觉与Java代码格格不入<br>例：Car::new</td>
 </tr>
 <tr>
-<td align="left">4</td>
 <td align="left"></td>
 <td align="left">接口的默认方法</td>
-<td align="left">重用代码时会有用吧</td>
+<td align="left">为了在给接口添加新函数时能够向后兼容，与接口的设计原则相矛盾（不是很看好此功能）</td>
 </tr>
 <tr>
-<td align="left">5</td>
 <td align="left"></td>
 <td align="left">流Stream</td>
-<td align="left">亮点功能，对编写代码的体验的提升非常大</td>
+<td align="left">亮点功能，能够很大程度上简化代码，编写代码时体验提升巨大</td>
 </tr>
 <tr>
-<td align="left">6</td>
 <td align="left"></td>
 <td align="left">Optional类</td>
 <td align="left">可以简化null判断的书写体验</td>
 </tr>
 <tr>
-<td align="left">7</td>
 <td align="left"></td>
 <td align="left">新的日期时间 API</td>
-<td align="left">更好的设计，以前的日期时间类非常的混乱。<br>新API的功能更加完备，更加清晰。</td>
+<td align="left">更好的设计，以前的日期时间类非常的混乱</td>
 </tr>
 <tr>
-<td align="left">8</td>
 <td align="left"></td>
 <td align="left">内置Base64支持</td>
-<td align="left">不再需要第三方库就可以完成Base64相关处理</td>
+<td align="left">不再需要第三方库，从此Java内置对Base64相关处理的支持</td>
 </tr>
 <tr>
-<td align="left">9</td>
 <td align="left"></td>
 <td align="left">新的脚本引擎</td>
-<td align="left">用来嵌入脚本语言很有用，支持的脚本语言还蛮多的</td>
+<td align="left">用来嵌入脚本语言，支持的脚本语言很多</td>
 </tr>
 <tr>
-<td align="left">10</td>
 <td align="left">Java11</td>
 <td align="left">变量类型推断</td>
-<td align="left">也就是var，在很多语言中都是老朋友了<br>使用var使我们少写样板代码，代码干净了很多，可读性更高了</td>
+<td align="left">也就是var，在很多语言中都是老朋友了<br>使用var使我们少写样板代码，代码干净了很多，可读性也更高</td>
 </tr>
 <tr>
-<td align="left">11</td>
 <td align="left"></td>
 <td align="left">HttpClient</td>
-<td align="left">支持HTTP/2，看起来就很厉害。可惜对于网络底层通信我了解的不多，难于利用</td>
+<td align="left">支持HTTP/2，不明觉厉</td>
 </tr>
 <tr>
-<td align="left">12</td>
 <td align="left"></td>
 <td align="left">一系列工具类增强</td>
-<td align="left">Collection增加了of与copyof<br>Stream，Optional，String加强了<br>InputStream直通OutputStream</td>
+<td align="left">Collection增加了of与copyof这两个实用的方法<br>加强了Stream，Optional，String这几个类<br>InputStream可以直通OutputStream</td>
 </tr>
 <tr>
-<td align="left">13</td>
 <td align="left"></td>
 <td align="left">模块化开发</td>
-<td align="left">非常重量级的功能，但是如何使用我还需要进行学习</td>
+<td align="left">Java9中引入的重量级功能，但是易与项目管理中的概念相混淆</td>
 </tr>
 <tr>
-<td align="left">14</td>
 <td align="left"></td>
 <td align="left">交互式编程jshell</td>
-<td align="left">可以像脚本语言那样直接在控制台中执行代码了</td>
+<td align="left">可以直接在控制台中执行代码了</td>
 </tr>
 <tr>
-<td align="left">15</td>
 <td align="left"></td>
 <td align="left">直接执行单个java文件</td>
-<td align="left">不用编译，直接执行，是不是很像脚本语言</td>
+<td align="left">不用编译，直接执行，使Java可以作为脚本语言来使用</td>
 </tr>
 <tr>
-<td align="left">16</td>
 <td align="left"></td>
 <td align="left">完全支持Linux容器(包括docker)</td>
-<td align="left">又是一个不太懂的话题</td>
+<td align="left">一个不太懂的话题</td>
 </tr>
 <tr>
-<td align="left">17</td>
 <td align="left"></td>
 <td align="left">Unicode10支持</td>
 <td align="left">增加了字符数量，以及支持emoji表情符号</td>
 </tr>
 <tr>
-<td align="left">18</td>
 <td align="left"></td>
 <td align="left">新加密算法</td>
 <td align="left">到底什么时候用呢</td>
 </tr>
 <tr>
-<td align="left">19</td>
 <td align="left"></td>
 <td align="left">低消耗的堆栈记录分析工具</td>
 <td align="left">解决内存和性能问题时会有用</td>
 </tr>
 <tr>
-<td align="left">20</td>
 <td align="left"></td>
 <td align="left">黑匣子</td>
-<td align="left">记录一段时间内的程序运行状况，分析性能瓶颈必备，以前可是付费功能啊</td>
+<td align="left">记录一段时间内的程序运行状况，分析性能瓶颈必备，在以前的版本中是付费功能</td>
 </tr>
 <tr>
-<td align="left">21</td>
 <td align="left"></td>
 <td align="left">新的垃圾回收器</td>
-<td align="left">这块儿一直都是盲区啊，没有学习过JVM的话很难理解</td>
+<td align="left">多多益善，新的垃圾回收器很适合游戏程序</td>
 </tr>
 <tr>
-<td align="left">22</td>
 <td align="left">Java17</td>
 <td align="left">多行字符串定义</td>
-<td align="left">多行字符串写起来更简洁，非常实用，早该有的功能了</td>
+<td align="left">多行字符串写起来更简洁，非常实用的功能，早就应该加入的功能</td>
 </tr>
 <tr>
-<td align="left">23</td>
 <td align="left"></td>
 <td align="left">Switch加强</td>
-<td align="left">增强这种基础功能的威力是很大的<br>Switch每个条件加处理可以写成一行，从此更加简洁了</td>
+<td align="left">增强这种基础功能的威力是很大的<br>Switch每个条件加处理可以写成一行，从此更加简洁</td>
 </tr>
 <tr>
-<td align="left">24</td>
 <td align="left"></td>
 <td align="left">Records（记录）</td>
 <td align="left">如何使用还需要探索</td>
 </tr>
 <tr>
-<td align="left">25</td>
 <td align="left"></td>
 <td align="left">密封类</td>
-<td align="left">暂时不知道该如何使用啊</td>
+<td align="left">如何使用还需要探索</td>
 </tr>
 <tr>
-<td align="left">26</td>
 <td align="left"></td>
 <td align="left">instanceof增强</td>
 <td align="left">几乎没用过</td>
 </tr>
 <tr>
-<td align="left">27</td>
 <td align="left"></td>
 <td align="left">NullPointerException增强</td>
 <td align="left">神级加强，可以直接打印出空对象是哪一个，不用去猜去调试了</td>
 </tr>
 <tr>
-<td align="left">28</td>
 <td align="left"></td>
 <td align="left">精简数字格式支持</td>
 <td align="left">可以将数字转为1K，100K这样的格式</td>
 </tr>
 <tr>
-<td align="left">29</td>
 <td align="left"></td>
 <td align="left">日期时间API增强</td>
-<td align="left">添加了日周期支持，不懂</td>
+<td align="left">添加了日周期支持，触及到了知识盲区</td>
 </tr>
 <tr>
-<td align="left">30</td>
 <td align="left"></td>
 <td align="left">Stream增强</td>
-<td align="left">Stream能直接toList()了，为什么过了这么长时间才加呢</td>
+<td align="left">Stream能直接toList()了，期待已久的功能</td>
 </tr>
 </tbody>
 </table>
@@ -3087,13 +3055,13 @@
       
       
         
-        <a href="../S002/" class="md-footer__link md-footer__link--next" aria-label="下一页: B. 处理Excel文档" rel="next">
+        <a href="../S002/" class="md-footer__link md-footer__link--next" aria-label="下一页: B. 读取Excel文档" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              B. 处理Excel文档
+              B. 读取Excel文档
             </div>
           </div>
           <div class="md-footer__button md-icon">
