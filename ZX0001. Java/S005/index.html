@@ -476,7 +476,7 @@
   
     <li class="md-nav__item">
       <a href="../S004/" class="md-nav__link">
-        D. Java Servlet与API
+        D. Servlet与WebAPI
       </a>
     </li>
   
@@ -2917,7 +2917,7 @@
 <p>ArrayList是一个非常常用的类。我们创建List的时候绝大多数情况下都会创建这个类，与之相对的是LinkedList类，也就是链表。
 学习它的源代码能够帮我们了解这个类的底层实现，这样在使用的时候就会知其所以然。</p>
 <h3 id="2-list">2. List的底层实现</h3>
-<p>其实就如同我们在数据结构课程中学习的那样，ArrayList在底层使用数组来实现，具体来说就是Object[]。
+<p>如同我们在数据结构课程中学习的那样，ArrayList在底层使用数组来实现，具体来说就是Object[]。
 这个Object[]能放任何对象进去，包括null。</p>
 <p>它的定义如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2934,8 +2934,7 @@
 <span class="cm">    */</span><span class="w"></span>
 <span class="kd">transient</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">elementData</span><span class="p">;</span><span class="w"> </span><span class="c1">// non-private to simplify nested class access</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
-<p>ArrayList的所有操作都围绕着这个数组来进行。现在我才知道，原来课本不是写的玩的。就算是过去了几十年，这些基本的东西都没有变。</p>
-<p>而数组的一些特性将决定ArrayList的特性。下面的章节中将会分别介绍。</p>
+<p>ArrayList的所有操作都围绕着这个数组来进行，而数组的一些特性将决定ArrayList的特性。</p>
 <h3 id="3-arraylist">3. ArrayList的扩容</h3>
 <p>由于在Java中数组的长度是固定的，一旦创建就不能改变大小。所以ArrayList也有一个容量的说法。
 当我们往List里面插入新的元素的时候，数组的空间可能会不够用。这个时候就需要扩容。</p>
@@ -2966,7 +2965,7 @@
 <div class="admonition example">
 <p class="admonition-title">主动扩容</p>
 <p>在通常的使用过程中，我们很少主动去对ArrayList进行扩容。此时，如果空间不够，会自动扩容。而自动扩容每次将扩展1个元素大小的容量。</p>
-<p>当我们需要插入大量元素的时候，其实效率是比较低的。因为每插入一个元素，就是扩一次容量，相当于要把数组中的内容要全部复制一遍。</p>
+<p>当我们需要连续插入大量元素的时候，主动扩容的效率是比较低的。因为每插入一个元素，就需要扩一次容量，就要把数组中的内容全部复制一遍。</p>
 <p>如果我们已经知道了自己将插入大量的元素。并且也知道这个数组通常情况下会存储多少个元素。那么我们可以指定初始容量或者是在大量插入数据前主动扩容。</p>
 </div>
 <div class="admonition example">
@@ -2998,10 +2997,10 @@
 通常情况下我们创建不了这么大的数组，内存一般都是不够的。</p>
 </div>
 <h3 id="4">4. 插入与删除数据</h3>
-<p>数组的元素是严格按照先后位置来排列的，位置既是索引。如果在数组的正中间插入或者删除元素，这个元素之后的所有元素都需要进行一次平移。</p>
-<p>我们在数据结构课程中应该已经学过这个知识了。而JDK中也正是这样来实装的。</p>
-<p>由于一次平移的开销是很大的，所以ArrayList并不适合在需要大量随机插入和删除元素的场景下使用。链表型List会是更好的选择。</p>
-<p>下面是JDK中向指定位置插入新元素的函数，可以看到一次add既要扩容又要平移，相当于要复制两边所有元素。效率可想而知。</p>
+<p>数组的元素是严格按照先后位置来排列的，位置即是索引。如果在数组的正中间插入或者删除元素，这个元素之后的所有元素都需要进行一次平移。</p>
+<p>我们在数据结构课程中应该已经学过这个知识了，而JDK中也正是这样来实装的。</p>
+<p>由于一次平移的开销是很大的，所以ArrayList并不适合在需要大量随机插入和删除元素的场景下使用，而链表型List会是更好的选择。</p>
+<p>下面是JDK中向指定位置插入新元素的函数源码，可以看到一次add既要扩容又要平移，相当于要复制两边所有元素，效率可想而知。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3047,8 +3046,8 @@
 <span class="p">}</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 <h3 id="5">5. 随机存取元素</h3>
-<p>数组有一个能快速随机存取数据的特性。ArrayList便同样具有这样的特性。</p>
-<p>在ArrayList中提供了get和set函数可以读取指定或者替换指定位置的元素。这个操作的开销非常小，这个读和写几乎等同于如下操作：</p>
+<p>数组有一个能快速随机存取数据的特性，ArrayList便同样具有这样的特性。</p>
+<p>在ArrayList中提供了get和set函数可以读取或者替换指定位置的元素。这个操作的开销非常小，这个读和写几乎等同于如下操作：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"></span>
 <span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxx&quot;</span><span class="w"></span>

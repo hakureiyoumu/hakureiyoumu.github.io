@@ -535,7 +535,7 @@
   
     <li class="md-nav__item">
       <a href="../S004/" class="md-nav__link">
-        D. Java Servlet与API
+        D. Servlet与WebAPI
       </a>
     </li>
   
@@ -2858,9 +2858,9 @@
 <p>更新日期：2021-01-11</p>
 <hr />
 <h3 id="1">1. 概述</h3>
-<p>lambda表达式是Java8中引入的新特性，用来实现函数式编程。但是它还远远没有流行开来。
-主要是因为，很多人使用的不规范，造成可读性差并难以维护。</p>
-<p>这里先整体的了解一下lambda表达式，看看它都可以做什么。挑选出容易理解的部分，只在需要的地方使用lambda表达式是明智的选择。</p>
+<p>lambda表达式是Java8中引入的新特性，用来实现函数式编程。
+lambda为了简化代码增强可读性而生，但是因为使用的人不多，且使用的不规范，反而造成了代码可读性变差并难以维护。</p>
+<p>使用简单的功能，写出简单的lambda表达式会是明智的选择。</p>
 <h3 id="2-stream">2. Stream</h3>
 <p>Stream类是lambda表示式的核心，是必须要掌握的。</p>
 <p>先看看如果获取一个Stream对象。</p>
@@ -2889,7 +2889,7 @@
 <span class="kd">var</span><span class="w"> </span><span class="n">stream4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Map</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;lilei&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;score&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">88</span><span class="p">).</span><span class="na">entrySet</span><span class="p">().</span><span class="na">stream</span><span class="p">();</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
-<p>再来看看Stream可以进行的操作。(有一部分看起来很难使用的不包含在内)</p>
+<p>再来看看使用Stream可以进行的操作。(有一部分看起来很难使用的不包含在内)</p>
 <table>
 <thead>
 <tr>
@@ -3009,7 +3009,24 @@
 <span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">newMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">).</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">groupingBy</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">10</span><span class="p">));</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
-<p>最后，记住要书写简单的lambda表达式，每个表达式只能有一行。</p>
+<p>最后，记住要书写简单的lambda表达式。再有多个操作时每个操作要单独放一行，这样更容易阅读。</p>
+<div class="admonition example">
+<p class="admonition-title">具有多个操作的lambda表达式</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 集合</span><span class="w"></span>
+<span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">newNum3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Stream</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">filter</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">limit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">map</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">String</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">collect</span><span class="p">(</span><span class="n">Collectors</span><span class="p">.</span><span class="na">toSet</span><span class="p">());</span><span class="w"></span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">newNum3</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
+</div>
 
 
 
