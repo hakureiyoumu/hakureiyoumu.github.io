@@ -2949,7 +2949,7 @@
 <p>但是，很遗憾这个目录我们看看就行。</p>
 <p style="color:red;"><b>因为随意使用字体是侵权的，尤其是在程序中嵌入字体。</b></p>
 
-<p>因此我们可以去寻找一些免费商用的字体，直接Google搜索<code>免费商用中文字体</code>，会发现可以选择的也有很多。要感谢有这么无私奉献的好兄弟。
+<p>因此我们可以去寻找一些免费商用的字体，直接Google搜索<code>免费商用中文字体</code>，会发现可以选择的也有很多。要感谢有这些无私奉献的好兄弟。
 但是在正式使用前，一定要看清楚授权协议，是否真的是可以免费用于字体嵌入式应用。有点字体是免费商用发布，但是并不能用于字体嵌入。</p>
 <p>最经典的两款免费商用字体，是Google和Adobe联合开发的思源字体：</p>
 <ul>
@@ -3000,10 +3000,9 @@
 <p>这样我就准备好了字体文件，可以看到这个包含多国语言的字体文件有25M左右，还是挺大的。</p>
 <h3 id="3">3. 将字体文件复制到项目中</h3>
 <p>字体文件的使用，和普通的资源文件是相同的。比如图片、声音等资源文件。</p>
-<p>以使用Maven构建的Java项目为例，可以放到存放资源文件的默认路径中<code>src/main/resource</code>。</p>
-<p><img alt="复制字体" src="../J002.files/move.png" /></p>
+<p>以使用Maven构建的Java项目为例，可以放到存放资源文件的默认路径中：<code>src/main/resource</code>。</p>
+<p><img src="../J002.files/move.png" style="max-width:20em" /> </p>
 <h3 id="4">4. 加载字体文件</h3>
-<p>分为三步。</p>
 <p>第一步是加载文件。这和加载其他的资源文件是一样的。</p>
 <div class="admonition example">
 <p class="admonition-title">加载文件</p>
@@ -3023,7 +3022,7 @@
 </code></pre></div></td></tr></table></div>
 </div>
 <p>这里要注意的是第一个参数，要根据你提供的字体文件的格式来选择正确的类型。</p>
-<p>有两种类型</p>
+<p>有两种类型：</p>
 <table>
 <thead>
 <tr>
@@ -3059,7 +3058,7 @@
 <p>注册完成后，Java的图形环境系统就认为我们安装了这个字体，可以在程序中使用了。</p>
 <h3 id="5">5. 在程序中使用字体</h3>
 <p>在开始演示如何使用字体之前，我们先来做一点微小的准备工作。</p>
-<p>就是先创建一个<code>JPanel</code>，也就是<code>面板</code>。然后我们将在这个<code>面板</code>上绘制文字。</p>
+<p>就是先创建一个<code>JPanel</code>，也就是<code>面板</code>。我们将在这个<code>面板</code>上绘制文字。</p>
 <div class="admonition example">
 <p class="admonition-title">创建JPanel</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

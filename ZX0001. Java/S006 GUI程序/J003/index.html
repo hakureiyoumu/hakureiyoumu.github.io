@@ -3119,7 +3119,7 @@
 <hr />
 <h3 id="1">1.   概述</h3>
 <p>当我们需要处理图片，或者编写游戏时，就可以使用Java Swing中的图形包<code>Graphics2D</code>了。这套图形系统的内容还是比较丰富的。</p>
-<p>但要注意的是，它绘制的速度不是很快，用它来写游戏，会很卡。
+<p>但要注意的是，它绘制的速度不是很快，用它来写稍大一点的游戏，就会很卡。
 在这篇文章中我将总结Graphics2D的用法，以便以后随时查看。
 但跟图形绘制有关的主题是非常多的。我将只挑选出感兴趣的来学习：</p>
 <ul>
@@ -3142,9 +3142,9 @@
 </li>
 </ul>
 <h3 id="2-graphics2d">2. 获取Graphics2D对象</h3>
-<p>Swing程序中看的见的东西都是用Graphics2D画出来。比如窗口里的各种控件，如：按钮、单选按钮、滚动条等。
+<p>Swing程序中看的见的东西都是用Graphics2D画出来的。比如窗口里的各种控件：按钮、单选按钮、滚动条等。
 这些组件都继承自Swing里面的<code>JComponent</code>类。这个类提供了一个绘制组件的方法：<code>paintComponent</code>，如果想自己绘制控件，就可以覆盖这个方法。注意不要使用<code>paint</code>方法，<code>paintComponent</code>自动提供了双缓冲机制，用起来更舒服。</p>
-<p>这个方法将给我们传递了一个<code>Graphics2D</code>参数进来。</p>
+<p>这个方法将给我们传递一个<code>Graphics2D</code>参数进来。</p>
 <p>下面我将创建一个文本区域，来演示一下如何获取Graphics2D，并使用它来在这个文本区域上进行绘制。</p>
 <div class="admonition example">
 <p class="admonition-title">获取Graphics2D</p>
@@ -3224,7 +3224,7 @@
 <p>其他所有Swing控件，都是采用同样的方法。我们在做图形绘制程序时，最常用的是在<code>JPanel</code>控件上进行绘制。
 后面的例子中，我默认都是在<code>JPanel</code>中进行绘制。</p>
 <p>除了在看的见的画板上绘图外，还有另外一种方式。叫做在离屏表面中绘图。
-所谓离屏表面，就是指不直接显示在画面上，只存在与内存中的画板。这个技术常用于双缓冲绘图。</p>
+所谓离屏表面，就是指不直接显示在画面上，只存在于内存中的画板。这个技术常用于双缓冲绘图。</p>
 <p>在Java中使用<code>BufferedImage</code>来表示离屏表面，可以从这个对象中获取Graphics2D对象。
 还是看代码：</p>
 <div class="admonition example">
@@ -3243,7 +3243,7 @@
 既然是属性，就可以通过<code>get</code>和<code>set</code>方法来取得当前属性和设定。后面就不再赘述，介绍的重点是属性的值的含义，以及设定不同的值会有什么效果。</p>
 <h4 id="31">3.1 颜色</h4>
 <p>颜色的重要性不用多说，绘制几何图形和文字的时候会生效。Swing中使用<code>Paint</code>这个类来表示颜色。</p>
-<p>在程序中，创建颜色可以直接使用预定义的常用颜色常量，也可以通过RGB通道的值。</p>
+<p>在程序中，创建颜色可以直接使用预定义的常用颜色常量，也可以通过RGBA来指定。</p>
 <p>直接看一看代码：</p>
 <div class="admonition example">
 <p class="admonition-title">创建颜色</p>
@@ -3256,7 +3256,7 @@
 <span class="n">g2</span><span class="p">.</span><span class="na">setPaint</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">));</span><span class="w"></span>
 </code></pre></div></td></tr></table></div>
 </div>
-<p>这个属性设定后的效果不用多说，</p>
+<p>这个属性设定后的效果不用多说。</p>
 <h4 id="32">3.2 画笔属性</h4>
 <p>画笔属性会直接影响几何形状绘制时的效果。Swing中使用<code>Stroke</code>这个接口来表示，而<code>BasicStroke</code>这个类实现了此接口。它主要包含如下几个子属性：</p>
 <table>
@@ -3396,13 +3396,13 @@
 <li>虚线第一段开始位置</li>
 </ul>
 <p>虚线模式数组是一个包含偶数个数值的数组。比如：[20, 8, 10, 8]。它表示的含义是：</p>
-<ul>
-<li>1.绘制一个20长度的线段</li>
-<li>2.空出8长度的距离</li>
-<li>3.绘制一个10长度的线段</li>
-<li>4.空出8长度的距离</li>
-<li>5.从1.开始重复绘制</li>
-</ul>
+<ol>
+<li>绘制一个20长度的线段</li>
+<li>空出8长度的距离</li>
+<li>绘制一个10长度的线段</li>
+<li>空出8长度的距离</li>
+<li>从1.开始重复绘制</li>
+</ol>
 <p>虚线第一段开始位置顾名思义，就是说第一个线段从哪里开始绘制。比如还是上面的例子，我指定开始位置为10时。
 由于第一段线段长为20，所以第一段从一半的位置开始绘制。</p>
 <p>具体的用法还是直接看例子演示。</p>
@@ -3460,19 +3460,21 @@
 <p><img alt="宽度效果" src="../J003.files/dash2.png" /></p>
 </div>
 <h4 id="33">3.3 混合模式</h4>
-<p>混合模式，也叫颜色混合模式。所谓混合，是指在进行绘制时，将要绘制的颜色与画板上已有颜色的混合。
+<p>混合模式，也叫颜色混合模式。所谓混合，是指在进行绘制时，将要绘制的颜色与画板上已有的颜色进行混合。
 其实和现实世界中的画画有点类似。</p>
 <p>比如：</p>
 <ul>
-<li>我用覆盖性强的颜料涂在画布上，则画布上本来的颜料都会被盖住，只呈现我新涂的颜色。</li>
+<li>我用覆盖性强的丙烯颜料涂在画布上，则画布上本来的颜料都会被盖住，只呈现我新涂的颜色。</li>
 <li>我用透明的水彩颜料涂在画布上，则画布上本身的颜料不会被完全覆盖，会呈现出一种半透明效果。</li>
 </ul>
-<p>在使用程序绘图时，有类似的概念，而且有很多很多种模式。具体可以参考Java官方文档：</p>
+<p>在使用程序绘图时，有类似的概念，而且有很多很多种混合模式。具体可以参考Java官方文档：</p>
 <p><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.desktop/java/awt/AlphaComposite.html">混合模式官方文档</a></p>
-<p>这部分的算法相当复杂，我们不需要关心具体的细节。我们需要掌握的混合模式只有一种，也就是<code>SRC_OVER</code>模式。这个模式下会按照<code>Alpha</code>通道的值对源和目标的颜色做一个混合。</p>
-<p>如果<code>Alpha</code>值为1，则源颜色覆盖目标，也即是我们提到的覆盖性强的颜料的效果。
-如果<code>Alpha</code>值小于1，则源混合目标。也即是我们提到的透明水彩颜料的效果。
-<code>Alpha</code>值越小，颜料也就越透明。</p>
+<p>这部分的算法相当复杂，我们不需要关心具体的细节。我们最经常使用的混合模式只有一种，就是<code>SRC_OVER</code>模式。这个模式下会按照<code>Alpha</code>通道的值对源和目标的颜色做一个混合。</p>
+<ul>
+<li><code>Alpha</code>值为1，则源颜色覆盖目标颜色，也即是我们提到的覆盖性强的丙烯颜料的效果。</li>
+<li><code>Alpha</code>值小于1，则源颜色混合目标颜色，也即是我们提到的透明水彩颜料的效果。</li>
+<li><code>Alpha</code>值越小，颜料也就越透明。</li>
+</ul>
 <p>直接看例子：</p>
 <div class="admonition example">
 <p class="admonition-title">混合模式</p>
@@ -3556,7 +3558,7 @@
 <p>使用<code>clip</code>系列函数时，默认是拿现有的裁剪区域与新的裁剪区域相交，得到一个更小的裁剪区域。
 如果要想直接设定当前裁剪区域，请使用<code>setClip</code>系列函数，这将无视当前裁剪区域，直接将新的裁剪区域设定为新的当前裁剪区域。</p>
 <h4 id="33_2">3.3 坐标变换</h4>
-<p>坐标变换是一个相对来说比较复杂的东西。我们仍然是只学习最常用的那一部分。</p>
+<p>坐标变换是一个相对来说比较复杂的东西，我们仍然是只学习最常用的那一部分。</p>
 <p>基础的变换主要分为3大类，想必我们在数学课上都已经学过了。也就是：</p>
 <ul>
 <li>平移变换</li>
@@ -3565,8 +3567,7 @@
 </ul>
 <p>同时，变换之间也可以相互组合，形成组合变换。我们在学习矩阵运算的时候应该也大概学习过。
 而在程序中，这些变换确实也是通过矩阵运算来实现的。</p>
-<p>Swing中使用<code>AffineTransform</code>来表示变换矩阵。这也是Graphics2D的其中一个属性。所有的三种变换都是通过操作这个属性来实现的。
-下面我们一点一点来学习。</p>
+<p>Swing中使用<code>AffineTransform</code>来表示变换矩阵。这也是Graphics2D的其中一个属性。所有的三种变换都是通过操作这个属性来实现的。</p>
 <h5 id="331">3.3.1 平移变换</h5>
 <p>最简单的一种变换，只需指定一个x和y的偏移量就可以了。直接看例子。</p>
 <div class="admonition example">
@@ -3690,7 +3691,7 @@
 <p>效果：</p>
 <p><img alt="缩放变换效果" src="../J003.files/turn.png" /></p>
 </div>
-<p>在旋转的时候，有一种特殊的旋转，就是整90度旋转。这种旋转明显不需要进行复杂的矩阵运算，为此专门提供了一系列函数用来进行这种操作。另外即使不明确使用这个系列的函数，仍然使用上面的函数，实际在旋转的过程中，会判断角度是否非常接近整90度，如果是的话，会自动调用这个系列的函数。</p>
+<p>在旋转的时候，有一种特殊的旋转，就是整90度旋转。这种旋转明显不需要进行复杂的矩阵运算，为此专门提供了一系列函数用来进行这种操作。另外即使不明确使用这个系列的函数，仍然使用普通的函数，实际在旋转的过程中，会判断角度是否非常接近整90度，如果是的话，会自动调用这个系列的函数。</p>
 <p>来看一下例子吧：</p>
 <div class="admonition example">
 <p class="admonition-title">整90度旋转</p>
@@ -3757,8 +3758,7 @@
 <p><img alt="缩放变换效果" src="../J003.files/90.png" /></p>
 </div>
 <h5 id="334">3.3.4 组合变换</h5>
-<p>这次我们看看如果先后进行多种变换。进行多种变换是通过矩阵的乘法来进行的，我们或许早已经忘记了矩阵乘法是怎么做的。但是也没有关系，当需要的时候可以再次复习，现在我们只要记住这个结论本身就可以了。</p>
-<p>首先假定我们要完成这样一个绘制任务。</p>
+<p>这次我们看看如何进行组合变换，首先假定我们要完成这样一个绘制任务。</p>
 <div class="admonition example">
 <p class="admonition-title">绘制任务</p>
 <p><img alt="绘制任务" src="../J003.files/task.png" /></p>
@@ -3863,50 +3863,42 @@
 <table>
 <thead>
 <tr>
-<th align="left">No.</th>
 <th align="left">选项ID</th>
 <th align="left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">1</td>
 <td align="left">KEY_ALPHA_INTERPOLATION</td>
 <td align="left">Alpha混合的插值算法</td>
 </tr>
 <tr>
-<td align="left">2</td>
 <td align="left">KEY_ANTIALIASING</td>
 <td align="left">抗锯齿</td>
 </tr>
 <tr>
-<td align="left">3</td>
 <td align="left">KEY_COLOR_RENDERING</td>
 <td align="left">色彩渲染</td>
 </tr>
 <tr>
-<td align="left">4</td>
 <td align="left">KEY_DITHERING</td>
 <td align="left">色彩精度</td>
 </tr>
 <tr>
-<td align="left">5</td>
 <td align="left">KEY_INTERPOLATION</td>
 <td align="left">插值算法</td>
 </tr>
 <tr>
-<td align="left">6</td>
 <td align="left">KEY_RENDERING</td>
 <td align="left">渲染质量</td>
 </tr>
 <tr>
-<td align="left">7</td>
 <td align="left">KEY_TEXT_ANTIALIASING</td>
 <td align="left">字体抗锯齿</td>
 </tr>
 </tbody>
 </table>
-<p>选项的值设定很简单，多是一下<code>ON/OFF</code>或者从<code>质量/速度</code>里面二选一的。
+<p>选项的值设定很简单，都是从<code>ON/OFF</code>或者从<code>质量/速度</code>里面二选一的。
 这些选项的默认值都是在绘制质量与速度中比较平衡的。</p>
 <p>如果是对绘制质量要求很高，则可以把所有的设置开到最高。
 如果是对绘制速度有一定的要求，则可以酌情调整。</p>
@@ -3914,7 +3906,6 @@
 <table>
 <thead>
 <tr>
-<th align="left">No.</th>
 <th align="left">选项ID</th>
 <th align="left">含义</th>
 <th align="left">选择的值</th>
@@ -3922,43 +3913,36 @@
 </thead>
 <tbody>
 <tr>
-<td align="left">1</td>
 <td align="left">KEY_ALPHA_INTERPOLATION</td>
 <td align="left">Alpha混合的插值算法</td>
 <td align="left">默认值</td>
 </tr>
 <tr>
-<td align="left">2</td>
 <td align="left">KEY_ANTIALIASING</td>
 <td align="left">抗锯齿</td>
 <td align="left">VALUE_ANTIALIAS_OFF</td>
 </tr>
 <tr>
-<td align="left">3</td>
 <td align="left">KEY_COLOR_RENDERING</td>
 <td align="left">色彩渲染</td>
 <td align="left">VALUE_COLOR_RENDER_SPEED</td>
 </tr>
 <tr>
-<td align="left">4</td>
 <td align="left">KEY_DITHERING</td>
 <td align="left">色彩精度</td>
 <td align="left">默认值</td>
 </tr>
 <tr>
-<td align="left">5</td>
 <td align="left">KEY_INTERPOLATION</td>
 <td align="left">插值算法</td>
 <td align="left">VALUE_INTERPOLATION_BILINEAR</td>
 </tr>
 <tr>
-<td align="left">6</td>
 <td align="left">KEY_RENDERING</td>
 <td align="left">渲染质量</td>
 <td align="left">VALUE_RENDER_SPEED</td>
 </tr>
 <tr>
-<td align="left">7</td>
 <td align="left">KEY_TEXT_ANTIALIASING</td>
 <td align="left">字体抗锯齿</td>
 <td align="left">VALUE_TEXT_ANTIALIAS_ON</td>
@@ -3990,9 +3974,9 @@
 </table>
 <p>区别不算特别大，但是细看的话高质量确实是平滑无比。</p>
 <h4 id="35">3.5 字体</h4>
-<p>字体这一属性我们在上面早已经使用过了。在Swing中用<code>Font</code>类来表示字体。
+<p>字体这一属性我们早已经使用过了，在Swing中用<code>Font</code>类来表示字体。
 在<code>1.6.2 将字体文件嵌入程序内</code>这一篇文章中我们已经学习了加载字体和字体的一些简单用法。</p>
-<p>这里我们来按一看更多用法。</p>
+<p>这里我们来看一看更多用法。</p>
 <p>首先是设置字体大小。看下面的代码：</p>
 <div class="admonition example">
 <p class="admonition-title">设置字体大小</p>

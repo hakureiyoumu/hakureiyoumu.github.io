@@ -645,7 +645,7 @@
         
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. 设定自定义的窗口外观
+    5. 自定义窗口外观
   </a>
   
 </li>
@@ -2876,7 +2876,7 @@
         
           <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. 设定自定义的窗口外观
+    5. 自定义窗口外观
   </a>
   
 </li>
@@ -2914,7 +2914,7 @@
 <p>更新日期: 2021-01-07</p>
 <hr />
 <h3 id="1">1.   概述</h3>
-<p>Swing包是Java基础包中提供GUI相关功能的包。是为了编写窗口程序而设计的，但是目前被使用的不多。</p>
+<p>Swing包是Java基础包中提供GUI相关功能的包。是为了编写桌面窗口程序而设计的，但是目前被使用的不多。Oracle已经不再对Swing进行更新，Swing将逐渐走向消亡。</p>
 <p>如果要学习使用Java编写桌面窗口程序，现阶段JavaFx是更好的选择，也是Java未来的发展方向。</p>
 <p>编写此篇文档时，写窗口程序主要为了写游戏。并未使用太多窗口、文本标签、按钮之类的东西。所以仍然使用Swing。</p>
 <p>本节包含哪些内容呢？</p>
@@ -2922,7 +2922,7 @@
 <li>创建一个简单的窗口</li>
 <li>窗口的基本设定</li>
 <li>正确执行创建和显示窗口的代码</li>
-<li>设定自定义的窗口外观</li>
+<li>自定义窗口外观</li>
 </ul>
 <h3 id="2">2. 创建一个简单的窗口</h3>
 <p>在Swing中，一个JFrame对象就对应一个窗口。因此要创建一个简单的窗口，只需要简单的几步：</p>
@@ -2996,12 +2996,12 @@
 </code></pre></div></td></tr></table></div>
 </div>
 <p>这涉及到Java中GUI处理线程。通常的解释是不这样用的话，如果在main函数的后续处理中进行耗时的运算代码，可能导致GUI被卡住。</p>
-<h3 id="5">5. 设定自定义的窗口外观</h3>
+<h3 id="5">5. 自定义窗口外观</h3>
 <p>Java默认的窗口外观，被公认为很丑，很不现代化。使用自定义的窗口外观可以稍微的缓解这个问题。</p>
 <p>从网上我们可以找到很多别人已经写好的窗口外观组件，窗口外观英文叫做<code>Look And Feel</code>，搜索这个词可以找到很多。</p>
 <p>比如我找到了这个：
 - FlatLaf - Flat Look and Feel</p>
-<p>使用方法，通常都是在Maven中加入对应的jar包，然后在main函数中创建JFrame以前设定好这个外观。</p>
+<p>使用方法很简单，只需要在Maven中加入对应的jar包，然后在main函数中创建JFrame以前设定好这个外观。</p>
 <div class="admonition example">
 <p class="admonition-title">Maven中加入此组件的jar包</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
