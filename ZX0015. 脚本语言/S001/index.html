@@ -3201,7 +3201,7 @@
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">跨平台和语言</span>      <span class="c1">-- 在linux，windows，Android，IOS上都可以使用，支持所有主流语言。可以说学了不会吃亏，不会上当。</span>
-<span class="err">快</span>                <span class="c1">-- 经常用于制作游戏脚本，是最快的脚本语言。</span>
+<span class="err">快</span>                <span class="c1">-- 号称是最快的脚本语言，经常用于制作游戏脚本。</span>
 <span class="err">嵌入式</span>         <span class="c1">-- 通常不单独使用，而是嵌入到宿主语言中使用。能嵌入所有主流语言，甚至是其他脚本语言，适应性很广。</span>
 <span class="err">语法简洁</span>        <span class="c1">-- 采用类似C语言的语法结构。复杂的特性全用table搞定，简单易学。</span>
 <span class="err">小</span>               <span class="c1">-- 只有200多K，还有比这更小的吗？</span>
@@ -3224,7 +3224,7 @@
 <h3 id="2">2.   基本语法</h3>
 <h4 id="21">2.1 文件结构概览</h4>
 <p>目前来讲，由于只是初步使用，所以我的代码都写在一个文件中。       </p>
-<p>下面我将给出一个短小精悍的例子代码。麻雀虽小五脏俱全，这个例子代码中几乎包含了初步使用lua的所有内容。主要有：        </p>
+<p>下面我将给出一个短小精悍的例子代码。麻雀虽小但五脏俱全，这个例子代码中几乎包含了初步使用lua的所有内容。主要有：       </p>
 <ul>
 <li>代码的文本风格 </li>
 <li>变量定义    </li>
@@ -3436,7 +3436,7 @@
 </code></pre></div></td></tr></table></div>
 </div>
 <h4 id="23-lua">2.3 lua中的特殊语法</h4>
-<p>lua的大部分语法与类C语言相似，很容易技能掌握基本的语法。所以不再赘述，这里我主要说一下lua里区别于其它语言的特殊语法。      </p>
+<p>lua的大部分语法与类C语言相似，很容易就能掌握基本的语法。所以不再赘述，这里我主要说一下lua里区别于其它语言的特殊语法。      </p>
 <h5 id="231">2.3.1  字符串定义</h5>
 <p>lua中有三种定义字符串的方式。其中值得一提的是使用如下方式定义多行字符串，非常方便有没有：  </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3498,7 +3498,7 @@
 <span class="c1">-- 699  </span>
 </code></pre></div></td></tr></table></div>
 <h5 id="233">2.3.3  多值表达式</h5>
-<p>lua支持一种使用,连接的多值表达式。除了表定义里不能用，它可以用在其它很多表达式可以出现的地方。例如下面几种场景：  </p>
+<p>lua支持一种使用<code>,</code>来进行连接的多值表达式。除了表定义里不能用，它可以用在其它很多表达式可以出现的地方。例如下面几种场景： </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3534,9 +3534,9 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 交换x和y的值  </span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> 
 </code></pre></div></td></tr></table></div>
-<p>由于lua先计算=后的值，再赋给左边的变量。所以这个奇特的用法就这样成立了。  </p>
+<p>由于lua先计算<code>=</code>后面的值，再赋给左边的变量。所以这个奇特的用法就这样成立了。   </p>
 <h5 id="234">2.3.4  运算符与字符串拼接</h5>
-<p>lua中字符串拼接使用专用操作符..，而+-*/%^都会十分耿直的进行数值的加法计算。所以有了下面的奇特用法： </p>
+<p>lua中字符串拼接使用专用操作符<code>..</code>，而<code>+-*/%^</code>都会十分耿直的进行数值的加减乘除等运算。所以有了下面的奇特用法：  </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3549,9 +3549,9 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;9&quot;</span> <span class="o">*</span> <span class="s2">&quot;9&quot;</span><span class="p">)</span>    
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span> <span class="o">^</span> <span class="mi">5</span><span class="p">)</span>  
 </code></pre></div></td></tr></table></div>
-<p>上面的所有语句都成立，并且不像javaScript语句中那样混乱。这里的运算符一定是执行数值运算， 而与字符串可以说是毫无瓜葛，不会出现两边混淆的错误。    </p>
+<p>上面的所有语句都成立，并且不像javaScript语句中那样混乱。这里的运算符一定是执行数值运算， 而与字符串可以说是毫无瓜葛，不会出现两边混淆，搞不清结果的问题。  </p>
 <h4 id="24">2.4 编写多个模块</h4>
-<p>有时候我们写的程序比较大，会自然的分成多个模块，可以把每个模块写到一个文件中。其它文件可以包含通过这个模块文件来使用这个文件中定义的数据和函数。        </p>
+<p>有时候我们写的程序比较大，会自然的想到去分成多个模块。<br/>此时可以把每个模块写到一个文件中，其它文件可以通过包含这个模块文件来使用这个文件中定义的数据和函数。      </p>
 <p>类似于C/C++的include和Java的import，lua中使用require关键字来包含一个模块文件：     </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">require</span> <span class="s2">&quot;模块名&quot;</span>       
 </code></pre></div></td></tr></table></div>
