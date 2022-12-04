@@ -1,0 +1,2 @@
+cd ../hakureiyoumu.github.io
+mkdocs gh-deploy --config-file ..\my-blog\mkdocs.yml

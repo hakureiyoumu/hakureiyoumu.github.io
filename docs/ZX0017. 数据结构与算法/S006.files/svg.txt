@@ -1,0 +1,163 @@
+红黑数的操作
+
+digraph {
+    node [shape=box]
+    edge [arrowhead=vee]
+
+    1 [label="按排序二叉树的规则插入元素", width=3]
+    2 [label="调整二叉树使其满足红黑树的性质"]
+    3 [label="按排序二叉树的规则删除元素", width=3]
+    4 [label="调整二叉树使其满足红黑树的性质"]
+
+    1 -> 2
+    3 -> 4
+}
+
+红黑数的操作2
+
+digraph G { 
+
+    node [shape=circle, width=0.5, fixedsize=true]
+    nodesep=0.3
+    edge[arrowhead=vee]
+
+    // 如果是红黑树，则设置所有节点为红色
+    node [style=filled, fillcolor="#AA0000", fontcolor=white]
+
+    // 定义图的节点，"n"开头的为占位节点
+    // lv1
+    54
+    // lv2
+    33 n54 556
+    // lv3
+    3 n33 45
+    67 n556 2423
+    // lv4
+    1 n3 4
+    55 n67 99
+    2345 n2423 6666
+    // lv5
+    98 n99 100
+
+    // 设置父子关系
+    // lv1 -> lv2
+    54 -> 33, 556
+    // lv2 -> lv3
+    33 -> 3, 45
+    556 -> 67, 2423
+    // lv3 -> lv4
+    3 -> 1, 4
+    67 -> 55, 99
+    2423 -> 2345, 6666
+    // lv4 -> lv5
+    99 -> 98, 100
+
+    // 连接父节点与占位节点，并将连接线设置为隐藏
+    54 -> n54 [style=invis]
+    33 -> n33 [style=invis]
+    556 -> n556 [style=invis]
+    3 -> n3 [style=invis]
+    67 -> n67 [style=invis]
+    2423 -> n2423 [style=invis]
+    99 -> n99 [style=invis]
+
+    // 占位节点设置为隐藏
+    n54, n33, n556, n3, n67, n2423, n99 [width=0, height=0, style=invis]
+
+    // 将父节点与占位节点设置为同一个组，使其在竖直方向上对齐
+    54, n54 [group=n54]
+    33, n33 [group=n33]
+    556, n556 [group=n556]
+    3, n3 [group=n3]
+    67, n67 [group=n67]
+    2423, n2423 [group=n2423]
+    99, n99 [group=n99]
+
+    // 如果是红黑树，则设置黑色节点的颜色
+    54, 33, 556, 3, 45, 2423, 55, 99 [style=filled, fillcolor=black, fontcolor=white]
+
+    a [label="看这个节点", shape=none, style=none, fontcolor=blue]
+    a -> 67 [color=blue]
+} 
+
+
+红黑数的操作3
+digraph G { 
+
+    node [shape=circle, width=0.5, fixedsize=true]
+    nodesep=0.3
+    edge[arrowhead=vee]
+
+    // 如果是红黑树，则设置所有节点为红色
+    node [style=filled, fillcolor="#AA0000", fontcolor=white]
+
+    // 定义图的节点，"n"开头的为占位节点
+    // lv1
+    50
+    // lv2
+    33 n50 556
+    // lv3
+    3 n33 45
+    67 n556 2423
+    // lv4
+    55 n67 99
+    2345 n2423 6666
+    // lv5
+    51 n55 56
+    98 n99 100
+    2344 n2345 2346
+    6000 n6666 7000
+    n56 57
+    5000 n6000 6500
+
+    // 设置父子关系
+    // lv1 -> lv2
+    50 -> 33, 556
+    // lv2 -> lv3
+    33 -> 3, 45
+    556 -> 67, 2423
+    // lv3 -> lv4
+    67 -> 55, 99
+    2423 -> 2345, 6666
+    // lv4 -> lv5
+    55 -> 51, 56
+    99 -> 98, 100
+    2345 -> 2344, 2346
+    6666 -> 6000, 7000
+    56 -> 57
+    6000 -> 5000, 6500
+
+    // 连接父节点与占位节点，并将连接线设置为隐藏
+    50 -> n50 [style=invis]
+    33 -> n33 [style=invis]
+    556 -> n556 [style=invis]
+    3 -> n3 [style=invis]
+    67 -> n67 [style=invis]
+    2423 -> n2423 [style=invis]
+    99 -> n99 [style=invis]
+    55 -> n55 [style=invis]
+    2345 -> n2345 [style=invis]
+    6666 -> n6666 [style=invis]
+    56 -> n56 [style=invis]
+    6000 -> n6000 [style=invis]
+
+    // 占位节点设置为隐藏
+    n50, n33, n556, n3, n67, n2423, n55, n99, n2345, n6666, n56, n6000 [width=0, height=0, style=invis]
+
+    // 将父节点与占位节点设置为同一个组，使其在竖直方向上对齐
+    50, n50 [group=n54]
+    33, n33 [group=n33]
+    556, n556 [group=n556]
+    3, n3 [group=n3]
+    67, n67 [group=n67]
+    2423, n2423 [group=n2423]
+    99, n99 [group=n99]
+    55, n55 [group=n55]
+    2345, n2345 [group=n2345]
+    6666, n6666 [group=n6666]
+    56, n56 [group=n56]
+    6000, n6000 [group=n6000]
+
+    // 如果是红黑树，则设置黑色节点的颜色
+    50, 33, 67, 3, 45, 2423, 51, 56, 98, 100, 2344, 2346, 6000, 7000 [style=filled, fillcolor=black, fontcolor=white]
+} 

@@ -1,0 +1,185 @@
+site_name: 我的知识库
+
+theme:
+  name: material
+  palette:
+    primary: teal
+  font:
+    text: Noto Serif SC
+  language: 'zh'
+  features:
+    - navigation.prune
+    - search.highlight
+    - header.autohide
+    - navigation.tabs
+markdown_extensions:
+    - toc:
+        baselevel: 2
+    - pymdownx.highlight:
+        linenums: true
+    - admonition
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tabbed
+    - pymdownx.tilde
+    - attr_list
+    - md_in_html
+    - pymdownx.keys
+    - pymdownx.tabbed:
+        alternate_style: true
+plugins:
+  - search:
+      lang: 
+        - en
+        - ja
+      separator: '[\s\u200b\-]'
+nav:
+  - 编程技术:
+    - index.md
+    - 编程语言:
+      - Java:
+        - ZX0001. Java/S015.md
+        - ZX0001. Java/S002.md
+        - C. 轻松代码:
+          - ZX0001. Java/S011.md
+          - ZX0001. Java/S012.md
+          - ZX0001. Java/S013.md
+          - ZX0001. Java/S014.md
+          - ZX0001. Java/S016.md
+        - ZX0001. Java/S004.md
+        - E. 源码学习:
+          - ZX0001. Java/S001.md
+          - ZX0001. Java/S005.md
+        - F. GUI程序:
+          - ZX0001. Java/S006 GUI程序/J001.md
+          - ZX0001. Java/S006 GUI程序/J002.md
+          - ZX0001. Java/S006 GUI程序/J003.md
+          - ZX0001. Java/S006 GUI程序/J004.md
+          - ZX0001. Java/S006 GUI程序/J005.md
+          - ZX0001. Java/S006 GUI程序/J006.md
+          - ZX0001. Java/S006 GUI程序/J007.md
+        - ZX0001. Java/S007.md
+        - ZX0001. Java/S008.md
+        - ZX0001. Java/S009.md
+        - ZX0001. Java/S010.md
+    - 脚本语言:
+      - ZX0015. 脚本语言/S001.md
+      - ZX0015. 脚本语言/S002.md
+    - 框架:
+      - ZX0005. 框架/S001.md
+      - ZX0006. 数据库/S001.md
+    - 数据库:
+      - ZX0006. 数据库/S002.md
+    - Web技术:
+      - ZX0007. WebServer/S001.md
+      - ZX0007. WebServer/S002.md
+      - ZX0010. 前端/S001.md
+    - 辅助工具:
+      - Java - Maven:
+        - ZX0009. 工具/S002.md
+        - ZX0001. Java/S003.md
+        - ZX0001. Java/S017.md
+      - ZX0009. 工具/S003.md
+    - 第三方库:
+      - ZX0021. 开源软件开发包/S001.md
+      - ZX0021. 开源软件开发包/S002.md
+    - 游戏编程:
+      - ZX0030. 游戏/S003.md
+    - 夯实基础:
+      - 汇编语言:
+        - ZX0027. 汇编语言/S001.md
+        - ZX0027. 汇编语言/S002.md
+      - 数据结构与算法:
+        - ZX0017. 数据结构与算法/S001.md
+        - ZX0017. 数据结构与算法/S002.md
+        - ZX0017. 数据结构与算法/S003.md
+        - ZX0017. 数据结构与算法/S004.md
+        - ZX0017. 数据结构与算法/S005.md
+        - ZX0017. 数据结构与算法/S006.md
+        - ZX0017. 数据结构与算法/S007.md
+        - ZX0017. 数据结构与算法/S008.md
+        - ZX0017. 数据结构与算法/S009.md
+        - ZX0017. 数据结构与算法/S010.md
+        - ZX0017. 数据结构与算法/S011.md
+        - ZX0017. 数据结构与算法/S012.md
+  - 软件应用:
+    - ZX0000. 首页/软件应用.md
+    - 工具软件:
+      - ZX0009. 工具/S001.md
+      - ZX0009. 工具/S004.md
+      - ZX0009. 工具/S005.md
+      - ZX0028. 计算机使用/S002.md
+      - PowerShell:
+        - ZX0014. PowerShell/S001.md
+        - ZX0014. PowerShell/S002.md
+        - ZX0014. PowerShell/S003.md
+        - ZX0014. PowerShell/S004.md
+        - ZX0014. PowerShell/S005.md
+        - ZX0014. PowerShell/S006.md
+        - ZX0014. PowerShell/S007.md
+        - ZX0014. PowerShell/S008.md
+    - 操作系统:
+      - Linux:
+        - ZX0013. Linux/S001.md
+        - ZX0013. Linux/S002.md
+        - ZX0013. Linux/S003.md
+        - ZX0013. Linux/S004.md
+        - ZX0013. Linux/S005.md
+        - ZX0013. Linux/S009.md
+        - G. Arch Linux专区:
+          - ZX0013. Linux/S007.md
+          - ZX0013. Linux/S008.md
+          - ZX0013. Linux/S010.md
+          - d. 常见问题:
+            - I. 安装系统:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/1. 安装系统/L0001.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/1. 安装系统/L0002.md
+            - II. 本地化:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/2. 本地化/L0001.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/2. 本地化/L0002.md
+            - III. 桌面环境软件:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/3. 桌面环境软件/L0001.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/3. 桌面环境软件/L0004.md
+            - IV. 软件管理:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/4. 软件管理/L0001.md
+            - V. 使用awesome:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/2. 本地化/L0003.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/3. 桌面环境软件/L0002.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/3. 桌面环境软件/L0003.md
+            - VI. 常见问题:
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/5. 常见问题/L0001.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/5. 常见问题/L0002.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/5. 常见问题/L0003.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/5. 常见问题/L0004.md
+              - ZX0013. Linux/13.6 ArchLinux常见问题整理/5. 常见问题/L0005.md
+      - Windows:
+        - ZX0028. 计算机使用/S001.md
+        - ZX0028. 计算机使用/S003.md
+        - ZX0028. 计算机使用/S004.md
+        - ZX0028. 计算机使用/S005.md
+        - ZX0028. 计算机使用/S006.md
+    - Office:
+      - ZX0016. Microsoft Office/S001.md
+  - 游戏娱乐:
+    - ZX0000. 首页/游戏娱乐.md
+    - 星际争霸II:
+      - ZX0030. 游戏/S001.md
+      - ZX0030. 游戏/S002.md
