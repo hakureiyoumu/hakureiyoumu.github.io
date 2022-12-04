@@ -1398,7 +1398,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0021.%20%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8C%85/S002/" class="md-nav__link">
-        Java - mXparser代数运算
+        mXparser代数运算
       </a>
     </li>
   
@@ -1445,7 +1445,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S003/" class="md-nav__link">
-        游戏循环
+        简单的游戏循环
       </a>
     </li>
   
@@ -3525,7 +3525,7 @@
 (2) 将打出来的jar包安装到maven的localRepository中去。</p>
 </div>
 <p>执行完install命令之后，我们去看localRepository文件夹，会发现我们的jar包被复制到了这里。</p>
-<p><img alt="install" src="../S002.files/Screenshot_20200724_151931.png" /></p>
+<p><img src="../S002.files/Screenshot_20200724_151931.png" style="max-width:20em" /> </p>
 <p>就如同我们用maven下载第三方jar包一样。观察文件夹的结构，也和第三方jar包别无二致。
 所以说这个命令其实会把我们的项目jar包安装到本地仓库中。然后你再开发另外一个工程的时候就可以在pom.xml中直接引用这个jar包了。</p>
 <p>比如我们自己写了一些工具类，放在一个jar包里。为了以后所有的maven项目都可以使用这个jar包，就可以把它install到maven的本地仓库中。就如同我们使用其他第三方jar包一样。</p>
@@ -3544,7 +3544,7 @@
 <p>顾名思义，用来验证项目中有没有错误，如果有错，则打印出错误信息。这里的错误不是Java相关的编译错误等。而是只此项目作为一个maven项目来说的各种错误。比如项目的pom.xml文件中没有定义项目的artifactId。</p>
 <p>但问题是我们执行package命令时也会执行validate命令，所以其实这个命令的作用不大。</p>
 <h5 id="126-verify">1.2.6 verify命令</h5>
-<p>本意时做到集成测试。但是实际效果和package没什么两样。</p>
+<p>本意是一直做到集成测试，但是实际效果和package没什么两样。</p>
 <h5 id="127-test">1.2.7 test命令</h5>
 <p>test命令为每个项目做package命令的前四步，也就是：</p>
 <ul>
@@ -3570,12 +3570,12 @@
 <p>有时候maven自带的archetype无法满足我们的需求，比如：</p>
 <ul>
 <li>webapp万年使用Web2.3</li>
-<li>没有帮我们生成src/java/resources目录</li>
+<li>没有帮我们生成src/main/resources目录</li>
 <li>我们不想使用index.jsp</li>
 <li>我们使用固定的一套代码结构模块</li>
 </ul>
 <p>这时就适合创建一个Archetype工程出来，它能按照我们给定的模板来生成工程。如果我们长期开发过程中积累了自己常用的项目模板，则就适合使用这个功能。</p>
-<p>mavan官方网站上有创建archetype工程的步骤：</p>
+<p>maven官方网站上有创建archetype工程的步骤：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>http://maven.apache.org/guides/mini/guide-creating-archetypes.html
 </code></pre></div></td></tr></table></div>
 <h4 id="31-archetype">3.1 创建Archetype工程</h4>

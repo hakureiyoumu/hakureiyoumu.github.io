@@ -1388,7 +1388,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0021.%20%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E5%8C%85/S002/" class="md-nav__link">
-        Java - mXparser代数运算
+        mXparser代数运算
       </a>
     </li>
   
@@ -1435,7 +1435,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S003/" class="md-nav__link">
-        游戏循环
+        简单的游戏循环
       </a>
     </li>
   
@@ -3352,7 +3352,7 @@ JSF也有一套依赖注入的玩意儿，就是使用ManageredBean之类的注�
 <h3 id="2-jsf">2. JSF的相关配置</h3>
 <h4 id="21-faces-servlet">2.1 配置Faces Servlet</h4>
 <p>Faces Servlet是JSF实现的一套Servlet。这个是JSF里面的概念，本身和PrimeFaces的Faces这个词没有关系。
-Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet。</p>
+Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet里面。</p>
 <p>此类是一个final类，我们无法继承。它在web.xml中的配置如下</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -3373,7 +3373,7 @@ Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet。</p
 <span class="nt">&lt;/servlet-mapping&gt;</span>
 </code></pre></div></td></tr></table></div>
 <p>此处默认我们使用xhtml文件。</p>
-<p>有的项目中还能看到如下配置，暂时没有发现这个配置是为了处理什么内容。</p>
+<p>有的项目中还能看到如下配置，暂时没有发现这个配置处理的.jsf文件是为了处理什么内容。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3608,7 +3608,7 @@ JSF标签和primefaces标签可以同时使用。</p>
 <p>如果有这么一小组元素，你有很多页面都使用这组元素。就比如自己用DIV实现的对话框，你希望在别的页面也可以方便的使用他，那么就可以将这个对话框定义为一个复合组件。这样就不需要我们在每个页面都写一套对话框。</p>
 <p>这里的使用场景要区别于模板，复合组件使用模板技术来定义，但应用范畴有所不同。我们通常在页面整体布局的时候会使用模板，可以方便的使所有页面的结构保持统一。复合组件不是从页面结构上，而是从页面上具体的一组一组元素上，来使各个页面保持统一。</p>
 <h4 id="53">5.3 定义一个复合组件</h4>
-<p>首先我们要先明确一下定义和引用的文档结构关系</p>
+<p>首先我们要先明确一下定义和引用复合组件时的文档结构关系。</p>
 <p>以标准的Maven项目目录结构为例</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>

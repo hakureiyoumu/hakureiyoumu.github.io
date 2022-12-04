@@ -1267,7 +1267,7 @@
   
     <li class="md-nav__item">
       <a href="../S002/" class="md-nav__link">
-        Java - mXparser代数运算
+        mXparser代数运算
       </a>
     </li>
   
@@ -1314,7 +1314,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S003/" class="md-nav__link">
-        游戏循环
+        简单的游戏循环
       </a>
     </li>
   
@@ -2991,7 +2991,7 @@
 <li>If no configuration file could be located the DefaultConfiguration will be used. This will cause logging output to go to the console.   </li>
 </ol>
 </div>
-<p>可以看到log4j的配置非常人性化，假如你没有配置log4j，它将使用默认配置输出log到控制台。你自己的配置文件只有放到classpath下面就可以了，比如maven工程典型的src/main/resources目录。  </p>
+<p>可以看到log4j的配置非常人性化，假如你没有配置log4j，它将使用默认配置输出log到控制台。你自己的配置文件只需放到classpath下面就可以了，比如maven工程典型的<code>src/main/resources</code>目录。    </p>
 <p>假如你想使用固定位置的配置文件，则可以通过配置log4j.configurationFile环境变量来指定。  </p>
 <h4 id="22-ymllog4j">2.2 使用yml配置log4j</h4>
 <p>默认情况下并不能支持yml配置文件，因为无法解析。需要先添加如下依赖： </p>
@@ -3019,6 +3019,8 @@
 </code></pre></div></td></tr></table></div>
 </div>
 <p>直接复制一段官网给出的例子:  </p>
+<div class="admonition example">
+<p class="admonition-title">官网例子</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3059,55 +3061,55 @@
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code>Configuration:  
-    status: warn    
-    name: YAMLConfigTest    
-    properties: 
-    property:   
-        name: filename  
-        value: C:/data/test-yaml.log    
-    thresholdFilter:    
-    level: debug    
-    appenders:  
-    Console:    
-        name: STDOUT    
-        PatternLayout:  
-        Pattern: &quot;%m%n&quot; 
-    File:   
-        name: File  
-        fileName: ${filename}   
-        PatternLayout:  
-        Pattern: &quot;%d %p %C{1.} [%t] %m%n&quot;   
-        Filters:    
-        ThresholdFilter:    
-            level: debug    
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">Configuration</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warn</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YAMLConfigTest</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">property</span><span class="p">:</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filename</span><span class="w">  </span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">C:/data/test-yaml.log</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">thresholdFilter</span><span class="p">:</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">appenders</span><span class="p">:</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">Console</span><span class="p">:</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STDOUT</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">PatternLayout</span><span class="p">:</span><span class="w">  </span>
+<span class="w">        </span><span class="nt">Pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%m%n&quot;</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">File</span><span class="p">:</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span><span class="w">  </span>
+<span class="w">        </span><span class="nt">fileName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${filename}</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">PatternLayout</span><span class="p">:</span><span class="w">  </span>
+<span class="w">        </span><span class="nt">Pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%d</span><span class="nv"> </span><span class="s">%p</span><span class="nv"> </span><span class="s">%C{1.}</span><span class="nv"> </span><span class="s">[%t]</span><span class="nv"> </span><span class="s">%m%n&quot;</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">Filters</span><span class="p">:</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">ThresholdFilter</span><span class="p">:</span><span class="w">    </span>
+<span class="w">            </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">    </span>
 
-    Loggers:    
-    logger: 
-        -   
-        name: ConsoleLogger 
-        level: debug    
-        additivity: false   
-        AppenderRef:    
-            ref: STDOUT 
-        -   
-        name: FileLogger    
-        level: debug    
-        additivity: false   
-        AppenderRef:    
-            ref: File   
-    Root:   
-        level: debug    
-        AppenderRef:    
-        ref: STDOUT 
+<span class="w">    </span><span class="nt">Loggers</span><span class="p">:</span><span class="w">    </span>
+<span class="w">    </span><span class="nt">logger</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConsoleLogger</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">additivity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">AppenderRef</span><span class="p">:</span><span class="w">    </span>
+<span class="w">            </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STDOUT</span><span class="w"> </span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FileLogger</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">additivity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">AppenderRef</span><span class="p">:</span><span class="w">    </span>
+<span class="w">            </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span><span class="w">   </span>
+<span class="w">    </span><span class="nt">Root</span><span class="p">:</span><span class="w">   </span>
+<span class="w">        </span><span class="nt">level</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">debug</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">AppenderRef</span><span class="p">:</span><span class="w">    </span>
+<span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">STDOUT</span><span class="w"> </span>
 </code></pre></div></td></tr></table></div>
+</div>
 <p>这里面配置了一个用于控制台和一个用于文件的log配置。文件位置为C:/data/test-yaml.log。  </p>
 <h3 id="3-log4j">3.   在程序中使用log4j</h3>
 <h4 id="31-log4j">3.1 添加log4j包依赖</h4>
 <p>以maven为例，需要添加如下依赖：  </p>
 <div class="admonition example">
 <p class="admonition-title">pom.xml</p>
-</div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3128,8 +3130,11 @@
         <span class="nt">&lt;version&gt;</span>2.12.0<span class="nt">&lt;/version&gt;</span>   
 <span class="nt">&lt;/dependency&gt;</span>   
 </code></pre></div></td></tr></table></div>
+</div>
 <h4 id="32-javalog">3.2 在Java中输出log</h4>
 <p>在Java类中使用Log4j非常简单，仍旧照搬log4j官网上面的例子：    </p>
+<div class="admonition example">
+<p class="admonition-title">官网例子</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -3194,6 +3199,7 @@
 <span class="w">    </span><span class="p">}</span><span class="w">   </span>
 <span class="p">}</span><span class="w">   </span>
 </code></pre></div></td></tr></table></div>
+</div>
 <p>简单来说就是两步：   </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">YourClass</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w">  </span>
@@ -3218,7 +3224,6 @@
 <p>在web.xml中需要配置yml配置文件的位置：    </p>
 <div class="admonition example">
 <p class="admonition-title">web.xml</p>
-</div>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -3227,6 +3232,7 @@
         <span class="nt">&lt;param-value&gt;</span>classpath:log4j2.yml<span class="nt">&lt;/param-value&gt;</span> 
 <span class="nt">&lt;/context-param&gt;</span>    
 </code></pre></div></td></tr></table></div>
+</div>
 
 
 
@@ -3263,13 +3269,13 @@
       
       
         
-        <a href="../S002/" class="md-footer__link md-footer__link--next" aria-label="下一页: Java - mXparser代数运算" rel="next">
+        <a href="../S002/" class="md-footer__link md-footer__link--next" aria-label="下一页: mXparser代数运算" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              Java - mXparser代数运算
+              mXparser代数运算
             </div>
           </div>
           <div class="md-footer__button md-icon">
