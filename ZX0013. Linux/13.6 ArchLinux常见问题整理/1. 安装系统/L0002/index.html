@@ -2932,50 +2932,29 @@
 <h3 id="1-livewifi">1. Live系统连接WiFi</h3>
 <p>Live系统中我们只能使用自带的连接工具进行连接。主要是iw和wpa工具。</p>
 <p>按照如下顺序执行命令即可：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 打开网卡</span>
-<span class="n">ip</span> <span class="n">link</span>     <span class="c1">-- 查看网卡状态，取得网卡ID(一般是wlp2s0这样的格式)</span>
-<span class="n">ip</span> <span class="n">link</span> <span class="n">set</span> <span class="n">wlp3s0</span> <span class="n">up</span>       <span class="c1">-- 激活网卡</span>
-<span class="c1">-- ip link set wlp3s0 down  -- 关闭网卡(有时候连接怎么都连接不上，可以先关闭再激活多试一试)</span>
-
-<span class="c1">-- 各种查看网卡使用情况</span>
-<span class="n">iw</span> <span class="n">dev</span>
-<span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">station</span> <span class="n">dump</span>
-<span class="n">ip</span> <span class="n">link</span> <span class="n">show</span> <span class="n">wlp3s0</span>
-
-<span class="c1">-- 扫描WIFI，这里会列出可以连接的热点</span>
-<span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">scan</span> <span class="o">|</span> <span class="n">less</span>
-
-<span class="c1">-- 使用用户名和密码连接WiFi</span>
-<span class="n">wpa_supplicant</span> <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="p">]</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlp3s0</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">wpa_passphrase</span> <span class="n">WIFI_SSID</span> <span class="n">PASSWORD</span><span class="p">)</span>
-
-<span class="c1">-- 启用dhcp</span>
-<span class="n">dhcpcd</span> <span class="n">wlp3s0</span>
-
-<span class="c1">-- 查看连接状态</span>
-<span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">link</span>
-<span class="n">ip</span> <span class="n">addr</span> <span class="n">show</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">-- 打开网卡</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ip</span> <span class="n">link</span>     <span class="c1">-- 查看网卡状态，取得网卡ID(一般是wlp2s0这样的格式)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">ip</span> <span class="n">link</span> <span class="n">set</span> <span class="n">wlp3s0</span> <span class="n">up</span>       <span class="c1">-- 激活网卡</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">-- ip link set wlp3s0 down  -- 关闭网卡(有时候连接怎么都连接不上，可以先关闭再激活多试一试)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1">-- 各种查看网卡使用情况</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">iw</span> <span class="n">dev</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">station</span> <span class="n">dump</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">ip</span> <span class="n">link</span> <span class="n">show</span> <span class="n">wlp3s0</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1">-- 扫描WIFI，这里会列出可以连接的热点</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">scan</span> <span class="o">|</span> <span class="n">less</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1">-- 使用用户名和密码连接WiFi</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">wpa_supplicant</span> <span class="p">[</span><span class="o">-</span><span class="n">B</span><span class="p">]</span> <span class="o">-</span><span class="n">i</span> <span class="n">wlp3s0</span> <span class="o">-</span><span class="n">c</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">wpa_passphrase</span> <span class="n">WIFI_SSID</span> <span class="n">PASSWORD</span><span class="p">)</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1">-- 启用dhcp</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">dhcpcd</span> <span class="n">wlp3s0</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1">-- 查看连接状态</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">iw</span> <span class="n">dev</span> <span class="n">wlp3s0</span> <span class="n">link</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">ip</span> <span class="n">addr</span> <span class="n">show</span>
+</code></pre></div>
 <h3 id="2-wifi">2. 本机系统连接WiFi</h3>
 <p>在Live系统连接上网络切换到本机环境后，就可以装上带有图形界面的连接工具了。</p>
 <h4 id="21-wifi">2.1 使用图形界面工具连接WiFi</h4>

@@ -2931,10 +2931,9 @@
 <p><img alt="列举环境变量" src="../S006.files/env_list.png" /></p>
 <h4 id="22">2.2 添加或修改一个系统环境变量</h4>
 <p>借助于下面的.net命令可以完成这个任务。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c"># 需要使用管理员权限</span>
-<span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;变量名&quot;</span><span class="p">,</span> <span class="s2">&quot;变量值&quot;</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># 需要使用管理员权限</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;变量名&quot;</span><span class="p">,</span> <span class="s2">&quot;变量值&quot;</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="使用变量" src="../S006.files/env_new.png" /></p>
 <p>添加完成后，我们通过查看Windows系统提供的功能来查看一下环境变量，可以看到成功添加上去了。</p>
 <p><img alt="使用变量" src="../S006.files/env_confirm.png" /></p>
@@ -2944,10 +2943,9 @@
 <p><img alt="使用变量" src="../S006.files/env_use.png" /></p>
 <h4 id="24">2.4 删除一个系统环境变量</h4>
 <p>和添加和修改的时候一样，同样是借助于这条.net命令来完成这个任务，只不过这次我们指定的设定值是<code>$null</code>。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c"># 需要使用管理员权限</span>
-<span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;变量名&quot;</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c"># 需要使用管理员权限</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="no">[Environment]</span><span class="p">::</span><span class="n">SetEnvironmentVariable</span><span class="p">(</span><span class="s2">&quot;变量名&quot;</span><span class="p">,</span> <span class="nv">$null</span><span class="p">,</span> <span class="s2">&quot;Machine&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p><img alt="使用变量" src="../S006.files/env_remove.png" /></p>
 <p>此时，我们再次查看Windows系统提供的功能来查看一下环境变量，可以看到成功删除掉了。</p>
 <p><img alt="使用变量" src="../S006.files/env_remove_confirm.png" /></p>

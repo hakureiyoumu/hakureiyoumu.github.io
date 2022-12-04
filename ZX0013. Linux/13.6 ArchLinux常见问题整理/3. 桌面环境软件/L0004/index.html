@@ -2863,28 +2863,22 @@
 <hr />
 <h3 id="1">1. 调查调整音量的命令</h3>
 <p>调节命令如下：(通过查看Arch WiKi)</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">加</span><span class="mi">5</span><span class="o">%</span><span class="err">音量</span>    <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="mi">5</span><span class="o">%+</span>
-<span class="err">减</span><span class="mi">5</span><span class="o">%</span><span class="err">音量</span>    <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="mi">5</span><span class="o">%-</span>
-<span class="err">开</span><span class="o">/</span><span class="err">关</span> <span class="err">静音</span>  <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="n">toggle</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">加</span><span class="mi">5</span><span class="o">%</span><span class="err">音量</span>    <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="mi">5</span><span class="o">%+</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="err">减</span><span class="mi">5</span><span class="o">%</span><span class="err">音量</span>    <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="mi">5</span><span class="o">%-</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="err">开</span><span class="o">/</span><span class="err">关</span> <span class="err">静音</span>  <span class="n">amixer</span> <span class="n">set</span> <span class="n">master</span> <span class="n">toggle</span>
+</code></pre></div>
 <h3 id="2">2. 绑定快捷键来调节</h3>
 <p>参考（使用awesome设置系统快捷键）章节来配置快捷键。</p>
 <p>对于笔记本电脑键盘，默认的音量调节按键在声卡驱动里面已经预先定义好了。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">音量</span><span class="o">+</span>   <span class="n">XF86AudioRaiseVolume</span>
-<span class="err">音量</span><span class="o">-</span>   <span class="n">XF86AudioLowerVolume</span>
-<span class="err">静音</span>    <span class="n">XF86AudioMuteVolume</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="err">音量</span><span class="o">+</span>   <span class="n">XF86AudioRaiseVolume</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="err">音量</span><span class="o">-</span>   <span class="n">XF86AudioLowerVolume</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="err">静音</span>    <span class="n">XF86AudioMuteVolume</span>
+</code></pre></div>
 <p>以<code>音量+</code>为例，使用方法如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">awful</span><span class="p">.</span><span class="n">key</span><span class="p">({},</span> <span class="s2">&quot;XF86AudioRaiseVolume&quot;</span><span class="p">,</span>
-    <span class="kr">function</span><span class="p">()</span>
-    <span class="p">...</span> <span class="p">...</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">awful</span><span class="p">.</span><span class="n">key</span><span class="p">({},</span> <span class="s2">&quot;XF86AudioRaiseVolume&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="p">...</span> <span class="p">...</span>
+</code></pre></div>
 
 
 

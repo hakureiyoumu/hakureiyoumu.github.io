@@ -2831,8 +2831,8 @@
 <p><img alt="win10" src="../S001.files/01.png" /></p>
 </div>
 <p>在PowerShell使用如下命令可以快捷的修改这个值。（需要管理员权限）   </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000804&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;Layout File&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;KBD106.DLL&quot;</span>   
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">&quot;HKLM:\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000804&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;Layout File&quot;</span> <span class="n">-Value</span> <span class="s2">&quot;KBD106.DLL&quot;</span>   
+</code></pre></div>
 <p>顺便，日文输入法的键盘布局在这里修改：
 <img alt="日文" src="../S001.files/jp.png" />
 <img alt="日文" src="../S001.files/jp2.png" /></p>

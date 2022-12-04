@@ -2896,15 +2896,24 @@
 <li>(5) 从任一节点到其每个叶子的所有简单路径都包含相同数目的黑色节点。</li>
 </ul>
 <p>符合这样条件的红黑树大概长什么样子呢？先来张图感受一下。</p>
+<div class="admonition example">
+<p class="admonition-title">红黑树示例</p>
 <p><img alt="红黑树示例" src="../S005.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E7%A4%BA%E4%BE%8B.svg" /></p>
+</div>
 <h3 id="3">3. 为什么需要红黑树</h3>
 <p>红黑树起源于排序二叉树。也就是<code>左子节点 &lt;= 父节点 &lt;= 右子节点</code>的那种二叉树。</p>
 <p>排序二叉树的特点就是查找元素比较快，比较较少的次数就可以查找到目标元素。有点像排序数组的二分查找。</p>
 <p>但是排序二叉树有其弱点。比如我连续插入20个随机数来创建一棵树。</p>
-<p><img alt="排序二叉树" src="../S005.files/%E6%8E%92%E5%BA%8F%E4%BA%8C%E5%8F%89%E6%A0%91.PNG" /></p>
+<div class="admonition example">
+<p class="admonition-title">排序二叉树</p>
+<p><img alt="排序二叉树" src="%E6%8E%92%E5%BA%8F%E4%BA%8C%E5%8F%89%E6%A0%91.drawio.png" /></p>
+</div>
 <p>有没有发现这棵二叉树有点丑，它的元素分布极不均匀。查找有的元素需要比较很多的次数，查找效率极不均匀。最坏的情况下甚至需要比较所有的元素才能找到目标元素。</p>
 <p>再看看同样的这20个数字创建出来的红黑树。</p>
-<p><img alt="排序二叉树" src="../S005.files/%E7%BA%A2%E9%BB%91%E6%A0%91.PNG" /></p>
+<div class="admonition example">
+<p class="admonition-title">红黑树</p>
+<p><img alt="红黑树" src="%E7%BA%A2%E9%BB%91%E6%A0%91.drawio.png" /></p>
+</div>
 <p>可以看到，这棵树非常的均匀。查找任何元素都不会需要很多的比较次数，最坏的情况也没有很坏。</p>
 <h3 id="4">4. 需要学习的主题</h3>
 <p>目前为止只是大概了解了一下红黑树的概念。红黑树的算法实现比较复杂，我将分为三个章节来学习。</p>

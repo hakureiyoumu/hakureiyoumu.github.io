@@ -3019,8 +3019,8 @@
 </ul>
 <p>那么安装后的东西被放在哪里呢？</p>
 <p>在Arch下，默认是放在Python的目录下面的。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/usr/lib/python3.8/site-packages
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/usr/lib/python3.8/site-packages
+</code></pre></div>
 <h3 id="4">4. 设定主题</h3>
 <p>跟着官方手册一步一步来是最好的做法。</p>
 <p>这里我选择了<code>material</code>这个主题。安装后也可以从上面提到的Python目录下面找到这个主题的所有文件。</p>
@@ -3029,61 +3029,47 @@
 下面的所有配置都是在这个文件中进行修改。并且我们使用Pymdownx这个版本的MarkDown。</p>
 <h4 id="51">5.1 代码高亮</h4>
 <p>这当然是必备的功能了。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.highlight</span><span class="w"></span>
+</code></pre></div>
 <h4 id="52">5.2 显示代码行数</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.highlight</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">linenums</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.highlight</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span><span class="nt">linenums</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</code></pre></div>
 <p>在MarkDown文件中，像通常那样书写代码块就行：</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p>代码：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>&gt; ```java
-&gt; public static void main(String[] args) {
-&gt;      
-&gt;     System.out.println(&quot;Hellow world!&quot;);
-&gt; }
-&gt; ```
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&gt; ```java
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>&gt; public static void main(String[] args) {
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>&gt;      
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>&gt;     System.out.println(&quot;Hellow world!&quot;);
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>&gt; }
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>&gt; ```
+</code></pre></div>
 <p>效果如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hellow world!&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hellow world!&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 </div>
 <h4 id="53-markdown">5.3 自动生成的MarkDown文档目录的层数</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">toc</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">baselevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">toc</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="nt">baselevel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+</code></pre></div>
 <p>这里配置为两层。生成的目录如下图所示(右侧的目录)：（如果有5.1.1、5.1.2等章节则不会显示在目录中）</p>
 <p><img alt="makecatalog" src="../S004.files/makecatalog.png" /></p>
 <h4 id="54">5.4 中文界面与中文搜索</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">theme</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zh&#39;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">theme</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">language</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;zh&#39;</span><span class="w"></span>
+</code></pre></div>
 <h4 id="55">5.5 绘制图形</h4>
 <p>需要先使用包管理器安装graphviz：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo pacman -S graphviz
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo pacman -S graphviz
+</code></pre></div>
 <p>然后去github上安装这个插件：</p>
 <ul>
 <li>sprin / markdown-inline-graphviz </li>
@@ -3092,31 +3078,23 @@
 <div class="admonition bug">
 <p class="admonition-title">Bug</p>
 <p>该项目文档中的插件名是错的，正确的写法是：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">markdown_inline_graphviz</span><span class="p">:</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">markdown_extensions</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">markdown_inline_graphviz</span><span class="p">:</span><span class="w"></span>
+</code></pre></div></p>
 </div>
 <p>用法，就参考文档上的例子，这里就直接搬运过来：</p>
 <div class="admonition example">
 <p class="admonition-title">例子</p>
 <p>代码：
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="nt">dot</span><span class="w"> </span><span class="nt">attack_plan.svg</span><span class="w"></span>
-<span class="w">    </span><span class="k">digraph</span><span class="w"> </span><span class="nt">G</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="na">rankdir</span><span class="p">=</span><span class="s">LR</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Earth</span><span class="w"> </span><span class="p">[</span><span class="na">peripheries</span><span class="p">=</span><span class="m">2</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Mars</span><span class="w"></span>
-<span class="w">        </span><span class="nt">Earth</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">Mars</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="err">%</span><span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="nt">dot</span><span class="w"> </span><span class="nt">attack_plan.svg</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">digraph</span><span class="w"> </span><span class="nt">G</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">        </span><span class="na">rankdir</span><span class="p">=</span><span class="s">LR</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">        </span><span class="nt">Earth</span><span class="w"> </span><span class="p">[</span><span class="na">peripheries</span><span class="p">=</span><span class="m">2</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">        </span><span class="nt">Mars</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="nt">Earth</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">Mars</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="err">%</span><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
 <p>按理来说会有如下效果：</p>
 <p><img alt="效果" src="../S004.files/graphviz.svg" /></p>
 </div>
@@ -3133,10 +3111,9 @@
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p>代码：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>!!! note &quot;note的标题&quot;
-    这个一个note。
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>!!! note &quot;note的标题&quot;
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    这个一个note。
+</code></pre></div>
 <p>效果如下：</p>
 <div class="admonition note">
 <p class="admonition-title">note的标题</p>
@@ -3147,10 +3124,9 @@
 <div class="admonition example">
 <p class="admonition-title">Example</p>
 <p>代码：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>??? note &quot;折叠note的标题&quot;
-    这个一个note。
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>??? note &quot;折叠note的标题&quot;
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    这个一个note。
+</code></pre></div>
 <p>效果如下：</p>
 <details class="note">
 <summary>折叠note的标题</summary>

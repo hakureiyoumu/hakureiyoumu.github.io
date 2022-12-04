@@ -3639,14 +3639,14 @@
 <hr />
 <h3 id="1">1. 命令帮助</h3>
 <p>下面这条命令可以打开命令的帮助手册，里面会列出命令的详细用法。虽然是英文的。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cmd --help
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cmd --help
+</code></pre></div>
 <h3 id="2">2. 查看系统信息</h3>
 <p>linux有一个概念叫做一切皆文件。很多系统的信息通过读文件来查看，设定系统则通过修改相应的文件来实现。</p>
 <h4 id="21">2.1 操作系统信息</h4>
 <p>查看linux内核版本</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>cat /proc/version
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat /proc/version
+</code></pre></div>
 <p>查询结果示例</p>
 <table>
 <thead>
@@ -3758,12 +3758,12 @@
 </tbody>
 </table>
 <h4 id="24">2.4 内存使用信息</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>free
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>free
+</code></pre></div>
 <p>这个命令会显示出内存的总大小、使用量、剩余空间、缓存等信息。</p>
 <h4 id="25">2.5 当前系统中的进程</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ps
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ps
+</code></pre></div>
 <p>可以查看此命令的帮助手册来了解更详细的用法。常见的用法如下：</p>
 <table>
 <thead>
@@ -3785,53 +3785,45 @@
 </table>
 <h4 id="26-mac">2.6 查看MAC地址</h4>
 <p>使用上面介绍的查看网卡信息的命令就可以查看。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ip link show
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ip link show
+</code></pre></div>
 <h4 id="27-ip">2.7 查看IP地址</h4>
 <p>同样使用查看网卡信息的命令就可以查看。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ip addr show
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ip addr show
+</code></pre></div>
 <h3 id="3">3. 用户与权限</h3>
 <h4 id="31">3.1 修改用户密码</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>passwd yourAccountName
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>passwd yourAccountName
+</code></pre></div>
 <h4 id="32">3.2 列举当前系统中的用户、组</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>getent passwd
-getent group
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>getent passwd
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>getent group
+</code></pre></div>
 <h4 id="33">3.3 添加/删除/修改组、用户</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>groupadd
-groupdel
-groupmod
-useradd
-userdel
-usermod
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>groupadd
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>groupdel
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>groupmod
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>useradd
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>userdel
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>usermod
+</code></pre></div>
 <p>更详细的用法可以参考这些命令的帮助手册。</p>
 <h4 id="34">3.4 修改文件/文件夹的用户/组</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>chown <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>OWNER<span class="o">][</span>:<span class="o">[</span>GROUP<span class="o">]]</span> FILE…
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>chown <span class="o">[</span>OPTION<span class="o">]</span>... <span class="o">[</span>OWNER<span class="o">][</span>:<span class="o">[</span>GROUP<span class="o">]]</span> FILE…
+</code></pre></div>
 <p>通过指定-R选项可以一次性修改文件夹下面所有文件和文件夹的用户/组。</p>
 <h4 id="35">3.5 修改文件/文件夹的权限</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>chmod
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>chmod
+</code></pre></div>
 <p>指定权限的格式有很多，使用数字时比较简便的一个方法。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>r   w   x
+<div class="highlight"><pre><span></span><code>r   w   x
 4   2   1
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>读和执行权限就是r-x，也就时4加1等于5。所有权限即使rwx，也就是4加2加1等于7。</p>
 <p>常见的文件权限示例</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>-               rwx                 r-x                 r-x
+<div class="highlight"><pre><span></span><code>-               rwx                 r-x                 r-x
 目录?文件?       文件拥有者权限         拥有者所在组的权限     其他用户权限
-</code></pre></div></td></tr></table></div>
+</code></pre></div>
 <p>上面的权限数字为755。</p>
 <h3 id="4">4. 文件操作</h3>
 <table>
@@ -4022,84 +4014,76 @@ usermod
 <h3 id="7">7. 防火墙与端口</h3>
 <h4 id="71">7.1 打开/关闭防火墙</h4>
 <p>在linux中防火墙就是一个普通的服务。可以使用systemctl系列的命令来控制。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl start/stop/restart/status firewalld
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>systemctl start/stop/restart/status firewalld
+</code></pre></div>
 <h4 id="72">7.2 列举所有正在被监听的端口</h4>
 <p>使用如下两条命令，他们的选项很多。通常我们希望看到被监听的TCP端口。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>ss -ntlp
-netstat -ntlp
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ss -ntlp
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>netstat -ntlp
+</code></pre></div>
 <p>更多信息可以参考命令的帮助手册。</p>
 <h4 id="73">7.3 开放/关闭端口</h4>
 <p>以Tomcat常用的8080为例。</p>
 <div class="admonition example">
 <p class="admonition-title">打开</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">8080</span>/tcp --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span><span class="m">8080</span>/tcp --permanent
+</code></pre></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">关闭</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --zone<span class="o">=</span>public --remove-port<span class="o">=</span><span class="m">8080</span>/tcp --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>firewall-cmd --zone<span class="o">=</span>public --remove-port<span class="o">=</span><span class="m">8080</span>/tcp --permanent
+</code></pre></div>
 </div>
 <p>注意需要让防火墙重新加载来使修改生效。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --reload
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>firewall-cmd --reload
+</code></pre></div>
 <h4 id="74">7.4 列举所有开放的服务</h4>
 <p>所谓服务，就是我们的应用程序，比如tomcat，NginX等等。或者是一组程序，这组应用程序也许会使用多个端口。
 这种情况下，定义成一个服务是比较好的做法。这样就能很方便的管理这个应用程序使用的所有端口。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --list-services --zone<span class="o">=</span>public --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>firewall-cmd --list-services --zone<span class="o">=</span>public --permanent
+</code></pre></div>
 <h4 id="75">7.5 开放/关闭服务</h4>
 <p>要想开放服务，稍微有点复杂。这需要我们把这个服务注册到防火墙的名单中去好让它认识我们的服务。</p>
 <p>以注册我的WebServer服务为例，我的WebServer由NginX和Frp组成。</p>
 <p>在下面的路径创建webserver.xml文件。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span> /etc/firewalld/services/
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span> /etc/firewalld/services/
+</code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">webserver.xml</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
-<span class="nt">&lt;service&gt;</span>
-    <span class="nt">&lt;short&gt;</span>My web server<span class="nt">&lt;/short&gt;</span>
-    <span class="nt">&lt;description&gt;</span>NginX<span class="nt">&lt;/description&gt;</span>
-    <span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;443&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;description&gt;</span>Frps<span class="nt">&lt;/description&gt;</span>
-    <span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;7000&quot;</span><span class="nt">/&gt;</span>
-<span class="nt">&lt;/service&gt;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nt">&lt;service&gt;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="nt">&lt;short&gt;</span>My web server<span class="nt">&lt;/short&gt;</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>    <span class="nt">&lt;description&gt;</span>NginX<span class="nt">&lt;/description&gt;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;443&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="nt">&lt;description&gt;</span>Frps<span class="nt">&lt;/description&gt;</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="nt">&lt;port</span> <span class="na">protocol=</span><span class="s">&quot;tcp&quot;</span> <span class="na">port=</span><span class="s">&quot;7000&quot;</span><span class="nt">/&gt;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nt">&lt;/service&gt;</span>
+</code></pre></div>
 </div>
 <p>然后使用如下命令完成注册：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --add-service<span class="o">=</span>webserver --zone<span class="o">=</span>public --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>firewall-cmd --add-service<span class="o">=</span>webserver --zone<span class="o">=</span>public --permanent
+</code></pre></div>
 <p>注意需要让防火墙重新加载来使修改生效。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --reload
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>firewall-cmd --reload
+</code></pre></div>
 <p>在配置生效后，端口443和7000都会被防火墙允许访问。</p>
 <p>要删除注册的服务，则需要删除tomcat.xml文件并执行如下命令:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --remove-service<span class="o">=</span>tomcat --zone<span class="o">=</span>public --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>firewall-cmd --remove-service<span class="o">=</span>tomcat --zone<span class="o">=</span>public --permanent
+</code></pre></div>
 <h4 id="76">7.6 列举所有开放的端口</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --zone<span class="o">=</span>public --list-ports
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>firewall-cmd --zone<span class="o">=</span>public --list-ports
+</code></pre></div>
 <h4 id="77">7.7 端口重定向</h4>
 <p>以配置Tomcat时，80端口重定向到8080端口为例。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">80</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">8080</span> --permanent
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>firewall-cmd --add-forward-port<span class="o">=</span><span class="nv">port</span><span class="o">=</span><span class="m">80</span>:proto<span class="o">=</span>tcp:toport<span class="o">=</span><span class="m">8080</span> --permanent
+</code></pre></div>
 <p>注意需要让防火墙重新加载来使修改生效。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --reload
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>firewall-cmd --reload
+</code></pre></div>
 <h4 id="78">7.8 一次列举各种常用的防护墙配置信息</h4>
 <p>一次看个够，非常实用的命令，结果中包含上面所说的各种端口和服务的配置信息。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>firewall-cmd --info-zone public
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>firewall-cmd --info-zone public
+</code></pre></div>
 <h3 id="8">8. 软件管理</h3>
 <h4 id="81">8.1 基本命令</h4>
 <table>
@@ -4160,17 +4144,15 @@ netstat -ntlp
 </table>
 <h4 id="82-centos">8.2 在CentOS中添加软件安装源</h4>
 <p>在CentOS中软件安装源的信息都保存在repo文件中，放在如下位置:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span> /etc/yum.repos.d
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span> /etc/yum.repos.d
+</code></pre></div>
 <p>在添加新的软件安装源，就需要在这个位置创建一个新的repo文件。</p>
 <div class="admonition example">
 <p class="admonition-title">MyRepo.repo</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[MyRepo]</span><span class="w"></span>
-<span class="na">name</span><span class="o">=</span><span class="s">名字</span><span class="w"></span>
-<span class="na">baseurl</span><span class="o">=</span><span class="s">url</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">[MyRepo]</span><span class="w"></span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="na">name</span><span class="o">=</span><span class="s">名字</span><span class="w"></span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="na">baseurl</span><span class="o">=</span><span class="s">url</span><span class="w"></span>
+</code></pre></div>
 </div>
 <p>最简单的情况只需要这三个信息就够了。</p>
 <h4 id="83-arch">8.3 在Arch中添加软件安装源</h4>
@@ -4180,22 +4162,21 @@ netstat -ntlp
 <h4 id="91">9.1 列举当前所有进程</h4>
 <p>使用前面提到的ps命令就可以。具体用法比较复杂，可以参考帮助手册。</p>
 <p>例如，列举所有进程并显示CMD：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ps -ef
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ps -ef
+</code></pre></div>
 <h4 id="92">9.2 强制杀死指定进程</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">kill</span> processPID
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">kill</span> processPID
+</code></pre></div>
 <h4 id="93">9.3 列举进程树</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pstree
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>pstree
+</code></pre></div>
 <p>这个命令可以清楚的看到各个进程之间的关系，它也有很多的选项可以配置。</p>
 <h3 id="10">10. 网络相关操作</h3>
 <h4 id="101">10.1    下载文件</h4>
 <p>通常有两个命令可以使用:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>wget url
-curl url
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>wget url
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>curl url
+</code></pre></div>
 <p>它们都有非常多的选项可以指定。可以参考帮助手册来了解详细用法。</p>
 <h4 id="102-geturl">10.2    通过get方式请求指定URL</h4>
 <p>同样是wget和curl这两个命令，默认情况下它们都是用get方式来请求URL的。</p>
@@ -4203,57 +4184,54 @@ curl url
 <p>仍然是wget和curl这两个命令，通过调查它们的帮助手册，并安装关键字post来筛选，就可以找到它们的用法。</p>
 <p>例如wget加上--post-data=STRING就可以使用STRING作为post数据来请求URL。</p>
 <h4 id="104">10.4    测试网络</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ping url
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>ping url
+</code></pre></div>
 <h3 id="11">11. 命令结果格式化</h3>
 <h4 id="111">11.1    取得结果中的指定行</h4>
 <p>可以通过组合使用head和tail命令来实现。</p>
 <p>例如要输出文本中的第四行:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>txt <span class="p">|</span> head -n <span class="m">4</span> <span class="p">|</span> tail -n <span class="m">1</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>txt <span class="p">|</span> head -n <span class="m">4</span> <span class="p">|</span> tail -n <span class="m">1</span>
+</code></pre></div>
 <h4 id="112">11.2    将结果行按指定的字符进行分割</h4>
 <p>可以使用awk命令来实现，它默认使用空格来分割文本。它的用法非常复杂，可以参考帮助手册。</p>
 <p>例如要分割文本内容，并输出第3列的内容:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>awk -e <span class="s1">&#39;{print$3}&#39;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>awk -e <span class="s1">&#39;{print$3}&#39;</span>
+</code></pre></div>
 <h4 id="113">11.3    输出时指定颜色</h4>
 <p>可以使用如下命令，数字代表颜色。颜色种类还是挺多的。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 使用黄色输出文字，然后恢复输出为白色</span>
-tput setaf <span class="m">11</span><span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span> tput setaf <span class="m">7</span><span class="p">;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># 使用黄色输出文字，然后恢复输出为白色</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>tput setaf <span class="m">11</span><span class="p">;</span> <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span> tput setaf <span class="m">7</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="12">12. 本地化</h3>
 <p>以控制台界面为例。控制台输出与图形界面用的并不是一套设置。   </p>
 <h4 id="121">12.1    列举当前系统中安装的字符集</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>locale -a
-localectl list-locales
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>locale -a
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>localectl list-locales
+</code></pre></div>
 <h4 id="122">12.2    查看字符集</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">echo</span> <span class="nv">$LANG</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">echo</span> <span class="nv">$LANG</span>
+</code></pre></div>
 <h4 id="123">12.3    安装并设定字符集</h4>
 <p>首先通过如下命令查询字符集关联的包:(假设在CentOS中)</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>yum list <span class="p">|</span> grep langpacks
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>yum list <span class="p">|</span> grep langpacks
+</code></pre></div>
 <p>从结果中我们可以找到对应语言的包来进行安装。</p>
 <p>比如中文为langpacks-zh_CN.noarch，日文为langpacks-ja.noarch。</p>
 <p>安装完成后再次执行locale -a来查看，就能看到我们安装的字符集。</p>
 <p>然后执行如下命令来修改字符集:(以中文为例)</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>localectl set-locale <span class="nv">LANG</span><span class="o">=</span>zh_CN.utf8
-<span class="nb">source</span> /etc/locale.conf
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>localectl set-locale <span class="nv">LANG</span><span class="o">=</span>zh_CN.utf8
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nb">source</span> /etc/locale.conf
+</code></pre></div>
 <h4 id="124">12.4    列举当前系统中安装的键盘布局</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>localectl list-keymaps
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>localectl list-keymaps
+</code></pre></div>
 <h4 id="125">12.5    查看键盘布局</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>localectl
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>localectl
+</code></pre></div>
 <h4 id="126">12.6    设定键盘布局</h4>
 <p>以日语键盘布局为例:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>localectl set-keymap jp106  
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>localectl set-keymap jp106  
+</code></pre></div>
 
 
 

@@ -2980,8 +2980,8 @@
 <p>还是之前那棵普通的红黑树。</p>
 <p><img alt="红黑树样本" src="../S007.files/%E7%BA%A2%E9%BB%91%E6%A0%91%E6%A0%B7%E6%9C%AC2.png" /></p>
 <p>第一个问题就是往哪个地方插入，这个问题前面已经讨论过了。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>对于一个指定值的新节点，按照普通排序二叉树的规则就可以找到一个确定的位置。
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code>对于一个指定值的新节点，按照普通排序二叉树的规则就可以找到一个确定的位置。
+</code></pre></div>
 <p>很明显得先有空位才行吧，有空位的地方就是那些没有子节点的（叶子节点）和只有一个子节点的。上图中的树里这样的位置有很多，这里自然而然的就可以分为几种不同的情形来看。</p>
 <p>这样，我们总算是迈出了第一步。</p>
 <h4 id="22">2.2 具体的插入过程</h4>

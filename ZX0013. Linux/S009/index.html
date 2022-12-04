@@ -2901,16 +2901,12 @@
 要想永久生效，一个办法是把export语句写到<code>.bash_profile</code>或者<code>.bashrc</code>这类文件中。这样每次进行登录或者打开新的shell会话时都会自动执行export语句来设定环境变量，也就相当于永久生效了。</p>
 <h3 id="3">3. 在命令行和各种配置文件中使用环境变量</h3>
 <p>都是同样的写法，就是<code>$变量名</code>。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 输出环境变量PATH</span>
-<span class="nb">echo</span> <span class="s2">&quot;The path is </span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-
-<span class="c1"># 将pip添加到PATH中</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 输出环境变量PATH</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span> <span class="s2">&quot;The path is </span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 将pip添加到PATH中</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 
 

@@ -2920,48 +2920,32 @@
 <p>如同我们在数据结构课程中学习的那样，ArrayList在底层使用数组来实现，具体来说就是Object[]。
 这个Object[]能放任何对象进去，包括null。</p>
 <p>它的定义如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
-<span class="cm">    * The array buffer into which the elements of the ArrayList are stored.</span>
-<span class="cm">    * The capacity of the ArrayList is the length of this array buffer. Any</span>
-<span class="cm">    * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span>
-<span class="cm">    * will be expanded to DEFAULT_CAPACITY when the first element is added.</span>
-<span class="cm">    */</span><span class="w"></span>
-<span class="kd">transient</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">elementData</span><span class="p">;</span><span class="w"> </span><span class="c1">// non-private to simplify nested class access</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">/**</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="cm">    * The array buffer into which the elements of the ArrayList are stored.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="cm">    * The capacity of the ArrayList is the length of this array buffer. Any</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="cm">    * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="cm">    * will be expanded to DEFAULT_CAPACITY when the first element is added.</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="cm">    */</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kd">transient</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">elementData</span><span class="p">;</span><span class="w"> </span><span class="c1">// non-private to simplify nested class access</span><span class="w"></span>
+</code></pre></div>
 <p>ArrayList的所有操作都围绕着这个数组来进行，而数组的一些特性将决定ArrayList的特性。</p>
 <h3 id="3-arraylist">3. ArrayList的扩容</h3>
 <p>由于在Java中数组的长度是固定的，一旦创建就不能改变大小。所以ArrayList也有一个容量的说法。
 当我们往List里面插入新的元素的时候，数组的空间可能会不够用。这个时候就需要扩容。</p>
 <p>而ArrayList的扩容操作的开销是很大的。因为数组长度是固定的，要想得到一个长度更长的数组。只能是创建一个新的数组，然后将元数组的内容全部复制到新的数组中。</p>
 <p>在JDK中，使用Arrays.copyOf来从元数组复制出一个新的数组出来。扩容函数如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
-<span class="cm">    * Increases the capacity to ensure that it can hold at least the</span>
-<span class="cm">    * number of elements specified by the minimum capacity argument.</span>
-<span class="cm">    *</span>
-<span class="cm">    * @param minCapacity the desired minimum capacity</span>
-<span class="cm">    * @throws OutOfMemoryError if minCapacity is less than zero</span>
-<span class="cm">    */</span><span class="w"></span>
-<span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minCapacity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOf</span><span class="p">(</span><span class="n">elementData</span><span class="p">,</span><span class="w"></span>
-<span class="w">                                        </span><span class="n">newCapacity</span><span class="p">(</span><span class="n">minCapacity</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="cm">/**</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cm">    * Increases the capacity to ensure that it can hold at least the</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cm">    * number of elements specified by the minimum capacity argument.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cm">    *</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="cm">    * @param minCapacity the desired minimum capacity</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm">    * @throws OutOfMemoryError if minCapacity is less than zero</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm">    */</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kd">private</span><span class="w"> </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="nf">grow</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">minCapacity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Arrays</span><span class="p">.</span><span class="na">copyOf</span><span class="p">(</span><span class="n">elementData</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                                        </span><span class="n">newCapacity</span><span class="p">(</span><span class="n">minCapacity</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <div class="admonition example">
 <p class="admonition-title">主动扩容</p>
 <p>在通常的使用过程中，我们很少主动去对ArrayList进行扩容。此时，如果空间不够，会自动扩容。而自动扩容每次将扩展1个元素大小的容量。</p>
@@ -2976,20 +2960,14 @@
 <div class="admonition example">
 <p class="admonition-title">容量上限</p>
 <p>ArrayList中数组的大小是有限制的。JDK中定义的List的最大大小如下：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
-<span class="cm"> * The maximum size of array to allocate (unless necessary).</span>
-<span class="cm"> * Some VMs reserve some header words in an array.</span>
-<span class="cm"> * Attempts to allocate larger arrays may result in</span>
-<span class="cm"> * OutOfMemoryError: Requested array size exceeds VM limit</span>
-<span class="cm"> */</span><span class="w"></span>
-<span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_ARRAY_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/**</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * The maximum size of array to allocate (unless necessary).</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> * Some VMs reserve some header words in an array.</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cm"> * Attempts to allocate larger arrays may result in</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="cm"> * OutOfMemoryError: Requested array size exceeds VM limit</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="cm"> */</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_ARRAY_SIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span><span class="w"></span>
+</code></pre></div>
 <p>而这个值具体是多少呢?</p>
 <p><code>2147483647 [0x7fffffff] - 8</code></p>
 <p>更直观一点，就是2^31 - 8。</p>
@@ -3001,57 +2979,35 @@
 <p>我们在数据结构课程中应该已经学过这个知识了，而JDK中也正是这样来实装的。</p>
 <p>由于一次平移的开销是很大的，所以ArrayList并不适合在需要大量随机插入和删除元素的场景下使用，而链表型List会是更好的选择。</p>
 <p>下面是JDK中向指定位置插入新元素的函数源码，可以看到一次add既要扩容又要平移，相当于要复制两边所有元素，效率可想而知。</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
-<span class="cm">    * Inserts the specified element at the specified position in this</span>
-<span class="cm">    * list. Shifts the element currently at that position (if any) and</span>
-<span class="cm">    * any subsequent elements to the right (adds one to their indices).</span>
-<span class="cm">    *</span>
-<span class="cm">    * @param index index at which the specified element is to be inserted</span>
-<span class="cm">    * @param element element to be inserted</span>
-<span class="cm">    * @throws IndexOutOfBoundsException {@inheritDoc}</span>
-<span class="cm">    */</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">rangeCheckForAdd</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">modCount</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">elementData</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">elementData</span><span class="p">).</span><span class="na">length</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grow</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">elementData</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="n">elementData</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
-<span class="w">                        </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">index</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">elementData</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cm">/**</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="cm">    * Inserts the specified element at the specified position in this</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="cm">    * list. Shifts the element currently at that position (if any) and</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="cm">    * any subsequent elements to the right (adds one to their indices).</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="cm">    *</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="cm">    * @param index index at which the specified element is to be inserted</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="cm">    * @param element element to be inserted</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="cm">    * @throws IndexOutOfBoundsException {@inheritDoc}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="cm">    */</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="n">element</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">rangeCheckForAdd</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">modCount</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">Object</span><span class="o">[]</span><span class="w"> </span><span class="n">elementData</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="p">(</span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">elementData</span><span class="p">).</span><span class="na">length</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">        </span><span class="n">elementData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grow</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">elementData</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">                        </span><span class="n">elementData</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">                        </span><span class="n">s</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="n">elementData</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">element</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <h3 id="5">5. 随机存取元素</h3>
 <p>数组有一个能快速随机存取数据的特性，ArrayList便同样具有这样的特性。</p>
 <p>在ArrayList中提供了get和set函数可以读取或者替换指定位置的元素。这个操作的开销非常小，这个读和写几乎等同于如下操作：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"></span>
-<span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxx&quot;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">rst</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">array</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;xxxx&quot;</span><span class="w"></span>
+</code></pre></div>
 <p>这个特性正是ArrayList最大的优点。</p>
 <h3 id="6">6. 其它功能</h3>
 <p>作为了解，我注意到了，JDK还为ArrayList实现了如下功能。</p>

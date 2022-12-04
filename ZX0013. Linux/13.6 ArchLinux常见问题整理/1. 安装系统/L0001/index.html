@@ -3002,10 +3002,9 @@
 <p><code>mount /dev/sdxn /mnt</code></p>
 <p>/dev/sdxn为你用来安装Arch Linux的分区。(根目录<code>/</code>挂载在这里)</p>
 <p>把这两步连起来就是：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>mount /dev/sdxn /mnt    <span class="c1"># 挂载本机Arch Linux系统的根目录&quot;/&quot;到Live系统的&quot;/mnt&quot;</span>
-arch-chroot /mnt        <span class="c1"># 切换到&quot;/mnt&quot;，也就相当于从Live系统切换到了本机Arch Linux系统</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mount /dev/sdxn /mnt    <span class="c1"># 挂载本机Arch Linux系统的根目录&quot;/&quot;到Live系统的&quot;/mnt&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>arch-chroot /mnt        <span class="c1"># 切换到&quot;/mnt&quot;，也就相当于从Live系统切换到了本机Arch Linux系统</span>
+</code></pre></div>
 <p>※在本机Arch Linux系统中，可以执行<code>exit</code>命令来退回到Live系统中去。</p>
 <p>没错，当我们以后重新插入U盘启动Live系统时，仍然可以执行这两个命令来切换到本机Arch Linux环境。
 当然，我们也可以拿这个Live系统去修复其他机器上的Arch Linux系统。

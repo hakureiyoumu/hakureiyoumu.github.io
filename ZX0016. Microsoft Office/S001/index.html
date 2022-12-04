@@ -3216,176 +3216,115 @@
 <p>VBA中有很多特殊的语法，与主流的编程语言不太一样。为了减少记忆量，尽量使用最简单的语法来编程会使自己轻松一些。</p>
 <h4 id="21">2.1 变量，常量</h4>
 <p>在VBA中使用Dim关键字来定义变量，并可以作为局部变量或者全局变量。                     </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim text As String                      
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Dim text As String                      
+</code></pre></div>
 <p>要注意，在定义常量的时候并不需要指定类型:                       </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Public Const HTML_A_TEXT = &quot;Hello world!!!&quot;                     
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Public Const HTML_A_TEXT = &quot;Hello world!!!&quot;                     
+</code></pre></div>
 <p>在VBA中如果要给对象类型的变量赋值，需要加上Set关键字。                      </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim abc As Object                       
-Set abc = CreateObject(XXXX …                       
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Dim abc As Object                       
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Set abc = CreateObject(XXXX …                       
+</code></pre></div>
 <h4 id="22">2.2 数组</h4>
 <p>数组的使用比较复杂，直接用例子来说明。要注意的是数组的下标从 1 开始：                        </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>&#39; 创建一个数组                        
-Dim myArr(200) As Variant                       
-
-&#39; 给数组中的元素赋值                     
-myArr(1) = 1                        
-
-&#39; 取出指定索引的元素                     
-myArr(2)                        
-
-&#39; 数组作为函数参数时的写法                      
-Sub MyFunc(ByRef myArr() As Variant, ...                        
-
-&#39; 可以通过嵌套来定义二维数组                     
-Dim secArr(4) As Variant                        
-myArr(1) = secArr                       
-&#39; 这样myArr就成了一个200 x N的二维数组                      
-&#39; 这个写法可以引用二维数组中的元素                      
-myArr(30)(2)                        
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&#39; 创建一个数组                        
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Dim myArr(200) As Variant                       
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>&#39; 给数组中的元素赋值                     
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>myArr(1) = 1                        
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>&#39; 取出指定索引的元素                     
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>myArr(2)                        
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>&#39; 数组作为函数参数时的写法                      
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>Sub MyFunc(ByRef myArr() As Variant, ...                        
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>&#39; 可以通过嵌套来定义二维数组                     
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>Dim secArr(4) As Variant                        
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>myArr(1) = secArr                       
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>&#39; 这样myArr就成了一个200 x N的二维数组                      
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>&#39; 这个写法可以引用二维数组中的元素                      
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>myArr(30)(2)                        
+</code></pre></div>
 <h4 id="23">2.3 函数，过程</h4>
 <p>函数和过程并没有太大区别，函数可以带返回值。过程也可以通过传递ref参数来输出结果。                    <br />
 函数的返回值用它的名字来指代。                     </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>&#39; 定义一个函数                        
-&#39; Count the Used Line                       
-Function CountUsedLine() As Integer                     
-    Dim n As Integer                        
-                            
-    n = ActiveSheet.UsedRange.Rows.Count                        
-    CountUsedLine = ActiveSheet.UsedRange.Rows(n).Row                       
-End Function                        
-
-&#39; 定义一个过程                        
-&#39; Set Font Size                     
-Sub SetFontSize(rangeStr As String, size As Integer)                        
-
-    With Range(rangeStr).Font                       
-        .size = size                        
-    End With                        
-End Sub                     
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&#39; 定义一个函数                        
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>&#39; Count the Used Line                       
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>Function CountUsedLine() As Integer                     
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    Dim n As Integer                        
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                            
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    n = ActiveSheet.UsedRange.Rows.Count                        
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    CountUsedLine = ActiveSheet.UsedRange.Rows(n).Row                       
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>End Function                        
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>&#39; 定义一个过程                        
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>&#39; Set Font Size                     
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>Sub SetFontSize(rangeStr As String, size As Integer)                        
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    With Range(rangeStr).Font                       
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        .size = size                        
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    End With                        
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>End Sub                     
+</code></pre></div>
 <p>使用输出类型的参数:                      </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>&#39; 带输出参数的过程                      
-Sub MySub(ByRef myArr() As Variant, ByRef capCount As Integer)                      
-                            
-    &#39; TODO                      
-End Sub                     
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&#39; 带输出参数的过程                      
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Sub MySub(ByRef myArr() As Variant, ByRef capCount As Integer)                      
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>                            
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    &#39; TODO                      
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>End Sub                     
+</code></pre></div>
 <p>这里为了返回多个值使用了数组来作为输出参数。                      </p>
 <p>调用过程与函数。                        </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Call SetFontSize                        
-n = CountUsedLine()                     
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Call SetFontSize                        
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>n = CountUsedLine()                     
+</code></pre></div>
 <h4 id="24">2.4 控制语句</h4>
 <div class="admonition example">
 <p class="admonition-title">IF语句</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>If x = 1 Then                   
-    &#39; do some thing                 
-ElseIf x = 4 Then                   
-    &#39; do some thing                 
-Else                    
-    &#39; do some thing                 
-End If                  
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>If x = 1 Then                   
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    &#39; do some thing                 
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>ElseIf x = 4 Then                   
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    &#39; do some thing                 
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Else                    
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    &#39; do some thing                 
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>End If                  
+</code></pre></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">SWITCH语句</p>
 <p>switch的写法比较多，有的也很方便，但是语句格式不同于一般的编程语言。可以尽量少用。                  <br />
 这里我们只看最基本的用法，也就是和其它语言中相同的用法。                    </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>Select Case n                   
-    Case 1                  
-        &#39; do some thing                 
-    Case 2                  
-        &#39; do some thing                 
-    Case Else                   
-       &#39; do some thing                  
-End Select                  
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Select Case n                   
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    Case 1                  
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        &#39; do some thing                 
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    Case 2                  
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        &#39; do some thing                 
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    Case Else                   
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>       &#39; do some thing                  
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>End Select                  
+</code></pre></div>
 <p>注意，这里并没有break。                  </p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">WHILE语句</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>Do While true &#39; 条件                  
-    &#39; do some thing                 
-Loop                    
-
-Do                  
-    &#39; do some thing                 
-Loop While true &#39; 条件                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Do While true &#39; 条件                  
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    &#39; do some thing                 
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Loop                    
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Do                  
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    &#39; do some thing                 
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Loop While true &#39; 条件                    
+</code></pre></div>
 <p>要退出循环，可以使用Exit Do。                  </p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">FOR语句</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>&#39; 从1到100，每次加2                   
-For i = 1 To 100 Step 2                 
-    &#39; do some thing                 
-Next                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&#39; 从1到100，每次加2                   
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>For i = 1 To 100 Step 2                 
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    &#39; do some thing                 
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Next                    
+</code></pre></div>
 <p>要退出循环，可以使用Exit For。                 </p>
 </div>
 <h4 id="25">2.5 逻辑运算符</h4>
@@ -3403,59 +3342,44 @@ Next
 </div>
 <div class="admonition example">
 <p class="admonition-title">判断空对象</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim rst As Range                    
-Set rst = Rows(9).Find(&quot;&quot;)                  
-&#39; 判断对象是否为空                  
-If rst Is Nothing Then                  
-    &#39; do something                  
-End If                  
-
-&#39; 判断对象是否不为空                 
-If Not rst Is Nothing Then                  
-    &#39; do something                  
-End If                  
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Dim rst As Range                    
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Set rst = Rows(9).Find(&quot;&quot;)                  
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>&#39; 判断对象是否为空                  
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>If rst Is Nothing Then                  
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>    &#39; do something                  
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>End If                  
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>&#39; 判断对象是否不为空                 
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>If Not rst Is Nothing Then                  
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>    &#39; do something                  
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>End If                  
+</code></pre></div>
 </div>
 <h3 id="3">3.   字符串操作</h3>
 <h4 id="31">3.1 字符串拼接</h4>
 <p>使用 &amp; 来进行字符串拼接。注意多种语言的拼接字符不要混淆了。                     </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&quot;Hello &quot; &amp; &quot;World!!!&quot;                       
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&quot;Hello &quot; &amp; &quot;World!!!&quot;                       
+</code></pre></div>
 <h4 id="32">3.2 特殊字符</h4>
 <p>有很多特殊字符无法在代码里面直接打出来，VBA并没有提供转义字符来表示，而是通过直接指定ASCII码的方式：                      </p>
 <p>此处引用WiKi百科上的ASCII码表：                        </p>
 <p><img alt="ascii" src="../S001.files/001.png" />                    </p>
 <p>比如要在字符串种使用水平制表符(\t)，可以这样写:                      </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>&quot;Hello&quot; &amp; Chr(9) &amp; &quot;World!!!&quot;      &#39; 十进制                        
-&quot;Hello&quot; &amp; Chr(&amp;H09) &amp; &quot;World!!!&quot;   &#39; 十六进制                       
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&quot;Hello&quot; &amp; Chr(9) &amp; &quot;World!!!&quot;      &#39; 十进制                        
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>&quot;Hello&quot; &amp; Chr(&amp;H09) &amp; &quot;World!!!&quot;   &#39; 十六进制                       
+</code></pre></div>
 <h4 id="33">3.3 字符串比较</h4>
 <p>直接使用一个 = 来比较，不需要equals之类的专门的方法。                     </p>
 <h4 id="34">3.4 查找</h4>
 <h5 id="341">3.4.1  查找指定范围内的文本</h5>
 <p>使用Range对象的Find方法可以进行字符串的查找，可以配置的参数也比较多。                 </p>
 <p>查找一个范围内的文本的通常用法如下：                  </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim rst As Range                    
-With Range(Cells(1, &quot;A&quot;), Cells(10, &quot;J&quot;))                   
-    Set rst = .Find(&quot;abc&quot;, After:=.Cells(.Cells.Count))                 
-    &#39; rst中就是检索结果的单元格                    
-End With                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Dim rst As Range                    
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>With Range(Cells(1, &quot;A&quot;), Cells(10, &quot;J&quot;))                   
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    Set rst = .Find(&quot;abc&quot;, After:=.Cells(.Cells.Count))                 
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    &#39; rst中就是检索结果的单元格                    
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>End With                    
+</code></pre></div>
 <p>具体的参数可以查询微软的文档。主要可以配置如下参数：                  </p>
 <table>
 <thead>
@@ -3505,32 +3429,24 @@ End With
 <p>上面After配置的值，就是配置为该范围内的最后一个单元格。由于是循环查找的，那么最后一个单元格的下一个单元格就是范围内的第一个单元格。                    </p>
 <h5 id="342">3.4.2  继续查找下一个</h5>
 <p>就像我们在窗口中查找一样，代码里也可以循环查找下一个。使用如下函数：                  </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>FindNext                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>FindNext                    
+</code></pre></div>
 <p>详细的用法可以在微软的文档中找到。                   </p>
 <p>用法示例：                   </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim rst As Range                    
-With Range(Cells(1, &quot;A&quot;), Cells(10, &quot;J&quot;))                   
-    Set rst = .Find(&quot;abc&quot;, After:=.Cells(.Cells.Count))                 
-    &#39; rst中就是检索结果的单元格                    
-
-    &#39; 现在继续查找                    
-    Set rst = .FindNext(rst)                    
-End With                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Dim rst As Range                    
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>With Range(Cells(1, &quot;A&quot;), Cells(10, &quot;J&quot;))                   
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    Set rst = .Find(&quot;abc&quot;, After:=.Cells(.Cells.Count))                 
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    &#39; rst中就是检索结果的单元格                    
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    &#39; 现在继续查找                    
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    Set rst = .FindNext(rst)                    
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>End With                    
+</code></pre></div>
 <h5 id="343">3.4.3  查找空白单元格</h5>
 <p>使用""即可表示空白单元格：                  </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Dim rst As Range                    
-Set rst = Rows(9).Find(&quot;&quot;)                  
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>Dim rst As Range                    
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>Set rst = Rows(9).Find(&quot;&quot;)                  
+</code></pre></div>
 <h4 id="35">3.5 常用字符串参照函数</h4>
 <table>
 <thead>
@@ -3568,25 +3484,22 @@ Set rst = Rows(9).Find(&quot;&quot;)
 <p>类型  WorkSheet                   </p>
 <div class="admonition example">
 <p class="admonition-title">取得当前激活状态的sheet</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ActiveSheet                 
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ActiveSheet                 
+</code></pre></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">取得指定的sheet</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>Sheets(&quot;sheet名&quot;)                    
-Sheets(sheetIndex)          ※从1开始编号     
-Worksheets(&quot;sheet名&quot;)                    
-Worksheets(sheetIndex)              ※从1开始编号 
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Sheets(&quot;sheet名&quot;)                    
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Sheets(sheetIndex)          ※从1开始编号     
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Worksheets(&quot;sheet名&quot;)                    
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Worksheets(sheetIndex)              ※从1开始编号 
+</code></pre></div>
 <p>Sheet与Worksheet的概念我们一般是不用关心的。                   </p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">激活一个sheet</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sheet对象.Activate                    
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sheet对象.Activate                    
+</code></pre></div>
 <p>激活后，会切换输入焦点到那个sheet页，并且使用ActiveSheet可以取得这个sheet。                    </p>
 </div>
 <h4 id="43-cell">4.3 Cell对象</h4>
@@ -3636,8 +3549,8 @@ Worksheets(sheetIndex)              ※从1开始编号
 <p>像这种矩形选择区域。
 使用录制宏自动生成的代码里面很常见。</p>
 <p>使用如下代码可以将指定的Cell对象选中：                       </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Cell对象.Select                       
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Cell对象.Select                       
+</code></pre></div>
 <p>Selection就表示当前选择中的区域，通常情况下这也是一个Range类型的对象。                      </p>
 <h3 id="5">5.   特殊处理</h3>
 <h4 id="51-nonbreaking-space">5.1 nonbreaking space导致的错误</h4>

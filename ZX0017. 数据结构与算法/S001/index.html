@@ -2875,177 +2875,113 @@
 <p>快速排序的原理是，选取一个关键值，然后使用这个关键值，分治出左右两个数组。使左数组中的元素都比它小，右数组中的元素都比它大。
 然后对左右两个数组执行同样的操作，一直递归下去，直到小数组只剩一个元素没法再分治。</p>
 <p>例如对于数组：</p>
-<p><img alt="qs" src="../S001.files/01.png" /></p>
+<p><img alt="" src="2022-12-04-17-32-10.png" /></p>
 <p>选取第一个元素22为关键值进行分治。分治之后为:</p>
-<p><img alt="qs" src="../S001.files/02.png" /></p>
+<p><img alt="" src="2022-12-04-17-48-16.png" /></p>
 <p>然后不断重复这个过程</p>
-<p><img alt="qs" src="../S001.files/03.png" /></p>
+<p><img alt="" src="2022-12-04-17-48-27.png" /></p>
 <p>这样排序就完成了。那么最关键的分治如何实现呢？</p>
 <p>先来一种简单的分治算法。</p>
 <p>首先，先创建一个与待排序数组大小相等的临时数组。</p>
-<p><img alt="qs" src="../S001.files/04.png" /></p>
+<p><img alt="" src="2022-12-04-17-48-38.png" /></p>
 <p>然后就从左到右遍历原数组，与关键值比较，凡是小于等于关键值的就从左边依次放入临时数组。大于关键值的就依次从右边放入临时数组。</p>
 <p>同样以下面的数组为例：</p>
-<p><img alt="qs" src="../S001.files/05.png" /></p>
+<p><img alt="" src="2022-12-04-17-48-47.png" /></p>
 <p>22为关键值，从3开始遍历到结尾的-45。放入元素的过程如下:</p>
-<p><img alt="qs" src="../S001.files/06.png" /></p>
+<p><img alt="" src="2022-12-04-17-48-55.png" /></p>
 <p>最后将关键值放入中间的空位:</p>
-<p><img alt="qs" src="../S001.files/07.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-03.png" /></p>
 <p>这样一次分治过程就完成了，看起来还不错。</p>
 <p>但是这个分治法有一个缺点，就是要用临时数组来存放中间结果。每次分治都要一个临时数组，最后还要复制回原来的数组里面。</p>
 <p>所以典型的分治算法是采用原地分治，也即是不使用额外的临时数组空间。只在数组内部倒数据。</p>
 <p>这个分治法可称之为反复横切分治法。具体过程如下：</p>
-<p><img alt="qs" src="../S001.files/08.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-11.png" /></p>
 <p>首先关键值22位于最左侧，第一步就是从最右端开始找第一个小于22的数字。我们找到了-45，交换它与关键值的位置。那么第一次分治的结果就是：</p>
-<p><img alt="qs" src="../S001.files/09.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-18.png" /></p>
 <p>这个例子举得不好，第一次分治看起来没什么乱用。</p>
 <p>现在我们再从左找第一个大于22的元素，我们找到了2345，那么交换2345和关键值的位置，第二次分治的结果是：</p>
-<p><img alt="qs" src="../S001.files/10.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-27.png" /></p>
 <p>此时，由于2345是第一个大于22的元素，那么它之前的三个元素，也就是-45, 3, -45一定小于或等于22，也就是说这三个元素以及分治完了。那么它们下次就不用管了。</p>
-<p><img alt="qs" src="../S001.files/11.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-37.png" /></p>
 <p>现在数组变成了：</p>
-<p><img alt="qs" src="../S001.files/12.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-43.png" /></p>
 <p>此时又跟一开始数组的状态一样了，都是关键值在开头第一个位置。那么我们只要重复刚才的过程就可以完成分治。</p>
 <p>完整的分治过程如下：</p>
-<p><img alt="qs" src="../S001.files/13.png" /></p>
+<p><img alt="" src="2022-12-04-17-49-51.png" /></p>
 <p>至此，快速排序的所有细节我们都逐一实现了。</p>
 <h3 id="3-java">3.   代码示范(Java)</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">QuickSort</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
-<span class="w">                                                                    </span>
-<span class="w">    </span><span class="c1">// 快速排序                                                                 </span><span class="w"></span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">quickSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                         </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">numArray</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">                 </span>
-<span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">                                                                    </span>
-<span class="w">    </span><span class="c1">// 对指定起始位置和结束位置的数据进行快速排序                                         </span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">_quickSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="c1">// 如果起始位置和结束位置重回了，则这个数组只有一个元素，不需要排序             </span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                   </span>
-<span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">                                                                 </span>
-<span class="w">        </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="c1">// 执行一次分治，返回值keyIndex用于界定分治后的左右数组         </span><span class="w"></span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_onceQuickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="n">endIndex</span><span class="p">);</span><span class="w">         </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="c1">// 对左数组进行排序                                                                 </span><span class="w"></span>
-<span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">          </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="c1">// 对右数组进行排序                                                                 </span><span class="w"></span>
-<span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">endIndex</span><span class="p">);</span><span class="w">               </span>
-<span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">                                                                    </span>
-<span class="w">    </span><span class="c1">// 执行一次分治，返回值用于界定分治后的左右数组                </span><span class="w"></span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">_onceQuickSort</span><span class="p">(</span><span class="w">                                                                  </span>
-<span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span>
-<span class="w">                                                                            </span>
-<span class="w">        </span><span class="c1">// 选择第一个位置的元素作为关键值                                                                  </span><span class="w"></span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">                                                                 </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="c1">// 反复横切直到切无可切                                                                   </span><span class="w"></span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                 </span>
-<span class="w">                                                                    </span>
-<span class="w">            </span><span class="c1">// 从右端寻找第一个小于key的元素                                                                 </span><span class="w"></span>
-<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
-<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">endNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="p">;</span><span class="w">       </span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">endNum</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                 </span>
-<span class="w">                                                                        </span>
-<span class="w">                    </span><span class="c1">// 如果找到了就交换此值和key的位置，并退出循环结束右端查找        </span><span class="w"></span>
-<span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">          </span>
-<span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">endNum</span><span class="p">;</span><span class="w">         </span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">                                                                  </span>
-<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
-<span class="w">                    </span><span class="n">endIndex</span><span class="o">--</span><span class="p">;</span><span class="w">                                                                 </span>
-<span class="w">                </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">            </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">                                                                    </span>
-<span class="w">            </span><span class="c1">// 从左端寻找第一个大于key的元素                                                                 </span><span class="w"></span>
-<span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                  </span>
-<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">startNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">           </span>
-<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">startNum</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                   </span>
-<span class="w">                                                                        </span>
-<span class="w">                    </span><span class="c1">// 如果找到了就交换此值和key的位置，并退出循环结束左端查找          </span><span class="w"></span>
-<span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="p">;</span><span class="w">      </span>
-<span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startNum</span><span class="p">;</span><span class="w">             </span>
-<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">                                                                  </span>
-<span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
-<span class="w">                    </span><span class="n">startIndex</span><span class="o">++</span><span class="p">;</span><span class="w">                                                                   </span>
-<span class="w">                </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">            </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">        </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="w">                                                                    </span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">startIndex</span><span class="p">;</span><span class="w">                                                                  </span>
-<span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
-<span class="p">}</span><span class="w">                                                                   </span>
-</code></pre></div></td></tr></table></div>
+<div class="admonition example">
+<p class="admonition-title">代码示范</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">QuickSort</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// 快速排序                                                                 </span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">quickSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                         </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">numArray</span><span class="p">.</span><span class="na">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">                 </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="c1">// 对指定起始位置和结束位置的数据进行快速排序                                         </span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">_quickSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">        </span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span><span class="c1">// 如果起始位置和结束位置重回了，则这个数组只有一个元素，不需要排序             </span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">            </span><span class="k">return</span><span class="p">;</span><span class="w">                                                                 </span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">        </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="c1">// 执行一次分治，返回值keyIndex用于界定分治后的左右数组         </span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_onceQuickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="n">endIndex</span><span class="p">);</span><span class="w">         </span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span><span class="c1">// 对左数组进行排序                                                                 </span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">          </span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">        </span><span class="c1">// 对右数组进行排序                                                                 </span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="n">_quickSort</span><span class="p">(</span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="n">keyIndex</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">endIndex</span><span class="p">);</span><span class="w">               </span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="c1">// 执行一次分治，返回值用于界定分治后的左右数组                </span><span class="w"></span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">_onceQuickSort</span><span class="p">(</span><span class="w">                                                                  </span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="kt">int</span><span class="o">[]</span><span class="w"> </span><span class="n">numArray</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">startIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">           </span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">                                                                            </span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="c1">// 选择第一个位置的元素作为关键值                                                                  </span><span class="w"></span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">                                                                 </span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">        </span><span class="c1">// 反复横切直到切无可切                                                                   </span><span class="w"></span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                 </span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">            </span><span class="c1">// 从右端寻找第一个小于key的元素                                                                 </span><span class="w"></span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">endNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="p">;</span><span class="w">       </span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">endNum</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                 </span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">                                                                        </span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">                    </span><span class="c1">// 如果找到了就交换此值和key的位置，并退出循环结束右端查找        </span><span class="w"></span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">          </span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">endNum</span><span class="p">;</span><span class="w">         </span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">                                                                  </span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">                    </span><span class="n">endIndex</span><span class="o">--</span><span class="p">;</span><span class="w">                                                                 </span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">                </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">            </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">            </span><span class="c1">// 从左端寻找第一个大于key的元素                                                                 </span><span class="w"></span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">startIndex</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">endIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                  </span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">startNum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="p">;</span><span class="w">           </span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">startNum</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">                                                                        </span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">                    </span><span class="c1">// 如果找到了就交换此值和key的位置，并退出循环结束左端查找          </span><span class="w"></span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">startIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="p">;</span><span class="w">      </span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">                    </span><span class="n">numArray</span><span class="o">[</span><span class="n">endIndex</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startNum</span><span class="p">;</span><span class="w">             </span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">                                                                  </span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">                </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">                                                                    </span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">                    </span><span class="n">startIndex</span><span class="o">++</span><span class="p">;</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">                </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">            </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">        </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">                                                                    </span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">startIndex</span><span class="p">;</span><span class="w">                                                                  </span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="p">}</span><span class="w">                                                                   </span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="p">}</span><span class="w">                                                                   </span>
+</code></pre></div>
+</div>
 
 
 

@@ -3032,23 +3032,17 @@
 <p>提供一些函数来检查目标值是否满足指定的条件，如果不满足则抛出指定的异常。</p>
 <div class="admonition example">
 <p class="admonition-title">条件检查</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">checkArgument</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Argument was %s but expected nonnegative&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
-<span class="n">checkArgument</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Expected i &lt; j, but %s &gt;= %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">checkArgument</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Argument was %s but expected nonnegative&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">checkArgument</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Expected i &lt; j, but %s &gt;= %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 <p>类似的函数还有</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">checkArgument</span><span class="p">(</span><span class="kt">boolean</span><span class="p">)</span><span class="w"></span>
-<span class="n">checkNotNull</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"></span>
-<span class="n">checkState</span><span class="p">(</span><span class="kt">boolean</span><span class="p">)</span><span class="w"></span>
-<span class="n">checkElementIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-<span class="n">checkPositionIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-<span class="n">checkPositionIndexes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">checkArgument</span><span class="p">(</span><span class="kt">boolean</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">checkNotNull</span><span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">checkState</span><span class="p">(</span><span class="kt">boolean</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">checkElementIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">checkPositionIndex</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">checkPositionIndexes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
 </div>
 <h4 id="32">3.2 实现比较接口</h4>
 <p>提供了<code>ComparisonChain</code>类来更简单的实现比较接口，写起来很愉快。</p>
@@ -3056,55 +3050,33 @@
 <div class="admonition example">
 <p class="admonition-title">ComparisonChain</p>
 <p>通常的写法</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"></span>
-<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"></span>
-<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">zipCode</span><span class="p">;</span><span class="w"></span>
-
-<span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">lastName</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cmp</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="n">cmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">firstName</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cmp</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">zipCode</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">zipCode</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">Person</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">lastName</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">firstName</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">zipCode</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Person</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">lastName</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cmp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="n">cmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">firstName</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cmp</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cmp</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">Integer</span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="n">zipCode</span><span class="p">,</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="na">zipCode</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 <p>Guava中的写法</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Foo</span><span class="w"> </span><span class="n">that</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ComparisonChain</span><span class="p">.</span><span class="na">start</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">aString</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">aString</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">anInt</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">anInt</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">anEnum</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">anEnum</span><span class="p">,</span><span class="w"> </span><span class="n">Ordering</span><span class="p">.</span><span class="na">natural</span><span class="p">().</span><span class="na">nullsLast</span><span class="p">())</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">result</span><span class="p">();</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Foo</span><span class="w"> </span><span class="n">that</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ComparisonChain</span><span class="p">.</span><span class="na">start</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">aString</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">aString</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">anInt</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">anInt</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="p">.</span><span class="na">compare</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">anEnum</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="p">.</span><span class="na">anEnum</span><span class="p">,</span><span class="w"> </span><span class="n">Ordering</span><span class="p">.</span><span class="na">natural</span><span class="p">().</span><span class="na">nullsLast</span><span class="p">())</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="p">.</span><span class="na">result</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
 </div>
 <p>可以看到，Java中通常的写法写起来又臭又长，还容易写错。Guava的写法很简短，而且语义非常清楚，容易阅读。</p>
 <h3 id="4">4. 集合工具类</h3>
@@ -3112,36 +3084,26 @@
 <p>创建集合类时指定值是很常见的一个操作。通常写起来会比较烦人。Guava简化了这个过程。</p>
 <div class="admonition example">
 <p class="admonition-title">使用值初始化集合类</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 用元素初始化List</span><span class="w"></span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theseElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lists</span><span class="p">.</span><span class="na">newArrayList</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;beta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gamma&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="c1">// 初始化Set时指定大小</span><span class="w"></span>
-<span class="n">Set</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">approx100Set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sets</span><span class="p">.</span><span class="na">newHashSetWithExpectedSize</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
-<span class="c1">// 初始化Map</span><span class="w"></span>
-<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImmutableMap</span><span class="p">.</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="n">builder</span><span class="p">()</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;东&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;南&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;西&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;北&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">// 用元素初始化List</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theseElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Lists</span><span class="p">.</span><span class="na">newArrayList</span><span class="p">(</span><span class="s">&quot;alpha&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;beta&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gamma&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// 初始化Set时指定大小</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">Set</span><span class="o">&lt;</span><span class="n">Type</span><span class="o">&gt;</span><span class="w"> </span><span class="n">approx100Set</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sets</span><span class="p">.</span><span class="na">newHashSetWithExpectedSize</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">// 初始化Map</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ImmutableMap</span><span class="p">.</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="n">builder</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;东&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;南&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;西&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;北&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
 </div>
 <h4 id="42">4.2 新的包装类型</h4>
 <p>可以使用新的包装类型，对数值类型，求多个值的最大值或最小值。
 新的包装类型的名字是在Java原生包装类型后面加上一个<code>s</code>。</p>
 <div class="admonition example">
 <p class="admonition-title">求最大值最小值</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Longs</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Longs</span><span class="p">.</span><span class="na">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 <p>从此再也不用嵌套<code>max</code>了。</p>
 </div>
 <h3 id="5">5. 字符串操作</h3>
@@ -3149,29 +3111,22 @@
 <p>Java中已经提供了连接字符串的函数，但是只能用于<code>String</code>。</p>
 <div class="admonition example">
 <p class="admonition-title">连接字符串</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 可以设定跳过空的对象</span><span class="w"></span>
-<span class="n">Joiner</span><span class="w"> </span><span class="n">joiner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Joiner</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="s">&quot;; &quot;</span><span class="p">).</span><span class="na">skipNulls</span><span class="p">();</span><span class="w"></span>
-<span class="k">return</span><span class="w"> </span><span class="n">joiner</span><span class="p">.</span><span class="na">join</span><span class="p">(</span><span class="s">&quot;Harry&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ron&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hermione&quot;</span><span class="p">);</span><span class="w"></span>
-<span class="c1">// 连接数值</span><span class="w"></span>
-<span class="n">Joiner</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">).</span><span class="na">join</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">));</span><span class="w"> </span><span class="c1">// returns &quot;1,5,7&quot;</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// 可以设定跳过空的对象</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">Joiner</span><span class="w"> </span><span class="n">joiner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Joiner</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="s">&quot;; &quot;</span><span class="p">).</span><span class="na">skipNulls</span><span class="p">();</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">return</span><span class="w"> </span><span class="n">joiner</span><span class="p">.</span><span class="na">join</span><span class="p">(</span><span class="s">&quot;Harry&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ron&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hermione&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1">// 连接数值</span><span class="w"></span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">Joiner</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">).</span><span class="na">join</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">));</span><span class="w"> </span><span class="c1">// returns &quot;1,5,7&quot;</span><span class="w"></span>
+</code></pre></div>
 </div>
 <h4 id="52">5.2 分割字符串</h4>
 <p>分割字符串的结果通常模糊不清。Guava提供了一个写法清晰，轻松预测结果的工具类。</p>
 <div class="admonition example">
 <p class="admonition-title">分割字符串</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Splitter</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">trimResults</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">omitEmptyStrings</span><span class="p">()</span><span class="w"></span>
-<span class="w">    </span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;foo,bar,,   qux&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Splitter</span><span class="p">.</span><span class="na">on</span><span class="p">(</span><span class="sc">&#39;,&#39;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="p">.</span><span class="na">trimResults</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="p">.</span><span class="na">omitEmptyStrings</span><span class="p">()</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="p">.</span><span class="na">split</span><span class="p">(</span><span class="s">&quot;foo,bar,,   qux&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
 </div>
 
 
