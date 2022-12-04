@@ -1,8 +1,0 @@
-安装如下软件:
-Adobe Acrobat Reader DC
-
-PerceivedType
-text
-
-HKEY_LOCAL_MACHINE\SOFTWARE\Classes\.json
-
