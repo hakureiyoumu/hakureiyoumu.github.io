@@ -16,7 +16,7 @@ markdown_extensions:
     - toc:
         baselevel: 2
     - pymdownx.highlight:
-        linenums: true
+        anchor_linenums: true
     - admonition
     - pymdownx.arithmatex
     - pymdownx.betterem:
