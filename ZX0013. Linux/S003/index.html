@@ -3015,36 +3015,40 @@
 文件的格式是有要求的，已hello world程序为例。</p>
 <div class="admonition example">
 <p class="admonition-title">test.sh</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>文件开头第一行是固定的。</p>
 <p>要执行脚本文件，需要赋予它可执行权限，并使用如下命令来运行：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>./test.sh
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./test.sh
+</code></pre></div></td></tr></table></div>
 <h3 id="3">3. 设置错误执行标记</h3>
 <p>脚本文件中通常会执行大段的linux命令。默认情况下，如果某一条命令执行失败，会继续往下执行。</p>
 <p>如果需要在命令执行失败时中断执行，可以加上-e标记，虽然可以在执行脚本时加上这个标记，但方便期间可以直接加在文件的头部。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="ch">#!/bin/bash -e</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash -e</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="4">4. 语法参考</h3>
 <h4 id="41">4.1 变量</h4>
 <p>定义一个变量</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">myVar</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">myVar</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>引用一个变量</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="42-linux">4.2 执行linux命令</h4>
 <p>shell脚本中最便利的一点是可以直接执行linux命令，任何可以在命令行执行的命令都可以。</p>
 <p>并且命令的执行结果可以保存在变量中。此时命令需要用反单引号括起来。</p>
 <p>例如:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span> /
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">myVar</span><span class="o">=</span><span class="sb">`</span>ls -la<span class="sb">`</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span> /
+<span class="nv">myVar</span><span class="o">=</span><span class="sb">`</span>ls -la<span class="sb">`</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>执行后会原样输出命令的执行结果。
 注意echo命令的字符串参数要加上双引号，负责不能正常解析字符串中的换行制表等符号。</p>
 <h4 id="43">4.3 注释</h4>
@@ -3052,27 +3056,34 @@
 <h4 id="44">4.4 函数</h4>
 <div class="admonition example">
 <p class="admonition-title">定义一个函数</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">function</span> myFunc<span class="o">()</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="o">{</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">function</span> myFunc<span class="o">()</span>
+<span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Hello world!&quot;</span>
+<span class="o">}</span>
+</code></pre></div></td></tr></table></div>
 <p>虽然function和括号等关键字可以省略，但是为了可读性还是加上比较好。</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">调用一个函数并传参数</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>myFunc param1 param2
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>myFunc param1 param2
+</code></pre></div></td></tr></table></div>
 <p>要注意并不用加括号。</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">引用参数</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">function</span> myFunc<span class="o">()</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">{</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">echo</span> <span class="s2">&quot;param2=</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">function</span> myFunc<span class="o">()</span>
+<span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">&quot;param2=</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="o">}</span>
+</code></pre></div></td></tr></table></div>
 <p>虽然大括号可以省略，但为了统一起见还是加上比较好。</p>
 </div>
 <div class="admonition example">
@@ -3083,75 +3094,111 @@
 <h4 id="45">4.5 控制结构</h4>
 <div class="admonition example">
 <p class="admonition-title">分支</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">if</span> 条件<span class="p">;</span> <span class="k">then</span>  
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    命令1
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    命令2
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="k">elif</span> 条件<span class="p">;</span> <span class="k">then</span>    
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>    
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    命令3
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>    命令4
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">else</span>    
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    命令5
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="k">fi</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> 条件<span class="p">;</span> <span class="k">then</span>  
+    
+    命令1
+    命令2
+<span class="k">elif</span> 条件<span class="p">;</span> <span class="k">then</span>    
+    
+    命令3
+    命令4
+<span class="k">else</span>    
+    
+    命令5
+<span class="k">fi</span>  
+</code></pre></div></td></tr></table></div>
 <p>注意条件不要随便加括号，一般的linux命令不能加括号。</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">循环</p>
 <p>使用for语句进行循环比较常见。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">for</span> myVar <span class="k">in</span> item1 item2 ... itemX <span class="k">do</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    命令1
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> myVar <span class="k">in</span> item1 item2 ... itemX <span class="k">do</span>
+
+    命令1
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div></td></tr></table></div>
 <p>in后面的列表可以为固定的几个值。也可以跟命令的运行结果。</p>
 <p>比如循环读取文件的每一行:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">for</span> line <span class="k">in</span> <span class="sb">`</span>cat test.txt<span class="sb">`</span> <span class="k">do</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> line <span class="k">in</span> <span class="sb">`</span>cat test.txt<span class="sb">`</span> <span class="k">do</span>
+
+    <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">line</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</code></pre></div></td></tr></table></div>
 <p>还可以使用while来进行循环：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">while</span> 条件<span class="p">;</span> <span class="k">do</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    命令1
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> 条件<span class="p">;</span> <span class="k">do</span>
+
+    命令1
+<span class="k">done</span>
+</code></pre></div></td></tr></table></div>
 <p>同样在循环中可以使用break和continue。</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">选择</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">case</span> myVar <span class="k">in</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="m">0</span><span class="o">)</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    命令1
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="p">;;</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="m">1</span><span class="o">)</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    命令2
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    <span class="p">;;</span>
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>*<span class="o">)</span>
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    命令3
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    <span class="p">;;</span>
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="k">esac</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">case</span> myVar <span class="k">in</span>
+<span class="m">0</span><span class="o">)</span>
+
+    命令1
+    <span class="p">;;</span>
+<span class="m">1</span><span class="o">)</span>
+
+    命令2
+    <span class="p">;;</span>
+*<span class="o">)</span>
+
+    命令3
+    <span class="p">;;</span>
+<span class="k">esac</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="46">4.6 数学运算</h4>
 <p>这里并没有其他编程语言中的运算符。要进行数学运行需要把表达式写在字符串中并使用一些命令来进行运算。方法比较多，这里使用方括号$[ ]是比较全面的一个办法，并且表达式写起来也比较干净。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">x</span><span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">x</span><span class="o">=</span>$<span class="o">[(</span><span class="m">1</span>+2<span class="o">)</span>*3 - <span class="m">45</span>/9 + <span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="o">]</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">x</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">x</span><span class="o">=</span>$<span class="o">[(</span><span class="m">1</span>+2<span class="o">)</span>*3 - <span class="m">45</span>/9 + <span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="o">]</span>
+<span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">x</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div></td></tr></table></div>
 <p>加减乘除都支持，最后会输出5。</p>
 <h4 id="47-test">4.7 Test命令</h4>
 <p>Test命令通常配合控制语句一起使用。可以用来测试数值、字符串、文件以及逻辑运算。</p>
 <p>在控制语句中，test命令通常简写为方括号的形式。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">x</span><span class="si">}</span> -eq <span class="m">13</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="o">[</span> <span class="si">${</span><span class="nv">x</span><span class="si">}</span> -eq <span class="m">13</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</code></pre></div></td></tr></table></div>
 <p>注意方括号旁边必须有空格，后面要加分号。这个语法看着有点奇葩。</p>
 <div class="admonition example">
 <p class="admonition-title">数值</p>
@@ -3290,11 +3337,11 @@
 </table>
 </div>
 <h4 id="48">4.8 命令粘合运算符&amp;&amp;和||</h4>
-<div class="highlight"><pre><span></span><code>命令1 &amp;&amp; 命令2
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>命令1 &amp;&amp; 命令2
+</code></pre></div></td></tr></table></div>
 <p>如果命令1执行成功则执行命令2。</p>
-<div class="highlight"><pre><span></span><code>命令1 || 命令2
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>命令1 || 命令2
+</code></pre></div></td></tr></table></div>
 <p>如果命令1执行失败才会执行命令2。</p>
 
 

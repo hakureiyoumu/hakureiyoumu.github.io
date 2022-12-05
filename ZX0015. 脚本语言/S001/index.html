@@ -3196,12 +3196,16 @@
 <h3 id="1-lua">1.   lua初探</h3>
 <h4 id="11-lua">1.1 lua的特点</h4>
 <p>可以归结为如下几个特点     </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="err">跨平台和语言</span>      <span class="c1">-- 在linux，windows，Android，IOS上都可以使用，支持所有主流语言。可以说学了不会吃亏，不会上当。</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="err">快</span>                <span class="c1">-- 号称是最快的脚本语言，经常用于制作游戏脚本。</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="err">嵌入式</span>         <span class="c1">-- 通常不单独使用，而是嵌入到宿主语言中使用。能嵌入所有主流语言，甚至是其他脚本语言，适应性很广。</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="err">语法简洁</span>        <span class="c1">-- 采用类似C语言的语法结构。复杂的特性全用table搞定，简单易学。</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="err">小</span>               <span class="c1">-- 只有200多K，还有比这更小的吗？</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">跨平台和语言</span>      <span class="c1">-- 在linux，windows，Android，IOS上都可以使用，支持所有主流语言。可以说学了不会吃亏，不会上当。</span>
+<span class="err">快</span>                <span class="c1">-- 号称是最快的脚本语言，经常用于制作游戏脚本。</span>
+<span class="err">嵌入式</span>         <span class="c1">-- 通常不单独使用，而是嵌入到宿主语言中使用。能嵌入所有主流语言，甚至是其他脚本语言，适应性很广。</span>
+<span class="err">语法简洁</span>        <span class="c1">-- 采用类似C语言的语法结构。复杂的特性全用table搞定，简单易学。</span>
+<span class="err">小</span>               <span class="c1">-- 只有200多K，还有比这更小的吗？</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="12-lua">1.2 lua的安装</h4>
 <p>lua可以说是非常简单易学了。首先是安装。       </p>
 <p>它的安装包只有200多K，在windows下可以直接下载包含二进制可执行程序的安装包。解压后得到：       </p>
@@ -3214,8 +3218,8 @@
 <p>只有这4个文件，将这个目录配置到系统path中安装就算完成了。     </p>
 <h4 id="13-lua">1.3 执行lua脚本文件</h4>
 <p>lua使用.lua扩展名的文件来保存源码。可以在CMD中使用如下命令来执行.lua脚本文件：      </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>lua53 test.lua      
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>lua53 test.lua      
+</code></pre></div></td></tr></table></div>
 <p>.lua文件不需要再编译为特定的可执行文件。直接执行源码文件就很快。      </p>
 <h3 id="2">2.   基本语法</h3>
 <h4 id="21">2.1 文件结构概览</h4>
@@ -3234,316 +3238,520 @@
 <li>匿名函数    </li>
 </ul>
 <p>例子代码：       </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">-- this is a sample code        </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">num</span> <span class="o">=</span> <span class="mf">1.34</span>      
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;this is a test message.&quot;</span>     
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;this is another message.&#39;</span>       
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">msg3</span> <span class="o">=</span> <span class="s">[[       </span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s">this is the first line.     </span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">this is the second line.        </span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">]]</span>      
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span>     
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="p">[</span><span class="mi">1</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span>        
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>        <span class="o">=</span> <span class="s2">&quot;table1&quot;</span><span class="p">,</span>     
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="p">}</span>       
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1">-- myTable&#39;s member function        </span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="kr">function</span> <span class="nc">myTable</span><span class="p">.</span><span class="nf">print</span><span class="p">()</span>        
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        <span class="c1">-- print the table      </span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num=&quot;</span> <span class="o">..</span> <span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">..</span> <span class="s2">&quot;, name=&quot;</span> <span class="o">..</span> <span class="n">myTable</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>        
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="kr">end</span>     
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="c1">-- error catch      </span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="kr">if</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>       
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>                <span class="kr">function</span><span class="p">()</span>      
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>                        <span class="kd">local</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>     
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>                        <span class="n">msg</span> <span class="o">=</span> <span class="n">doSomeThing</span><span class="p">()</span>     
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>                <span class="kr">end</span>     
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>        <span class="p">)</span> <span class="kr">then</span>      
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="c1">--error     </span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this program is error.&quot;</span><span class="p">)</span>     
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>        <span class="kr">return</span>      
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="kr">end</span>     
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="c1">-- loop     </span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">myTable</span><span class="p">)</span> <span class="kr">do</span>      
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;key=&quot;</span> <span class="o">..</span> <span class="n">k</span><span class="p">)</span>      
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value=&quot;</span> <span class="o">..</span> <span class="n">v</span><span class="p">)</span>        
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="kr">end</span>     
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- this is a sample code        </span>
+<span class="n">num</span> <span class="o">=</span> <span class="mf">1.34</span>      
+<span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;this is a test message.&quot;</span>     
+<span class="n">msg2</span> <span class="o">=</span> <span class="s1">&#39;this is another message.&#39;</span>       
+<span class="n">msg3</span> <span class="o">=</span> <span class="s">[[       </span>
+<span class="s">this is the first line.     </span>
+<span class="s">this is the second line.        </span>
+<span class="s">]]</span>      
+
+<span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span>     
+        <span class="p">[</span><span class="mi">1</span><span class="p">]</span>             <span class="o">=</span> <span class="mf">3.1415926</span><span class="p">,</span>        
+        <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>        <span class="o">=</span> <span class="s2">&quot;table1&quot;</span><span class="p">,</span>     
+<span class="p">}</span>       
+
+<span class="c1">-- myTable&#39;s member function        </span>
+<span class="kr">function</span> <span class="nc">myTable</span><span class="p">.</span><span class="nf">print</span><span class="p">()</span>        
+
+        <span class="c1">-- print the table      </span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;num=&quot;</span> <span class="o">..</span> <span class="n">myTable</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">..</span> <span class="s2">&quot;, name=&quot;</span> <span class="o">..</span> <span class="n">myTable</span><span class="p">.</span><span class="n">name</span><span class="p">)</span>        
+<span class="kr">end</span>     
+
+<span class="c1">-- error catch      </span>
+<span class="kr">if</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>       
+                <span class="kr">function</span><span class="p">()</span>      
+
+                        <span class="kd">local</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>     
+                        <span class="n">msg</span> <span class="o">=</span> <span class="n">doSomeThing</span><span class="p">()</span>     
+                <span class="kr">end</span>     
+        <span class="p">)</span> <span class="kr">then</span>      
+
+        <span class="c1">--error     </span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this program is error.&quot;</span><span class="p">)</span>     
+        <span class="kr">return</span>      
+<span class="kr">end</span>     
+
+<span class="c1">-- loop     </span>
+<span class="kr">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">myTable</span><span class="p">)</span> <span class="kr">do</span>      
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;key=&quot;</span> <span class="o">..</span> <span class="n">k</span><span class="p">)</span>      
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;value=&quot;</span> <span class="o">..</span> <span class="n">v</span><span class="p">)</span>        
+<span class="kr">end</span>     
+</code></pre></div></td></tr></table></div>
 <h4 id="22">2.2 控制语句</h4>
 <h5 id="221">2.2.1  分支</h5>
 <div class="admonition example">
 <p class="admonition-title">IF 语句</p>
 <p>直接上例子比较直观   </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="kr">then</span>   
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X &gt; Y&quot;</span><span class="p">)</span>  
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kr">elseif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="kr">then</span>  
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X == Y&quot;</span><span class="p">)</span> 
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kr">else</span>    
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X &lt; Y&quot;</span><span class="p">)</span>  
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kr">end</span> 
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kr">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span> <span class="kr">then</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X &gt; Y&quot;</span><span class="p">)</span>  
+<span class="kr">elseif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="kr">then</span>  
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X == Y&quot;</span><span class="p">)</span> 
+<span class="kr">else</span>    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X &lt; Y&quot;</span><span class="p">)</span>  
+<span class="kr">end</span> 
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">SWITCH语句</p>
 <p>lua中并没有switch语句，想要实现类似的功能，可以在table中保存分支。    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- 分支函数定义   </span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kr">function</span> <span class="nf">func1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func1 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="kr">end</span> 
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kr">function</span> <span class="nf">func2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func2 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="kr">end</span> 
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="kr">function</span> <span class="nf">func3</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func3 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="kr">end</span> 
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="kd">local</span> <span class="n">mySwitch</span> <span class="o">=</span> <span class="p">{</span>  
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">func1</span><span class="p">,</span>    <span class="c1">-- 分支1  </span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">func2</span><span class="p">,</span>    <span class="c1">-- 分支2  </span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="p">[</span><span class="mi">68</span><span class="p">]</span> <span class="o">=</span> <span class="n">func3</span><span class="p">,</span>   <span class="c1">-- 分支3  </span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>   
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="kd">local</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span> 
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="c1">-- 取得分支对应的函数    </span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="kd">local</span> <span class="n">funcX</span> <span class="o">=</span> <span class="n">mySwitch</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>   
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1">-- 调用函数 </span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="n">funcX</span><span class="p">(</span><span class="mi">699</span><span class="p">)</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 分支函数定义   </span>
+<span class="kr">function</span> <span class="nf">func1</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func1 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
+<span class="kr">end</span> 
+<span class="kr">function</span> <span class="nf">func2</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func2 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
+<span class="kr">end</span> 
+<span class="kr">function</span> <span class="nf">func3</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;func3 &quot;</span> <span class="o">..</span> <span class="n">n</span><span class="p">)</span>    
+<span class="kr">end</span> 
+
+<span class="kd">local</span> <span class="n">mySwitch</span> <span class="o">=</span> <span class="p">{</span>  
+    <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">func1</span><span class="p">,</span>    <span class="c1">-- 分支1  </span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">func2</span><span class="p">,</span>    <span class="c1">-- 分支2  </span>
+    <span class="p">[</span><span class="mi">68</span><span class="p">]</span> <span class="o">=</span> <span class="n">func3</span><span class="p">,</span>   <span class="c1">-- 分支3  </span>
+<span class="p">}</span>   
+
+<span class="kd">local</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">3</span> 
+<span class="c1">-- 取得分支对应的函数    </span>
+<span class="kd">local</span> <span class="n">funcX</span> <span class="o">=</span> <span class="n">mySwitch</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>   
+<span class="c1">-- 调用函数 </span>
+<span class="n">funcX</span><span class="p">(</span><span class="mi">699</span><span class="p">)</span>  
+</code></pre></div></td></tr></table></div>
 </div>
 <h5 id="222">2.2.2  循环</h5>
 <div class="admonition example">
 <p class="admonition-title">WHILE语句</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>   
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kr">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="kr">do</span> 
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="kr">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span> <span class="kr">then</span>  
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="kr">break</span>   
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="kr">end</span> 
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="kr">end</span> 
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="kr">repeat</span>  
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="kr">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">8</span> <span class="kr">then</span>  
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>        <span class="kr">break</span>   
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    <span class="kr">end</span> 
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="kr">until</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">20</span>    
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>   
+<span class="kr">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="kr">do</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
+    <span class="kr">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">4</span> <span class="kr">then</span>  
+        <span class="kr">break</span>   
+    <span class="kr">end</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   
+<span class="kr">end</span> 
+
+<span class="kr">repeat</span>  
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
+    <span class="kr">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">8</span> <span class="kr">then</span>  
+        <span class="kr">break</span>   
+    <span class="kr">end</span> 
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   
+<span class="kr">until</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">20</span>    
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">FOR语句</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- for i = 起始值, 终止值, 增幅 do  </span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kr">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span> <span class="kr">do</span> 
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="kr">end</span> 
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- for i = 起始值, 终止值, 增幅 do  </span>
+<span class="kr">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span> <span class="kr">do</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
+<span class="kr">end</span> 
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="23-lua">2.3 lua中的特殊语法</h4>
 <p>lua的大部分语法与类C语言相似，很容易就能掌握基本的语法。所以不再赘述，这里我主要说一下lua里区别于其它语言的特殊语法。      </p>
 <h5 id="231">2.3.1  字符串定义</h5>
 <p>lua中有三种定义字符串的方式。其中值得一提的是使用如下方式定义多行字符串，非常方便有没有：  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">msg</span> <span class="o">=</span> <span class="s">[[    </span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">This is the first line. </span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">This is the second line.    </span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">]]</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg</span> <span class="o">=</span> <span class="s">[[    </span>
+<span class="s">This is the first line. </span>
+<span class="s">This is the second line.    </span>
+<span class="s">]]</span>  
+</code></pre></div></td></tr></table></div>
 <h5 id="232">2.3.2  数组与表</h5>
 <p>lua中的数组就是表。其它各种复杂的结构也都是通过表来实现的。表的索引可以是数字或者字符串类型。也可以不指定索引，不指定将默认使用从1开始的数组，注意不是从0开始的。访问的时候可以采用数组或者类成员风格：  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span> 
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>        <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>          <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>  
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>        <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>        <span class="o">=</span> <span class="s2">&quot;Hakurei Youmu&quot;</span><span class="p">,</span>  
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>             <span class="o">=</span> <span class="s2">&quot;Hakurei&quot;</span><span class="p">,</span>    
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        <span class="p">[</span><span class="mi">1</span><span class="p">]</span>             <span class="o">=</span> <span class="s2">&quot;Youmu&quot;</span><span class="p">,</span>  
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        <span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span>       <span class="o">=</span> <span class="mi">98</span>    
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="p">}</span>   
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>          <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>  
+        <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>        <span class="o">=</span> <span class="s2">&quot;Hakurei Youmu&quot;</span><span class="p">,</span>  
+        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>             <span class="o">=</span> <span class="s2">&quot;Hakurei&quot;</span><span class="p">,</span>    
+        <span class="p">[</span><span class="mi">1</span><span class="p">]</span>             <span class="o">=</span> <span class="s2">&quot;Youmu&quot;</span><span class="p">,</span>  
+        <span class="p">[</span><span class="s2">&quot;score&quot;</span><span class="p">]</span>       <span class="o">=</span> <span class="mi">98</span>    
+<span class="p">}</span>   
+</code></pre></div></td></tr></table></div>
 <p>可以看出索引可以随意指定，虽然默认从1开始，但也可以指定为负值。访问的时候也很方便：  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">myTable</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>   
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">myTable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> 
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">myTable</span><span class="p">.</span><span class="n">name</span>    
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">myTable</span><span class="p">.</span><span class="n">score</span>   
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">myTable</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">]</span>   
+<span class="n">myTable</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> 
+<span class="n">myTable</span><span class="p">.</span><span class="n">name</span>    
+<span class="n">myTable</span><span class="p">.</span><span class="n">score</span>   
+</code></pre></div></td></tr></table></div>
 <p>在table中，当然是可以嵌套table的，并且各种类型的索引和值可以随意嵌套。    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span> 
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">123</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">678</span><span class="p">},</span>  
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">},</span> 
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="p">[</span><span class="s2">&quot;9006&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">22</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">&quot;699&quot;</span><span class="p">}</span>  
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="p">}</span>   
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>    
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">&quot;9006&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>   
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1">-- 输出   </span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1">-- hello    </span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="c1">-- 699  </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">myTable</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">123</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">678</span><span class="p">},</span>  
+    <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">},</span> 
+    <span class="p">[</span><span class="s2">&quot;9006&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">22</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="s2">&quot;699&quot;</span><span class="p">}</span>  
+<span class="p">}</span>   
+
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>    
+<span class="nb">print</span><span class="p">(</span><span class="n">myTable</span><span class="p">[</span><span class="s2">&quot;9006&quot;</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>   
+
+<span class="c1">-- 输出   </span>
+<span class="c1">-- hello    </span>
+<span class="c1">-- 699  </span>
+</code></pre></div></td></tr></table></div>
 <h5 id="233">2.3.3  多值表达式</h5>
 <p>lua支持一种使用<code>,</code>来进行连接的多值表达式。除了表定义里不能用，它可以用在其它很多表达式可以出现的地方。例如下面几种场景： </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- 同时给多个变量赋值    </span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;3456&quot;</span>   
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kr">function</span> <span class="nf">func1</span><span class="p">()</span>    
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        <span class="c1">--函数可以返回多个值 </span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        <span class="kr">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span>    
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="kr">end</span> 
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1">-- 同时接受多个返回值    </span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">func1</span><span class="p">()</span>   
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>  
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="c1">-- 输出为:1        2       3   </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 同时给多个变量赋值    </span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;3456&quot;</span>   
+
+<span class="kr">function</span> <span class="nf">func1</span><span class="p">()</span>    
+
+        <span class="c1">--函数可以返回多个值 </span>
+        <span class="kr">return</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span>    
+<span class="kr">end</span> 
+
+<span class="c1">-- 同时接受多个返回值    </span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">func1</span><span class="p">()</span>   
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>  
+
+<span class="c1">-- 输出为:1        2       3   </span>
+</code></pre></div></td></tr></table></div>
 <p>是不是感觉很神奇。多值表达式还可以用来交换两个变量的值：    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">-- 交换x和y的值  </span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> 
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 交换x和y的值  </span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> 
+</code></pre></div></td></tr></table></div>
 <p>由于lua先计算<code>=</code>后面的值，再赋给左边的变量。所以这个奇特的用法就这样成立了。   </p>
 <h5 id="234">2.3.4  运算符与字符串拼接</h5>
 <p>lua中字符串拼接使用专用操作符<code>..</code>，而<code>+-*/%^</code>都会十分耿直的进行数值的加减乘除等运算。所以有了下面的奇特用法：  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="s2">&quot;124&quot;</span><span class="p">)</span>    
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1245&quot;</span> <span class="o">+</span> <span class="s2">&quot;6453&quot;</span><span class="p">)</span>  
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;12&quot;</span> <span class="o">-</span> <span class="mi">88</span><span class="p">)</span>    
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">print</span><span class="p">(</span><span class="mi">49</span> <span class="o">%</span> <span class="s2">&quot;2&quot;</span><span class="p">)</span> 
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;9&quot;</span> <span class="o">*</span> <span class="s2">&quot;9&quot;</span><span class="p">)</span>    
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span> <span class="o">^</span> <span class="mi">5</span><span class="p">)</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="s2">&quot;124&quot;</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1245&quot;</span> <span class="o">+</span> <span class="s2">&quot;6453&quot;</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;12&quot;</span> <span class="o">-</span> <span class="mi">88</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="mi">49</span> <span class="o">%</span> <span class="s2">&quot;2&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;9&quot;</span> <span class="o">*</span> <span class="s2">&quot;9&quot;</span><span class="p">)</span>    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2&quot;</span> <span class="o">^</span> <span class="mi">5</span><span class="p">)</span>  
+</code></pre></div></td></tr></table></div>
 <p>上面的所有语句都成立，并且不像javaScript语句中那样混乱。这里的运算符一定是执行数值运算， 而与字符串可以说是毫无瓜葛，不会出现两边混淆，搞不清结果的问题。  </p>
 <h4 id="24">2.4 编写多个模块</h4>
 <p>有时候我们写的程序比较大，会自然的想到去分成多个模块。<br/>此时可以把每个模块写到一个文件中，其它文件可以通过包含这个模块文件来使用这个文件中定义的数据和函数。      </p>
 <p>类似于C/C++的include和Java的import，lua中使用require关键字来包含一个模块文件：     </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">require</span> <span class="s2">&quot;模块名&quot;</span>       
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">require</span> <span class="s2">&quot;模块名&quot;</span>       
+</code></pre></div></td></tr></table></div>
 <p>使用示例，要在test.lua中引用abc.lua模块。        </p>
 <p>目录如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>test.lua        
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>mylib       
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    |_abc.lua   
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>test.lua        
+mylib       
+    |_abc.lua   
+</code></pre></div></td></tr></table></div>
 <div class="admonition example">
 <p class="admonition-title">mylib/abc.lua</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">X</span> <span class="o">=</span> <span class="mi">123</span>     
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="err">…</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">X</span> <span class="o">=</span> <span class="mi">123</span>     
+<span class="err">…</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">test.lua</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">require</span> <span class="s2">&quot;mylib.abc&quot;</span> <span class="err">或者</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">require</span> <span class="s2">&quot;mylib/abc&quot;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">require</span> <span class="s2">&quot;mylib.abc&quot;</span> <span class="err">或者</span>
+<span class="nb">require</span> <span class="s2">&quot;mylib/abc&quot;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>注意文件夹层次结构使用 . (点)或者 / 来表示。      </p>
 <p>如果执行test.lua文件，则abc.lua文件会先被执行一遍。       </p>
 <h3 id="3-lua">3.   lua与命令行的无缝连接</h3>
 <h4 id="31-luacmd">3.1 lua调用CMD命令</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">-- cmd为cmd命令行       </span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">os.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>     
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- cmd为cmd命令行       </span>
+<span class="nb">os.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>     
+</code></pre></div></td></tr></table></div>
 <h4 id="32-cmdlua">3.2 CMD调用lua文件</h4>
 <p>由于安装lua的时候，已经将可执行文件路径加入到系统path中了。所以再cmd环境中可以直接调用：       </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>lua53 test.lua      
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>lua53 test.lua      
+</code></pre></div></td></tr></table></div>
 <h4 id="33">3.3 管理控制台输入与输出</h4>
 <p>直接向控制台打印字符，和从控制台读入字符是很容易的：      </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1">-- 往标准输出中打印字符       </span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>       
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1">-- 从标准输入中读入一行文字     </span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">lineStr</span> <span class="o">=</span> <span class="nb">io.read</span><span class="p">()</span>     
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 往标准输出中打印字符       </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">)</span>       
+
+<span class="c1">-- 从标准输入中读入一行文字     </span>
+<span class="n">lineStr</span> <span class="o">=</span> <span class="nb">io.read</span><span class="p">()</span>     
+</code></pre></div></td></tr></table></div>
 <h4 id="34-luacmd">3.4 lua嵌入宿主CMD</h4>
 <p>当lua嵌入到cmd中执行的时候，两者是无缝配合的。我们完全不需要关心诸如输入输出之类的问题，     </p>
 <p>既然说是嵌入，那就意味着程序是如下一种工作模式：        </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>// 从系统控制台执行CMD命令        
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>c:&gt; zcmd        
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>// zcmd.bat或者zcmd.cmd开始执行里面的内容      
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>// zcmd内部使用lua53命令调用lua文件       
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>lua53 myCmd.lua     
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>// myCmd.lua执行各种复杂的逻辑处理     
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>此时的输入输出都通过一开始的系统控制台进行       
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>// myCmd.lua中通过os.execute(anotherCmd)来执行CMD命令       
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>调用系统命令实现我们想要的功能     
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>// 退出并返回到控制台        
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>c:&gt;     
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>// 从系统控制台执行CMD命令        
+c:&gt; zcmd        
+
+// zcmd.bat或者zcmd.cmd开始执行里面的内容      
+
+// zcmd内部使用lua53命令调用lua文件       
+lua53 myCmd.lua     
+
+// myCmd.lua执行各种复杂的逻辑处理     
+此时的输入输出都通过一开始的系统控制台进行       
+
+// myCmd.lua中通过os.execute(anotherCmd)来执行CMD命令       
+调用系统命令实现我们想要的功能     
+
+// 退出并返回到控制台        
+c:&gt;     
+</code></pre></div></td></tr></table></div>
 <p>之所以要把lua嵌入CMD里执行，是因为Windows Bat语言的语法难以掌握并且也不是很方便。编写复杂的逻辑时十分费力。而且它不跨平台，我如果想在linux中做一个同样功能的批处理小程序，就几乎要重新所有代码。     </p>
 <p>而lua编写复杂的逻辑时，与类C语言接近又比它们简洁明了，可以说是游刃有余。即使我想换一个平台运行，也十分容易修改。      </p>
 <h4 id="35">3.5 示例代码</h4>
 <div class="admonition example">
 <p class="admonition-title">%PATH%/zcmd.cmd</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>lua53 %LUA_PATH%\lib\zcmd.lua       
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>lua53 %LUA_PATH%\lib\zcmd.lua       
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">%LUA_HOME%/lib/zcmd.lua</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1">-- this program is to execute the cmd I usally use.     </span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nb">print</span><span class="p">()</span>     
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please select the commond to execute:&quot;</span><span class="p">)</span>      
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="nb">print</span><span class="p">()</span>     
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1">-- the command      </span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">cmdTable</span> <span class="o">=</span> <span class="p">{</span>        
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>        <span class="s2">&quot;mvn archetype:generate -DarchetypeCatalog=local&quot;</span><span class="p">,</span>      
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>        <span class="s2">&quot;mvn clean install&quot;</span><span class="p">,</span>        
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>        <span class="s2">&quot;exit&quot;</span>      
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="p">}</span>       
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="c1">-- print the command        </span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="c1">--os.execute(&quot;color 6&quot;) --yellow        </span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="kr">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cmd</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">cmdTable</span><span class="p">)</span> <span class="kr">do</span>       
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">..</span> <span class="s2">&quot;-&gt; &quot;</span> <span class="o">..</span> <span class="n">cmd</span><span class="p">)</span>        
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="kr">end</span>     
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="c1">--os.execute(&quot;color 7&quot;) --white     </span>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="c1">-- select the command       </span>
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="n">cmdIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="nb">print</span><span class="p">()</span>     
-<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command number:&quot;</span><span class="p">)</span>        
-<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="kr">while</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>        
-<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>                <span class="c1">-- read a number from console       </span>
-<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>                <span class="kr">function</span><span class="p">()</span>      
-<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>                        <span class="n">cmdIndex</span> <span class="o">=</span> <span class="nb">tonumber</span><span class="p">(</span><span class="nb">io.read</span><span class="p">())</span>      
-<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>                        <span class="nb">assert</span><span class="p">(</span><span class="n">cmdIndex</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">cmdIndex</span> <span class="o">&lt;=</span> <span class="o">#</span><span class="n">cmdTable</span><span class="p">)</span>     
-<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>                <span class="kr">end</span>     
-<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>        <span class="p">)</span> <span class="kr">do</span>        
-<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please input a number(1 to &quot;</span> <span class="o">..</span> <span class="o">#</span><span class="n">cmdTable</span> <span class="o">..</span> <span class="s2">&quot;):&quot;</span><span class="p">)</span>       
-<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="kr">end</span>     
-<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>
-<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="c1">-- if exit      </span>
-<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="kr">if</span> <span class="n">cmdIndex</span> <span class="o">==</span> <span class="o">#</span><span class="n">cmdTable</span> <span class="kr">then</span>       
-<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>        <span class="kr">return</span>      
-<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="kr">end</span>     
-<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>
-<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="c1">-- execute the command      </span>
-<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a><span class="n">cmd</span> <span class="o">=</span> <span class="n">cmdTable</span><span class="p">[</span><span class="n">cmdIndex</span><span class="p">]</span>        
-<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now execute : &quot;</span> <span class="o">..</span> <span class="n">cmd</span><span class="p">)</span>      
-<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a><span class="kr">if</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>       
-<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>                <span class="kr">function</span><span class="p">()</span>      
-<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>                        <span class="nb">os.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>     
-<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>                <span class="kr">end</span>     
-<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>        <span class="p">)</span> <span class="kr">then</span>      
-<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>        <span class="c1">-- command execute error        </span>
-<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execute unsuccessful.&quot;</span><span class="p">)</span>      
-<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>        <span class="kr">return</span>      
-<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a><span class="kr">end</span>     
-<a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>
-<a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a><span class="c1">-- finally and exit     </span>
-<a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execute finished.&quot;</span><span class="p">)</span>      
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- this program is to execute the cmd I usally use.     </span>
+<span class="nb">print</span><span class="p">()</span>     
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please select the commond to execute:&quot;</span><span class="p">)</span>      
+<span class="nb">print</span><span class="p">()</span>     
+
+<span class="c1">-- the command      </span>
+<span class="n">cmdTable</span> <span class="o">=</span> <span class="p">{</span>        
+        <span class="s2">&quot;mvn archetype:generate -DarchetypeCatalog=local&quot;</span><span class="p">,</span>      
+        <span class="s2">&quot;mvn clean install&quot;</span><span class="p">,</span>        
+        <span class="s2">&quot;exit&quot;</span>      
+<span class="p">}</span>       
+
+<span class="c1">-- print the command        </span>
+<span class="c1">--os.execute(&quot;color 6&quot;) --yellow        </span>
+<span class="kr">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cmd</span> <span class="kr">in</span> <span class="nb">ipairs</span><span class="p">(</span><span class="n">cmdTable</span><span class="p">)</span> <span class="kr">do</span>       
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span> <span class="o">..</span> <span class="s2">&quot;-&gt; &quot;</span> <span class="o">..</span> <span class="n">cmd</span><span class="p">)</span>        
+<span class="kr">end</span>     
+<span class="c1">--os.execute(&quot;color 7&quot;) --white     </span>
+
+<span class="c1">-- select the command       </span>
+<span class="n">cmdIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       
+<span class="nb">print</span><span class="p">()</span>     
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Command number:&quot;</span><span class="p">)</span>        
+<span class="kr">while</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>        
+                <span class="c1">-- read a number from console       </span>
+                <span class="kr">function</span><span class="p">()</span>      
+                        <span class="n">cmdIndex</span> <span class="o">=</span> <span class="nb">tonumber</span><span class="p">(</span><span class="nb">io.read</span><span class="p">())</span>      
+                        <span class="nb">assert</span><span class="p">(</span><span class="n">cmdIndex</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">cmdIndex</span> <span class="o">&lt;=</span> <span class="o">#</span><span class="n">cmdTable</span><span class="p">)</span>     
+                <span class="kr">end</span>     
+        <span class="p">)</span> <span class="kr">do</span>        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please input a number(1 to &quot;</span> <span class="o">..</span> <span class="o">#</span><span class="n">cmdTable</span> <span class="o">..</span> <span class="s2">&quot;):&quot;</span><span class="p">)</span>       
+<span class="kr">end</span>     
+
+<span class="c1">-- if exit      </span>
+<span class="kr">if</span> <span class="n">cmdIndex</span> <span class="o">==</span> <span class="o">#</span><span class="n">cmdTable</span> <span class="kr">then</span>       
+        <span class="kr">return</span>      
+<span class="kr">end</span>     
+
+<span class="c1">-- execute the command      </span>
+<span class="n">cmd</span> <span class="o">=</span> <span class="n">cmdTable</span><span class="p">[</span><span class="n">cmdIndex</span><span class="p">]</span>        
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now execute : &quot;</span> <span class="o">..</span> <span class="n">cmd</span><span class="p">)</span>      
+<span class="kr">if</span> <span class="ow">not</span> <span class="nb">pcall</span><span class="p">(</span>       
+                <span class="kr">function</span><span class="p">()</span>      
+                        <span class="nb">os.execute</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>     
+                <span class="kr">end</span>     
+        <span class="p">)</span> <span class="kr">then</span>      
+        <span class="c1">-- command execute error        </span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execute unsuccessful.&quot;</span><span class="p">)</span>      
+        <span class="kr">return</span>      
+<span class="kr">end</span>     
+
+<span class="c1">-- finally and exit     </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Execute finished.&quot;</span><span class="p">)</span>      
+</code></pre></div></td></tr></table></div>
 </div>
 <h3 id="4-lua">4.   lua语言学习</h3>
 <p>请认准lua官方网站：         </p>

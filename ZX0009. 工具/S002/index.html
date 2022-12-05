@@ -3252,76 +3252,128 @@
 <p>我们可以试着执行一下其中的一些命令来看看它们具体都做了哪些事情。</p>
 <h5 id="121-clean">1.2.1 clean命令</h5>
 <p>假设有一个多模块工程，结构为:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>parent          .pom
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├─web           .jar
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>├─framework     .jar
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>├─api           .war
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>parent          .pom
+├─web           .jar
+├─framework     .jar
+├─api           .war
+</code></pre></div></td></tr></table></div>
 <p>此时对parent工程右键执行clean命令时，实际执行过程如下所示:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">&gt;</span> <span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="n">mvn</span> <span class="n">clean</span> <span class="o">-f</span> <span class="s2">&quot;c:\data\VS_CODE_WORKSPACE\parent\pom.xml&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="no">[INFO]</span> <span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="p">...</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Build</span> <span class="n">Order</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="no">[INFO] parent                                                             [pom]</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="no">[INFO] api                                                                [jar]</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="no">[INFO] framework                                                          [jar]</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="no">[INFO] web Maven Webapp                                                   [war]</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="no">[INFO]</span> <span class="p">-------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">parent</span> <span class="p">&gt;-------------------------</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">parent</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                <span class="p">[</span><span class="n">1</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">pom</span> <span class="p">]---------------------------------</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">parent</span> <span class="p">---</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">api</span> <span class="p">&gt;---------------------------</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">api</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                   <span class="p">[</span><span class="n">2</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="no">[INFO]</span> <span class="p">-----------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">framework</span> <span class="p">&gt;------------------------</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">framework</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                             <span class="p">[</span><span class="n">3</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">framework</span> <span class="p">---</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">web</span> <span class="p">&gt;---------------------------</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">web</span> <span class="n">Maven</span> <span class="n">Webapp</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                      <span class="p">[</span><span class="n">4</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">war</span> <span class="p">]---------------------------------</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">web</span> <span class="p">---</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Summary</span><span class="p">:</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="no">[INFO]</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="no">[INFO] parent 1.0 ......................................... SUCCESS [  0.454 s]</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="no">[INFO] api ................................................ SUCCESS [  0.049 s]</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="no">[INFO] framework .......................................... SUCCESS [  0.054 s]</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="no">[INFO] web Maven Webapp 1.0 ............................... SUCCESS [  0.058 s]</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="no">[INFO]</span> <span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="n">1</span><span class="p">.</span><span class="n">157</span> <span class="n">s</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="no">[INFO]</span> <span class="n">Finished</span> <span class="n">at</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">06</span><span class="p">-</span><span class="n">30T17</span><span class="p">:</span><span class="n">13</span><span class="p">:</span><span class="n">50</span><span class="p">+</span><span class="n">09</span><span class="p">:</span><span class="n">00</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">&gt;</span> <span class="n">cmd</span> <span class="p">/</span><span class="n">c</span> <span class="n">mvn</span> <span class="n">clean</span> <span class="o">-f</span> <span class="s2">&quot;c:\data\VS_CODE_WORKSPACE\parent\pom.xml&quot;</span>
+<span class="no">[INFO]</span> <span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="p">...</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Build</span> <span class="n">Order</span><span class="p">:</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO] parent                                                             [pom]</span>
+<span class="no">[INFO] api                                                                [jar]</span>
+<span class="no">[INFO] framework                                                          [jar]</span>
+<span class="no">[INFO] web Maven Webapp                                                   [war]</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">-------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">parent</span> <span class="p">&gt;-------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">parent</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                <span class="p">[</span><span class="n">1</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">pom</span> <span class="p">]---------------------------------</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">parent</span> <span class="p">---</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">api</span> <span class="p">&gt;---------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">api</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                   <span class="p">[</span><span class="n">2</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">-----------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">framework</span> <span class="p">&gt;------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">framework</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                             <span class="p">[</span><span class="n">3</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">framework</span> <span class="p">---</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">web</span> <span class="p">&gt;---------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">web</span> <span class="n">Maven</span> <span class="n">Webapp</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                      <span class="p">[</span><span class="n">4</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">war</span> <span class="p">]---------------------------------</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">web</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO] parent 1.0 ......................................... SUCCESS [  0.454 s]</span>
+<span class="no">[INFO] api ................................................ SUCCESS [  0.049 s]</span>
+<span class="no">[INFO] framework .......................................... SUCCESS [  0.054 s]</span>
+<span class="no">[INFO] web Maven Webapp 1.0 ............................... SUCCESS [  0.058 s]</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="n">1</span><span class="p">.</span><span class="n">157</span> <span class="n">s</span>
+<span class="no">[INFO]</span> <span class="n">Finished</span> <span class="n">at</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">06</span><span class="p">-</span><span class="n">30T17</span><span class="p">:</span><span class="n">13</span><span class="p">:</span><span class="n">50</span><span class="p">+</span><span class="n">09</span><span class="p">:</span><span class="n">00</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 <p>总结此命令做的事情，大概如下:</p>
 <div class="admonition example">
 <p class="admonition-title">clean说明</p>
 <p>(1) 执行命令：mvn clean -f "c:\data\VS_CODE_WORKSPACE\parent\pom.xml"</p>
 <p>(2) 根据pom.xml扫描项目，也就是说会识别多模块项目的父子和依赖关系。通常对顶层工程parent执行maven命令就可以了，会自动对其下的所有子工程执行一遍。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="err">…</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="err">…</span>
+</code></pre></div></td></tr></table></div>
 <p>(3) 对相关的几个项目依次执行clean:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">parent</span> <span class="p">---</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">framework</span> <span class="p">---</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">web</span> <span class="p">---</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">parent</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">framework</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-clean-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">5</span><span class="p">:</span><span class="n">clean</span> <span class="p">(</span><span class="k">default</span><span class="n">-clean</span><span class="p">)</span> <span class="p">@</span> <span class="n">web</span> <span class="p">---</span>
+</code></pre></div></td></tr></table></div>
 <p>(4) 执行结果。看见BUILD SUCCESS就表示成功了。否则会显示出ERROR。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <h5 id="122-package">1.2.2 package命令</h5>
 <p>对parent工程右键执行package命令时，输出log很多。这里只梳理一下主要内容:</p>
@@ -3329,46 +3381,81 @@
 <p class="admonition-title">package说明</p>
 <p>(1) 执行命令：mvn package -f "c:\data\VS_CODE_WORKSPACE\parent\pom.xml"</p>
 <p>(2) 根据pom.xml扫描项目，也就是说会识别多模块项目的父子和依赖关系。通常对顶层工程parent执行maven命令就可以了，会自动对其下的所有子工程执行一遍。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="err">…</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Scanning</span> <span class="k">for</span> <span class="n">projects</span><span class="err">…</span>
+</code></pre></div></td></tr></table></div>
 <p>(3) 对有实质内容的工程依次做如下的事情:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">api</span> <span class="p">&gt;---------------------------</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">api</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                   <span class="p">[</span><span class="n">2</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-resources-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">6</span><span class="p">:</span><span class="n">resources</span> <span class="p">(</span><span class="k">default</span><span class="n">-resources</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="no">[INFO]</span> <span class="n">Using</span> <span class="s1">&#39;UTF-8&#39;</span> <span class="n">encoding</span> <span class="n">to</span> <span class="nb">copy </span><span class="n">filtered</span> <span class="n">resources</span><span class="p">.</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="no">[INFO]</span> <span class="n">skip</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">resourceDirectory</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">main</span><span class="p">\</span><span class="n">resources</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-compiler-plugin</span><span class="p">:</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">compile</span> <span class="p">(</span><span class="k">default</span><span class="n">-compile</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="no">[INFO]</span> <span class="n">Changes</span> <span class="n">detected</span> <span class="p">-</span> <span class="n">recompiling</span> <span class="n">the</span> <span class="n">module</span><span class="p">!</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="no">[INFO]</span> <span class="n">Compiling</span> <span class="n">1</span> <span class="n">source</span> <span class="n">file</span> <span class="n">to</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">classes</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-resources-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">6</span><span class="p">:</span><span class="n">testResources</span> <span class="p">(</span><span class="k">default</span><span class="n">-testResources</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="no">[INFO]</span> <span class="n">Using</span> <span class="s1">&#39;UTF-8&#39;</span> <span class="n">encoding</span> <span class="n">to</span> <span class="nb">copy </span><span class="n">filtered</span> <span class="n">resources</span><span class="p">.</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="no">[INFO]</span> <span class="n">skip</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">resourceDirectory</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">test</span><span class="p">\</span><span class="n">resources</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-compiler-plugin</span><span class="p">:</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">testCompile</span> <span class="p">(</span><span class="k">default</span><span class="n">-testCompile</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="no">[INFO]</span> <span class="n">Changes</span> <span class="n">detected</span> <span class="p">-</span> <span class="n">recompiling</span> <span class="n">the</span> <span class="n">module</span><span class="p">!</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="no">[INFO]</span> <span class="n">Compiling</span> <span class="n">1</span> <span class="n">source</span> <span class="n">file</span> <span class="n">to</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="nb">test-classes</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-surefire-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">12</span><span class="p">.</span><span class="n">4</span><span class="p">:</span><span class="n">test</span> <span class="p">(</span><span class="k">default</span><span class="n">-test</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="no">[INFO]</span> <span class="n">Surefire</span> <span class="n">report</span> <span class="n">directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">surefire-reports</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="p">-------------------------------------------------------</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="p">-------------------------------------------------------</span>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="n">Running</span> <span class="n">api</span><span class="p">.</span><span class="n">AppTest</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="n">Tests</span> <span class="n">run</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span> <span class="n">Failures</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Errors</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Skipped</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Time</span> <span class="n">elapsed</span><span class="p">:</span> <span class="n">0</span><span class="p">.</span><span class="n">055</span> <span class="n">sec</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="n">Results</span> <span class="p">:</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="n">Tests</span> <span class="n">run</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span> <span class="n">Failures</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Errors</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Skipped</span><span class="p">:</span> <span class="n">0</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
-<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="no">[INFO]</span>
-<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-jar-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">4</span><span class="p">:</span><span class="n">jar</span> <span class="p">(</span><span class="k">default</span><span class="n">-jar</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">jar</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">api</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">jar</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="no">[INFO]</span> <span class="p">--------------------------&lt;</span> <span class="n">org</span><span class="p">.</span><span class="n">hakurei</span><span class="p">:</span><span class="n">api</span> <span class="p">&gt;---------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">api</span> <span class="n">1</span><span class="p">.</span><span class="n">0</span>                                                   <span class="p">[</span><span class="n">2</span><span class="p">/</span><span class="n">4</span><span class="p">]</span>
+<span class="no">[INFO]</span> <span class="p">--------------------------------[</span> <span class="n">jar</span> <span class="p">]---------------------------------</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-resources-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">6</span><span class="p">:</span><span class="n">resources</span> <span class="p">(</span><span class="k">default</span><span class="n">-resources</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Using</span> <span class="s1">&#39;UTF-8&#39;</span> <span class="n">encoding</span> <span class="n">to</span> <span class="nb">copy </span><span class="n">filtered</span> <span class="n">resources</span><span class="p">.</span>
+<span class="no">[INFO]</span> <span class="n">skip</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">resourceDirectory</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">main</span><span class="p">\</span><span class="n">resources</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-compiler-plugin</span><span class="p">:</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">compile</span> <span class="p">(</span><span class="k">default</span><span class="n">-compile</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Changes</span> <span class="n">detected</span> <span class="p">-</span> <span class="n">recompiling</span> <span class="n">the</span> <span class="n">module</span><span class="p">!</span>
+<span class="no">[INFO]</span> <span class="n">Compiling</span> <span class="n">1</span> <span class="n">source</span> <span class="n">file</span> <span class="n">to</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">classes</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-resources-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">6</span><span class="p">:</span><span class="n">testResources</span> <span class="p">(</span><span class="k">default</span><span class="n">-testResources</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Using</span> <span class="s1">&#39;UTF-8&#39;</span> <span class="n">encoding</span> <span class="n">to</span> <span class="nb">copy </span><span class="n">filtered</span> <span class="n">resources</span><span class="p">.</span>
+<span class="no">[INFO]</span> <span class="n">skip</span> <span class="n">non</span> <span class="n">existing</span> <span class="n">resourceDirectory</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">test</span><span class="p">\</span><span class="n">resources</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-compiler-plugin</span><span class="p">:</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">testCompile</span> <span class="p">(</span><span class="k">default</span><span class="n">-testCompile</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Changes</span> <span class="n">detected</span> <span class="p">-</span> <span class="n">recompiling</span> <span class="n">the</span> <span class="n">module</span><span class="p">!</span>
+<span class="no">[INFO]</span> <span class="n">Compiling</span> <span class="n">1</span> <span class="n">source</span> <span class="n">file</span> <span class="n">to</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="nb">test-classes</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-surefire-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">12</span><span class="p">.</span><span class="n">4</span><span class="p">:</span><span class="n">test</span> <span class="p">(</span><span class="k">default</span><span class="n">-test</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Surefire</span> <span class="n">report</span> <span class="n">directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">surefire-reports</span>
+
+<span class="p">-------------------------------------------------------</span>
+<span class="n">T</span> <span class="n">E</span> <span class="n">S</span> <span class="n">T</span> <span class="n">S</span>
+<span class="p">-------------------------------------------------------</span>
+<span class="n">Running</span> <span class="n">api</span><span class="p">.</span><span class="n">AppTest</span>
+<span class="n">Tests</span> <span class="n">run</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span> <span class="n">Failures</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Errors</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Skipped</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Time</span> <span class="n">elapsed</span><span class="p">:</span> <span class="n">0</span><span class="p">.</span><span class="n">055</span> <span class="n">sec</span>
+
+<span class="n">Results</span> <span class="p">:</span>
+
+<span class="n">Tests</span> <span class="n">run</span><span class="p">:</span> <span class="n">1</span><span class="p">,</span> <span class="n">Failures</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Errors</span><span class="p">:</span> <span class="n">0</span><span class="p">,</span> <span class="n">Skipped</span><span class="p">:</span> <span class="n">0</span>
+
+<span class="no">[INFO]</span>
+<span class="no">[INFO]</span> <span class="p">---</span> <span class="n">maven-jar-plugin</span><span class="p">:</span><span class="n">2</span><span class="p">.</span><span class="n">4</span><span class="p">:</span><span class="n">jar</span> <span class="p">(</span><span class="k">default</span><span class="n">-jar</span><span class="p">)</span> <span class="p">@</span> <span class="n">api</span> <span class="p">---</span>
+<span class="no">[INFO]</span> <span class="n">Building</span> <span class="n">jar</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">api</span><span class="p">\</span><span class="n">target</span><span class="p">\</span><span class="n">api</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">jar</span>
+</code></pre></div></td></tr></table></div>
 <p>可以概括为如下几件事:</p>
 <ul>
 <li>① 复制资源</li>
@@ -3382,39 +3469,53 @@
 <div class="admonition example">
 <p class="admonition-title">有用的信息</p>
 <p>①   Using 'UTF-8' encoding to copy filtered resources.</p>
-<div class="highlight"><pre><span></span><code>使用UTF-8来复制资源文本
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>使用UTF-8来复制资源文本
+</code></pre></div></td></tr></table></div>
 <p>②   skip non existing resourceDirectory C:\data\VS_CODE_WORKSPACE\parent\api\src\main\resources</p>
-<div class="highlight"><pre><span></span><code>默认从src\main\resources目录下寻找资源，如果没有这个文件夹则跳过。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>默认从src\main\resources目录下寻找资源，如果没有这个文件夹则跳过。
 如果我们需要放置资源，可以手动创建这个文件夹。
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <p>③   [INFO] Changes detected - recompiling the module!
     [INFO] Compiling 1 source file to C:\data\VS_CODE_WORKSPACE\parent\api\target\classes</p>
-<div class="highlight"><pre><span></span><code>会检测Java类的变化，只编译有变化的类。如果先clean再package则自然全部重新编译。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>会检测Java类的变化，只编译有变化的类。如果先clean再package则自然全部重新编译。
 如果package之后再次执行package，会看到忽略编译class的相关log。
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <p>④   [INFO] Building jar: C:\data\VS_CODE_WORKSPACE\parent\api\target\api-1.0.jar</p>
-<div class="highlight"><pre><span></span><code>打出的jar包名字为artifactId-version.jar。
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>打出的jar包名字为artifactId-version.jar。
+</code></pre></div></td></tr></table></div>
 </div>
 <p>对于web工程打war包，还会从src\main\webapp\resources目录下面复制资源:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="no">[INFO]</span> <span class="n">Copying</span> <span class="n">webapp</span> <span class="n">resources</span> <span class="p">[</span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">web</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">main</span><span class="p">\</span><span class="n">webapp</span><span class="p">]</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="no">[INFO]</span> <span class="n">Copying</span> <span class="n">webapp</span> <span class="n">resources</span> <span class="p">[</span><span class="n">C</span><span class="p">:\</span><span class="n">data</span><span class="p">\</span><span class="n">VS_CODE_WORKSPACE</span><span class="p">\</span><span class="n">parent</span><span class="p">\</span><span class="n">web</span><span class="p">\</span><span class="n">src</span><span class="p">\</span><span class="n">main</span><span class="p">\</span><span class="n">webapp</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
 <p>(4) 打包完成，显示结果:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Summary</span><span class="p">:</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="no">[INFO]</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="no">[INFO] parent 1.0 ......................................... SUCCESS [  0.079 s]</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="no">[INFO] api ................................................ SUCCESS [ 18.114 s]</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="no">[INFO] framework .......................................... SUCCESS [  2.076 s]</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="no">[INFO] web Maven Webapp 1.0 ............................... SUCCESS [  1.735 s]</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="no">[INFO]</span> <span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="n">22</span><span class="p">.</span><span class="n">546</span> <span class="n">s</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="no">[INFO]</span> <span class="n">Finished</span> <span class="n">at</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">06</span><span class="p">-</span><span class="n">30T17</span><span class="p">:</span><span class="n">24</span><span class="p">:</span><span class="n">40</span><span class="p">+</span><span class="n">09</span><span class="p">:</span><span class="n">00</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Reactor</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="no">[INFO]</span>
+<span class="no">[INFO] parent 1.0 ......................................... SUCCESS [  0.079 s]</span>
+<span class="no">[INFO] api ................................................ SUCCESS [ 18.114 s]</span>
+<span class="no">[INFO] framework .......................................... SUCCESS [  2.076 s]</span>
+<span class="no">[INFO] web Maven Webapp 1.0 ............................... SUCCESS [  1.735 s]</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">BUILD</span> <span class="n">SUCCESS</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+<span class="no">[INFO]</span> <span class="n">Total</span> <span class="n">time</span><span class="p">:</span> <span class="n">22</span><span class="p">.</span><span class="n">546</span> <span class="n">s</span>
+<span class="no">[INFO]</span> <span class="n">Finished</span> <span class="n">at</span><span class="p">:</span> <span class="n">2019</span><span class="p">-</span><span class="n">06</span><span class="p">-</span><span class="n">30T17</span><span class="p">:</span><span class="n">24</span><span class="p">:</span><span class="n">40</span><span class="p">+</span><span class="n">09</span><span class="p">:</span><span class="n">00</span>
+<span class="no">[INFO]</span> <span class="p">------------------------------------------------------------------------</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <h5 id="123-install">1.2.3 install命令</h5>
 <p>分析了install命令的log之后，我发现install命令做了如下的事情：</p>
@@ -3475,90 +3576,155 @@
 </ul>
 <p>这时就适合创建一个Archetype工程出来，它能按照我们给定的模板来生成工程。如果我们长期开发过程中积累了自己常用的项目模板，则就适合使用这个功能。</p>
 <p>maven官方网站上有创建archetype工程的步骤：</p>
-<div class="highlight"><pre><span></span><code>http://maven.apache.org/guides/mini/guide-creating-archetypes.html
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>http://maven.apache.org/guides/mini/guide-creating-archetypes.html
+</code></pre></div></td></tr></table></div>
 <h4 id="31-archetype">3.1 创建Archetype工程</h4>
 <p>要创建这种工程，请认准下面这个archetype：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">maven-archetype-archetype</span> <span class="p">/</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">maven</span><span class="p">.</span><span class="n">archetypes</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">maven-archetype-archetype</span> <span class="p">/</span> <span class="n">org</span><span class="p">.</span><span class="n">apache</span><span class="p">.</span><span class="n">maven</span><span class="p">.</span><span class="n">archetypes</span>
+</code></pre></div></td></tr></table></div>
 <p>按照引导输入GroupId,ArtifactId等信息即可。</p>
 <h4 id="32-archetype">3.2 了解Archetype工程的结构</h4>
 <p>我创建好的一个web工程的arthetype工程的目录结构如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>zweb/
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>├─ pom.xml ................................... arthetype工程自身的pom.xml文件
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>├─ src/ ......................................
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>│  ├─ main/ ..................................
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>│  │  └─ resources/ ..........................
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>│  │     ├─ archetype-resources/ ............. 这个文件夹里面存放着你的项目模板
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>│  │     │  ├─ pom.xml .......................
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>│  │     │  └─ src/ ..........................
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>│  │     │     └─ main/ ......................
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>│  │     │        ├─ resources/ ..............
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>│  │     │        │  ├─ css/ .................
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>│  │     │        │  ├─ img/ .................
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>│  │     │        │  ├─ js/ ..................
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>│  │     │        │  └─ view/ ................
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>│  │     │        └─ webapp/ .................
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>│  │     │           ├─ index.xhtml ..........
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>│  │     │           ├─ META-INF/ ............
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>│  │     │           │  └─ MANIFEST.MF .......
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>│  │     │           └─ WEB-INF/ .............
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>│  │     │              └─ web.xml ...........
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>│  │     └─ META-INF/ ........................
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>│  │        └─ maven/ ........................
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>│  │           └─ archetype-metadata.xml ..... 这个文件用来配置生成的项目中包含模板里面的哪些东西
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>│  └─ test/ .................................. arthetype工程用来测试模板工程是否正确的相关文件
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>│     └─ resources/ ..........................
-<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>│        └─ projects/ ........................
-<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>│           └─ it-basic/ .....................
-<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>│              ├─ archetype.properties .......
-<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a>│              └─ goal.txt ...................
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code>zweb/
+├─ pom.xml ................................... arthetype工程自身的pom.xml文件
+├─ src/ ......................................
+│  ├─ main/ ..................................
+│  │  └─ resources/ ..........................
+│  │     ├─ archetype-resources/ ............. 这个文件夹里面存放着你的项目模板
+│  │     │  ├─ pom.xml .......................
+│  │     │  └─ src/ ..........................
+│  │     │     └─ main/ ......................
+│  │     │        ├─ resources/ ..............
+│  │     │        │  ├─ css/ .................
+│  │     │        │  ├─ img/ .................
+│  │     │        │  ├─ js/ ..................
+│  │     │        │  └─ view/ ................
+│  │     │        └─ webapp/ .................
+│  │     │           ├─ index.xhtml ..........
+│  │     │           ├─ META-INF/ ............
+│  │     │           │  └─ MANIFEST.MF .......
+│  │     │           └─ WEB-INF/ .............
+│  │     │              └─ web.xml ...........
+│  │     └─ META-INF/ ........................
+│  │        └─ maven/ ........................
+│  │           └─ archetype-metadata.xml ..... 这个文件用来配置生成的项目中包含模板里面的哪些东西
+│  └─ test/ .................................. arthetype工程用来测试模板工程是否正确的相关文件
+│     └─ resources/ ..........................
+│        └─ projects/ ........................
+│           └─ it-basic/ .....................
+│              ├─ archetype.properties .......
+│              └─ goal.txt ...................
+</code></pre></div></td></tr></table></div>
 <h4 id="33">3.3 主要配置说明</h4>
 <h5 id="331">3.3.1 参数</h5>
 <p>就像其它archetype项目一样，GroupId和ArfactId以及Package和Version等都是通过参数来传递，在你的模板文件中不能写死。</p>
 <p>我的web模板工程的pom.xml大致如下：</p>
 <div class="admonition example">
 <p class="admonition-title">pom.xml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="nt">&lt;groupId&gt;</span>${groupId}<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nt">&lt;artifactId&gt;</span>${artifactId}<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nt">&lt;version&gt;</span>${version}<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="nt">&lt;name&gt;</span>${artifactId}<span class="nt">&lt;/name&gt;</span>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nt">&lt;properties&gt;</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>    <span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>    <span class="nt">&lt;maven.compiler.target&gt;</span>11<span class="nt">&lt;/maven.compiler.target&gt;</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="nt">&lt;/properties&gt;</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="nt">&lt;dependencies&gt;</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>    <span class="nt">&lt;dependency&gt;</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>    <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>    <span class="nt">&lt;artifactId&gt;</span>javax.servlet-api<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>    <span class="nt">&lt;version&gt;</span>4.0.1<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>    <span class="nt">&lt;/dependency&gt;</span>
-<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>    <span class="cm">&lt;!-- 添加任何你想要的依赖 --&gt;</span>
-<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>    <span class="nt">&lt;dependency&gt;</span>
-<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>    <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>    <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>    <span class="nt">&lt;version&gt;</span>4.12<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
-<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>    <span class="nt">&lt;/dependency&gt;</span>
-<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="nt">&lt;/dependencies&gt;</span>
-<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>
-<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="nt">&lt;build&gt;</span>
-<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>    <span class="nt">&lt;finalName&gt;</span>${artifactId}<span class="nt">&lt;/finalName&gt;</span>
-<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="nt">&lt;/build&gt;</span>
-<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="nt">&lt;/project&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+<span class="nt">&lt;groupId&gt;</span>${groupId}<span class="nt">&lt;/groupId&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>${artifactId}<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;version&gt;</span>${version}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
+
+<span class="nt">&lt;name&gt;</span>${artifactId}<span class="nt">&lt;/name&gt;</span>
+
+<span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>11<span class="nt">&lt;/maven.compiler.source&gt;</span>
+    <span class="nt">&lt;maven.compiler.target&gt;</span>11<span class="nt">&lt;/maven.compiler.target&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+
+<span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>javax.servlet-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>4.0.1<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+    <span class="cm">&lt;!-- 添加任何你想要的依赖 --&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>junit<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>junit<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>4.12<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>test<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+
+<span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;finalName&gt;</span>${artifactId}<span class="nt">&lt;/finalName&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>可以使用的参数只有四个，也就是你平时创建maven时可以指定的几个参数：</p>
 <ul>
@@ -3573,25 +3739,42 @@
 <p>它的内容大概如下：</p>
 <div class="admonition example">
 <p class="admonition-title">archetype-metadata.xml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nt">&lt;archetype-descriptor</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0&quot;</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd&quot;</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="na">name=</span><span class="s">&quot;${artifactId}&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="nt">&lt;fileSets&gt;</span>
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>    <span class="nt">&lt;fileSet</span> <span class="na">filtered=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    <span class="nt">&lt;/fileSet&gt;</span>
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    <span class="nt">&lt;fileSet</span> <span class="na">filtered=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>    <span class="nt">&lt;directory&gt;</span>src/main/webapp<span class="nt">&lt;/directory&gt;</span>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>    <span class="nt">&lt;/fileSet&gt;</span>
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="nt">&lt;/fileSets&gt;</span>
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="nt">&lt;/archetype-descriptor&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="nt">&lt;archetype-descriptor</span>
+<span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0&quot;</span>
+<span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+<span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd&quot;</span>
+<span class="na">name=</span><span class="s">&quot;${artifactId}&quot;</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;fileSets&gt;</span>
+    <span class="nt">&lt;fileSet</span> <span class="na">filtered=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/fileSet&gt;</span>
+    <span class="nt">&lt;fileSet</span> <span class="na">filtered=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;directory&gt;</span>src/main/webapp<span class="nt">&lt;/directory&gt;</span>
+    <span class="nt">&lt;/fileSet&gt;</span>
+<span class="nt">&lt;/fileSets&gt;</span>
+
+<span class="nt">&lt;/archetype-descriptor&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>可以看到我要求生成的项目中包含src/main/resources和src/main/webapp这两个目录。</p>
 <p>如果是含有Java类的工程，则需要包含src/main/java并给fileSet指定packaged="true"。这样生成出来的工程中src/main/java会自动创建为package。而不带packaged="true"的目录则会创建为普通文件夹。</p>

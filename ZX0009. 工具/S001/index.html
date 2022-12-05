@@ -3233,21 +3233,31 @@
 <h4 id="31">3.1 标题和列表</h4>
 <p>要定义标题很简单。使用#加空格开头即可</p>
 <p>如：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># 我是一级标题</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="gu">## 我是二级标题1</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gu">## 我是二级标题2</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gu">## 我是二级标题3</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gu">### 我是三级标题</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="gu">#### 我是四级标题</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="gh"># 我是一级标题</span>
+<span class="gu">## 我是二级标题1</span>
+<span class="gu">## 我是二级标题2</span>
+<span class="gu">## 我是二级标题3</span>
+<span class="gu">### 我是三级标题</span>
+<span class="gu">#### 我是四级标题</span>
+</code></pre></div></td></tr></table></div>
 <p>要定义列表也非常容易，使用+ - * 中的一种加上一个空格开头就可以：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">-</span> this is a list
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>        + this is a small one
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>                <span class="k">*</span> smaller one
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>                <span class="k">*</span> smaller tow
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        + this is another small one
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">-</span> this is another list
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">-</span> this is a list
+        + this is a small one
+                <span class="k">*</span> smaller one
+                <span class="k">*</span> smaller tow
+        + this is another small one
+<span class="k">-</span> this is another list
+</code></pre></div></td></tr></table></div>
 <p>显示效果为：</p>
 <p><img alt="show" src="../S001.files/Screenshot_20200724_105540.png" /></p>
 <p>使用三种符合中的哪种都一样，全凭你的喜好。一般而言主要用来区分层次关系，不同层次分别使用不同的符号。</p>
@@ -3303,18 +3313,24 @@
 </table>
 <p>其中粗体和斜体使用前后加下划线_来表示。下划线由于MarkDown并不支持，所有直接使用HTML标签来解决，后面我们再介绍HTML标签的使用。</p>
 <h4 id="34">3.4 图片</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>![<span class="nt">图片文本标签</span>](<span class="na">图片URL</span>)
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>![<span class="nt">图片文本标签</span>](<span class="na">图片URL</span>)
+</code></pre></div></td></tr></table></div>
 <h4 id="35">3.5 表格</h4>
 <p>表格使用多个|||来表示：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>| 效果   | 编写格式           | 显示效果        |
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>|:-----  |:----------------  |:-------------- |
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>| 斜体   | <span class="sb">`_我是斜体_`</span>       | <span class="ge">_我是斜体_</span>      |
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>| 粗体   | <span class="sb">`__我是粗体__`</span>     | <span class="gs">__我是粗体__</span>    |
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>| 粗斜体 | <span class="sb">`___我是粗斜体___`</span> | ___我是粗斜体___ |
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>| 删除线 | <span class="sb">`~~删除内容~~`</span>     | <span class="gd">~~删除内容~~</span>    |
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>| 下划线 | <span class="sb">`&lt;u&gt;下划线&lt;/u&gt;`</span>    | &lt;u&gt;下划线&lt;/u&gt;   |
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>| 效果   | 编写格式           | 显示效果        |
+|:-----  |:----------------  |:-------------- |
+| 斜体   | <span class="sb">`_我是斜体_`</span>       | <span class="ge">_我是斜体_</span>      |
+| 粗体   | <span class="sb">`__我是粗体__`</span>     | <span class="gs">__我是粗体__</span>    |
+| 粗斜体 | <span class="sb">`___我是粗斜体___`</span> | ___我是粗斜体___ |
+| 删除线 | <span class="sb">`~~删除内容~~`</span>     | <span class="gd">~~删除内容~~</span>    |
+| 下划线 | <span class="sb">`&lt;u&gt;下划线&lt;/u&gt;`</span>    | &lt;u&gt;下划线&lt;/u&gt;   |
+</code></pre></div></td></tr></table></div>
 <p>显示效果：</p>
 <table>
 <thead>
@@ -3361,47 +3377,66 @@
 </ul>
 <h4 id="36">3.6 代码块</h4>
 <p>作为软件攻城狮，我们免不了要在写文章的时候加入代码了。其实在前面演示MarkDown语法的时候我已经使用过了。要插入一段代码可以使用三个[`]来表示，比如：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="sb">    ```markdown</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    ## title
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    __xxxx_
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="sb">    ```</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="sb">    ```markdown</span>
+    ## title
+    __xxxx_
+<span class="sb">    ```</span>
+</code></pre></div></td></tr></table></div>
 <p>通过指定语言种类可以高亮显示该语言的关键字。比如可以指定java, lua, c++等，据我所知这个功能支持几乎任何语言:</p>
 <div class="admonition example">
 <p class="admonition-title">Java</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">// this is java source</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">main</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// this is java source</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">main</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Lua</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">-- this is lua source</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kd">local</span> <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;How are you?&quot;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- this is lua source</span>
+<span class="kd">local</span> <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;How are you?&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">C++</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// this is c++ source</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">_function</span><span class="p">(</span><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">pShape</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="n">pShape</span><span class="o">-&gt;</span><span class="n">ResetWidth</span><span class="p">(</span><span class="n">Width</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">        </span><span class="n">pShape</span><span class="o">-&gt;</span><span class="n">area</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// this is c++ source</span>
+<span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">_function</span><span class="p">(</span><span class="n">Shape</span><span class="o">*</span><span class="w"> </span><span class="n">pShape</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">width</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">pShape</span><span class="o">-&gt;</span><span class="n">ResetWidth</span><span class="p">(</span><span class="n">Width</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">pShape</span><span class="o">-&gt;</span><span class="n">area</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="37">3.7 页面内跳转</h4>
 <p>页面内跳转的写法和显示图片有点像：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>... ...
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>&lt;h3 id=&quot;2.1&quot;&gt;2.1 选择编辑器&lt;/h3&gt;
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>... ...
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>[<span class="nt">我要跳到章节2.1</span>](<span class="na">#2.1</span>)
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>... ...
+&lt;h3 id=&quot;2.1&quot;&gt;2.1 选择编辑器&lt;/h3&gt;
+... ...
+[<span class="nt">我要跳到章节2.1</span>](<span class="na">#2.1</span>)
+</code></pre></div></td></tr></table></div>
 <p>可以看到，是通过使用HTML标签并指定ID来跳转的。</p>
 <h4 id="38-html">3.8 内置HTML</h4>
 <p>有时候我们想要的格式没有办法通过MarkDown的语法来实现，那我们怎么办呢。作为软件攻城狮自然对HTML再熟悉不过了。而HTML的所有标签可以直接拿来再MarkDown里直接使用。</p>
@@ -3426,46 +3461,76 @@
 <p>打开之后就是我们熟悉的CSS文件了。因为MarkDown文件是要渲染成HTML文件的，所以通过查看生成的HTML文件里面的元素，就可以在这里随意设定你想要的样式。</p>
 <p>比如<code>## 标题2</code>会被渲染成<code>&lt;H2&gt;标题2&lt;/H2&gt;</code>，通过在CSS中指定H2的样式，就可以改变所有<code>## 二级标题</code>的显示效果。</p>
 <p>下图是我的样式表：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">修改字体</span><span class="err">（</span><span class="nt">优先使用等线Light和微软雅黑</span><span class="err">）</span><span class="w"></span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DengXian Light&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;Microsoft YaHei&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;Segoe UI&quot;</span><span class="o">,</span><span class="w"> </span><span class="nt">Helvetica</span><span class="o">,</span><span class="w"> </span><span class="nt">sans-serif</span><span class="o">;</span><span class="w"></span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">将代码注释设定为深绿色</span><span class="w"></span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="p">.</span><span class="nc">token</span><span class="p">.</span><span class="nc">comment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">darkgreen</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">设定表格的边框</span><span class="w"></span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="nt">thead</span><span class="w"> </span><span class="nt">th</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">    </span><span class="k">border-top</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">    </span><span class="k">border-right</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">  </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">    </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="k">border-right</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">    </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">使文本段落首行缩进两个字符</span><span class="w"></span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">  </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">    </span><span class="k">text-indent</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">演示效果的DIV层的样式</span><span class="w"></span>
-<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">  </span><span class="p">.</span><span class="nc">showEffect</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">blanchedalmond</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">修改字体</span><span class="err">（</span><span class="nt">优先使用等线Light和微软雅黑</span><span class="err">）</span><span class="w"></span>
+<span class="w">  </span><span class="nt">font-family</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;DengXian Light&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;Microsoft YaHei&quot;</span><span class="o">,</span><span class="w"> </span><span class="s2">&quot;Segoe UI&quot;</span><span class="o">,</span><span class="w"> </span><span class="nt">Helvetica</span><span class="o">,</span><span class="w"> </span><span class="nt">sans-serif</span><span class="o">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">将代码注释设定为深绿色</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nc">token</span><span class="p">.</span><span class="nc">comment</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">darkgreen</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">设定表格的边框</span><span class="w"></span>
+<span class="w">  </span><span class="nt">thead</span><span class="w"> </span><span class="nt">th</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-top</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-right</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="nt">td</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-bottom</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-right</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-left</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">border-color</span><span class="p">:</span><span class="w"> </span><span class="kc">black</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">使文本段落首行缩进两个字符</span><span class="w"></span>
+<span class="w">  </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">text-indent</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">em</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="o">//</span><span class="w"> </span><span class="nt">演示效果的DIV层的样式</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="nc">showEffect</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="kc">blanchedalmond</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h4 id="52-uml">5.2 绘制UML图</h4>
 <p>可以通过GraphViz插件来支持画图。但由于在mkdocs中显示有问题，所以先按下不表。</p>
 <h4 id="53">5.3 自动生成目录</h4>
 <p>在扩展商店中下载MarkDown TOC插件，然后再编辑器中把光标移动到你想插入目录的地方点右键，选择Markdown TOC: Insert/Update菜单。目录就自动生成出来了。</p>
 <p>生成规则也很简单，是根据你设定的6级标题来生成，并自动设定跳转。</p>
 <p>但是有时候生成出来的代码格式很奇怪，不会自动换行。如下所示：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&lt;!-- TOC --&gt;autoauto- [<span class="nt">目录</span>](<span class="na">#目录</span>)auto- [<span class="nt">1. 简介</span>](<span class="na">#1-简介</span>)auto- [<span class="nt">2. 准备工作</span>](<span class="na">#2-准备工作</span>)autoauto&lt;!-- /TOC --&gt;
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>&lt;!-- TOC --&gt;autoauto- [<span class="nt">目录</span>](<span class="na">#目录</span>)auto- [<span class="nt">1. 简介</span>](<span class="na">#1-简介</span>)auto- [<span class="nt">2. 准备工作</span>](<span class="na">#2-准备工作</span>)autoauto&lt;!-- /TOC --&gt;
+</code></pre></div></td></tr></table></div>
 <p>此时，可以修改设定，使自动生成代码时使用\n来填充，而不是auto：</p>
 <p>在设置里搜Eol来修改。</p>
 <p>在mkdocs下，并不能识别这样生成的目录，它有一套自己的目录生成规则，会在渲染出的页面上自动生成目录，不需要我们做任何事情。</p>

@@ -3006,17 +3006,20 @@
 <p>第一步是加载文件。这和加载其他的资源文件是一样的。</p>
 <div class="admonition example">
 <p class="admonition-title">加载文件</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// 加载文件(假设我们的主类叫做App)</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">InputStream</span><span class="w"> </span><span class="n">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">App</span><span class="p">().</span><span class="na">getClass</span><span class="p">()</span><span class="w"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;fonts/SourceHanSerif-SemiBold.ttc&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 加载文件(假设我们的主类叫做App)</span><span class="w"></span>
+<span class="n">InputStream</span><span class="w"> </span><span class="n">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">App</span><span class="p">().</span><span class="na">getClass</span><span class="p">()</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;fonts/SourceHanSerif-SemiBold.ttc&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>第二步是创建字体。</p>
 <div class="admonition example">
 <p class="admonition-title">创建字体</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 创建字体</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Font</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">createFont</span><span class="p">(</span><span class="n">Font</span><span class="p">.</span><span class="na">TRUETYPE_FONT</span><span class="p">,</span><span class="w"> </span><span class="n">inputStream</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 创建字体</span><span class="w"></span>
+<span class="n">Font</span><span class="w"> </span><span class="n">font</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Font</span><span class="p">.</span><span class="na">createFont</span><span class="p">(</span><span class="n">Font</span><span class="p">.</span><span class="na">TRUETYPE_FONT</span><span class="p">,</span><span class="w"> </span><span class="n">inputStream</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>这里要注意的是第一个参数，要根据你提供的字体文件的格式来选择正确的类型。</p>
 <p>有两种类型：</p>
@@ -3045,10 +3048,12 @@
 <p>第三步是注册字体到图形环境中。</p>
 <div class="admonition example">
 <p class="admonition-title">注册字体</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// 注册字体</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">GraphicsEnvironment</span><span class="w"> </span><span class="n">ge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GraphicsEnvironment</span><span class="p">.</span><span class="na">getLocalGraphicsEnvironment</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ge</span><span class="p">.</span><span class="na">registerFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 注册字体</span><span class="w"></span>
+<span class="n">GraphicsEnvironment</span><span class="w"> </span><span class="n">ge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GraphicsEnvironment</span><span class="p">.</span><span class="na">getLocalGraphicsEnvironment</span><span class="p">();</span><span class="w"></span>
+<span class="n">ge</span><span class="p">.</span><span class="na">registerFont</span><span class="p">(</span><span class="n">font</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>注册完成后，Java的图形环境系统就认为我们安装了这个字体，可以在程序中使用了。</p>
 <h3 id="5">5. 在程序中使用字体</h3>
@@ -3056,55 +3061,96 @@
 <p>就是先创建一个<code>JPanel</code>，也就是<code>面板</code>。我们将在这个<code>面板</code>上绘制文字。</p>
 <div class="admonition example">
 <p class="admonition-title">创建JPanel</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">displayWindow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="c1">// 创建JFrame对象</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">JFrame</span><span class="w"> </span><span class="n">jFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JFrame</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="c1">// 设定大小、最大化、关闭动作等</span><span class="w"></span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="c1">// 添加一个面板</span><span class="w"></span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">jFrame</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyJPanel</span><span class="p">());</span><span class="w"></span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="c1">// 显示窗口</span><span class="w"></span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">jFrame</span><span class="p">.</span><span class="na">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1">// 自定义面板类</span><span class="w"></span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJPanel</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JPanel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="c1">// 绘制面板</span><span class="w"></span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paintComponent</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">paintComponent</span><span class="p">(</span><span class="n">g</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span><span class="c1">// 绘制代码</span><span class="w"></span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">        </span><span class="c1">// TODO</span><span class="w"></span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">private</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">displayWindow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 创建JFrame对象</span><span class="w"></span>
+<span class="w">    </span><span class="n">JFrame</span><span class="w"> </span><span class="n">jFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JFrame</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 设定大小、最大化、关闭动作等</span><span class="w"></span>
+<span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="p">...</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 添加一个面板</span><span class="w"></span>
+<span class="w">    </span><span class="n">jFrame</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyJPanel</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">// 显示窗口</span><span class="w"></span>
+<span class="w">    </span><span class="n">jFrame</span><span class="p">.</span><span class="na">setVisible</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// 自定义面板类</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJPanel</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JPanel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// 绘制面板</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paintComponent</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">paintComponent</span><span class="p">(</span><span class="n">g</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// 绘制代码</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// TODO</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>然后我们就可以绘制文字了。</p>
 <div class="admonition example">
 <p class="admonition-title">绘制文字</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJPanel</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JPanel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paintComponent</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">paintComponent</span><span class="p">(</span><span class="n">g</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="c1">// 绘制代码</span><span class="w"></span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="c1">// 设定字体和文字大小</span><span class="w"></span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">.</span><span class="na">deriveFont</span><span class="p">(</span><span class="mf">48.0f</span><span class="p">));</span><span class="w"></span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="c1">// 绘制文字</span><span class="w"></span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;This is English. Hello world!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;This is number. 1234567890&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;这是中文。你好，世界！&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;日本語です。こんにちは世界！&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJPanel</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JPanel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nd">@Override</span><span class="w"></span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">paintComponent</span><span class="p">(</span><span class="n">Graphics</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kd">super</span><span class="p">.</span><span class="na">paintComponent</span><span class="p">(</span><span class="n">g</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// 绘制代码</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// 设定字体和文字大小</span><span class="w"></span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">setFont</span><span class="p">(</span><span class="n">font</span><span class="p">.</span><span class="na">deriveFont</span><span class="p">(</span><span class="mf">48.0f</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// 绘制文字</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">150</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;This is English. Hello world!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;This is number. 1234567890&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;这是中文。你好，世界！&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">g</span><span class="p">.</span><span class="na">drawString</span><span class="p">(</span><span class="s">&quot;日本語です。こんにちは世界！&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>我分别绘制了英文、数字、中文和日文。效果如下：</p>
 <p><img alt="程序运行效果" src="../J002.files/run.png" /></p>

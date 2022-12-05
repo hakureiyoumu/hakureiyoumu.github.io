@@ -3167,23 +3167,34 @@
 <p>就是我们经常看到的绿色OK这种log。（图是从网上随便搜的）
 <img alt="" src="2022-11-27-20-39-38.png" /></p>
 <p>按照下面的步骤可以开启：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. 这个log默认是不开启的，我们可以通过修改内核参数来开启。</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 文件：/etc/default/grub </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;loglevel=3 quiet&quot;</span> 
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 修改为（quiet就是静默模式） </span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 2. 然后，我们重新生成grub配置文件。 </span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>grub-mkconfig -o /boot/grub/grub.cfg 
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># 3. 重启就可以看到了。 </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 1. 这个log默认是不开启的，我们可以通过修改内核参数来开启。</span>
+<span class="c1"># 文件：/etc/default/grub </span>
+<span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;loglevel=3 quiet&quot;</span> 
+<span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
+<span class="c1"># 修改为（quiet就是静默模式） </span>
+<span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
+<span class="nv">GRUB_CMDLINE_LINUX</span><span class="o">=</span><span class="s2">&quot;&quot;</span> 
+
+<span class="c1"># 2. 然后，我们重新生成grub配置文件。 </span>
+grub-mkconfig -o /boot/grub/grub.cfg 
+
+<span class="c1"># 3. 重启就可以看到了。 </span>
+</code></pre></div></td></tr></table></div>
 <h4 id="32">3.2 将启动过程输出为图像</h4>
 <p>使用如下命令即可。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>systemd-analyze plot &gt; plot.svg
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemd-analyze plot &gt; plot.svg
+</code></pre></div></td></tr></table></div>
 <p>输出效果大概是这样的。
 <img alt="" src="2022-11-27-20-49-42.png" /></p>
 <h3 id="4">4. 内核模块</h3>

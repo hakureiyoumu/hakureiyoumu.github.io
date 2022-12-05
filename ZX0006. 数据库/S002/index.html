@@ -2883,34 +2883,36 @@
 <hr />
 <h3 id="1-centospostgresql">1. 在CentOS中安装PostgreSQL</h3>
 <p>先使用下面的命令列出可以安装的包:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>yum list <span class="p">|</span> grep postgre
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>yum list <span class="p">|</span> grep postgre
+</code></pre></div></td></tr></table></div>
 <p>参考输出:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>postgresql.x86_64                   <span class="m">10</span>.6-1.module_el8.0.0+15+f57f353b
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>postgresql-server.x86_64            <span class="m">10</span>.6-1.module_el8.0.0+15+f57f353b
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>postgresql.x86_64                   <span class="m">10</span>.6-1.module_el8.0.0+15+f57f353b
+postgresql-server.x86_64            <span class="m">10</span>.6-1.module_el8.0.0+15+f57f353b
+</code></pre></div></td></tr></table></div>
 <p>这里我们安装服务器版本的。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>yum install postgresql-server.x86_64
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>yum install postgresql-server.x86_64
+</code></pre></div></td></tr></table></div>
 <p>安装完成后会自动为我们创建postgresql.service以及用户/组postgres。但是此时是无法启动的。</p>
 <p>可以前往如下位置查看自动创建的service文件:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/usr/lib/systemd/system/postgresql.service
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/usr/lib/systemd/system/postgresql.service
+</code></pre></div></td></tr></table></div>
 <h3 id="2">2. 初始化数据库</h3>
 <p>在第一次启动之前必须要进行初始化。PostgreSQL将默认使用如下目录作为存放数据的地方:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>/var/lib/pgsql/data
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/var/lib/pgsql/data
+</code></pre></div></td></tr></table></div>
 <p>这个目录在安装PostgreSQL的时候已经自动帮我们创建出来了，里面是空的。</p>
 <p>然后使用如下的命令进行初始化。当然你可以通过指定参数来使用自定义的目录而不是上面的默认目录。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>/usr/bin/postgresql-setup --initdb
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/usr/bin/postgresql-setup --initdb
+</code></pre></div></td></tr></table></div>
 <p>这条命令默认将创建名字为postgres的数据库。当然包括名字在内的许多东西都是可以通过参数来配置的。</p>
 <h3 id="3">3. 启动数据库</h3>
 <p>由于数据库是systemd下面创建的一个service。所以可以使用systemd系列命令来操作它。</p>
 <p>设置为开机启动并启动postgresql:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>systemctl <span class="nb">enable</span> postgresql
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>systemctl start postgresql
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl <span class="nb">enable</span> postgresql
+systemctl start postgresql
+</code></pre></div></td></tr></table></div>
 <h3 id="4-db">4. 配置允许远程连接DB</h3>
 <p>通常我们将DB安装在远程服务器上，然后在本地通过一些DB可视化工具来连接并操作DB。
 但是默认情况下安装完之后postgresql并不允许其他主机的连接。只能本地命令行操作。</p>
@@ -2918,39 +2920,50 @@
 <div class="admonition example">
 <p class="admonition-title">更改pg_hba.conf配置</p>
 <p>在最后添加一行配置以允许指定的IP地址来连接服务器。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>host        all                 all                     ::1/128                 ident
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a># Allow replication connections from localhost, by a user with the                          
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a># replication privilege.                            
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>local       replication         all                     peer
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>host        replication         all                     127.0.0.1/32            ident
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>host        replication         all                     ::1/128                 ident
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>host        all                 all                     本地机器的IP地址/32        md5
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>host        all                 all                     ::1/128                 ident
+# Allow replication connections from localhost, by a user with the                          
+# replication privilege.                            
+local       replication         all                     peer
+host        replication         all                     127.0.0.1/32            ident
+host        replication         all                     ::1/128                 ident
+host        all                 all                     本地机器的IP地址/32        md5
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">更改postgresql.conf配置</p>
 <p>找到如下几行内容并修改:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># - Connection Settings -               
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>listen_addresses = &#39;*&#39;                  # what IP address(es) to listen on;
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>                                        # comma-separated list of addresses;
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>                                        # defaults to &#39;localhost&#39;; use &#39;*&#39; for all
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                                        # (change requires restart)
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code># - Connection Settings -               
+
+listen_addresses = &#39;*&#39;                  # what IP address(es) to listen on;
+                                        # comma-separated list of addresses;
+                                        # defaults to &#39;localhost&#39;; use &#39;*&#39; for all
+                                        # (change requires restart)
+</code></pre></div></td></tr></table></div>
 <p>注意后面的注释说明，默认情况下只监听localhost，也就是服务器本机。改为*表示监听所有机器。</p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">修改postgres的管理员密码</p>
 <p>首先使用如下命令进入postgresql的交互命令行模式:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo -u postgres psql
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo -u postgres psql
+</code></pre></div></td></tr></table></div>
 <p>然后使用如下命令来修改密码:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ALTER USER postgres PASSWORD <span class="s1">&#39;你的管理员密码&#39;</span><span class="p">;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ALTER USER postgres PASSWORD <span class="s1">&#39;你的管理员密码&#39;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>全部做完以后需要重启postgresql才能生效。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>systemctl restart postgresql
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl restart postgresql
+</code></pre></div></td></tr></table></div>
 <p>现在你可以在本地的各种工具中，输入连接信息连接上服务器中的PostgreSQL了。</p>
 
 

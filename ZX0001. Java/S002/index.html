@@ -2939,19 +2939,20 @@
 <p>两个都是必须的。这两个Jar包里类的目录都是org.apache.poi开头的，经常会忘记引用poi-ooxml这个包。</p>
 <h3 id="2-xlsx">2. 读取XLSX文件</h3>
 <h4 id="21">2.1 加载文件</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">xlsx文件路径</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">XSSFWorkbook</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XSSFWorkbook</span><span class="p">(</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">FileInputStream</span><span class="w"> </span><span class="n">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FileInputStream</span><span class="p">(</span><span class="n">xlsx文件路径</span><span class="p">);</span><span class="w"></span>
+<span class="n">XSSFWorkbook</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XSSFWorkbook</span><span class="p">(</span><span class="n">fs</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h4 id="22-sheet">2.2 取得指定sheet</h4>
 <p>根据index取，也就是xlsx文件中的第几个sheet页：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">XSSFSheet</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wb</span><span class="p">.</span><span class="na">getSheetAt</span><span class="p">(</span><span class="n">sheetIndex</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">XSSFSheet</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wb</span><span class="p">.</span><span class="na">getSheetAt</span><span class="p">(</span><span class="n">sheetIndex</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>也可以根据sheet名字来取：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">XSSFSheet</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wb</span><span class="p">.</span><span class="na">getSheet</span><span class="p">(</span><span class="n">sheetName</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">XSSFSheet</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wb</span><span class="p">.</span><span class="na">getSheet</span><span class="p">(</span><span class="n">sheetName</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h4 id="23-sheet">2.3 取得sheet中指定的元素</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">XSSFCell</span><span class="w"> </span><span class="n">cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sheet</span><span class="p">.</span><span class="na">getRow</span><span class="p">(</span><span class="n">row</span><span class="p">).</span><span class="na">getCell</span><span class="p">(</span><span class="n">col</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">XSSFCell</span><span class="w"> </span><span class="n">cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sheet</span><span class="p">.</span><span class="na">getRow</span><span class="p">(</span><span class="n">row</span><span class="p">).</span><span class="na">getCell</span><span class="p">(</span><span class="n">col</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>这是取指定行列位置的元素。这只是最基本的用法，还有更多复杂的用法只要查看类的成员函数便知。</p>
 
 

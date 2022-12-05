@@ -3206,127 +3206,214 @@
 <h3 id="1-jsfspring">1. 整合JSF与Spring框架</h3>
 <p>JSF框架是JavaEE官方提供的用来编写Web应用程序的框架。而对于Spring框架（不是Spring MVC），我们最经常使用的是它的依赖注入特性。<br/>
 JSF也有一套依赖注入的玩意儿，就是使用ManageredBean之类的注解来标记托管类。所谓整合就是希望能同时使用JSF和Spring的依赖注入，并能够互通。比如如下用法：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TestAction</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">   </span><span class="nd">@Autowired</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="n">TestForm</span><span class="w"> </span><span class="n">testForm</span><span class="p">;</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TestAction</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">   </span><span class="nd">@Autowired</span><span class="w"></span>
+<span class="w">    </span><span class="n">TestForm</span><span class="w"> </span><span class="n">testForm</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h4 id="11-spring">1.1 配置Spring</h4>
 <p>首先我们使用通常的做法来配置Spring。</p>
 <p>Spring配置类:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">org.hakurei.appconfig.spring</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="cm">/**</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="cm"> * Spring配置类</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="cm"> */</span><span class="w"></span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nd">@Configuration</span><span class="w"></span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">// 自动扫描此package下面的注解类</span><span class="w"></span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nd">@ComponentScan</span><span class="p">(</span><span class="s">&quot;org.hakurei&quot;</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="cm">/** 此处添加其它配置 */</span><span class="w"></span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">org.hakurei.appconfig.spring</span><span class="p">;</span><span class="w"></span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.ComponentScan</span><span class="p">;</span><span class="w"></span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.context.annotation.Configuration</span><span class="p">;</span><span class="w"></span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Spring配置类</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="nd">@Configuration</span><span class="w"></span>
+<span class="c1">// 自动扫描此package下面的注解类</span><span class="w"></span>
+<span class="nd">@ComponentScan</span><span class="p">(</span><span class="s">&quot;org.hakurei&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringConfig</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="cm">/** 此处添加其它配置 */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>这个配置类扫描org.hakurei包下面的注解类，加入到Spring的应用上下文中。</p>
 <p>Web应用程序启动类:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="cm">/**</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cm"> * Web应用程序初始化</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cm"> */</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringWebInit</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebApplicationInitializer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="c1">// 启动函数</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onStartup</span><span class="p">(</span><span class="n">ServletContext</span><span class="w"> </span><span class="n">servletContext</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                </span><span class="c1">// log4j对象</span><span class="w"></span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">SpringWebInit</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">&quot;Web应用程序初始化...&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置Spring应用上下文&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">                </span><span class="n">AnnotationConfigWebApplicationContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnnotationConfigWebApplicationContext</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;注册自己的Spring配置类:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SpringConfig</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w"></span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">                </span><span class="n">ctx</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">SpringConfig</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;关联Servlet上下文&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">                </span><span class="n">ctx</span><span class="p">.</span><span class="na">setServletContext</span><span class="p">(</span><span class="n">servletContext</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置Listener: ContextLoaderListener, RequestContextListener&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">                </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ContextLoaderListener</span><span class="p">(</span><span class="n">ctx</span><span class="p">));</span><span class="w"></span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">                </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RequestContextListener</span><span class="p">());</span><span class="w"></span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">                </span><span class="c1">// 配置dispatcher servlet</span><span class="w"></span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">                </span><span class="n">Dynamic</span><span class="w"> </span><span class="n">dispatcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addServlet</span><span class="p">(</span><span class="s">&quot;dispatcher&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DispatcherServlet</span><span class="p">(</span><span class="n">ctx</span><span class="p">));</span><span class="w"></span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">loadOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">                </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">addMapping</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">                </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">setLoadOnStartup</span><span class="p">(</span><span class="n">loadOrder</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置dispatcher servlet&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;mapping: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">getMappings</span><span class="p">());</span><span class="w"></span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Servlet加载顺序: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loadOrder</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">   </span><span class="p">}</span><span class="w">  </span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="p">}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**</span>
+<span class="cm"> * Web应用程序初始化</span>
+<span class="cm"> */</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">SpringWebInit</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">WebApplicationInitializer</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// 启动函数</span><span class="w"></span>
+<span class="w">        </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onStartup</span><span class="p">(</span><span class="n">ServletContext</span><span class="w"> </span><span class="n">servletContext</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">ServletException</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">                </span><span class="c1">// log4j对象</span><span class="w"></span>
+<span class="w">                </span><span class="n">Logger</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LogManager</span><span class="p">.</span><span class="na">getLogger</span><span class="p">(</span><span class="n">SpringWebInit</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">error</span><span class="p">(</span><span class="s">&quot;Web应用程序初始化...&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置Spring应用上下文&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">AnnotationConfigWebApplicationContext</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">AnnotationConfigWebApplicationContext</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;注册自己的Spring配置类:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SpringConfig</span><span class="p">.</span><span class="na">class</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span><span class="w"></span>
+<span class="w">                </span><span class="n">ctx</span><span class="p">.</span><span class="na">register</span><span class="p">(</span><span class="n">SpringConfig</span><span class="p">.</span><span class="na">class</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;关联Servlet上下文&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">ctx</span><span class="p">.</span><span class="na">setServletContext</span><span class="p">(</span><span class="n">servletContext</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置Listener: ContextLoaderListener, RequestContextListener&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">ContextLoaderListener</span><span class="p">(</span><span class="n">ctx</span><span class="p">));</span><span class="w"></span>
+<span class="w">                </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addListener</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">RequestContextListener</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">                </span><span class="c1">// 配置dispatcher servlet</span><span class="w"></span>
+<span class="w">                </span><span class="n">Dynamic</span><span class="w"> </span><span class="n">dispatcher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">servletContext</span><span class="p">.</span><span class="na">addServlet</span><span class="p">(</span><span class="s">&quot;dispatcher&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DispatcherServlet</span><span class="p">(</span><span class="n">ctx</span><span class="p">));</span><span class="w"></span>
+<span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">loadOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">addMapping</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">setLoadOnStartup</span><span class="p">(</span><span class="n">loadOrder</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;配置dispatcher servlet&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;mapping: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">dispatcher</span><span class="p">.</span><span class="na">getMappings</span><span class="p">());</span><span class="w"></span>
+<span class="w">                </span><span class="n">logger</span><span class="p">.</span><span class="na">info</span><span class="p">(</span><span class="s">&quot;Servlet加载顺序: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">loadOrder</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w">  </span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h4 id="12">1.2 整合</h4>
 <p>使用JSF配置文件faces-config.xml:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;faces-config</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd&quot;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="na">version=</span><span class="s">&quot;2.1&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="nt">&lt;application&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                <span class="nt">&lt;el-resolver&gt;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>                 org.springframework.web.jsf.el.SpringBeanFacesELResolver
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>                <span class="nt">&lt;/el-resolver&gt;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="nt">&lt;/application&gt;</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a> <span class="nt">&lt;/faces-config&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;faces-config</span> <span class="na">xmlns=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>
+        <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+        <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd&quot;</span>
+
+        <span class="na">version=</span><span class="s">&quot;2.1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;application&gt;</span>
+                <span class="nt">&lt;el-resolver&gt;</span>
+                 org.springframework.web.jsf.el.SpringBeanFacesELResolver
+                <span class="nt">&lt;/el-resolver&gt;</span>
+        <span class="nt">&lt;/application&gt;</span>
+ <span class="nt">&lt;/faces-config&gt;</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="2-jsf">2. JSF的相关配置</h3>
 <h4 id="21-faces-servlet">2.1 配置Faces Servlet</h4>
 <p>Faces Servlet是JSF实现的一套Servlet。这个是JSF里面的概念，本身和PrimeFaces的Faces这个词没有关系。
 Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet里面。</p>
 <p>此类是一个final类，我们无法继承。它在web.xml中的配置如下</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">&lt;servlet&gt;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="nt">&lt;servlet-class&gt;</span>javax.faces.webapp.FacesServlet<span class="nt">&lt;/servlet-class&gt;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">&lt;/servlet&gt;</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">&lt;servlet-mapping&gt;</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="nt">&lt;url-pattern&gt;</span>*.xhtml<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nt">&lt;/servlet-mapping&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;servlet&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>javax.faces.webapp.FacesServlet<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>
+<span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.xhtml<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div></td></tr></table></div>
 <p>此处默认我们使用xhtml文件。</p>
 <p>有的项目中还能看到如下配置，暂时没有发现这个配置处理的.jsf文件是为了处理什么内容。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">&lt;servlet-mapping&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="nt">&lt;url-pattern&gt;</span>*.jsf<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nt">&lt;/servlet-mapping&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;servlet-mapping&gt;</span>
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.jsf<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="22-configurelistener">2.2 配置ConfigureListener</h4>
 <p>在使用JSF的项目中，经常能在web.xml中见到如下配置:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">&lt;listener&gt;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="nt">&lt;listener-class&gt;</span>com.sun.faces.config.ConfigureListener<span class="nt">&lt;/listener-class&gt;</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">&lt;/listener&gt;</span>
-</code></pre></div>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;listener&gt;</span>
+    <span class="nt">&lt;listener-class&gt;</span>com.sun.faces.config.ConfigureListener<span class="nt">&lt;/listener-class&gt;</span>
+<span class="nt">&lt;/listener&gt;</span>
+</code></pre></div></td></tr></table></div>
 但是我发现不加这个也没什么问题。
 查看此类的代码，发现它实现了一大堆的Listener接口:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="cm">/**             </span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="cm"> * &lt;p&gt;Parse all relevant JavaServer Faces configuration resources, and          </span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="cm"> * configure the Reference Implementation runtime environment.&lt;/p&gt;              </span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="cm"> * &lt;p/&gt;         </span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="cm"> */</span><span class="w">             </span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ConfigureListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ServletRequestListener</span><span class="p">,</span><span class="w">               </span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="n">HttpSessionListener</span><span class="p">,</span><span class="w">            </span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">        </span><span class="n">ServletRequestAttributeListener</span><span class="p">,</span><span class="w">                </span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">        </span><span class="n">HttpSessionAttributeListener</span><span class="p">,</span><span class="w">           </span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="n">ServletContextAttributeListener</span><span class="p">,</span><span class="w">                </span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="n">ServletContextListener</span><span class="w"> </span><span class="p">{</span><span class="w">                </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/**             </span>
+<span class="cm"> * &lt;p&gt;Parse all relevant JavaServer Faces configuration resources, and          </span>
+<span class="cm"> * configure the Reference Implementation runtime environment.&lt;/p&gt;              </span>
+<span class="cm"> * &lt;p/&gt;         </span>
+<span class="cm"> */</span><span class="w">             </span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ConfigureListener</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ServletRequestListener</span><span class="p">,</span><span class="w">               </span>
+<span class="w">        </span><span class="n">HttpSessionListener</span><span class="p">,</span><span class="w">            </span>
+<span class="w">        </span><span class="n">ServletRequestAttributeListener</span><span class="p">,</span><span class="w">                </span>
+<span class="w">        </span><span class="n">HttpSessionAttributeListener</span><span class="p">,</span><span class="w">           </span>
+<span class="w">        </span><span class="n">ServletContextAttributeListener</span><span class="p">,</span><span class="w">                </span>
+<span class="w">        </span><span class="n">ServletContextListener</span><span class="w"> </span><span class="p">{</span><span class="w">                </span>
+</code></pre></div></td></tr></table></div>
 <p>原来这个Listener用于初始化JSF的一些东西。一般会自动加载，并不需要我们在web里面配置。甚至有时候加上了会导致某些内容初始化两次。</p>
 <p>而最初是由于GlassFish v3的一个bug导致这个Listener无法正常自动加载，所以需要手动配置，一般在使用tomcat时并不需要加。</p>
 <p>建议如果不加的时候不报错就不要加。</p>
@@ -3344,30 +3431,44 @@ Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet里面
 <h5 id="312-webxmljsf">3.1.2 在web.xml中配置JSF</h5>
 <p>(1) 配置Servlet</p>
 <p>在<web-app>下添加如下配置:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&lt;servlet&gt;</span>   
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nt">&lt;servlet-class&gt;</span>javax.faces.webapp.FacesServlet<span class="nt">&lt;/servlet-class&gt;</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nt">&lt;/servlet&gt;</span>  
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nt">&lt;servlet-mapping&gt;</span>   
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="nt">&lt;url-pattern&gt;</span>*.jsf<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="nt">&lt;/servlet-mapping&gt;</span>  
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nt">&lt;servlet-mapping&gt;</span>   
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="nt">&lt;url-pattern&gt;</span>*.xhtml<span class="nt">&lt;/url-pattern&gt;</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="nt">&lt;/servlet-mapping&gt;</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;servlet&gt;</span>   
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;servlet-class&gt;</span>javax.faces.webapp.FacesServlet<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+<span class="nt">&lt;/servlet&gt;</span>  
+<span class="nt">&lt;servlet-mapping&gt;</span>   
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.jsf<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>  
+<span class="nt">&lt;servlet-mapping&gt;</span>   
+    <span class="nt">&lt;servlet-name&gt;</span>Faces Servlet<span class="nt">&lt;/servlet-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>*.xhtml<span class="nt">&lt;/url-pattern&gt;</span>
+<span class="nt">&lt;/servlet-mapping&gt;</span>  
+</code></pre></div></td></tr></table></div>
 <p>(2) 可选配置:Listener</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">&lt;listener&gt;</span>  
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="nt">&lt;listener-class&gt;</span>com.sun.faces.config.ConfigureListener<span class="nt">&lt;/listener-class&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;listener&gt;</span>  
+    <span class="nt">&lt;listener-class&gt;</span>com.sun.faces.config.ConfigureListener<span class="nt">&lt;/listener-class&gt;</span>
+</code></pre></div></td></tr></table></div>
 <p>※参考章节2.2 配置ConfigureListener.</p>
 <h5 id="313-xhtmljsf">3.1.3 在xhtml页面中使用jsf标签</h5>
 <p>在html头部加上如下声明:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>xmlns:h=&quot;http://java.sun.com/jsf/html&quot;
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>xmlns:f=&quot;http://java.sun.com/jsf/core&quot;
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>xmlns:h=&quot;http://java.sun.com/jsf/html&quot;
+xmlns:f=&quot;http://java.sun.com/jsf/core&quot;
+</code></pre></div></td></tr></table></div>
 <h4 id="32-primefaces">3.2 整合Primefaces</h4>
 <p>实际上使用Primefaces和使用Jstl标签库一样容易，只需要三步。</p>
 <h5 id="321-primefacesjar">3.2.1 下载Primefaces的Jar包</h5>
@@ -3377,35 +3478,52 @@ Faces Servlet位于jsf-api-x.x.xx.jar中的javax.faces.webapp.FacesServlet里面
 </ul>
 <h5 id="322-xhtmlprimefaces">3.2.2 在xhtml页面中使用primefaces标签</h5>
 <p>在html头部加上如下声明:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>xmlns:p=&quot;http://primefaces.org/ui&quot;
-</code></pre></div>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>xmlns:p=&quot;http://primefaces.org/ui&quot;
+</code></pre></div></td></tr></table></div>
 JSF标签和primefaces标签可以同时使用。</p>
 <h3 id="4-jsfmvc">4. JSF项目MVC分层结构</h3>
 <p>MVC构架是指？</p>
-<div class="highlight"><pre><span></span><code>Model-View-Controller
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Model-View-Controller
+</code></pre></div></td></tr></table></div>
 <h4 id="41-jsfmvc">4.1 JSF中的MVC</h4>
 <p>在JSF中，使用Form类来存储业务数据，使用Action类来处理前台事件，使用xhtml来表现前台页面。对应的文档结构如下：</p>
 <p>对于web工程来说</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>learnJsf
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>├─src
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>|  ├─main
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>|  |  ├─webapp
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>|  |  |   ├─WEB-INF
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>|  |  |   |    ├─web.xml
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>|  |  |   |    ├─view
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>|  |  |   |    |  ├─index.xhtml
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>|  |  |   |    |  └login.xhtml
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>|  |  |   |    ├─lib
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>|  |  |   ├─META-INF
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>|  |  ├─resources
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>|  |  ├─java
-<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>|  |  |  ├─learn.model
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>|  |  |  |      ├─LoginForm.java
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>|  |  |  |      └UserInforEntity.java
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>|  |  |  ├─learn.controller
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>|  |  |  |        └LoginAction.Java
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>learnJsf
+├─src
+|  ├─main
+|  |  ├─webapp
+|  |  |   ├─WEB-INF
+|  |  |   |    ├─web.xml
+|  |  |   |    ├─view
+|  |  |   |    |  ├─index.xhtml
+|  |  |   |    |  └login.xhtml
+|  |  |   |    ├─lib
+|  |  |   ├─META-INF
+|  |  ├─resources
+|  |  ├─java
+|  |  |  ├─learn.model
+|  |  |  |      ├─LoginForm.java
+|  |  |  |      └UserInforEntity.java
+|  |  |  ├─learn.controller
+|  |  |  |        └LoginAction.Java
+</code></pre></div></td></tr></table></div>
 <h4 id="42">4.2 各层直接的交互方式</h4>
 <p>Form类与前台页面xhtml显示的数据实时绑定。后台处理时可以直接从Form类中获取页面上用户输入的各种数据。</p>
 <p>button可以指定为执行完Action后去update指定的组件，框架会默认通过ajax使用最新的数据来刷新此组件。如图中的search按钮执行完检索后用新存放在infors的数据来刷新searchRst这个dataTable。</p>
@@ -3414,42 +3532,66 @@ JSF标签和primefaces标签可以同时使用。</p>
 <p>Form类只用来保存页面数据，并不应包含逻辑处理。</p>
 <div class="admonition example">
 <p class="admonition-title">LoginForm.java</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nd">@ManagedBean</span><span class="w"></span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nd">@SessionScoped</span><span class="w"></span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">UserInforEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">infors</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="kd">private</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">isShow</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@ManagedBean</span><span class="w"></span>
+<span class="nd">@SessionScoped</span><span class="w"></span>
+
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">UserInforEntity</span><span class="o">&gt;</span><span class="w"> </span><span class="n">infors</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
+<span class="kd">private</span><span class="w"> </span><span class="n">Boolean</span><span class="w"> </span><span class="n">isShow</span><span class="p">;</span><span class="w"> </span><span class="c1">// get set</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">LoginAction.java</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nd">@ManagedBean</span><span class="w"></span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nd">@RequestScoped</span><span class="w"></span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">login</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">search</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@ManagedBean</span><span class="w"></span>
+<span class="nd">@RequestScoped</span><span class="w"></span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">login</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">search</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">login.xhtml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">&lt;</span><span class="nt">h:form</span><span class="p">&gt;</span>    
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;用户名&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.userName}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="p">&lt;</span><span class="nt">password</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;密码&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.password}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{loginAction.login()}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">update</span><span class="o">=</span><span class="s">&quot;searchRst&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{loginAction.search()}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="p">&lt;/</span><span class="nt">h:form</span><span class="p">&gt;</span>   
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="p">&lt;</span><span class="nt">p:dataTable</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;searchRst&quot;</span> 
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>    <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.infors}&quot;</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>    <span class="na">var</span><span class="o">=</span><span class="s">&quot;infor&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>    <span class="p">&lt;</span><span class="nt">p:column</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{infor.name}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>    <span class="p">&lt;</span><span class="nt">p:column</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{infor.sex}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="p">&lt;/</span><span class="nt">p:dataTable</span><span class="p">&gt;</span>  
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">h:form</span><span class="p">&gt;</span>    
+    <span class="p">&lt;</span><span class="nt">input</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;用户名&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.userName}&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">password</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;密码&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.password}&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{loginAction.login()}&quot;</span> <span class="p">/&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">update</span><span class="o">=</span><span class="s">&quot;searchRst&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{loginAction.search()}&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h:form</span><span class="p">&gt;</span>   
+
+<span class="p">&lt;</span><span class="nt">p:dataTable</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;searchRst&quot;</span> 
+    <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{loginForm.infors}&quot;</span>
+    <span class="na">var</span><span class="o">=</span><span class="s">&quot;infor&quot;</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">p:column</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{infor.name}&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p:column</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;#{infor.sex}&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p:dataTable</span><span class="p">&gt;</span>  
+</code></pre></div></td></tr></table></div>
 </div>
 <h3 id="5">5. 复合组件</h3>
 <h4 id="51">5.1 什么是组件以及复合组件？</h4>
@@ -3458,65 +3600,102 @@ JSF标签和primefaces标签可以同时使用。</p>
 <p>比如一个对话框组件</p>
 <p><img alt="对话框" src="../S001.files/Screenshot_20200724_094900.png" /></p>
 <p>定义好了这样一个对话框组件后，我们就可以在需要弹警告框的地方插入这个组件，就像我们插入一个button一样简单。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="p">&lt;</span><span class="nt">p:commandButton</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;执行&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{xxxAction.func1}&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="p">&lt;</span><span class="nt">z:warnningDlg</span> <span class="na">msgStr</span><span class="o">=</span><span class="s">&quot;这里填警告框的内容&quot;</span> <span class="na">okAction</span><span class="o">=</span><span class="s">&quot;#{响应确定按钮的action}&quot;</span> <span class="na">isShow</span><span class="o">=</span><span class="s">&quot;#{xxxxForm.isShowWarnning}&quot;</span><span class="p">/&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">p:commandButton</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;执行&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{xxxAction.func1}&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;</span><span class="nt">z:warnningDlg</span> <span class="na">msgStr</span><span class="o">=</span><span class="s">&quot;这里填警告框的内容&quot;</span> <span class="na">okAction</span><span class="o">=</span><span class="s">&quot;#{响应确定按钮的action}&quot;</span> <span class="na">isShow</span><span class="o">=</span><span class="s">&quot;#{xxxxForm.isShowWarnning}&quot;</span><span class="p">/&gt;</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="52">5.2 什么时候使用复合组件？</h4>
 <p>如果有这么一小组元素，你有很多页面都使用这组元素。就比如自己用DIV实现的对话框，你希望在别的页面也可以方便的使用他，那么就可以将这个对话框定义为一个复合组件。这样就不需要我们在每个页面都写一套对话框。</p>
 <p>这里的使用场景要区别于模板，复合组件使用模板技术来定义，但应用范畴有所不同。我们通常在页面整体布局的时候会使用模板，可以方便的使所有页面的结构保持统一。复合组件不是从页面结构上，而是从页面上具体的一组一组元素上，来使各个页面保持统一。</p>
 <h4 id="53">5.3 定义一个复合组件</h4>
 <p>首先我们要先明确一下定义和引用复合组件时的文档结构关系。</p>
 <p>以标准的Maven项目目录结构为例</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>learnJsf
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>├─src
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>|  ├─main
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>|  |  ├─resources
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>|  |  |     ├─META-INF
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>|  |  |     |    ├─resources
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>|  |  |     |    |     ├─view
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>|  |  |     |    |     |  ├─index.xhtml   -- 在这个文件中使用这个组件
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>|  |  |     |    |     |  ├─template
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>|  |  |     |    |     |  ├─components
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>|  |  |     |    |     |  |     └warnningDialog.xhtml   -- 组件定义在这里
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>|  |  |     |    |     ├─js
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>|  |  |     |    |     ├─css
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>|  |  ├─java
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>learnJsf
+├─src
+|  ├─main
+|  |  ├─resources
+|  |  |     ├─META-INF
+|  |  |     |    ├─resources
+|  |  |     |    |     ├─view
+|  |  |     |    |     |  ├─index.xhtml   -- 在这个文件中使用这个组件
+|  |  |     |    |     |  ├─template
+|  |  |     |    |     |  ├─components
+|  |  |     |    |     |  |     └warnningDialog.xhtml   -- 组件定义在这里
+|  |  |     |    |     ├─js
+|  |  |     |    |     ├─css
+|  |  ├─java
+</code></pre></div></td></tr></table></div>
 <p>(1) 组件定义语法</p>
 <div class="admonition example">
 <p class="admonition-title">warnningDialog.xhtml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>xmlns:composite=&quot;http://java.sun.com/jsf/composite&quot;
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="cm">&lt;!-- Interface --&gt;</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">&lt;</span><span class="nt">composite:interface</span><span class="p">&gt;</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;msgStr&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;okAction&quot;</span> <span class="na">method-signature</span><span class="o">=</span><span class="s">&quot;void action()&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;isShow&quot;</span> <span class="p">/&gt;</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="p">&lt;/</span><span class="nt">composite:interface</span><span class="p">&gt;</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="cm">&lt;!-- Implementation --&gt;</span>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="p">&lt;</span><span class="nt">composite:implementation</span><span class="p">&gt;</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="p">&lt;</span><span class="nt">h:form</span><span class="p">&gt;</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;warnningDialog&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position:absolute;left:0;top:0;display:#{cc.attrs.isShow?block:none};&quot;</span><span class="p">&gt;</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>            <span class="p">&lt;</span><span class="nt">h:outputScript</span> <span class="na">library</span><span class="o">=</span><span class="s">&quot;js&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;common.js&quot;</span> <span class="p">/&gt;</span>    
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;z-index:100;opacity:0.7;position:absolute;width:100vw;height:100vh;left:0;top:0;background-color:black;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> 
-<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;z-index:200;position:absolute;width:50vw;height:50vh;left:25vw;top:25vh;background-color:white;&quot;</span><span class="p">&gt;</span>   
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>                This is a warnning  dialog : #{cc.attrs.msgStr}
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>                <span class="p">&lt;</span><span class="nt">p:commandButton</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;確定&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;closeWarnningDialog()&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{cc.attrs.okAction}&quot;</span><span class="p">/&gt;</span>
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>  
-<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>      
-<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>    <span class="p">&lt;/</span><span class="nt">h:form</span><span class="p">&gt;</span>
-<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="p">&lt;/</span><span class="nt">composite:implementation</span><span class="p">&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code>xmlns:composite=&quot;http://java.sun.com/jsf/composite&quot;
+
+<span class="cm">&lt;!-- Interface --&gt;</span>
+<span class="p">&lt;</span><span class="nt">composite:interface</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;msgStr&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;okAction&quot;</span> <span class="na">method-signature</span><span class="o">=</span><span class="s">&quot;void action()&quot;</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">composite:attribute</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;isShow&quot;</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">composite:interface</span><span class="p">&gt;</span>
+
+<span class="cm">&lt;!-- Implementation --&gt;</span>
+<span class="p">&lt;</span><span class="nt">composite:implementation</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h:form</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;warnningDialog&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position:absolute;left:0;top:0;display:#{cc.attrs.isShow?block:none};&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">h:outputScript</span> <span class="na">library</span><span class="o">=</span><span class="s">&quot;js&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;common.js&quot;</span> <span class="p">/&gt;</span>    
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;z-index:100;opacity:0.7;position:absolute;width:100vw;height:100vh;left:0;top:0;background-color:black;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span> 
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;z-index:200;position:absolute;width:50vw;height:50vh;left:25vw;top:25vh;background-color:white;&quot;</span><span class="p">&gt;</span>   
+                This is a warnning  dialog : #{cc.attrs.msgStr}
+                <span class="p">&lt;</span><span class="nt">p:commandButton</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;確定&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;closeWarnningDialog()&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;#{cc.attrs.okAction}&quot;</span><span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>  
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>      
+    <span class="p">&lt;/</span><span class="nt">h:form</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">composite:implementation</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>cc.attrs是jsf组件的保留关键字。</p>
 <p>(2) 在index.xhtml中使用这个复合组件</p>
 <div class="admonition example">
 <p class="admonition-title">index.xhtml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>xmlns:z=&quot;http://java.sun.com/jsf/composite/view/components&quot;
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">&lt;</span><span class="nt">z:warnningDialog</span> <span class="na">msgStr</span><span class="o">=</span><span class="s">&quot;这里填警告框的内容&quot;</span> <span class="na">okAction</span><span class="o">=</span><span class="s">&quot;#{响应确定按钮的action}&quot;</span> <span class="na">isShow</span><span class="o">=</span><span class="s">&quot;#{xxxxForm.isShowWarnning}&quot;</span><span class="p">/&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>xmlns:z=&quot;http://java.sun.com/jsf/composite/view/components&quot;
+
+<span class="p">&lt;</span><span class="nt">z:warnningDialog</span> <span class="na">msgStr</span><span class="o">=</span><span class="s">&quot;这里填警告框的内容&quot;</span> <span class="na">okAction</span><span class="o">=</span><span class="s">&quot;#{响应确定按钮的action}&quot;</span> <span class="na">isShow</span><span class="o">=</span><span class="s">&quot;#{xxxxForm.isShowWarnning}&quot;</span><span class="p">/&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 
 

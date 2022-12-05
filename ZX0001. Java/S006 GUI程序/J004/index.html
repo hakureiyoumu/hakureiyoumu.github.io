@@ -2820,11 +2820,14 @@
 <p>依次调用<code>JPanel</code>的下面这两个方法：</p>
 <div class="admonition example">
 <p class="admonition-title">重绘窗口</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">// 使组件的整个绘制区域失效</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">jPanel</span><span class="p">.</span><span class="na">revalidate</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// 重新绘制组件</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">jPanel</span><span class="p">.</span><span class="na">repaint</span><span class="p">();</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 使组件的整个绘制区域失效</span><span class="w"></span>
+<span class="n">jPanel</span><span class="p">.</span><span class="na">revalidate</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// 重新绘制组件</span><span class="w"></span>
+<span class="n">jPanel</span><span class="p">.</span><span class="na">repaint</span><span class="p">();</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>这样，就能正确地触发<code>JPanel</code>的<code>paintComponent()</code>函数。</p>
 

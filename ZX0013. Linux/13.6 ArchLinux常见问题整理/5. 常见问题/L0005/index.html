@@ -2891,15 +2891,16 @@
 <hr />
 <p>Arch Linux中新建的用户没有sudo的权限。可以参考WiKi中的方法进行设置。</p>
 <h3 id="1">1. 查看该用户的权限</h3>
-<div class="highlight"><pre><span></span><code>sudo -lU username
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo -lU username
+</code></pre></div></td></tr></table></div>
 <h3 id="2-sudo">2. 编辑sudo配置</h3>
-<div class="highlight"><pre><span></span><code>EDITOR=vim
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>EDITOR=vim
 visudo
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <h3 id="3">3. 加入如下行来添加权限</h3>
-<div class="highlight"><pre><span></span><code>username ALL=(ALL) ALL
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>username ALL=(ALL) ALL
+</code></pre></div></td></tr></table></div>
 <h3 id="4">4. 验证是否设置成功</h3>
 
 

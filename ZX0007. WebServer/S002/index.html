@@ -3009,8 +3009,8 @@
 <h3 id="2">2. 安装</h3>
 <p>以在CentOS中安装为例。</p>
 <p>在CentOS的repo中已经包含了nginx，因此可以直接使用yum命令来进行安装。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>yum install nginx
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>yum install nginx
+</code></pre></div></td></tr></table></div>
 <p>安装完成后，会在系统中安上下面这些东西：</p>
 <div class="admonition example">
 <p class="admonition-title">nginx服务</p>
@@ -3028,174 +3028,295 @@
 <h3 id="3-nginx">3. 尝试使用nginx</h3>
 <h4 id="31-nginx">3.1 启动nginx</h4>
 <p>使用如下命令可以启动nginx:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>systemctl start nginx
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl start nginx
+</code></pre></div></td></tr></table></div>
 <h4 id="32-nginx">3.2 访问nginx</h4>
 <p>nginx启动后，将默认监听80端口，并使用http协议。   </p>
 <p>直接在能够访问到服务器的PC中访问如下链接即可:    </p>
-<div class="highlight"><pre><span></span><code>http://服务器域名或IP
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>http://服务器域名或IP
+</code></pre></div></td></tr></table></div>
 <p>如果显示NginX的默认页面，则表示nginx已经安装成功。  </p>
 <h3 id="4-nginx">4. 配置nginx(基础版)</h3>
 <p>注意：在修改或者添加nginx的时候，可以暂时关闭防火墙，以免防火墙的配置问题和nginx的配置问题纠缠在一起。在nginx配置完成可以成功访问的前提下再打开防火墙，然后设置在防火墙中开放对应的服务和端口。</p>
 <p>nginx.conf为主配置文件，我们暂且只关注里面的几个比较重要的配置项。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># For more information on configuration, see:
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>#   * Official English Documentation: http://nginx.org/en/docs/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>#   * Official Russian Documentation: http://nginx.org/ru/docs/
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>user nginx;
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>worker_processes auto;
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>error_log /var/log/nginx/error.log;
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>pid /run/nginx.pid;
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a># Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>include /usr/share/nginx/modules/*.conf;
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>events {
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    worker_connections 1024;
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>}
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>http {
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    access_log  /var/log/nginx/access.log  main;
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    sendfile            on;
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    tcp_nopush          on;
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    tcp_nodelay         on;
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    keepalive_timeout   65;
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>    types_hash_max_size 2048;
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    include             /etc/nginx/mime.types;
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>    default_type        application/octet-stream;
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>    # Load modular configuration files from the /etc/nginx/conf.d directory.
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>    # See http://nginx.org/en/docs/ngx_core_module.html#include
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>    # for more information.
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>    #conf.d目录下的.conf文件都会被包含进来，所以能出现在这里的内容都可以出现在那个.conf文件中
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>    include /etc/nginx/conf.d/*.conf;
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>    server {
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>        listen       80 default_server;
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>        listen       [::]:80 default_server;
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>        server_name  _; # 通常填写希望监听的域名
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>        root         /usr/share/nginx/html; # 本web服务的根目录，各种页面文件和静态资源等都默认从这里找
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>        # Load configuration files for the default server block.
-<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>        # default.d目录下的.conf文件都会被包含进来，所以能出现在这里的内容都可以出现在那个.conf文件中
-<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>        include /etc/nginx/default.d/*.conf;
-<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>
-<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>        location / { # 配置URL映射，URL的配置比较复杂，以后在别的章节种详细介绍。/表示匹配所有
-<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>        }
-<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>
-<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>        error_page 404 /404.html; # 配置错误页面
-<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a>            location = /40x.html {
-<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>        }
-<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
-<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>        error_page 500 502 503 504 /50x.html; # 配置错误页面
-<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>            location = /50x.html {
-<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a>        }
-<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>    }
-<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a>
-<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a># Settings for a TLS enabled server. # 配置TLS，希望使用HTTPS时可以这这里配置
-<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a>#
-<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>#    server {
-<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>#        listen       443 ssl http2 default_server;
-<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>#        listen       [::]:443 ssl http2 default_server;
-<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a>#        server_name  _;
-<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>#        root         /usr/share/nginx/html;
-<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>#
-<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>#        ssl_certificate &quot;/etc/pki/nginx/server.crt&quot;;
-<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>#        ssl_certificate_key &quot;/etc/pki/nginx/private/server.key&quot;;
-<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>#        ssl_session_cache shared:SSL:1m;
-<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>#        ssl_session_timeout  10m;
-<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a>#        ssl_ciphers PROFILE=SYSTEM;
-<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>#        ssl_prefer_server_ciphers on;
-<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a>#
-<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>#        # Load configuration files for the default server block.
-<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a>#        include /etc/nginx/default.d/*.conf;
-<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>#
-<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>#        location / {
-<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>#        }
-<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>#
-<a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>#        error_page 404 /404.html;
-<a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a>#            location = /40x.html {
-<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a>#        }
-<a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>#
-<a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a>#        error_page 500 502 503 504 /50x.html;
-<a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>#            location = /50x.html {
-<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>#        }
-<a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a>#    }
-<a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a>
-<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a>}
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code># For more information on configuration, see:
+#   * Official English Documentation: http://nginx.org/en/docs/
+#   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+# Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+include /usr/share/nginx/modules/*.conf;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    log_format  main  &#39;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#39;
+                      &#39;$status $body_bytes_sent &quot;$http_referer&quot; &#39;
+                      &#39;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#39;;
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile            on;
+    tcp_nopush          on;
+    tcp_nodelay         on;
+    keepalive_timeout   65;
+    types_hash_max_size 2048;
+
+    include             /etc/nginx/mime.types;
+    default_type        application/octet-stream;
+
+    # Load modular configuration files from the /etc/nginx/conf.d directory.
+    # See http://nginx.org/en/docs/ngx_core_module.html#include
+    # for more information.
+    #conf.d目录下的.conf文件都会被包含进来，所以能出现在这里的内容都可以出现在那个.conf文件中
+    include /etc/nginx/conf.d/*.conf;
+
+    server {
+        listen       80 default_server;
+        listen       [::]:80 default_server;
+        server_name  _; # 通常填写希望监听的域名
+        root         /usr/share/nginx/html; # 本web服务的根目录，各种页面文件和静态资源等都默认从这里找
+
+        # Load configuration files for the default server block.
+        # default.d目录下的.conf文件都会被包含进来，所以能出现在这里的内容都可以出现在那个.conf文件中
+        include /etc/nginx/default.d/*.conf;
+
+        location / { # 配置URL映射，URL的配置比较复杂，以后在别的章节种详细介绍。/表示匹配所有
+        }
+
+        error_page 404 /404.html; # 配置错误页面
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html; # 配置错误页面
+            location = /50x.html {
+        }
+    }
+
+# Settings for a TLS enabled server. # 配置TLS，希望使用HTTPS时可以这这里配置
+#
+#    server {
+#        listen       443 ssl http2 default_server;
+#        listen       [::]:443 ssl http2 default_server;
+#        server_name  _;
+#        root         /usr/share/nginx/html;
+#
+#        ssl_certificate &quot;/etc/pki/nginx/server.crt&quot;;
+#        ssl_certificate_key &quot;/etc/pki/nginx/private/server.key&quot;;
+#        ssl_session_cache shared:SSL:1m;
+#        ssl_session_timeout  10m;
+#        ssl_ciphers PROFILE=SYSTEM;
+#        ssl_prefer_server_ciphers on;
+#
+#        # Load configuration files for the default server block.
+#        include /etc/nginx/default.d/*.conf;
+#
+#        location / {
+#        }
+#
+#        error_page 404 /404.html;
+#            location = /40x.html {
+#        }
+#
+#        error_page 500 502 503 504 /50x.html;
+#            location = /50x.html {
+#        }
+#    }
+
+}
+</code></pre></div></td></tr></table></div>
 <h3 id="5-tomcat">5. 反向代理tomcat</h3>
 <p>Nginx只是一个Web服务器，只能够返回各种静态的内容。在实际应用中，通常还需要配合应用服务器来使用，比如tomcat。</p>
 <p>要完成这个功能，我们可以把指定域名或URL的访问转发给tomcat，将tomcat的处理结果作为请求的返回。</p>
 <p>可以创建一组server配置来添加一组监听。</p>
 <h4 id="51-tomcat">5.1 为tomcat创建配置文件</h4>
 <p>由于我们要创建一组server配置，所有要在如下目录创建配置文件。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/etc/nginx/conf.d
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>tomcat.conf
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>/etc/nginx/conf.d
+tomcat.conf
+</code></pre></div></td></tr></table></div>
 <p>在tomcat.conf文件中添加如下内容:(目前只包含一套最精简的配置)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>server {
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    listen 80;
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    server_name www.hakureiyoumu.com;
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    root /var/local/tomcat;
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    access_log /var/log/nginx/tomcat_access.log;
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    error_log /var/log/nginx/tomcat_error.log;
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    location / {
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        proxy_pass http://localhost:8080/;
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    }
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>}
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>server {
+    listen 80;
+    server_name www.hakureiyoumu.com;
+
+    root /var/local/tomcat;
+
+    access_log /var/log/nginx/tomcat_access.log;
+    error_log /var/log/nginx/tomcat_error.log;
+
+    location / {
+        proxy_pass http://localhost:8080/;
+    }
+
+}
+</code></pre></div></td></tr></table></div>
 <h4 id="52-nginx">5.2 重新加载nginx</h4>
 <p>使用如下命令重新加载nginx以使新的配置文件生效。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nginx -s reload
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>nginx -s reload
+</code></pre></div></td></tr></table></div>
 <h4 id="53">5.3 验证是否配置成功</h4>
 <p>访问上面配置的端口和URL，如果成功跳转到tomcat的相关页面，就说明配置成功了。</p>
 <h3 id="6-ssl">6. 配置SSL</h3>
 <p>现在大部分的网站都已经迁移到https，这就需要我们进行ssl的配置。</p>
 <p>仍然以转发到tomcat的配置为例：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>server {
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    listen 443;
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    ssl on;
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    server_name www.hakureiyoumu.com;
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    ssl_certificate /etc/letsencrypt/live/www.hakureiyoumu.xyz/fullchain.pem;
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    ssl_certificate_key /etc/letsencrypt/live/www.hakureiyoumu.xyz/privkey.pem;
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    root /var/local/tomcat;
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    access_log /var/log/nginx/tomcat_ssl_access.log;
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    error_log /var/log/nginx/tomcat_ssl_error.log;
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    location / {
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        proxy_pass http://localhost:8080/;
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    }
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>}
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code>server {
+    listen 443;
+    ssl on;
+    server_name www.hakureiyoumu.com;
+
+    ssl_certificate /etc/letsencrypt/live/www.hakureiyoumu.xyz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.hakureiyoumu.xyz/privkey.pem;
+
+    root /var/local/tomcat;
+
+    access_log /var/log/nginx/tomcat_ssl_access.log;
+    error_log /var/log/nginx/tomcat_ssl_error.log;
+
+    location / {
+        proxy_pass http://localhost:8080/;
+    }
+
+}
+</code></pre></div></td></tr></table></div>
 <p>本例使用的证书文件是使用Let's Encrypt免费认证生成的证书文件。如果想要自己的网站看其实更为正统可靠一点，需要花钱去专门的认证机构申请，会审核各种信息。</p>
 <p>一切按照Let's Encrypt网站上的步骤执行就可以了，没什么难度。</p>
 <p>配置完后需要重新加载nginx。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>nginx -s reload
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>nginx -s reload
+</code></pre></div></td></tr></table></div>
 <p>然后你就可以使用https来访问你的网站了。</p>
 <p>有时访问会失败，查看错误log会发现报如下错误:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>connect() to 127.0.0.1:8080 failed (13: Permission denied) while connecting to upstream …
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>connect() to 127.0.0.1:8080 failed (13: Permission denied) while connecting to upstream …
+</code></pre></div></td></tr></table></div>
 <p>按照网上的说法，是SELinux的原因，详细情形比较复杂。我们只需执行如下命令就可以解决：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>setsebool -P httpd_can_network_connect <span class="m">1</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>setsebool -P httpd_can_network_connect <span class="m">1</span>
+</code></pre></div></td></tr></table></div>
 
 
 

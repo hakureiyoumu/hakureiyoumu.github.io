@@ -3134,35 +3134,62 @@
 <p>好在这件事做起来很简单，只需在pom.xml文件中进行如下配置。</p>
 <div class="admonition example">
 <p class="admonition-title">pom.xml</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;build&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="nt">&lt;plugins&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        <span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        <span class="nt">&lt;version&gt;</span>3.3.0<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="nt">&lt;configuration&gt;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>            <span class="nt">&lt;archive&gt;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="nt">&lt;manifest&gt;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>                <span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="nt">&lt;/manifest&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="nt">&lt;/archive&gt;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="nt">&lt;descriptorRefs&gt;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="nt">&lt;/descriptorRefs&gt;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="nt">&lt;/configuration&gt;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="nt">&lt;executions&gt;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="nt">&lt;execution&gt;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="cm">&lt;!-- this is used for inheritance merges --&gt;</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="cm">&lt;!-- bind to the packaging phase --&gt;</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="nt">&lt;goals&gt;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="nt">&lt;/goals&gt;</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            <span class="nt">&lt;/execution&gt;</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="nt">&lt;/executions&gt;</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>        <span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="nt">&lt;/plugins&gt;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    XXXX 其他配置
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="nt">&lt;/build&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>3.3.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;archive&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+            <span class="nt">&lt;/archive&gt;</span>
+            <span class="nt">&lt;descriptorRefs&gt;</span>
+            <span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+            <span class="nt">&lt;/descriptorRefs&gt;</span>
+        <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;executions&gt;</span>
+            <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="cm">&lt;!-- this is used for inheritance merges --&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="cm">&lt;!-- bind to the packaging phase --&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+            <span class="nt">&lt;/execution&gt;</span>
+        <span class="nt">&lt;/executions&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    XXXX 其他配置
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>也就是使用了Maven的<code>maven-assembly-plugin</code>插件来完成这个任务，这个插件的具体用法可以参考Maven的官方文档:</p>
 <p><a href="http://maven.apache.org/plugins/maven-assembly-plugin/usage.html">maven-assembly-plugin</a></p>
@@ -3170,55 +3197,92 @@
 简单的说明一下。</p>
 <div class="admonition note">
 <p class="admonition-title">配置说明</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>这一行用来指定主类，也即是main函数所在的类，相信大家都知道应该怎么配置。
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>表明打Jar包时将包含所有依赖的Jar包。这行不用改。
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="cm">&lt;!-- this is used for inheritance merges --&gt;</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>为了区分<span class="nt">&lt;execution&gt;</span>xxxx<span class="nt">&lt;/execution&gt;</span>块的一个标识性ID。通常不用修改。
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="cm">&lt;!-- bind to the packaging phase --&gt;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>绑定到package生命周期。这样的话，我们执行Maven的package命令来打包时，就会执行这个插件。
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>通常不用修改。
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>给插件执行的任务起一个名字。通常不用修改。
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;mainClass&gt;</span>org.example.App<span class="nt">&lt;/mainClass&gt;</span>
+这一行用来指定主类，也即是main函数所在的类，相信大家都知道应该怎么配置。
+
+<span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+表明打Jar包时将包含所有依赖的Jar包。这行不用改。
+
+<span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span> <span class="cm">&lt;!-- this is used for inheritance merges --&gt;</span>
+为了区分<span class="nt">&lt;execution&gt;</span>xxxx<span class="nt">&lt;/execution&gt;</span>块的一个标识性ID。通常不用修改。
+
+<span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span> <span class="cm">&lt;!-- bind to the packaging phase --&gt;</span>
+绑定到package生命周期。这样的话，我们执行Maven的package命令来打包时，就会执行这个插件。
+通常不用修改。
+
+<span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+给插件执行的任务起一个名字。通常不用修改。
+</code></pre></div></td></tr></table></div>
 </div>
 <p>说了半天，其实一般情况下，我们把上面的代码拷到自己的pom.xml后，只需要改一下<code>主类</code>的配置就行了。</p>
 <div class="admonition warning">
 <p class="admonition-title">特别提醒</p>
 <p>如果你正在使用<code>IntelliJ IDEA</code>作为Java IDE，则IDEA自动生成的<code>pom.xml</code>文件中会包含如下代码块：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;bulid&gt;</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nt">&lt;pluginManagement&gt;</span><span class="cm">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="nt">&lt;plugins&gt;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>            <span class="cm">&lt;!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle --&gt;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            <span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="nt">&lt;version&gt;</span>3.1.0<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>            xxx xxx 其他插件
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="nt">&lt;artifactId&gt;</span>maven-site-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>            <span class="nt">&lt;version&gt;</span>3.7.1<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>            <span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        <span class="nt">&lt;/plugins&gt;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="nt">&lt;/pluginManagement&gt;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="nt">&lt;/build&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;bulid&gt;</span>
+    <span class="nt">&lt;pluginManagement&gt;</span><span class="cm">&lt;!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) --&gt;</span>
+        <span class="nt">&lt;plugins&gt;</span>
+            <span class="cm">&lt;!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle --&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.1.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+            xxx xxx 其他插件
+            <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-site-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.7.1<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/pluginManagement&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></td></tr></table></div>
 注意我们拷贝的<code>&lt;plugin&gt;</code>不是放在这个<code>&lt;pluginManagement&gt;</code>里面的。是放在如下的位置：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;build&gt;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="nt">&lt;plugins&gt;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="nt">&lt;plugin&gt;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>        xxxx 其他配置
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="nt">&lt;/plugin&gt;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="nt">&lt;/plugins&gt;</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    XXXX 其他配置
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="nt">&lt;/build&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        xxxx 其他配置
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+    XXXX 其他配置
+<span class="nt">&lt;/build&gt;</span>
+</code></pre></div></td></tr></table></div>
 放错的话不会生效。</p>
 </div>
 <p>配置完成后，我们执行<code>mvn package</code>命令就可以生成Jar包了。在IDEA中，使用Maven工具面板上的package命令可以轻松的完成这个任务。</p>
@@ -3245,8 +3309,8 @@
 <p>这里我们只说如何来完成我们这项任务。执行如下命令即可：</p>
 <div class="admonition example">
 <p class="admonition-title">jdeps</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">jdeps</span> <span class="p">-</span><span class="n">-list-deps</span> <span class="p">-</span><span class="n">-ignore-missing-deps</span> <span class="n">你的Jar包</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jdeps</span> <span class="p">-</span><span class="n">-list-deps</span> <span class="p">-</span><span class="n">-ignore-missing-deps</span> <span class="n">你的Jar包</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>下面是我的MyDoc程序的运行结果：
 <img alt="jdeps运行结果" src="../S007.files/jdeps.png" /></p>
@@ -3258,8 +3322,8 @@
 <p>这里我们还是只关注如何来完成我们的这些任务。执行如下命令即可：</p>
 <div class="admonition example">
 <p class="admonition-title">jlink</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">生成的文件存放的目录</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">模块列表</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">压缩级别</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">生成的文件存放的目录</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">模块列表</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">压缩级别</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">1</span><span class="p">,</span> <span class="n">2</span><span class="p">)</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>各个选项的参数该怎么设置呢？</p>
 <table>
@@ -3306,8 +3370,8 @@
 <p>下面是我的MyDoc程序的运行结果：</p>
 <div class="admonition example">
 <p class="admonition-title">jlink</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">java</span><span class="p">.</span><span class="n">base</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">desktop</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">logging</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">2</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jlink</span> <span class="p">-</span><span class="n">-output</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-add-modules</span> <span class="n">java</span><span class="p">.</span><span class="n">base</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">desktop</span><span class="p">,</span><span class="n">java</span><span class="p">.</span><span class="n">logging</span> <span class="p">-</span><span class="n">-compress</span><span class="p">=</span><span class="n">2</span> <span class="p">-</span><span class="n">-no-header-files</span> <span class="p">-</span><span class="n">-no-man-pages</span> <span class="p">-</span><span class="n">-strip-debug</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p><img alt="jlink运行结果" src="../S007.files/jlink.png" /></p>
 <p>生成的文件：
@@ -3319,16 +3383,16 @@
 <p>然后使用我们刚才生成的迷你Jre，先列出它包含的模块。</p>
 <div class="admonition example">
 <p class="admonition-title">列出JRE模块</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="p">-</span><span class="n">-list-modules</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="p">-</span><span class="n">-list-modules</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p><img alt="列出JRE模块" src="../S007.files/list_modules.png" /></p>
 <p>发现除了我们指定的那几个模块之外，还多了几个，不过这也无伤大雅。这就是我们的迷你JRE里面包含的所有模块了。</p>
 <p>最后用这个迷你Jre来运行我们的Jar包试试看。</p>
 <div class="admonition example">
 <p class="admonition-title">列出JRE模块</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="n">-jar</span> <span class="n">jar包路径</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">迷你JRE目录</span><span class="p">\</span><span class="n">bin</span><span class="p">\</span><span class="n">java</span> <span class="n">-jar</span> <span class="n">jar包路径</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p><img alt="运行结果" src="../S007.files/run2.png" /></p>
 <p>可以看到，成功的运行了我们的这个演示程序。
@@ -3414,8 +3478,8 @@ Java程序可以在这三大系统中运行。而这三大系统分别使用不�
 <p>要完成我们的任务，<code>jpackage</code>工具的完整的命令用法如下：</p>
 <div class="admonition example">
 <p class="admonition-title">jpackage</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">上表中列出的值</span> <span class="p">-</span><span class="n">-name</span> <span class="n">目标文件或文件夹名</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">图标文件</span> <span class="p">-</span><span class="n">-input</span> <span class="n">jar包所在目录</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">jar包路径</span><span class="err">（</span><span class="n">相对于</span><span class="p">-</span><span class="n">-input</span><span class="err">）</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">JRE路径</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">上表中列出的值</span> <span class="p">-</span><span class="n">-name</span> <span class="n">目标文件或文件夹名</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">图标文件</span> <span class="p">-</span><span class="n">-input</span> <span class="n">jar包所在目录</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">jar包路径</span><span class="err">（</span><span class="n">相对于</span><span class="p">-</span><span class="n">-input</span><span class="err">）</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">JRE路径</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>唯一需要说明的是这个<code>--input</code>，这个目录下所有的文件都会被打包进去，不只是那个可执行jar包。</p>
 <p>下面，还是演示Java程序<code>MyDoc</code>，以生成Windows系统上的<code>.msi</code>格式的安装包为例来运行一下这个命令。（其他格式的话，用法都是相同的，只需修改选项<code>--type</code>的值）</p>
@@ -3427,27 +3491,40 @@ Java程序可以在这三大系统中运行。而这三大系统分别使用不�
 <p>准备完成后，结构如下：</p>
 <div class="admonition example">
 <p class="admonition-title">目录结构</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">工作目录</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="err">│</span>  <span class="n">test</span><span class="p">.</span><span class="n">ico</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="err">│</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="err">├─</span><span class="n">MyJars</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="err">│</span>      <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="err">│</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="err">└─</span><span class="n">runtime</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="err">│</span>  <span class="n">release</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="err">│</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="err">├─</span><span class="n">bin</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">2</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-datetime-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">其他文件</span><span class="p">...</span> <span class="p">...</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">工作目录</span>
+<span class="err">│</span>  <span class="n">test</span><span class="p">.</span><span class="n">ico</span>
+<span class="err">│</span>
+<span class="err">├─</span><span class="n">MyJars</span>
+<span class="err">│</span>      <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span>
+<span class="err">│</span>
+<span class="err">└─</span><span class="n">runtime</span>
+    <span class="err">│</span>  <span class="n">release</span>
+    <span class="err">│</span>
+    <span class="err">├─</span><span class="n">bin</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-console-l1</span><span class="p">-</span><span class="n">2</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="err">│</span>  <span class="err">│</span>  <span class="n">api-ms-win-core-datetime-l1</span><span class="p">-</span><span class="n">1</span><span class="p">-</span><span class="n">0</span><span class="p">.</span><span class="n">dll</span>
+    <span class="n">其他文件</span><span class="p">...</span> <span class="p">...</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>然后我们要执行的命令是：</p>
 <div class="admonition example">
 <p class="admonition-title">生成.msi</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">msi</span> <span class="p">-</span><span class="n">-name</span> <span class="n">MyDoc</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">test</span><span class="p">.</span><span class="n">ico</span> <span class="p">-</span><span class="n">-input</span> <span class="n">MyJars</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-win-dir-chooser</span> <span class="p">-</span><span class="n">-win-menu</span> <span class="p">-</span><span class="n">-win-shortcut</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">jpackage</span> <span class="p">-</span><span class="n">-type</span> <span class="n">msi</span> <span class="p">-</span><span class="n">-name</span> <span class="n">MyDoc</span> <span class="p">-</span><span class="n">-icon</span> <span class="n">test</span><span class="p">.</span><span class="n">ico</span> <span class="p">-</span><span class="n">-input</span> <span class="n">MyJars</span> <span class="p">-</span><span class="n">-main-jar</span> <span class="n">MyDoc</span><span class="p">-</span><span class="n">1</span><span class="p">.</span><span class="n">0-SNAPSHOT-jar-with-dependencies</span><span class="p">.</span><span class="n">jar</span> <span class="p">-</span><span class="n">-runtime-image</span> <span class="n">runtime</span> <span class="p">-</span><span class="n">-win-dir-chooser</span> <span class="p">-</span><span class="n">-win-menu</span> <span class="p">-</span><span class="n">-win-shortcut</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <p>这里我在后面加了三个额外的选项，可以使我们的安装包在安装的时候可以指定安装的位置。并将添加到开始菜单，然后会创建一个桌面快捷方式。
 要记住，<code>jpackage</code>还有更多的功能。而且针对不同的操作系统还有不同的选项，这里我演示的只是Windows系统中的可用选项。</p>

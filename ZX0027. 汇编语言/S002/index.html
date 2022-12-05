@@ -3117,8 +3117,8 @@ C:\Program Files (x86)\DOSBox-0.74-3    </p>
 <p><img alt="asm" src="../S002.files/08.png" /></p>
 <h4 id="34">3.4 查看内存中的内容</h4>
 <p>最普通的用法是如下命令：        </p>
-<div class="highlight"><pre><span></span><code>d 2010:0000
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>d 2010:0000
+</code></pre></div></td></tr></table></div>
 <p>也就是 d 后面跟上想要查看的内存区域的起始地址，起始地址使用段地址加偏移地址的方式表示。       </p>
 <p><img alt="asm" src="../S002.files/09.png" /></p>
 <p>默认显示128个字节的数据。      </p>
@@ -3129,11 +3129,11 @@ C:\Program Files (x86)\DOSBox-0.74-3    </p>
 <p><img alt="asm" src="../S002.files/12.png" /></p>
 <h4 id="36">3.6 修改内存</h4>
 <p>使用 e 命令来修改内存，基本格式如下:        </p>
-<div class="highlight"><pre><span></span><code>e 2010:0002 2A 6F 12 &#39;hello world&#39; 0 10 55 &#39;asm&#39;
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>e 2010:0002 2A 6F 12 &#39;hello world&#39; 0 10 55 &#39;asm&#39;
+</code></pre></div></td></tr></table></div>
 <p>也就是：        </p>
-<div class="highlight"><pre><span></span><code>e 段地址:偏移地址 数据1 数据2 数据3 … …
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>e 段地址:偏移地址 数据1 数据2 数据3 … …
+</code></pre></div></td></tr></table></div>
 <p>要注意，这里的数据只能是16进制数值，或者字符串。255这种数值会被认为是非法输入。      </p>
 <p><img alt="asm" src="../S002.files/13.png" /></p>
 <p>以上为最基础的用法，这个命令有很多种用法。       </p>
@@ -3141,11 +3141,14 @@ C:\Program Files (x86)\DOSBox-0.74-3    </p>
 <p>指令本质上也是数据，我们当然可以使用上面介绍的 e 命令来写入指令。前提是你知道你要写入的指令对应的机器码，通常我们并不知道。     </p>
 <p>所以debug提供了 a 命令，让我们可以直接写入汇编语言格式的指令到内存中。     </p>
 <p>例如，要往内存2010:0002中写入如下几条指令:      </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">SUB</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w">  </span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="no">ADD</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="mi">2011</span><span class="no">H</span><span class="w">   </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="no">ADD</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w">  </span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="no">MOV</span><span class="w"> </span><span class="no">BX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nf">SUB</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w">  </span>
+<span class="no">ADD</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="mi">2011</span><span class="no">H</span><span class="w">   </span>
+<span class="no">ADD</span><span class="w"> </span><span class="no">AX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w">  </span>
+<span class="no">MOV</span><span class="w"> </span><span class="no">BX</span><span class="p">,</span><span class="w"> </span><span class="no">AX</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p><img alt="asm" src="../S002.files/14.png" /></p>
 <p>注意十六进制数据2011H的H不要加，debug里的数值默认就是16进制的。    <br />
 这个命令是交互式的，要求你逐条输入命令，要结束输入，只需在输入新一条命令时直接敲回车。     </p>

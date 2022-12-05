@@ -2920,35 +2920,54 @@
 <p>在Maven中，可以很方便的引用：</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- https://mvnrepository.com/artifact/org.luaj/luaj-jse --&gt;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&lt;dependency&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="nt">&lt;groupId&gt;</span>org.luaj<span class="nt">&lt;/groupId&gt;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nt">&lt;artifactId&gt;</span>luaj-jse<span class="nt">&lt;/artifactId&gt;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">&lt;/dependency&gt;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">&lt;!-- https://mvnrepository.com/artifact/org.luaj/luaj-jse --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.luaj<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>luaj-jse<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>3.0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <h4 id="22">2.2 初始化脚本引擎</h4>
 <p>我们主要使用<code>ScriptEngine</code>类来进行各种交互操作，创建这个类的过程如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// 脚本引擎管理器</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ScriptEngineManager</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScriptEngineManager</span><span class="p">();</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1">// 脚本引擎</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">ScriptEngine</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mgr</span><span class="p">.</span><span class="na">getEngineByName</span><span class="p">(</span><span class="s">&quot;lua&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 脚本引擎管理器</span><span class="w"></span>
+<span class="n">ScriptEngineManager</span><span class="w"> </span><span class="n">mgr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ScriptEngineManager</span><span class="p">();</span><span class="w"></span>
+
+<span class="c1">// 脚本引擎</span><span class="w"></span>
+<span class="n">ScriptEngine</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mgr</span><span class="p">.</span><span class="na">getEngineByName</span><span class="p">(</span><span class="s">&quot;lua&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>这个类中比较重要的函数有这些：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Object</span><span class="w">  </span><span class="nf">eval</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">script</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1">// Executes the specified script.</span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">Object</span><span class="w">  </span><span class="nf">eval</span><span class="p">(</span><span class="n">Reader</span><span class="w"> </span><span class="n">reader</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">// Same as eval(String) except that the source of the script is provided as a Reader</span><span class="w"></span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">Object</span><span class="w">  </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">// Retrieves a value set in the state of this engine.</span><span class="w"></span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="kt">void</span><span class="w">    </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1">// Sets a key/value pair in the state of the ScriptEngine that may either create a Java Language Binding to be used in the execution of scripts or be used in some other way, depending on whether the key is reserved.</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Object</span><span class="w">  </span><span class="nf">eval</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">script</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// Executes the specified script.</span><span class="w"></span>
+
+<span class="n">Object</span><span class="w">  </span><span class="nf">eval</span><span class="p">(</span><span class="n">Reader</span><span class="w"> </span><span class="n">reader</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// Same as eval(String) except that the source of the script is provided as a Reader</span><span class="w"></span>
+
+<span class="n">Object</span><span class="w">  </span><span class="nf">get</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// Retrieves a value set in the state of this engine.</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w">    </span><span class="nf">put</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"></span>
+<span class="c1">// Sets a key/value pair in the state of the ScriptEngine that may either create a Java Language Binding to be used in the execution of scripts or be used in some other way, depending on whether the key is reserved.</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li><code>eval</code>函数可以用来执行任意的脚本语言代码(从字符串或者文件中)。从变量定义到函数声明、函数调用都是可以的。并且在字符串中也支持使用换行符<code>\n</code>来写多行语句。</li>
 <li><code>get</code>函数用来获取lua中所定义的外部变量的值。通常用来从脚本语言向java返回计算结果。</li>
@@ -2965,85 +2984,121 @@
 <div class="admonition example">
 <p class="admonition-title">读取脚本中的变量</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;a = 1 + 1&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Object</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;a = 1 + 1&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">Object</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;a = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>运行结果：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">a</span> <span class="o">=</span> <span class="m">2</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">a</span> <span class="o">=</span> <span class="m">2</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">设定脚本中的变量</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;a = 1 + 1&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;print(&#39;a = &#39; .. a)&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">e</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;print(&#39;a = &#39; .. a)&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;a = 1 + 1&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;print(&#39;a = &#39; .. a)&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="n">e</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;print(&#39;a = &#39; .. a)&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>运行结果：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">a</span> <span class="o">=</span> <span class="m">2</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">a</span> <span class="o">=</span> <span class="m">100</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">a</span> <span class="o">=</span> <span class="m">2</span>
+<span class="nv">a</span> <span class="o">=</span> <span class="m">100</span>
+</code></pre></div></td></tr></table></div>
 </div>
 <div class="admonition example">
 <p class="admonition-title">调用lua中的函数</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// 先定义一个lua函数，带有两个参数</span><span class="w"></span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;function sayHello(str, num)\n&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="s">&quot;print(&#39;hello, this is a lua function. p1 = &#39; .. str .. &#39;, p2 = &#39; .. num)&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="s">&quot;end&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1">// 在java代码中调用此函数</span><span class="w"></span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;sayHello(&#39;这是第一个参数&#39;, 2222)&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 先定义一个lua函数，带有两个参数</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;function sayHello(str, num)\n&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;print(&#39;hello, this is a lua function. p1 = &#39; .. str .. &#39;, p2 = &#39; .. num)&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;end&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="c1">// 在java代码中调用此函数</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;sayHello(&#39;这是第一个参数&#39;, 2222)&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>运行结果：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>hello, this is a lua <span class="k">function</span>. <span class="nv">p1</span> <span class="o">=</span> 这是第一个参数, <span class="nv">p2</span> <span class="o">=</span> <span class="m">2222</span>
-</code></pre></div></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>hello, this is a lua <span class="k">function</span>. <span class="nv">p1</span> <span class="o">=</span> 这是第一个参数, <span class="nv">p2</span> <span class="o">=</span> <span class="m">2222</span>
+</code></pre></div></td></tr></table></div></p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">调用java中的函数</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">// 先定义一个java函数，这个方法一定要是`static`的，否则不能调用</span><span class="w"></span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJavaApi</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">javaSayHello</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;这是一个Java程序。p1 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, p2 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">}</span><span class="w"></span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1">// 调用此函数</span><span class="w"></span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">e</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;MyJavaApi&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyJavaApi</span><span class="p">());</span><span class="w"></span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;MyJavaApi:javaSayHello(&#39;这是个字符串参数&#39;, 2333)&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 先定义一个java函数，这个方法一定要是`static`的，否则不能调用</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">MyJavaApi</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">javaSayHello</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;这是一个Java程序。p1 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;, p2 = &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c1">// 调用此函数</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;MyJavaApi&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyJavaApi</span><span class="p">());</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;MyJavaApi:javaSayHello(&#39;这是个字符串参数&#39;, 2333)&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>运行结果：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>这是一个Java程序。p1 <span class="o">=</span> 这是个字符串参数, <span class="nv">p2</span> <span class="o">=</span> <span class="m">2333</span>
-</code></pre></div></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>这是一个Java程序。p1 <span class="o">=</span> 这是个字符串参数, <span class="nv">p2</span> <span class="o">=</span> <span class="m">2333</span>
+</code></pre></div></td></tr></table></div></p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">执行脚本文件</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">-- 先定义一个lua脚本文件(在Maven的资源文件夹下面: lua/test.lua)</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kr">function</span> <span class="nf">func1</span><span class="p">()</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is a lua file.&quot;</span><span class="p">)</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="kr">end</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">// 然后在java中执行这个脚本文件，并且调用里面的方法:</span><span class="w"></span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c1">// 读取文件</span><span class="w"></span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">InputStream</span><span class="w"> </span><span class="n">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="w"></span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;lua/test.lua&quot;</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">InputStreamReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">inputStream</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1">// 执行脚本文件</span><span class="w"></span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span><span class="w"></span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1">// 执行函数</span><span class="w"></span>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;func1()&quot;</span><span class="p">);</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 先定义一个lua脚本文件(在Maven的资源文件夹下面: lua/test.lua)</span>
+<span class="kr">function</span> <span class="nf">func1</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;this is a lua file.&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 然后在java中执行这个脚本文件，并且调用里面的方法:</span><span class="w"></span>
+<span class="c1">// 读取文件</span><span class="w"></span>
+<span class="n">InputStream</span><span class="w"> </span><span class="n">inputStream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">App</span><span class="p">.</span><span class="na">class</span><span class="w"></span>
+<span class="w">        </span><span class="p">.</span><span class="na">getClassLoader</span><span class="p">().</span><span class="na">getResourceAsStream</span><span class="p">(</span><span class="s">&quot;lua/test.lua&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">InputStreamReader</span><span class="w"> </span><span class="n">reader</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">InputStreamReader</span><span class="p">(</span><span class="n">inputStream</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// 执行脚本文件</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="n">reader</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// 执行函数</span><span class="w"></span>
+<span class="n">e</span><span class="p">.</span><span class="na">eval</span><span class="p">(</span><span class="s">&quot;func1()&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>运行结果：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>this is a lua file.
-</code></pre></div></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>this is a lua file.
+</code></pre></div></td></tr></table></div></p>
 </div>
 
 

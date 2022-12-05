@@ -3029,26 +3029,36 @@
 <p>具体的写法这里就不再赘述了，只需注册一个自动启动的服务就可以了，可以参考服务管理相关章节。</p>
 <p>但需要注意的一点是，诸如rc.local、rc.d、init.d等相关的写法应该是SysVinit初始化程序的写法。虽然很多时候也可以使用，但最好采用systemd中的写法。因为在有的发行版里，比如Arch中，这些写法是完全执行不了的。</p>
 <p>还有一些默认会开机启动的脚本。比如通常用于配置环境变量的脚本。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/etc/profile        <span class="c1"># 配置所有用户环境变量的文件，开机会被自动执行。</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>/etc/profile.d      <span class="c1"># 配置所有用户环境变量的目录，开机时下面所有的脚本文件都被自动执行，自定义的环境变量通常放这里。</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>~/.profile          <span class="c1"># 特定用户的环境变量配置文件，该用户登录时被自动执行。</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>/etc/profile        <span class="c1"># 配置所有用户环境变量的文件，开机会被自动执行。</span>
+/etc/profile.d      <span class="c1"># 配置所有用户环境变量的目录，开机时下面所有的脚本文件都被自动执行，自定义的环境变量通常放这里。</span>
+~/.profile          <span class="c1"># 特定用户的环境变量配置文件，该用户登录时被自动执行。</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="3">3. 关机时启动</h3>
 <p>同样注册一个服务，只需要变更一下其中的几个配置项就可以了。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[Unit]</span><span class="w"></span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">Before</span><span class="o">=</span><span class="s">shutdown.target</span><span class="w"></span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">[Service]</span><span class="w"></span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="na">TimeoutStartSec</span><span class="o">=</span><span class="s">0</span><span class="w"></span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">[Install]</span><span class="w"></span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">shutdown.target</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[Unit]</span><span class="w"></span>
+<span class="na">Before</span><span class="o">=</span><span class="s">shutdown.target</span><span class="w"></span>
+
+<span class="k">[Service]</span><span class="w"></span>
+<span class="na">TimeoutStartSec</span><span class="o">=</span><span class="s">0</span><span class="w"></span>
+
+<span class="k">[Install]</span><span class="w"></span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">shutdown.target</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <h3 id="4-shell">4. 启动shell终端时启动</h3>
 <p>有时我们需要为自己的shell设置一些环境变量、命令假名之类的。就可以使用下面这两个文件:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>~/.bashrc           <span class="c1"># 每次打开终端时被自动调用</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>~/.bash_profile     <span class="c1"># 用户登录时被自动调用，通常只会被调用一次</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>~/.bashrc           <span class="c1"># 每次打开终端时被自动调用</span>
+~/.bash_profile     <span class="c1"># 用户登录时被自动调用，通常只会被调用一次</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="5">5. 定时启动</h3>
 <h4 id="51-timer">5.1 使用Timer来定时启动</h4>
 <p>通常会使用cron相关的命令来实现。其实systemd中有一个定时器Timer也可以实现相关的功能。</p>
@@ -3058,12 +3068,16 @@
 <li>(2)   定义一个同名的timer。如my_task.timer，这个timer默认会去启动同名的service，当然你也可以换名字。</li>
 </ul>
 <p>timer的内容要点:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[Timer]</span><span class="w"></span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">条件</span><span class="w"></span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">[Install]</span><span class="w"></span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">timers.target</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[Timer]</span><span class="w"></span>
+<span class="na">条件</span><span class="w"></span>
+
+<span class="k">[Install]</span><span class="w"></span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">timers.target</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>可以指定各种各样的定时条件。</p>
 <h4 id="52">5.2 指定各种定时启动的条件</h4>
 <h5 id="521">5.2.1 开机一段时间后执行</h5>
@@ -3119,17 +3133,19 @@ OnStartupSec=时间间隔</p>
 </tbody>
 </table>
 <p>可以指定多个时间单位并使用空格分隔，比如:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>15days 4h 26min 59s
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>15days 4h 26min 59s
+</code></pre></div></td></tr></table></div>
 <h5 id="522">5.2.2 以固定的时间点或时间间隔执行</h5>
 <p><code>bash
  OnCalendar=</code></p>
 <p>Calendar的语句比较复杂，可以有很多种写法来分别表示各种各种的日期。</p>
 <p>一个完整的日期如下:</p>
-<div class="highlight"><pre><span></span><code>Sun 2020-03-29 13:23:46 UTC
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Sun 2020-03-29 13:23:46 UTC
 
 如果直接指定这样一个日期，则定时器会在这个时间点启动一次service。
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <p>在日期语句中，可以使用多种符号来匹配指定格式的日期。</p>
 <table>
 <thead>
@@ -3221,8 +3237,8 @@ OnStartupSec=时间间隔</p>
 </table>
 <h4 id="53">5.3 列举当前使用中的定时器</h4>
 <p>就像列举systemd中定义的其它类型的单元一样，使用如下命令:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>systemctl list-timers
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl list-timers
+</code></pre></div></td></tr></table></div>
 
 
 

@@ -2926,11 +2926,14 @@
 <h3 id="1">1.   概要</h3>
 <p>mXparser是一个能让我们进行代数计算的库。虽然我们通常编写程序的时候几乎没有可能用到，但感觉还是挺有趣的。    </p>
 <p>例如，我们可以给出未知数的值，来求解表达式的值:    </p>
-<div class="highlight"><pre><span></span><code>设未知数x，y。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>设未知数x，y。
 x = 12
 y = 80
 则(x + y) * 10 -100 = 820
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
 <p>这个库还支持高等数学符号以及函数定义等更为复杂的用法。这里我们来列一下mXparser支持的各种特性: </p>
 <table>
 <thead>
@@ -3031,8 +3034,8 @@ y = 80
 <p>很多特性都比较复杂，可以在需要的时候再去学习其用法。现在先从最基础的用法开始。 </p>
 <h3 id="2">2.   查看内部帮助手册</h3>
 <p>mXparser有一个可以用程序打印出来的帮助手册。可以指定关键字来检索各种符号的用法。    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">mXparser</span><span class="p">.</span><span class="n">consolePrintHelp</span><span class="p">(</span><span class="s">&quot;要检索的内容&quot;</span><span class="p">);</span><span class="w">    </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mXparser</span><span class="p">.</span><span class="n">consolePrintHelp</span><span class="p">(</span><span class="s">&quot;要检索的内容&quot;</span><span class="p">);</span><span class="w">    </span>
+</code></pre></div></td></tr></table></div>
 <p>例如，我们需要计算三角函数cos，就可以检索cos关键字，输出结果为: </p>
 <p><img alt="cos" src="../S002.files/01.png" />    </p>
 <p>可以看到有这么多关于cos的数学函数可以使用。 </p>
@@ -3107,112 +3110,195 @@ y = 80
 </table>
 <h3 id="4">4.   计算表达式的值</h3>
 <p>以C#代码为例:    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;(1 + 4) * 2 - 100&quot;</span><span class="p">;</span><span class="w">   </span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">);</span><span class="w">  </span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;(1 + 4) * 2 - 100&quot;</span><span class="p">;</span><span class="w">   </span>
+<span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">);</span><span class="w">  </span>
+<span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
 <p>输出为:    </p>
-<div class="highlight"><pre><span></span><code>(1 + 4) * 2 - 100 = -90
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>(1 + 4) * 2 - 100 = -90
+</code></pre></div></td></tr></table></div>
 <h3 id="5">5.   设未知数</h3>
 <p>同样使用下面这个例子: </p>
-<div class="highlight"><pre><span></span><code>设未知数x，y。
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>设未知数x，y。
 x = 12
 y = 80
 则(x + y) * 10 -100 = 820
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;(x + y) * 10 -100&quot;</span><span class="p">;</span><span class="w">   </span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;(x + y) * 10 -100&quot;</span><span class="p">;</span><span class="w">   </span>
+<span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">    </span>
+<span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
 <p>输出为<code>820</code>    </p>
 <h3 id="6">6.   定义函数</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">Function</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Function</span><span class="p">(</span><span class="s">&quot;f(n) = 2 * n&quot;</span><span class="p">);</span><span class="w">  </span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;f(x) + f(y)&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"> </span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="n">Function</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Function</span><span class="p">(</span><span class="s">&quot;f(n) = 2 * n&quot;</span><span class="p">);</span><span class="w">  </span>
+<span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;f(x) + f(y)&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"> </span>
+<span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
 <h3 id="7">7.   使用自定义函数</h3>
 <p>有时候，想定义的函数过于复杂，不好用一个表达式简单的定义出来。此时可以在代码中定义函数并注册到mxParse中。    </p>
 <p>定义一个自定义函数:  </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">MyFunc</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">FunctionExtension</span><span class="w">    </span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">()</span><span class="w"> </span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">   </span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">            </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">()</span><span class="w">   </span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Y</span><span class="p">;</span><span class="w">   </span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">FunctionExtension</span><span class="w"> </span><span class="n">clone</span><span class="p">()</span><span class="w">    </span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">getParameterName</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">parameterIndex</span><span class="p">)</span><span class="w">  </span>
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">parameterIndex</span><span class="p">)</span><span class="w"> </span>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">            </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">0</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">1</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">                </span><span class="k">default</span><span class="p">:</span><span class="w">    </span>
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">            </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
-<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
-<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">getParametersNumber</span><span class="p">()</span><span class="w">    </span>
-<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w">   </span>
-<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>
-<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">setParameterValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">parameterIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">)</span><span class="w">    </span>
-<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">        </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">parameterIndex</span><span class="p">)</span><span class="w"> </span>
-<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">            </span><span class="p">{</span><span class="w">   </span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">0</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="w">                    </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">1</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="w">                    </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="w">                </span><span class="k">default</span><span class="p">:</span><span class="w">    </span>
-<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
-<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">            </span><span class="p">}</span><span class="w">   </span>
-<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="w">        </span><span class="p">}</span><span class="w">   </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="w">    </span><span class="k">class</span><span class="w"> </span><span class="nc">MyFunc</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">FunctionExtension</span><span class="w">    </span>
+<span class="w">    </span><span class="p">{</span><span class="w">   </span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span>
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">()</span><span class="w"> </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span><span class="w"> </span>
+<span class="w">            </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Double</span><span class="p">.</span><span class="n">NaN</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w">   </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w">  </span>
+<span class="w">            </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">calculate</span><span class="p">()</span><span class="w">   </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">*</span><span class="w"> </span><span class="n">Y</span><span class="p">;</span><span class="w">   </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="n">FunctionExtension</span><span class="w"> </span><span class="n">clone</span><span class="p">()</span><span class="w">    </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">);</span><span class="w">    </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">getParameterName</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">parameterIndex</span><span class="p">)</span><span class="w">  </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">parameterIndex</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span><span class="w">   </span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">0</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;x&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">1</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">                </span><span class="k">default</span><span class="p">:</span><span class="w">    </span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
+<span class="w">            </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">getParametersNumber</span><span class="p">()</span><span class="w">    </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w">   </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+
+<span class="w">        </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">setParameterValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">parameterIndex</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">)</span><span class="w">    </span>
+<span class="w">        </span><span class="p">{</span><span class="w">   </span>
+<span class="w">            </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">parameterIndex</span><span class="p">)</span><span class="w"> </span>
+<span class="w">            </span><span class="p">{</span><span class="w">   </span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">0</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                    </span><span class="n">X</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">;</span><span class="w"> </span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="m">1</span><span class="p">:</span><span class="w"> </span>
+<span class="w">                    </span><span class="n">Y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parameterValue</span><span class="p">;</span><span class="w"> </span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
+<span class="w">                </span><span class="k">default</span><span class="p">:</span><span class="w">    </span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span><span class="w">  </span>
+<span class="w">            </span><span class="p">}</span><span class="w">   </span>
+<span class="w">        </span><span class="p">}</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
 <p>在程序中使用自定义函数:    </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">Function</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Function</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">());</span><span class="w">   </span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;f(x, y)&quot;</span><span class="p">;</span><span class="w"> </span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"> </span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Argument</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;x = 12&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="n">Argument</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Argument</span><span class="p">(</span><span class="s">&quot;y = 80&quot;</span><span class="p">);</span><span class="w">    </span>
+<span class="n">Function</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Function</span><span class="p">(</span><span class="s">&quot;f&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyFunc</span><span class="p">());</span><span class="w">   </span>
+<span class="kt">string</span><span class="w"> </span><span class="n">exprStr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;f(x, y)&quot;</span><span class="p">;</span><span class="w"> </span>
+<span class="n">Expression</span><span class="w"> </span><span class="n">expr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Expression</span><span class="p">(</span><span class="n">exprStr</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span><span class="w"> </span>
+<span class="kt">double</span><span class="w"> </span><span class="n">rst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expr</span><span class="p">.</span><span class="n">calculate</span><span class="p">();</span><span class="w">  </span>
+<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">exprStr</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="s">&quot; = &quot;</span><span class="w"> </span><span class="p">+</span><span class="w"> </span><span class="n">rst</span><span class="p">);</span><span class="w">   </span>
+</code></pre></div></td></tr></table></div>
 
 
 

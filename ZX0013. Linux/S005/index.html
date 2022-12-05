@@ -2939,34 +2939,51 @@
 <p><img alt="status" src="../S005.files/S005_7426_image004.png" /></p>
 <h3 id="3">3. 注册一个服务</h3>
 <p>由systemd管理的服务都以文件的形式保存在固定的位置。使用如下的命令可以打印出所有这些位置。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>systemctl show --property<span class="o">=</span>UnitPath
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl show --property<span class="o">=</span>UnitPath
+</code></pre></div></td></tr></table></div>
 <p>通常我们只需要关心其结果中的两个位置:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>/etc/systemd/system     <span class="c1"># 管理员安装服务的位置，我们自己的服务通常放在这里</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>/usr/lib/systemd/system <span class="c1"># 各种软件包安装服务的位置</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>/etc/systemd/system     <span class="c1"># 管理员安装服务的位置，我们自己的服务通常放在这里</span>
+/usr/lib/systemd/system <span class="c1"># 各种软件包安装服务的位置</span>
+</code></pre></div></td></tr></table></div>
 <p>我们可以仿照这些目录下的文件来编写我们自己的文件。</p>
 <h4 id="31-service">3.1 编写service文件</h4>
 <p>服务都以.service扩展名的形式保存在文件中。我们自己的服务文件通常保存在上面提到的/etc/systemd/system这个位置。</p>
 <p>文件的写法以Tomcat服务为例:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">[Unit]</span><span class="w"></span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="na">Description</span><span class="o">=</span><span class="s">Apache Tomcat 9                     </span><span class="w"></span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="na">After</span><span class="o">=</span><span class="s">network.target</span><span class="w"></span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">　</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">[Service]</span><span class="w"></span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="na">User</span><span class="o">=</span><span class="s">tomcat　</span><span class="w"></span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="na">Group</span><span class="o">=</span><span class="s">tomcat　</span><span class="w"></span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="na">Type</span><span class="o">=</span><span class="s">oneshot　</span><span class="w"></span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="na">PIDFile</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/tomcat.pid</span><span class="w"></span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span><span class="w"></span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">　</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="na">ExecStart</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/startup.sh</span><span class="w"></span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="na">ExecStop</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/shutdown.sh</span><span class="w"></span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="na">ExecReStart</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/shutdown.sh;/opt/apache-tomcat-9.0.26/bin/startup.sh  </span><span class="w"></span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">　</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">[Install]</span><span class="w"></span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span><span class="w"></span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">[Unit]</span><span class="w"></span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Apache Tomcat 9                     </span><span class="w"></span>
+<span class="na">After</span><span class="o">=</span><span class="s">network.target</span><span class="w"></span>
+<span class="w">　</span>
+<span class="k">[Service]</span><span class="w"></span>
+<span class="na">User</span><span class="o">=</span><span class="s">tomcat　</span><span class="w"></span>
+<span class="na">Group</span><span class="o">=</span><span class="s">tomcat　</span><span class="w"></span>
+<span class="na">Type</span><span class="o">=</span><span class="s">oneshot　</span><span class="w"></span>
+<span class="na">PIDFile</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/tomcat.pid</span><span class="w"></span>
+<span class="na">RemainAfterExit</span><span class="o">=</span><span class="s">yes</span><span class="w"></span>
+<span class="w">　</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/startup.sh</span><span class="w"></span>
+<span class="na">ExecStop</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/shutdown.sh</span><span class="w"></span>
+<span class="na">ExecReStart</span><span class="o">=</span><span class="s">/opt/apache-tomcat-9.0.26/bin/shutdown.sh;/opt/apache-tomcat-9.0.26/bin/startup.sh  </span><span class="w"></span>
+<span class="w">　</span>
+<span class="k">[Install]</span><span class="w"></span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span><span class="w"></span>
+</code></pre></div></td></tr></table></div>
 <p>其中大部分项目看名字就知道意思。下面说明一些其中几个不太容易理解的项目。</p>
 <div class="admonition example">
 <p class="admonition-title">After</p>
@@ -2977,17 +2994,22 @@
 <p>这三个项目通常会组合起来使用。Oneshot表示这个服务的启动进程启动一次后就退出。RemainAfterExit设为yes则使systemd在服务进程退出后仍然认为服务处于运行状态。指定PIDFile可以使systemd能够跟踪服务的主进程，因为这个只启动一次的进程又创建了子进程作为服务的主进程。</p>
 </div>
 <p>除了oneshot种类的服务，还有很多其他种类的服务，我们可以按需选择。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>simple      <span class="c1"># 该服务会立即启动，并常驻。启动成功则服务就处于运行状态。  　   　   　   　   　　</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>forking     <span class="c1"># 该服务会启动一个子进程作为主进程，然后父进程也就是启动进程会退出。通常需要同时指定PIDFIle。 　</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>oneshot     <span class="c1"># 只执行一次后立即退出。也可以与RemainAfterExit、PIDFile等组合起来使用。    　   　   　   　　</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>notify      <span class="c1"># 基本与simple相同，只是服务启动成功的标志不是服务进程成功启动，而是需要服务进程的程序向systemd主动发送信号来表明服用就绪了。　</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>dbus        <span class="c1"># 与系统总线有关。暂时不是很懂。   　   　   　   　   　   　   　   　　</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>idle        <span class="c1"># 基本与simple相同，只是优先级比较低。当systemd处理完所有任务后才会来启动这类服务。</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>simple      <span class="c1"># 该服务会立即启动，并常驻。启动成功则服务就处于运行状态。  　   　   　   　   　　</span>
+forking     <span class="c1"># 该服务会启动一个子进程作为主进程，然后父进程也就是启动进程会退出。通常需要同时指定PIDFIle。 　</span>
+oneshot     <span class="c1"># 只执行一次后立即退出。也可以与RemainAfterExit、PIDFile等组合起来使用。    　   　   　   　　</span>
+notify      <span class="c1"># 基本与simple相同，只是服务启动成功的标志不是服务进程成功启动，而是需要服务进程的程序向systemd主动发送信号来表明服用就绪了。　</span>
+dbus        <span class="c1"># 与系统总线有关。暂时不是很懂。   　   　   　   　   　   　   　   　　</span>
+idle        <span class="c1"># 基本与simple相同，只是优先级比较低。当systemd处理完所有任务后才会来启动这类服务。</span>
+</code></pre></div></td></tr></table></div>
 <h4 id="32">3.2 设置服务为开机启动</h4>
 <p>以上面创建的tomcat服务为例，使用如下命令即可:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>systemctl <span class="nb">enable</span> tomcat.service
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl <span class="nb">enable</span> tomcat.service
+</code></pre></div></td></tr></table></div>
 <h3 id="4">4. 删除服务</h3>
 <p>停止服务并删除对应的service文件即可。</p>
 
