@@ -2990,7 +2990,7 @@
 要显示出想要的属性列通常分为检索和从结果中二次筛选两步。    </p>
 <div class="admonition example">
 <p class="admonition-title">查看结果对象的成员  </p>
-<p>使用Get-Member命令查看结果对象的成员，前面已经介绍过了。必须我们得先知道结果对象有哪些成员，才能决定想显示哪些成员。 </p>
+<p>使用Get-Member命令查看结果对象的成员，前面已经介绍过了。必须得先知道结果对象有哪些成员，才能决定想显示哪些成员。   </p>
 <p>以上面的检索命令为例，现在我想显示结果所在行的行号。  </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">Get-Content</span> <span class="p">.\</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="p">|</span> <span class="nb">Select-String</span> <span class="s2">&quot;x:&quot;</span> <span class="n">-SimpleMatch</span> <span class="n">-Context</span> <span class="n">3</span><span class="p">,</span><span class="n">2</span> <span class="p">|</span> <span class="nb">Get-Member</span>    
 </code></pre></div></td></tr></table></div>
