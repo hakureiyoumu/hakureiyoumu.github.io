@@ -41,6 +41,8 @@
       
     
     
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2952,7 +2954,7 @@
 <p>更新日期：2020-11-20</p>
 <hr />
 <h3 id="1">1. 概要</h3>
-<p>linux有一套约定俗称的文件目录结构系统。通常各个发行版都会遵照这个约定来创建对应的目录，并将各种文件放置在对应的地方。</p>
+<p>linux有一套约定俗成的文件目录结构系统。通常各个发行版都会遵照这个约定来创建对应的目录，并将各种文件放置在对应的地方。</p>
 <p>这套系统被称为:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Filesystem Hierarchy Standard，FHS
 </code></pre></div></td></tr></table></div>
@@ -3011,7 +3013,7 @@
 <h3 id="3">3. 使用场景</h3>
 <h4 id="31">3.1 安装软件</h4>
 <p>通常情况下，我们会使用yum、pacman等包管理命令来帮助我们安装软件。这个时候会自动选择安装位置，我们通常不需要知道安装的具体细节。装好之后在命令行里面敲命令能执行就行了。</p>
-<p>但有的软件不是通过包管理命令来安装，比如tomcat，一般时自己去下载压缩包。我们自己选择安装位置的时候，通常我会选择安装在/opt目录下面。</p>
+<p>但有的软件不是通过包管理命令来安装，比如tomcat，一般是自己去下载压缩包。我们自己选择安装位置的时候，通常我会选择安装在/opt目录下面。</p>
 <h4 id="32">3.2 修改软件的配置</h4>
 <p>很多时候我们需要修改软件的一些设置。参考该软件的使用手册通常是最好的办法。</p>
 <p>如果有时候我们找不到手册教程之类的可以参考。就可以去/etc目录下面去寻找，看有没有和这个软件有点关系的配置文件。根据文件的内容我们通常能推断出大概的用法。</p>
@@ -3020,7 +3022,8 @@
 <p>这与Windows系统的user目录也是很类似的。注意多媒体数据不要放在/media目录中，这个目录是用来挂载可移除多媒体设备的。如光驱。</p>
 <p>特定用户的数据总是建议放在自己的home目录下面。</p>
 <h4 id="34">3.4 临时性任务</h4>
-<p>如果我们需要暂存、中转一些文件，或者是一些很随性的任务。可以使用/tmp目录。放在这里的文件我们通常并不关系之后会怎样，只是临时使用。</p>
+<p>如果我们需要暂存、中转一些文件，或者是需要做一些很随性的任务。此时可以使用/tmp目录。放在这里的文件我们通常并不关心之后会怎样，只是临时使用。</p>
+<p>/tmp目录下的文件会被自动清除。</p>
 <h4 id="35">3.5 查看软件的日志</h4>
 <p>通常参考软件的手册之类直接定位软件输出日志的位置是最好的办法。</p>
 <p>但有时我们找不到这样的说明，此时可以去/var/log下面去搜一搜。很多软件会把日志出在这个位置。</p>
