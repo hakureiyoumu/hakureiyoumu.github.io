@@ -1,0 +1,19 @@
+/* 图标样式 */
+.debian {
+    color: #d0074e;
+    transform: scale(2);
+    margin-left: 0.5em;
+    margin-right: 1.5em;
+}
+.redhat {
+    color: #ff0000;
+    transform: scale(2);
+    margin-left: 0.5em;
+    margin-right: 1.5em;
+}
+.arch {
+    color: rgb(7, 141, 208);
+    transform: scale(2);
+    margin-left: 0.5em;
+    margin-right: 1.5em;
+}

@@ -12,6 +12,8 @@ theme:
     - search.highlight
     - header.autohide
     - navigation.tabs
+extra_css:
+    - stylesheets/extra.css
 markdown_extensions:
     - toc:
         baselevel: 2
