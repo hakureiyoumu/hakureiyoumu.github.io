@@ -2941,7 +2941,7 @@
   
     <li class="md-nav__item">
       <a href="../../ZX0030.%20%E6%B8%B8%E6%88%8F/S002/" class="md-nav__link">
-        查看合作单位语音
+        合作单位语音
       </a>
     </li>
   
@@ -3436,7 +3436,7 @@ End If
 <h4 id="32">3.2 特殊字符</h4>
 <p>有很多特殊字符无法在代码里面直接打出来，VBA并没有提供转义字符来表示，而是通过直接指定ASCII码的方式：                      </p>
 <p>此处引用WiKi百科上的ASCII码表：                        </p>
-<p><img alt="ascii" src="../S001.files/001.png" />                    </p>
+<p><img src="../S001.files/001.png" style="max-width:30em" /></p>
 <p>比如要在字符串种使用水平制表符(\t)，可以这样写:                      </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>&quot;Hello&quot; &amp; Chr(9) &amp; &quot;World!!!&quot;      &#39; 十进制                        
@@ -3644,13 +3644,13 @@ Worksheets(sheetIndex)              ※从1开始编号
 <h3 id="5">5.   特殊处理</h3>
 <h4 id="51-nonbreaking-space">5.1 nonbreaking space导致的错误</h4>
 <p>从其它地方往sheet页上带着样式拷贝文本的时候，经常会有奇怪的东西被拷贝进来。就比如这种特殊的空格。                   <br />
-例如: 从Visual Studio Code带着样式往Excel种贴代码。                      </p>
+例如: 从Visual Studio Code带着样式往Excel中贴代码。                      </p>
 <p>这种空格叫做【UTF8半角空格】，通常使用的时候和一般的空格区别不大。经常在html中用来表示固定宽度的空白，因为一般的半角空格会被自动压缩宽度，而这种空格能保持固定宽度。           <br />
-绝大多数情况下，我们不需要关心它。几乎所有的编程语言都把它当作一个普通的空格。但是像lua这种语言，到现在也不支持unicode编码的字符，就是出语法错误。                      </p>
+绝大多数情况下，我们不需要关心它。几乎所有的编程语言都把它当作一个普通的空格。但是像lua这种语言，到现在也不支持unicode编码的字符，就会出语法错误。                      </p>
 <p>在程序中使用Chrw(160)来表示这个特殊空格，写相关代码的时候可以考虑使用。                        </p>
 <p>但通常，我使用如下方法来解决这个问题。                     </p>
 <p>(1) 将代码从Visual Studio Code拷贝到Word文档中。                   </p>
-<p><img alt="word" src="../S001.files/003.png" />                    </p>
+<p><img src="../S001.files/003.png" style="max-width:30em" /></p>
 <p>(2) 使用替换功能将这种空格替换为普通半角空格。                   </p>
 <p>在查找框里面输入这个特殊空格的方式是：                 </p>
 <ul>
