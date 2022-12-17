@@ -2194,20 +2194,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
-        添加快捷键来调节音量
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -2330,6 +2316,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
+        添加快捷键来调节音量
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2372,7 +2372,7 @@
   
     <li class="md-nav__item">
       <a href="../L0001/" class="md-nav__link">
-        访问Windows分区中的文件
+        访问Windows分区
       </a>
     </li>
   
@@ -2465,29 +2465,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 查看该用户的权限
+  <a href="#1-sudo" class="md-nav__link">
+    1. 打开sudo编辑界面
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-sudo" class="md-nav__link">
-    2. 编辑sudo配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 加入如下行来添加权限
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. 验证是否设置成功
+  <a href="#2" class="md-nav__link">
+    2. 加入如下行来添加权限
   </a>
   
 </li>
@@ -2839,29 +2825,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 查看该用户的权限
+  <a href="#1-sudo" class="md-nav__link">
+    1. 打开sudo编辑界面
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-sudo" class="md-nav__link">
-    2. 编辑sudo配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 加入如下行来添加权限
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    4. 验证是否设置成功
+  <a href="#2" class="md-nav__link">
+    2. 加入如下行来添加权限
   </a>
   
 </li>
@@ -2889,21 +2861,23 @@
   <h1>新用户无法执行sudo</h1>
 
 <h2 id="sudo">新用户无法执行sudo</h2>
-<p>更新日期：2020-06-28</p>
+<p>更新日期：2022-12-17</p>
 <hr />
 <p>Arch Linux中新建的用户没有sudo的权限。可以参考WiKi中的方法进行设置。</p>
-<h3 id="1">1. 查看该用户的权限</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo -lU username
+<div class="admonition warning">
+<p class="admonition-title">使用root用户执行</p>
+<p>本章节的命令通常是在安装系统阶段使用root用户执行</p>
+</div>
+<h3 id="1-sudo">1. 打开sudo编辑界面</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nv">EDITOR</span><span class="o">=</span>vim visudo
 </code></pre></div></td></tr></table></div>
-<h3 id="2-sudo">2. 编辑sudo配置</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>EDITOR=vim
-visudo
-</code></pre></div></td></tr></table></div>
-<h3 id="3">3. 加入如下行来添加权限</h3>
+<div class="admonition note">
+<p class="admonition-title">更换编辑工具</p>
+<p>sudo默认使用vi进行编辑，这里我们指定使用更强大的vim来进行编辑。</p>
+</div>
+<h3 id="2">2. 加入如下行来添加权限</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>username ALL=(ALL) ALL
 </code></pre></div></td></tr></table></div>
-<h3 id="4">4. 验证是否设置成功</h3>
 
 
 

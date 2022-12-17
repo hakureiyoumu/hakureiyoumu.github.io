@@ -2267,20 +2267,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
-        添加快捷键来调节音量
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -2403,6 +2389,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
+        添加快捷键来调节音量
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2443,7 +2443,7 @@
   
     <li class="md-nav__item">
       <a href="../../5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0001/" class="md-nav__link">
-        访问Windows分区中的文件
+        访问Windows分区
       </a>
     </li>
   
@@ -2897,18 +2897,18 @@
 <p>大概输出如下：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">System</span> <span class="n">Locale</span><span class="p">:</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
-    <span class="n">VC</span> <span class="n">Keymap</span><span class="p">:</span> <span class="n">jp106</span>
-   <span class="n">X11</span> <span class="n">Layout</span><span class="p">:</span> <span class="n">jp</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>System Locale: <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+    VC Keymap: jp106
+   X11 Layout: jp
 </code></pre></div></td></tr></table></div>
 <p>※这是正确的日文键盘设置。</p>
 <h3 id="step2">step2 删除已有的键盘布局配置文件</h3>
 <p>为了防止配置文件中的各种微小错误，我们可以不在当前的配置文件中修改。而是删除当前的配置文件，重新生成全新的配置文件。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">-- 命令如下(root权限)</span>
-<span class="n">rm</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">vconsole</span><span class="p">.</span><span class="n">conf</span>   <span class="c1">-- 控制台中的键盘布局</span>
-<span class="n">rm</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">X11</span><span class="o">/</span><span class="n">xorg</span><span class="p">.</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="o">/</span><span class="mi">00</span><span class="o">-</span><span class="n">keyboard</span><span class="p">.</span><span class="n">conf</span>    <span class="c1">-- 图形程序中的键盘布局</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>-- 命令如下<span class="o">(</span>root权限<span class="o">)</span>
+rm /etc/vconsole.conf   -- 控制台中的键盘布局
+rm /etc/X11/xorg.conf.d/00-keyboard.conf    -- 图形程序中的键盘布局
 </code></pre></div></td></tr></table></div>
 <h3 id="step3">step3 修改键盘布局</h3>
 <p>使用如下命令：</p>

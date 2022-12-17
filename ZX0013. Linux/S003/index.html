@@ -2323,20 +2323,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
-        添加快捷键来调节音量
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -2459,6 +2445,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
+        添加快捷键来调节音量
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2499,7 +2499,7 @@
   
     <li class="md-nav__item">
       <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0001/" class="md-nav__link">
-        访问Windows分区中的文件
+        访问Windows分区
       </a>
     </li>
   
@@ -3014,19 +3014,34 @@
 和通常的脚本语言一样，也具有变量、控制语句和函数等。</p>
 <h3 id="2">2. 创建脚本文件并执行</h3>
 <p>脚本程序保存在.sh扩展名的文件中。
-文件的格式是有要求的，已hello world程序为例。</p>
+文件的格式是有要求的，以hello world程序为例。</p>
 <div class="admonition example">
 <p class="admonition-title">test.sh</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
 </code></pre></div></td></tr></table></div>
+或者
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ch">#!/bin/sh</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span>
+</code></pre></div></td></tr></table></div></p>
 </div>
 <p>文件开头第一行是固定的。</p>
 <p>要执行脚本文件，需要赋予它可执行权限，并使用如下命令来运行：</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>./test.sh
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>./test.sh
+<span class="c1"># 或者</span>
+sh test.sh
+<span class="c1"># 或者</span>
+bash test.sh
 </code></pre></div></td></tr></table></div>
 <h3 id="3">3. 设置错误执行标记</h3>
 <p>脚本文件中通常会执行大段的linux命令。默认情况下，如果某一条命令执行失败，会继续往下执行。</p>
@@ -3042,7 +3057,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h4 id="42-linux">4.2 执行linux命令</h4>
-<p>shell脚本中最便利的一点是可以直接执行linux命令，任何可以在命令行执行的命令都可以。</p>
+<p>shell脚本中最便利的一点是可以直接执行linux命令，任何可以在命令行中执行的命令都可以。</p>
 <p>并且命令的执行结果可以保存在变量中。此时命令需要用反单引号括起来。</p>
 <p>例如:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -3052,7 +3067,7 @@
 <span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">myVar</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></td></tr></table></div>
 <p>执行后会原样输出命令的执行结果。
-注意echo命令的字符串参数要加上双引号，负责不能正常解析字符串中的换行制表等符号。</p>
+注意echo命令的字符串参数要加上双引号，否则不能正常解析字符串中的换行制表等符号。</p>
 <h4 id="43">4.3 注释</h4>
 <p>使用#符号来加注释，通常都是整行注释。并不会在语句的末尾加#。</p>
 <h4 id="44">4.4 函数</h4>

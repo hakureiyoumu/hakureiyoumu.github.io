@@ -2034,7 +2034,14 @@
       
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. 使系统可以在其他硬件上启动
+    5. 安装桌面环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 使系统可以在其他硬件上启动
   </a>
   
 </li>
@@ -2264,20 +2271,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
-        添加快捷键来调节音量
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -2400,6 +2393,20 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/3.%20%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E8%BD%AF%E4%BB%B6/L0004/" class="md-nav__link">
+        添加快捷键来调节音量
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -2440,7 +2447,7 @@
   
     <li class="md-nav__item">
       <a href="../13.6%20ArchLinux%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86/5.%20%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/L0001/" class="md-nav__link">
-        访问Windows分区中的文件
+        访问Windows分区
       </a>
     </li>
   
@@ -2864,7 +2871,14 @@
       
         <li class="md-nav__item">
   <a href="#5" class="md-nav__link">
-    5. 使系统可以在其他硬件上启动
+    5. 安装桌面环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 使系统可以在其他硬件上启动
   </a>
   
 </li>
@@ -2938,7 +2952,7 @@
 <p>这一步不用细说了，完全按照WiKi上的方法安装就可以。</p>
 <p><u><strong>2 启动到Live系统。</strong></u></p>
 <p>开启启动时选择从U盘启动。
-要注意的是Surface这样的设备比较特殊，要关闭安全启动才行，而且即使启动成功连无法联网。Surface的问题我们以后再说。</p>
+要注意的是Surface这样的设备比较特殊，要关闭安全启动才行。Surface的问题我们以后再说。</p>
 <p><u><strong>3 配置Live环境。(网络连接、时间同步等)</strong></u></p>
 <p>启动后会进入Live系统的命令行界面。为了后面的工作能顺利进行，这里需要进行一些基本的配置工作。</p>
 <p>A. 首先是配置键盘布局。</p>
@@ -2982,7 +2996,7 @@
 </div>
 <div class="admonition example">
 <p class="admonition-title">连接WiFi</p>
-<p>在最新的Arch Live系统中，已经安装好了用来进行WiFi连接的图形节目工具<code>wifi-menu</code>。我们可以用这个来连接，再也不用敲很复杂的命令了。</p>
+<p>在最新的Arch Live系统中，已经安装好了用来进行WiFi连接的图形界面工具<code>wifi-menu</code>。我们可以用这个来连接，再也不用敲很复杂的命令了。</p>
 <p>但是要使用<code>wifi-menu</code>，我们必须要先关闭网络接口，不然会用不了。</p>
 <p>查看网络接口：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ip link
@@ -3008,7 +3022,7 @@
 <p>然后启动<code>wifi-menu</code>:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>wifi-menu
 </code></pre></div></td></tr></table></div>
-<p>按照图形节目上的提示来完成连接相信并不难。</p>
+<p>按照图形界面上的提示来完成连接相信并不难。</p>
 <p>最后仍然需要启动动态IP服务来获得动态IP地址。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>dhcpcd
 </code></pre></div></td></tr></table></div>
@@ -3069,7 +3083,7 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mount /dev/sdx1 /mnt/esp
 </code></pre></div></td></tr></table></div>
 <p><u><strong>6 安装新系统的基本组件。</strong></u></p>
-<p>先选择镜像源。不同的源速度可以差异比较大。选择较快的源自然会有更好的安装体验。</p>
+<p>先选择镜像源。不同的源速度可能差异会比较大。选择较快的源自然会有更好的安装体验。</p>
 <p>修改下面这个文件即可，通常挑选地理位置比较近的就可以。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/etc/pacman.d/mirrorlist
 </code></pre></div></td></tr></table></div>
@@ -3104,7 +3118,7 @@
 <p>使用如下命令切换到新系统：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>arch-chroot /mnt
 </code></pre></div></td></tr></table></div>
-<p>切换之后，你所做的一切操作都相当于在新的系统中操作的。</p>
+<p>切换之后，你所做的一切操作都相当于是在新的系统中操作的。</p>
 <p><u><strong>8 配置新系统的环境。(时区、字符集、密码等)</strong></u></p>
 <p>A. 配置时区</p>
 <p>例如上海就是：</p>
@@ -3123,7 +3137,7 @@
 <p>编辑下面这个文件，放开常用字符集的注释：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>/etc/locale.gen
 </code></pre></div></td></tr></table></div>
-<p>执行 locale-gen 以重新生成 locale 讯息：</p>
+<p>执行 locale-gen 以重新生成 locale 信息：</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>locale-gen
 </code></pre></div></td></tr></table></div>
 <p>创建下面这个文件，并制定字符集。</p>
@@ -3157,7 +3171,7 @@
 <p><u><strong>9 在新系统中安装必备的基础软件。(如连接WiFi的软件)</strong></u></p>
 <p>为了避免我们启动到新系统之后没有软件可用，可以在这里安装一些实用的小工具。</p>
 <ul>
-<li>文本编辑器：vim vi</li>
+<li>文本编辑器：vim</li>
 <li>网络连接：netctl dhcpcd dialog wpa_supplicant</li>
 <li>磁盘分区格式化工具：dosfstools</li>
 <li>下载工具：wget</li>
@@ -3187,7 +3201,7 @@
 <p>大功告成。</p>
 <p><u><strong>11 启动到新系统。</strong></u></p>
 <p>现在可以重启电脑了。记得拔下Live系统的U盘。</p>
-<p>启动后进入控制台界面，和Live系统是一样的。只不过需要输入用户名和密码才能登陆。此时只有一个用户可以，输入<code>root</code>和上面自己设定的密码进行登录。</p>
+<p>启动后进入控制台界面，和Live系统是一样的。只不过需要输入用户名和密码才能登录。此时只有root用户可用，输入<code>root</code>和上面自己设定的密码进行登录。</p>
 <p><u><strong>12 连接网络。</strong></u></p>
 <p>按照和Live系统中同样的方法连接网络。</p>
 <p><u><strong>13 配置用户。</strong></u></p>
@@ -3202,11 +3216,11 @@
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>groupadd sudo
 usermod -a -G sudo youruser
 </code></pre></div></td></tr></table></div>
-<p>但是要先设在sudo组的权限才行。使用<code>visudo</code>命令编辑对应的配置文件，去掉sudo前面的注释。</p>
+<p>但是要先设定sudo组的权限才行。使用<code>visudo</code>命令编辑对应的配置文件，去掉sudo前面的注释。</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>visudo
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>sudo <span class="nv">EDITOR</span><span class="o">=</span>vim visudo
 
 <span class="c1">## Uncomment to allow members of group sudo to execute any command</span>
 %sudo   <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
@@ -3230,6 +3244,8 @@ usermod -a -G sudo youruser
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>systemctl <span class="nb">enable</span> firewalld
 systemctl <span class="nb">enable</span> sshd
 </code></pre></div></td></tr></table></div>
+<p>至此，如果不需要图形界面环境的话就已经安装完毕了。</p>
+<h2 id="5">5. 安装桌面环境</h2>
 <p>下面介绍安装桌面环境的额外步骤：</p>
 <p><u><strong>1 安装Xorg。</strong></u></p>
 <p>安装如下软件包即可：</p>
@@ -3260,8 +3276,9 @@ systemctl <span class="nb">enable</span> sshd
 <li>kde-applications</li>
 </ul>
 <p>一旦安装了桌面包之后，显示管理器如sddm就可以检测到它们，并不需要特别做什么配置。</p>
+<p>不过要注意<code>kde-applications</code>这个全家桶里面的东西比较多，很多东西都没有用。如果我们想要一个比较干净的系统，最好是不要安装这个全家桶，而只安装我们觉得有用的包。</p>
 <p><u><strong>5 安装终端程序。</strong></u></p>
-<p>如果是安装了KDE这样的全家桶，那肯定会自带终端。则这里就不用再安装了。</p>
+<p>如果是安装了KDE这样的全家桶，则自带终端konsole和yakuake。则这里就不用再安装了。</p>
 <p>如果是安装的窗口管理器，则最好安装一个终端，并配置为窗口管理器的默认终端。
 这样可以避免重启进入窗口管理器之后由于配置失误需要在终端中修改配置时却没有终端程序的尴尬。</p>
 <p>推荐的终端程序是这个：</p>
@@ -3270,12 +3287,13 @@ systemctl <span class="nb">enable</span> sshd
 </ul>
 <p>可以设置下拉效果和半透明效果。</p>
 <p><u><strong>6 安装中文字体。</strong></u></p>
-<p>只需要安装下面这个字体包：</p>
+<p>推荐安装思源系列字体：</p>
 <ul>
-<li>wqy-microhei</li>
+<li>adobe-source-han-sans-otc-fonts</li>
+<li>adobe-source-han-serif-otc-fonts</li>
 </ul>
-<p>现在你可以将系统语言设置为中文了。</p>
-<h2 id="5">5. 使系统可以在其他硬件上启动</h2>
+<p>这套字体包含黑体和宋体，并支持中日韩三国语言。现在你可以将系统语言设置为中文了。</p>
+<h2 id="6">6. 使系统可以在其他硬件上启动</h2>
 <p>我们把Arch安装到移动硬盘或U盘之后，它只能在你安装的这台硬件上启动。当然我们是有办法让它在任何一个电脑上启动的。</p>
 <p>我们只要做下面这几件事情就可以了。</p>
 <p><u><strong>安装尽可能多的硬件驱动</strong></u></p>
