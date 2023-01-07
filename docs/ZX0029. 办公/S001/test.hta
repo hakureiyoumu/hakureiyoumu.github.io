@@ -1,0 +1,235 @@
+<HTML>
+
+    <HEAD>
+        <TITLE>HTA Demo</TITLE>
+        <meta http-equiv="x-ua-compatible" content="ie=9">
+        <HTA:APPLICATION ID="oHTA" APPLICATIONNAME="myApp" BORDER="thin" BORDERSTYLE="normal" CAPTION="yes" ICON=""
+            MAXIMIZEBUTTON="no" MINIMIZEBUTTON="no" SHOWINTASKBAR="yes" SINGLEINSTANCE="no" SYSMENU="yes" VERSION="1.0"
+            WINDOWSTATE="maximize" />
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap"
+            rel="stylesheet">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Serif+JP&display=swap');
+        </style>
+    
+        <script>
+    
+            //alert(oHTA.commandLine);
+    
+            // 当前路径
+            var curPath;
+    
+            /* This function also retrieves the value of the commandLine property,
+               which cannot be set as an attribute.  */
+    
+            window.onload = function ()
+            {
+                // 窗口缩放倍率
+                var scale = 2.0;
+    
+                // 设定窗口大小
+                window.resizeTo(1000 * scale, 900 * scale);
+    
+                // 设定当前路径
+                var cmd = oHTA.commandLine;
+                cmd = cmd.substring(1, cmd.length - 2);
+                cmd = cmd.substring(0, cmd.lastIndexOf("\\") + 1);
+                curPath = cmd;
+    
+            }
+    
+            // 执行批处理
+            function RunBat(batPath, isShow) {
+                RunCmd(batPath, isShow);
+            }
+    
+            // 执行控制台命令
+            function RunCmd(cmd, isShow) {
+                var shell = new ActiveXObject("WScript.Shell");
+                shell.run(curPath + cmd, 1, false);
+            }
+    
+            // 打开文件或者文件夹
+            function OpenFolder(path) {
+                var shell = new ActiveXObject("WScript.Shell");
+                shell.run("explorer.exe /e," + path, 1, false);
+            }
+    
+            // 打开链接
+            function OpenLink(link) {
+                var shell = new ActiveXObject("WScript.Shell");
+                shell.run(link);
+            }
+    
+            // 测试
+            function Test() {
+                var shell = new ActiveXObject("WScript.Shell");
+                var file = "\"" + curPath + "新規 Microsoft Excel Worksheet.xlsx" + "\"";
+                alert(file);
+                shell.run(file);
+            }
+    
+            // 复制文本
+            function Copy(text) {
+                window.clipboardData.setData("text", text);
+            }
+        </script>
+        <style>
+            h4 {
+                font-family: 'Noto Serif JP', serif;
+            }
+    
+            body {
+                font-family: 'Noto Sans JP', sans-serif;
+                font-family: 'Noto Serif JP', serif;
+            }
+    
+            input {
+                font-family: 'Noto Sans JP', sans-serif;
+            }
+    
+            p {
+                color: red;
+            }
+    
+            .btn {
+                display: inline-block;
+                outline: none;
+                cursor: pointer;
+                font-weight: 500;
+                border: 1px solid transparent;
+                border-radius: 2px;
+                height: 72px;
+                line-height: 68px;
+                font-size: 32px;
+                color: #ffffff;
+                background-color: #007c89;
+                transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+                padding: 0 18px;
+                margin-right: 0.5em;
+                margin-bottom: 0.5em;
+            }
+    
+            .btn:hover {
+                color: #ffffff;
+                background-color: #006570;
+            }
+    
+            .btn-big {
+                display: inline-block;
+                outline: 0;
+                border: 0;
+                cursor: pointer;
+                font-size: 48px;
+                text-decoration: none;
+                line-height: 1;
+                position: relative;
+                padding: 10px;
+                background: #1abebf;
+                background-image: linear-gradient(122deg,#37e0e0,#1abebe);
+                background-size: 300px,300px,100%;
+                color: #fff;
+                border-bottom: 5px solid #ffc600;
+                box-shadow: 0 0 3px 3px rgb(0 0 0 / 5%);
+                text-shadow: 0 0 3px rgb(0 0 0 / 30%);
+                transition: all .3s;
+            }
+    
+            .btn-big:hover {
+                box-shadow: 0 0 3px 3px rgb(0 0 0 / 8%);
+            }
+
+            table {
+                width: 100%;
+                border: 1px solid;
+                margin-bottom: 20px;
+            }
+            tr {
+                line-height: 100px;
+            }
+            table > div {
+                background-color: deepskyblue;
+                color: white;
+                min-width: 100px;
+                height: 40px;
+                margin: 0px 10px;
+                font-size: 20px;
+                text-align: center;
+            }
+    
+            .unittest {
+                width: 10em;
+                margin-right: 20px;
+            }
+    
+            .btn-s {
+                width: 5em;
+            }
+        </style>
+    
+    </HEAD>
+    
+    <BODY SCROLL="no">    
+        <div>
+            <input class="btn-big" type="button" value="启动Android模拟器" OnClick="Test()" />
+        </div>
+
+        <hr />
+    
+        <h4>■模拟器常用功能</h4>
+        <div>
+            <input class="btn" type="button" value="开启Log监视" />
+            <input class="btn" type="button" value="推送文件" />
+        </div>
+    
+        <hr />
+    
+        <h4>■切换环境</h4>
+        <div>
+            <input class="btn" type="button" value="环境1" />
+            <input class="btn" type="button" value="环境2" />
+            <input class="btn" type="button" value="环境3" />
+            <input class="btn" type="button" value="环境4" />
+        </div>
+    
+        <hr />
+    
+        <h4>■切换数据文件</h4>
+        <div>
+            <input class="btn" type="button" value="用途1" />
+            <input class="btn" type="button" value="用途2" />
+            <input class="btn" type="button" value="用途3" />
+        </div>
+
+        <hr />
+    
+        <h4>■常用资料</h4>
+        <div>
+            <input class="btn" type="button" value="常用文件夹1" />D:\项目A\式样书
+        </div>
+        <div>
+            <input class="btn" type="button" value="常用文件夹2" />D:\项目A\资料
+        </div>
+        <div>
+            <input class="btn" type="button" value="项目资料1" />D:\项目A\资料\项目资料1.xlsx
+        </div>
+        <div>
+            <input class="btn" type="button" value="项目资料2" />D:\项目A\资料\项目资料2.doc
+        </div>
+
+        <hr />
+    
+        <h4>■常用网站</h4>
+        <div>
+            <input class="btn" type="button" value="网站1" />http://localhost:xxxx/test/abc
+        </div>
+        <div>
+            <input class="btn" type="button" value="网站2" />https://test-abc.com:xxxx/test/abc
+        </div>
+    
+    </BODY>
+    
+    </HTML>

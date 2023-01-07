@@ -1,5 +1,6 @@
 site_name: 我的知识库
 
+site_url: https://doc.hakureiyoumu.xyz/
 theme:
   name: material
   palette:
@@ -182,6 +183,8 @@ nav:
         - ZX0028. 计算机使用/S006.md
     - Office:
       - ZX0016. Microsoft Office/S001.md
+  - 工作杂谈:
+    - ZX0029. 办公/S001.md
   - 游戏娱乐:
     - ZX0000. 首页/游戏娱乐.md
     - 星际争霸II:
